@@ -452,7 +452,13 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla/settings/fontfamily</li>
 
+<li>Active Brownian particles</li>
+
+<li>Active work</li>
+
 <li>CustomStylesheet</li>
+
+<li>Large deviation theory</li>
 
 <li>Mean square displacement</li>
 
@@ -10749,10 +10755,94 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div created="20190727110537306" modified="20190727110548195" title="$:/themes/tiddlywiki/vanilla/settings/fontfamily">
 <pre>&quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Lucida Grande&quot;, &quot;DejaVu Sans&quot;, sans-serif</pre>
 </div>
+<div created="20191010153112162" modified="20191010174156371" tags="TableOfContents" title="Active Brownian particles">
+<pre>We use the equations of motion of active Brownian particles in ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]) to study ABPs.
+
+! Equations of motion
+
+With $$\underline{r}_i$$ and $$\theta_i$$ the position and orientation of particle $$i$$ ($$i \in \{1, \ldots, N\}$$), we have the equations of motion of ABPs
+$$
+\begin{aligned}
+\dot{\underline{r}}_i &amp;= \mu \underline{F}_{i, ex} + v_0 \underline{u}(\theta_i) + \sqrt{2 D} \underline{\eta}_i,\\
+\dot{\theta}_i &amp;= \sqrt{2 D_r} \xi_i,
+\end{aligned}
+$$
+where $$\underline{\eta}_i, \xi_i$$ are zero-mean unit-variance Gaussian white noises, $$\mu$$ is the mobility, $$v_0$$ the self-propulsion speed, $$\underline{u}(\theta_i) = (\cos\theta_i, \sin\theta_i)$$, and $$D$$ and $$D_r$$ the translational and rotation diffusivities. The force between particles derives from the WCA potential
+$$
+\begin{aligned}
+V_{WCA}(r, \epsilon) &amp;= \left\{4 \epsilon \left(\frac{1}{(2^{-5/6}(r/\sigma))^{12}} - \frac{1}{(2^{-5/6}(r/\sigma))^6}\right) + 1\right\} \Theta(2\sigma - r)\\
+&amp;= \left\{\epsilon\left(\frac{2^{12}}{(r/\sigma)^{12}} - \frac{2^{7}}{(r/\sigma)^{6}}\right) + 1\right\} \Theta(2\sigma - r),
+\end{aligned}
+$$
+where $$\Theta$$ stands for the Heaviside function, and $$\sigma$$ is the radius of particles. We thus have a force of the form
+$$
+\underline{F}_{WCA}(r = \sqrt{x^2 + y^2}, \epsilon) = - \frac{3\epsilon}{\sigma^2}\left(\frac{2^{14}}{(r/\sigma)^{14}} - \frac{2^{8}}{(r/\sigma)^{8}}\right) \begin{pmatrix} x \\ y \end{pmatrix} \Theta(2\sigma - r).
+$$
+
+We choose the units of length and time as $$\sigma = 1$$ and $$\sigma/v_0 = 1$$. Moreover, authors chose $$D_r = 3D/\sigma^2$$ and $$\epsilon = D/\mu$$. We are thus left with an unique dimensionless parameter, besides the packing fraction $$\phi = \frac{N \pi \sigma^2}{L^2}$$,
+$$
+\frac{l_p}{\sigma} = \frac{v_0}{D_r \sigma},
+$$
+which gives the dimensionless distance travelled by a single particle before losing memory of its orientation. It is related to the Péclet number by
+$$
+\text{Pe} = \frac{l_p D_r \sigma}{D} = 3 \frac{l_p}{\sigma}.
+$$
+
+Dimensionless equations of motion are then given by (see Appendix A in [[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]])
+$$
+\begin{aligned}
+\dot{\underline{r}}_i &amp;= \frac{1}{3} \frac{\sigma}{l_p} \underline{\tilde{F}}_{i, ex} + \underline{u}(\theta_i) + \sqrt{\frac{2}{3} \frac{\sigma}{l_p}} \, \underline{\eta}_i,\\
+\dot{\theta}_i &amp;= \sqrt{2 \frac{\sigma}{l_p}} \, \xi_i,
+\end{aligned}
+$$
+where $$\underline{\tilde{F}}_{i, ex}$$ derives from $$V_{WCA}(r, \epsilon = 1)$$.
+
+! Numerical integration
+
+We use a simple Euler's method with time step $$\Delta t$$ to integrate the aforementioned equations
+$$
+\begin{aligned}
+\underline{r}_{i, t + 1} &amp;= \underline{r}_{i, t} + \Delta t \left(\frac{1}{3} \frac{\sigma}{l_p} \underline{\tilde{F}}_{i, ex, t} + \begin{pmatrix} \cos\theta_{i, t} \\ \sin\theta_{i, t}\end{pmatrix} \right) + \sqrt{\frac{2}{3} \frac{\sigma}{l_p} \Delta t} \, \underline{\eta}_{i, t + 1},\\
+\theta_{i, t + 1} &amp;= \theta_{i, t} + \sqrt{2 \frac{\sigma}{l_p} \Delta t} \, \xi_i.
+\end{aligned}
+$$</pre>
+</div>
+<div created="20191008105209478" modified="20191010161647662" tags="TableOfContents" title="Active work">
+<pre>We want to compute the normalised rate of active work per particle, defined in ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]) by
+$$
+w(t) = \frac{1}{v_0 N t} \int_0^t \sum_{i=1}^N  \underline{\dot{r}}_i(\tau) \cdot \underline{u}(\theta_i(\tau)) \, \text{d}\tau =  \frac{1}{v_0 N t} \int_0^t \sum_{i=1}^N \underline{u}(\theta_i(\tau)) \cdot \text{d}\underline{r}_i(\tau).
+$$
+
+We use the trapezoidal rule and the dimensionless quantities defined in [[Active Brownian particles]] to discretise and rewrite this definition
+$$
+w(\tau) = \frac{1}{2N \tau} \sum_{t=0}^{\tau - 1} \sum_{i=0}^N \left(\underline{u}(\theta_{i,t  + 1}) + \underline{u}(\theta_{i, t})\right) \cdot \left(\underline{r}_{i,t  + 1} - \underline{r}_{i, t}\right).
+$$</pre>
+</div>
 <div created="20190812151828852" modified="20190812151845023" tags="$:/tags/Stylesheet" title="CustomStylesheet">
 <pre>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;styles/tw.css&quot; media=&quot;screen&quot;&gt;</pre>
 </div>
-<div created="20191005162509110" modified="20191005162925993" tags="TableOfContents" title="Mean square displacement">
+<div created="20191010145659974" modified="20191010152554505" tags="TableOfContents" title="Large deviation theory">
+<pre>!!! Large deviation principle
+
+Following ([[Touchette, 2009|https://www.sciencedirect.com/science/article/pii/S0370157309001410]]), we introduce $$A_n$$ a random vairable indexed by the integer $$n$$ and $$P(A_n \in [a; a + \text{d}a]) \equiv P(A_n \in \text{d}a)$$ the probability of finding $$A_n$$ in the interval $$[a; a + \text{d}a]$$. $$A_n$$ is said to follow a //large deviation principle// if the limit
+$$
+I(a) = \lim_{n \rightarrow +\infty} -\frac{1}{n} \ln P(A_n \in \text{d}a)
+$$
+exists. $$I$$ is then called the //rate function//.
+
+!!! Gärtner-Ellis theorem
+
+!!! LDP on time averaged quantities
+
+!!! Significance of rate function and SCGF
+
+!!! Dynamical phase transitions in the large $$N, \tau$$ limit
+
+!!! Eigenproblem and control argument
+
+!!! Entropy production rate and fluctuation theorem</pre>
+</div>
+<div created="20191005162509110" modified="20191010152810578" tags="TableOfContents" title="Mean square displacement">
 <pre>According to ([[Fily et al., 2014|https://pubs.rsc.org/en/content/articlelanding/2013/sm/c3sm52469h/unauth#!divAbstract]]), the mean square displacement of an individual active Brownian particle is given by
 $$
 \left&lt;|\Delta \underline{r}(t)|^2\right&gt; = 4 D_0 \left[t + \frac{e^{- D_r t} - 1}{D_r}\right],
@@ -10761,7 +10851,9 @@ where
 $$
 D_0 = D + \frac{v_0^2}{2 D_r},
 $$
-is the diffusion coefficient.</pre>
+is the diffusion coefficient.
+
+Proof with $$\left&lt;\underline{u}(\theta(t)) \cdot \underline{u}(\theta(0))\right&gt; = e^{-tD_r}$$?</pre>
 </div>
 <div created="20180619220822377" modified="20191006135051164" tags="TableOfContents" title="Project">
 <pre>''Author'': Yann-Edwin Keta, //École normale supérieure de Lyon//&lt;br&gt;
@@ -10814,58 +10906,14 @@ Powered by [[TiddlyWiki|https://tiddlywiki.com/]] [img height=20 [Images/tiddlyw
 
 &lt;/div&gt;</pre>
 </div>
-<div created="20191003111614927" modified="20191005200657288" tags="TableOfContents" title="Test simulations">
+<div created="20191003111614927" modified="20191010181857099" tags="TableOfContents" title="Test simulations">
 <pre>! Active Brownian particles
 
-We use the equations of motion of active Brownian particles in ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]) to simulate ABPs.
-
-!! Equations of motion
-
-With $$\underline{r}_i$$ and $$\theta_i$$ the position and orientation of particle $$i$$, we have the equations of motion of ABPs
-$$
-\begin{aligned}
-\dot{\underline{r}}_i &amp;= \mu \underline{F}_{i, ex} + v_0 \underline{u}(\theta_i) + \sqrt{2 D} \underline{\eta}_i,\\
-\dot{\theta}_i &amp;= \sqrt{2 D_r} \xi_i,
-\end{aligned}
-$$
-where $$\underline{\eta}_i, \xi_i$$ are zero-mean unit-variance Gaussian white noises, $$\mu$$ is the mobility, $$v_0$$ the self-propulsion speed, $$\underline{u}(\theta_i) = (\cos\theta_i, \sin\theta_i)$$, and $$D$$ and $$D_r$$ the translational and rotation diffusivities. The force between particles derives from the WCA potential
-$$
-V_{WCA}(r, \epsilon) = \left\{4 \epsilon \left(\frac{1}{r^{12}} - \frac{1}{r^6}\right) + 1\right\} \Theta(2^{1/6} - r),
-$$
-where $$\Theta$$ stands for the Heaviside function.
-
-We choose the units of length and time as $$\sigma = 1$$ and $$\sigma/v_0 = 1$$. Moreover, authors chose $$D_r = 3D/\sigma^2$$ and $$\epsilon = D/\mu$$. We are thus left with an unique dimensionless parameter
-$$
-\frac{l_p}{\sigma} = \frac{v_0}{D_r \sigma},
-$$
-which gives the dimensionless distance travelled by a single particle before losing memory of its orientation. We note that this is often was is meant by the Péclet number, it is however taken as
-$$
-\text{Pe} = \frac{l_p D_r \sigma}{D} = 3 \frac{l_p}{\sigma},
-$$
-in ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]).
-
-Dimensionless equations of motion are then given by (see Appendix A in [[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]])
-$$
-\begin{aligned}
-\dot{\underline{r}}_i &amp;= \frac{1}{3} \frac{\sigma}{l_p} \underline{\tilde{F}}_{i, ex} + \underline{u}(\theta_i) + \sqrt{\frac{2}{3} \frac{\sigma}{l_p}} \, \underline{\eta}_i,\\
-\dot{\theta}_i &amp;= \sqrt{2 \frac{\sigma}{l_p}} \, \xi_i,
-\end{aligned}
-$$
-where $$\underline{\tilde{F}}_{i, ex}$$ derives from $$V_{WCA}(r, \epsilon = 1)$$.
-
-!! Numerical integration
-
-We use a simple Euler's method with time step $$\Delta t$$ to integrate the aforementioned equations
-$$
-\begin{aligned}
-\underline{r}_{i, t + 1} &amp;= \underline{r}_{i, t} + \Delta t \left(\frac{1}{3} \frac{\sigma}{l_p} \underline{\tilde{F}}_{i, ex, t} + \begin{pmatrix} \cos\theta_{i, t} \\ \sin\theta_{i, t}\end{pmatrix} \right) + \sqrt{\frac{2}{3} \frac{\sigma}{l_p} \Delta t} \, \underline{\eta}_{i, t + 1},\\
-\theta_{i, t + 1} &amp;= \theta_{i, t} + \sqrt{2 \frac{\sigma}{l_p} \Delta t} \, \xi_i.
-\end{aligned}
-$$
+We want to simulate [[active Brownian particles|Active Brownian particles]].
 
 !! Mean square displacement
 
-We compute [[mean square displacements|Mean square displacement]] of individual ABPs to evaluate the algorithm.
+We compute [[mean square displacements|Mean square displacement]] of individual ABPs to evaluate our algorithm.
 
 According to our dimensionless equations of motion, we expect the following form
 $$
@@ -10873,15 +10921,27 @@ $$
 $$
 for the mean square displacement.
 
+We run simulations with time step $$\Delta t = 1$$ for $$10^6$$ iterations.
+
 &lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
     &lt;a href=&quot;Figures/test_sim_msd.svg&quot;&gt;[img [Figures/test_sim_msd.svg]]&lt;/a&gt;&lt;br&gt;
 &lt;/div&gt;
 
-We have that for the 3 tested values of $$l_p/\sigma$$, the theoretical expression (dashed lines) is in good accordance with the output of the simulation (solid lines), on at least 3 decades for each value.
+We have that for the 3 tested values of $$l_p/\sigma$$, the theoretical expression (dashed lines) is in good accordance with the output of the simulation (solid lines), on at least 3 decades for each value, including the crossover from ballistic to diffusive regime for $$l_p/\sigma = 10, 100$$.
 
 We have that at high $$\Delta t$$ the simulations deviates significantly from the theoretical expectations. We put this on the low statistics we have at these high lag times.
 
-We have that at low lag times, the computational result deviates significantly from the theoretical expression for $$l_p/\sigma = 1$$ — no explanation for that at the moment.</pre>
+We have that at low lag times, the computational result deviates significantly from the theoretical expression for $$l_p/\sigma = 1$$. For this simulation, we have $$l_p/\sigma$$ of the same order of the time step $$\Delta t$$ — actually equal. Therefore, the equation for the position is integrated as if the orientation of the particle is the same during the whole time step while in our model it should have changed by the end of it. This results in a higher mean square displacement for low lag times than what it theoretically should be — since the particle is propelled in an unique direction rather than a changing one —, hence the discrepancy in the graph. Solutions to this issue includes:
+
+# always take $$\Delta t \ll l_p/\sigma$$,
+# integrate $$\theta_i$$ with a lower time step than $$\underline{r}_i$$, then take in the equation for the position the mean computed orientation during the corresponding longer time step,
+# use a Verlet-type integration scheme.
+
+We will stick to the first solution.
+
+!! Clustering
+
+We observe clustering for high densities and large persistence length, see [ext[this movie|Movies/o_Nn1000_Dk6500_Lm4000.mp4]] at $$\phi = 0.65$$ and $$l_p/\sigma = 40$$.</pre>
 </div>
 
 </div>
