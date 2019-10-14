@@ -9912,7 +9912,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="[[Test simulations]] Project" title="$:/StoryList">
+<div list="Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -10622,7 +10622,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div created="20180620032354454" modified="20180620032356781" title="$:/temp/RemoteAssetSearch/$:/config/OfficialPluginLibrary">
 <pre>bibtex</pre>
 </div>
-<div created="20180416033117939" modified="20191005202712113" title="$:/temp/search">
+<div created="20180416033117939" modified="20191014171119076" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20180620031722320" modified="20180620031722320" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.15/index.html" url="https://tiddlywiki.com/library/v5.1.15/index.html">
@@ -10755,7 +10755,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div created="20190727110537306" modified="20190727110548195" title="$:/themes/tiddlywiki/vanilla/settings/fontfamily">
 <pre>&quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Lucida Grande&quot;, &quot;DejaVu Sans&quot;, sans-serif</pre>
 </div>
-<div created="20191010153112162" modified="20191010174156371" tags="TableOfContents" title="Active Brownian particles">
+<div created="20191010153112162" modified="20191011121914052" tags="TableOfContents" title="Active Brownian particles">
 <pre>We use the equations of motion of active Brownian particles in ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]) to study ABPs.
 
 ! Equations of motion
@@ -10770,20 +10770,20 @@ $$
 where $$\underline{\eta}_i, \xi_i$$ are zero-mean unit-variance Gaussian white noises, $$\mu$$ is the mobility, $$v_0$$ the self-propulsion speed, $$\underline{u}(\theta_i) = (\cos\theta_i, \sin\theta_i)$$, and $$D$$ and $$D_r$$ the translational and rotation diffusivities. The force between particles derives from the WCA potential
 $$
 \begin{aligned}
-V_{WCA}(r, \epsilon) &amp;= \left\{4 \epsilon \left(\frac{1}{(2^{-5/6}(r/\sigma))^{12}} - \frac{1}{(2^{-5/6}(r/\sigma))^6}\right) + 1\right\} \Theta(2\sigma - r)\\
-&amp;= \left\{\epsilon\left(\frac{2^{12}}{(r/\sigma)^{12}} - \frac{2^{7}}{(r/\sigma)^{6}}\right) + 1\right\} \Theta(2\sigma - r),
+V_{WCA}(r, \epsilon) &amp;= \left\{4 \epsilon \left(\frac{1}{(r/\sigma)^{12}} - \frac{1}{(r/\sigma)^6}\right) + 1\right\} \Theta(2^{1/6} - r/\sigma),
 \end{aligned}
 $$
-where $$\Theta$$ stands for the Heaviside function, and $$\sigma$$ is the radius of particles. We thus have a force of the form
+where $$\Theta$$ stands for the Heaviside function, and $$\sigma$$ is the diameter of particles. We thus have a force of the form
 $$
-\underline{F}_{WCA}(r = \sqrt{x^2 + y^2}, \epsilon) = - \frac{3\epsilon}{\sigma^2}\left(\frac{2^{14}}{(r/\sigma)^{14}} - \frac{2^{8}}{(r/\sigma)^{8}}\right) \begin{pmatrix} x \\ y \end{pmatrix} \Theta(2\sigma - r).
+\underline{F}_{WCA}(r = \sqrt{\Delta x^2 + \Delta y^2}, \epsilon) = - \frac{\epsilon}{\sigma^2}\left(\frac{48}{(r/\sigma)^{14}} - \frac{24}{(r/\sigma)^{8}}\right) \begin{pmatrix} \Delta x \\ \Delta y \end{pmatrix} \Theta(2^{1/6} - r/\sigma).
 $$
 
-We choose the units of length and time as $$\sigma = 1$$ and $$\sigma/v_0 = 1$$. Moreover, authors chose $$D_r = 3D/\sigma^2$$ and $$\epsilon = D/\mu$$. We are thus left with an unique dimensionless parameter, besides the packing fraction $$\phi = \frac{N \pi \sigma^2}{L^2}$$,
+We choose the units of length and time as $$\sigma = 1$$ and $$\sigma/v_0 = 1$$. Moreover, authors chose $$D_r = 3D/\sigma^2$$ and $$\epsilon = D/\mu$$. We are thus left with an unique dimensionless parameter, besides the packing fraction $$\phi = \frac{N \pi \sigma^2}{4 L^2}$$,
 $$
 \frac{l_p}{\sigma} = \frac{v_0}{D_r \sigma},
 $$
-which gives the dimensionless distance travelled by a single particle before losing memory of its orientation. It is related to the Péclet number by
+which gives the dimensionless distance travelled by a single particle — or equivalently the dimensionless time elapsed —
+ before losing memory of its orientation. It is furthermore related to the Péclet number by
 $$
 \text{Pe} = \frac{l_p D_r \sigma}{D} = 3 \frac{l_p}{\sigma}.
 $$
@@ -10807,11 +10807,12 @@ $$
 \end{aligned}
 $$</pre>
 </div>
-<div created="20191008105209478" modified="20191010161647662" tags="TableOfContents" title="Active work">
+<div created="20191008105209478" modified="20191011115503244" tags="TableOfContents" title="Active work">
 <pre>We want to compute the normalised rate of active work per particle, defined in ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]) by
 $$
-w(t) = \frac{1}{v_0 N t} \int_0^t \sum_{i=1}^N  \underline{\dot{r}}_i(\tau) \cdot \underline{u}(\theta_i(\tau)) \, \text{d}\tau =  \frac{1}{v_0 N t} \int_0^t \sum_{i=1}^N \underline{u}(\theta_i(\tau)) \cdot \text{d}\underline{r}_i(\tau).
+w(t) = \frac{1}{v_0 N t} \int_0^t \sum_{i=1}^N  \underline{\dot{r}}_i(\tau) \cdot \underline{u}(\theta_i(\tau)) \, \text{d}\tau =  \frac{1}{v_0 N t} \int_0^t \sum_{i=1}^N \underline{u}(\theta_i(\tau)) \cdot \text{d}\underline{r}_i(\tau),
 $$
+in Stratonovich convention.
 
 We use the trapezoidal rule and the dimensionless quantities defined in [[Active Brownian particles]] to discretise and rewrite this definition
 $$
@@ -10906,7 +10907,7 @@ Powered by [[TiddlyWiki|https://tiddlywiki.com/]] [img height=20 [Images/tiddlyw
 
 &lt;/div&gt;</pre>
 </div>
-<div created="20191003111614927" modified="20191011090830993" tags="TableOfContents" title="Test simulations">
+<div created="20191003111614927" modified="20191014201516745" tags="TableOfContents" title="Test simulations">
 <pre>! Active Brownian particles
 
 We want to simulate [[active Brownian particles|Active Brownian particles]].
@@ -10942,17 +10943,44 @@ We will stick to the first solution.
 !! Clustering
 
 We observe clustering for high densities and large persistence length. We make movies from simulations at $$\phi = 0.65$$, $$N = 100$$, and $$l_p/\sigma =$$ [ext[1|Movies/o_Nn1000_Dk6500_Ll1000.mp4]],
- [ext[10|Movies/o_Nn1000_Dk6500_Lm1000.mp4]], [ext[40|Movies/o_Nn1000_Dk6500_Lm4000.mp4]], [ext[100|Movies/o_Nn1000_Dk6500_Ln1000.mp4]], [ext[200|Movies/o_Nn1000_Dk6500_Ln2000.mp4]].
+ [ext[10|Movies/o_Nn1000_Dk6500_Lm1000.mp4]], [ext[40|Movies/o_Nn1000_Dk6500_Lm4000.mp4]], [ext[100|Movies/o_Nn1000_Dk6500_Ln1000.mp4]], [ext[200|Movies/o_Nn1000_Dk6500_Ln2000.mp4]]. We observe that clusters seem denser as the persistence length increases.
 
 !! Active work
 
 We compute [[active work|Active work]] from our simulations.
 
+!!! Mean
+
 &lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
     &lt;a href=&quot;Figures/test_aw_lp.svg&quot;&gt;[img [Figures/test_aw_lp.svg]]&lt;/a&gt;&lt;br&gt;
 &lt;/div&gt;
 
-We have $$\tau = 10$$ for $$l_p/\sigma = 40$$ and $$\tau = 1$$ for all other values.</pre>
+We let the simulations &quot;equilibrate&quot; for $$t = 2 l_p/\sigma$$ and compute the normalised active work for intervals $$\tau = l_p/\sigma$$ of time.
+
+!!! Variance
+
+We denote
+$$
+w(t_0, t_0 + \tau) =  \frac{1}{v_0 N \tau} \int_{t_0}^{t_0 +\tau} \sum_{i=1}^N \underline{u}(\theta_i(t)) \cdot \text{d}\underline{r}_i(t),
+$$
+and compute its variance with respect to the choice of $$t_0$$.
+
+Central limit theorem indicated that we should have
+$$
+\lim_{\tau \rightarrow +\infty} \tau \, \text{Var}(w(t_0, t_0 + \tau))_{t_0} = \chi,
+$$
+with $$\chi$$ some constant. Moreover, we expect for $$\tau \ll 1$$ that
+$$
+\tau \, \text{Var}(w(t_0, t_0 + \tau))_{t_0} &lt; \chi,
+$$
+because of correlations between successive short intervals of time. We thus identify the time $$\tau^*$$ at which $$\tau \, \text{Var}(w(t_0, t_0 + \tau))_{t_0}$$ saturates to the longest correlation time of the system.
+
+&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
+    &lt;a href=&quot;Figures/var_n_activeWork.svg&quot;&gt;[img [Figures/var_n_activeWork.svg]]&lt;/a&gt;&lt;br&gt;
+&lt;/div&gt;
+
+We have for this particular system $$\tau^* \sim l_p/\sigma$$, //i.e.// the rotational diffusion time.
+</pre>
 </div>
 
 </div>
