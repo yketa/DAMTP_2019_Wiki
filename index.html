@@ -10807,8 +10807,10 @@ $$
 \end{aligned}
 $$</pre>
 </div>
-<div created="20191008105209478" modified="20191011115503244" tags="TableOfContents" title="Active work">
-<pre>We want to compute the normalised rate of active work per particle, defined in ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]) by
+<div created="20191008105209478" modified="20191016190308157" tags="TableOfContents" title="Active work">
+<pre>! Definition
+
+We want to compute the normalised rate of active work per particle, defined in ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]) by
 $$
 w(t) = \frac{1}{v_0 N t} \int_0^t \sum_{i=1}^N  \underline{\dot{r}}_i(\tau) \cdot \underline{u}(\theta_i(\tau)) \, \text{d}\tau =  \frac{1}{v_0 N t} \int_0^t \sum_{i=1}^N \underline{u}(\theta_i(\tau)) \cdot \text{d}\underline{r}_i(\tau),
 $$
@@ -10817,13 +10819,23 @@ in Stratonovich convention.
 We use the trapezoidal rule and the dimensionless quantities defined in [[Active Brownian particles]] to discretise and rewrite this definition
 $$
 w(\tau) = \frac{1}{2N \tau} \sum_{t=0}^{\tau - 1} \sum_{i=0}^N \left(\underline{u}(\theta_{i,t  + 1}) + \underline{u}(\theta_{i, t})\right) \cdot \left(\underline{r}_{i,t  + 1} - \underline{r}_{i, t}\right).
-$$</pre>
+$$
+
+! Variance
+
+
+
+! Correlations
+
+</pre>
 </div>
 <div created="20190812151828852" modified="20190812151845023" tags="$:/tags/Stylesheet" title="CustomStylesheet">
 <pre>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;styles/tw.css&quot; media=&quot;screen&quot;&gt;</pre>
 </div>
-<div created="20191010145659974" modified="20191010152554505" tags="TableOfContents" title="Large deviation theory">
-<pre>!!! Large deviation principle
+<div created="20191010145659974" modified="20191016091839168" tags="TableOfContents" title="Large deviation theory">
+<pre>! General theory
+
+!! Large deviation principle
 
 Following ([[Touchette, 2009|https://www.sciencedirect.com/science/article/pii/S0370157309001410]]), we introduce $$A_n$$ a random vairable indexed by the integer $$n$$ and $$P(A_n \in [a; a + \text{d}a]) \equiv P(A_n \in \text{d}a)$$ the probability of finding $$A_n$$ in the interval $$[a; a + \text{d}a]$$. $$A_n$$ is said to follow a //large deviation principle// if the limit
 $$
@@ -10831,17 +10843,25 @@ I(a) = \lim_{n \rightarrow +\infty} -\frac{1}{n} \ln P(A_n \in \text{d}a)
 $$
 exists. $$I$$ is then called the //rate function//.
 
-!!! Gärtner-Ellis theorem
+!! Gärtner-Ellis and Varadhan's theorems
 
-!!! LDP on time averaged quantities
+!! CGF and free energy
 
-!!! Significance of rate function and SCGF
+! LDP of time averaged-quantities
 
-!!! Dynamical phase transitions in the large $$N, \tau$$ limit
+!! Biased ensemble of trajectory
 
-!!! Eigenproblem and control argument
+!! Eigenproblem formulation
 
-!!! Entropy production rate and fluctuation theorem</pre>
+!! Control representation
+
+!! Dynamical phase transitions
+
+! LDP of the active work
+
+!! Active work and entropy production rate
+
+!! Fluctuation theorem</pre>
 </div>
 <div created="20191005162509110" modified="20191010152810578" tags="TableOfContents" title="Mean square displacement">
 <pre>According to ([[Fily et al., 2014|https://pubs.rsc.org/en/content/articlelanding/2013/sm/c3sm52469h/unauth#!divAbstract]]), the mean square displacement of an individual active Brownian particle is given by
@@ -10907,7 +10927,7 @@ Powered by [[TiddlyWiki|https://tiddlywiki.com/]] [img height=20 [Images/tiddlyw
 
 &lt;/div&gt;</pre>
 </div>
-<div created="20191003111614927" modified="20191014201516745" tags="TableOfContents" title="Test simulations">
+<div created="20191003111614927" modified="20191018182949141" tags="TableOfContents" title="Test simulations">
 <pre>! Active Brownian particles
 
 We want to simulate [[active Brownian particles|Active Brownian particles]].
@@ -10980,7 +11000,103 @@ because of correlations between successive short intervals of time. We thus iden
 &lt;/div&gt;
 
 We have for this particular system $$\tau^* \sim l_p/\sigma$$, //i.e.// the rotational diffusion time.
-</pre>
+
+&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
+    &lt;a href=&quot;Figures/var_N_activeWork.svg&quot;&gt;[img [Figures/var_N_activeWork.svg]]&lt;/a&gt;&lt;br&gt;
+&lt;/div&gt;
+
+!!! Distribution
+
+We plot histograms of the active work computed on intervals $$\tau$$ and the Gaussian functions of corresponding mean and variance to qualitatively evaluate the deviation from the Gaussian behaviour.
+
+&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
+    &lt;a href=&quot;Figures/dist_w_comp_Nm2000_Dk6500_Lm2000.svg&quot;&gt;[img [Figures/dist_w_comp_Nm2000_Dk6500_Lm2000.svg]]&lt;/a&gt;&lt;br&gt;
+&lt;/div&gt;
+
+It is hard to determine from the figure above whether the probability of finding $$w$$ such that $$|w - \left&lt;w\right&gt;| &gt; \sigma$$ is non-Gaussian. It would be useful to gather more statistics.
+
+&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
+    &lt;a href=&quot;Figures/dist_w_comp_Nm1000_Dk6500.svg&quot;&gt;[img [Figures/dist_w_comp_Nm1000_Dk6500.svg]]&lt;/a&gt;&lt;br&gt;
+&lt;/div&gt;
+
+!! Correlations
+
+Averages denoted by $$\left&lt;\ldots\right&gt;_{t_0}$$ are computed over values of $$t_0$$ separated by times greater than the rotational diffusion time $$l_p/\sigma$$.
+
+!!! Active work
+
+We denote
+$$
+\delta w(t_0, t_0 + \tau) = w(t_0, t_0 + \tau) - \left&lt;w(t_0, t_0 + \tau)\right&gt;_{t_0},
+$$
+where
+$$
+w(t_0, t_0 + \tau) = \frac{1}{\tau} \sum_{t = t_0}^{t_0 + \tau  - 1}  \tilde{w}_t
+$$
+is the normalised rate of active work between $$t_0$$ and $$t_0 + \tau$$, and
+$$
+\tilde{w}_t = \frac{1}{2N} \sum_{i=1}^N \left(\underline{u}(\theta_{i, t}) + \underline{u}(\theta_{i, t+1})\right) \cdot \left(\underline{r}_{i, t+1} - \underline{r}_{i, t}\right)
+$$
+is the &quot;instantaneous&quot; normalised rate of active work.
+
+We then compute
+$$
+\begin{aligned}
+\left&lt;\delta w(t_0, t_0 + \tau) \, \delta w(t_0, t_0 + \tau_0)\right&gt;_{t_0} &amp;= \left&lt;\left[\frac{1}{\tau_0} \sum_{t=t_0}^{t_0 + \tau_0 - 1} \tilde{w}_t - \left&lt;w(t_0, t_0 + \tau_0)\right&gt;_{t_0}\right]\left[\frac{1}{\tau} \sum_{t=t_0}^{t_0 + \tau - 1} \tilde{w}_t - \left&lt;w(t_0, t_0 + \tau)\right&gt;_{t_0}\right]\right&gt;_{t_0}\\
+&amp;= \frac{1}{\tau \tau_0} \left&lt;\sum_{t=t_0}^{t_0 + \tau_0 - 1} \sum_{t^{\prime} = t_0}^{t_0 + \tau - 1} \tilde{w}_t \tilde{w}_{t^{\prime}}\right&gt;_{t_0} -  \left&lt;w(t_0, t_0 + \tau_0)\right&gt;_{t_0}  \left&lt;w(t_0, t_0 + \tau)\right&gt;_{t_0},
+\end{aligned}
+$$
+as a function of $$\tau$$ for several values of $$\tau_0$$.
+
+&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
+    &lt;a href=&quot;Figures/corWorkWork_Nm2000_Dk6500_Lm2000_Em1000.svg&quot;&gt;[img [Figures/corWorkWork_Nm2000_Dk6500_Lm2000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
+&lt;/div&gt;
+
+We observe that all curves collapse for different values of $$\tau_0$$, which thus indicates that
+$$
+\left&lt;\delta w(t_0, t_0 + \tau) \, \delta w(t_0, t_0 + \tau_0)\right&gt;_{t_0} = \left&lt;\delta w(t_0, t_0 + \tau) \, \delta w(t_0, t_0 + \tau)\right&gt;_{t_0} = \text{Var}(w(t_0, t_0 + \tau))_{t_0},
+$$
+independently of $$\tau_0$$.
+
+We have
+
+* for $$\tau \ll l_p/\sigma$$ that the variance is computed over intervals distant of more than $$l_p/\sigma$$,
+* for $$\tau \ge l_p/\sigma$$ that we are looking at the variance of a quantity averaged over a time greater than $$l_p/\sigma$$,
+
+hence the linear variation according to the CLT.
+
+!!! Order parameter
+
+We define the order parameter
+$$
+\underline{\nu}(t) = \frac{1}{N} \sum_{i=1}^N \underline{u}(\theta_i(t)),
+$$
+and compute
+$$
+\left&lt;\delta \underline{\nu}(t_0 + \tau) \cdot \delta \underline{\nu}(t_0)\right&gt;_{t_0} = \frac{1}{N^2} \left&lt;\sum_{i=1}^N \sum_{j=1}^N \underline{u}(\theta_i(t_0 + \tau)) \cdot \underline{u}(\theta_j(t_0))\right&gt;_{t_0} - \left&lt;\underline{\nu}(t_0)\right&gt;_{t_0}^2.
+$$
+We recall that
+$$
+\left&lt;\underline{u}(\theta_i(t))\cdot\underline{u}(\theta_j(t^{\prime}))\right&gt; = \delta_{ij} e^{-|t - t^{\prime}|/(l_p/\sigma)},
+$$
+from which we infer
+$$
+\left&lt;\delta \underline{\nu}(t_0 + \tau) \cdot \delta \underline{\nu}(t_0)\right&gt;_{t_0} = \frac{1}{N} e^{-\tau/(l_p/\sigma)} - \left&lt;\underline{\nu}(t_0)\right&gt;_{t_0}^2.
+$$
+
+&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
+    &lt;a href=&quot;Figures/corOrderOrder_Nm2000_Dk6500_Lm2000_Em1000.svg&quot;&gt;[img [Figures/corOrderOrder_Nm2000_Dk6500_Lm2000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
+&lt;/div&gt;
+
+&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
+    &lt;a href=&quot;Figures/corOrderOrderNorm_Nm2000_Dk6500_Lm2000_Em1000.svg&quot;&gt;[img [Figures/corOrderOrderNorm_Nm2000_Dk6500_Lm2000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
+&lt;/div&gt;
+
+!!! Active work and order parameter
+
+&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
+    &lt;a href=&quot;Figures/corWorkOrder_Nm2000_Dk6500_Lm2000_Em1000.svg&quot;&gt;[img [Figures/corWorkOrder_Nm2000_Dk6500_Lm2000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
+&lt;/div&gt;</pre>
 </div>
 
 </div>
