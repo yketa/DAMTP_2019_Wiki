@@ -10927,7 +10927,7 @@ Powered by [[TiddlyWiki|https://tiddlywiki.com/]] [img height=20 [Images/tiddlyw
 
 &lt;/div&gt;</pre>
 </div>
-<div created="20191003111614927" modified="20191019143650826" tags="TableOfContents" title="Test simulations">
+<div created="20191003111614927" modified="20191019153159525" tags="TableOfContents" title="Test simulations">
 <pre>! Active Brownian particles
 
 We want to simulate [[active Brownian particles|Active Brownian particles]].
@@ -11108,6 +11108,26 @@ Note that we write $$\left&lt;\underline{\nu}(t_0 + \tau)\right&gt;_{t_0} \cdot 
 
 We see that the theoretical prediction holds up to $$\tau/(l_p/\sigma) \approx 2$$ for $$l_p/\sigma = 20$$ and $$\tau/(l_p/\sigma) \approx 1$$ for $$l_p/\sigma = 100$$.
 
+!!! Active work and order parameter
+
+On the one hand, the order parameter norm $$|\underline{\nu}(t_0)|$$ is related to the alignment of the particles of the particles at time $$t_0$$, especially $$|\underline{\nu}(t_0)| = 1$$ incidicates perfect order along a single direction and $$|\underline{\nu}(t_0)| = 0$$ indicates randomness of the orientations. On the other hand, the normalised rate of active work $$w(t_0, t_0 + \tau)$$  is related to the effectiveness of the active drive of the particles between times $$t_0$$ and $$t_0 + \tau$$, especially $$w(t_0, t_0 + \tau) = 1$$ indicates a perfect alignment of the velocities and the self-propulsion at the particle scale, attributed either to flocking or a diluted system, and $$w(t_0, t_0 + \tau) = 0$$ indicates a random pairing of velocities and self-propulson, probably attributed to an arrest of the particles.
+
+We can thus wonder if a fluctuation of the order parameter norm at time $$t_0$$ would be correlated with a fluctuation of the active work from time $$t_0$$ onward.
+
+&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
+    &lt;a href=&quot;Figures/corWorkOrder_Nm2000_Dk6500_Lm2000_Em1000.svg&quot;&gt;[img [Figures/corWorkOrder_Nm2000_Dk6500_Lm2000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
+&lt;/div&gt;
+
+&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
+    &lt;a href=&quot;Figures/corWorkOrder_Nm2000_Dk6500_Ln1000_Em1000.svg&quot;&gt;[img [Figures/corWorkOrder_Nm2000_Dk6500_Ln1000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
+&lt;/div&gt;
+
+We observe in both cases
+$$
+\left&lt;\delta w(t_0 + \tau) \, \delta |\underline{\nu}(t_0)|\right&gt;_{t_0} \propto e^{-\tau/(l_p/\sigma)},
+$$
+for small enough $$\tau$$. Thus, fluctuations of the order parameter norm and the normalised rate of active work are positively correlated at short times, this over a time scale comparable to the rotational diffusion time. Moreover, for $$\tau &gt; l_p/\sigma$$ the rate of decrease of this correlation decreases, indicating longer lived correlations.
+
 !!! Order parameter norm
 
 &lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
@@ -11121,22 +11141,6 @@ We see that the theoretical prediction holds up to $$\tau/(l_p/\sigma) \approx 2
 We observe in both cases
 $$
 \left&lt;\delta |\underline{\nu}(t_0 + \tau)| \, \delta |\underline{\nu}(t_0)|\right&gt;_{t_0} \propto e^{-2\tau/(l_p/\sigma)},
-$$
-for small enough $$\tau$$.
-
-!!! Active work and order parameter
-
-&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
-    &lt;a href=&quot;Figures/corWorkOrder_Nm2000_Dk6500_Lm2000_Em1000.svg&quot;&gt;[img [Figures/corWorkOrder_Nm2000_Dk6500_Lm2000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
-&lt;/div&gt;
-
-&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
-    &lt;a href=&quot;Figures/corWorkOrder_Nm2000_Dk6500_Ln1000_Em1000.svg&quot;&gt;[img [Figures/corWorkOrder_Nm2000_Dk6500_Ln1000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
-&lt;/div&gt;
-
-We observe in both cases
-$$
-\left&lt;\delta w(t_0 + \tau) \, \delta |\underline{\nu}(t_0)|\right&gt;_{t_0} \propto e^{-\tau/(l_p/\sigma)},
 $$
 for small enough $$\tau$$.</pre>
 </div>
