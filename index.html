@@ -9912,7 +9912,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="Project" title="$:/StoryList">
+<div list="[[Test simulations]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -10927,7 +10927,7 @@ Powered by [[TiddlyWiki|https://tiddlywiki.com/]] [img height=20 [Images/tiddlyw
 
 &lt;/div&gt;</pre>
 </div>
-<div created="20191003111614927" modified="20191018182949141" tags="TableOfContents" title="Test simulations">
+<div created="20191003111614927" modified="20191019143650826" tags="TableOfContents" title="Test simulations">
 <pre>! Active Brownian particles
 
 We want to simulate [[active Brownian particles|Active Brownian particles]].
@@ -11023,6 +11023,13 @@ It is hard to determine from the figure above whether the probability of finding
 
 Averages denoted by $$\left&lt;\ldots\right&gt;_{t_0}$$ are computed over values of $$t_0$$ separated by times greater than the rotational diffusion time $$l_p/\sigma$$.
 
+We exclude from our computations:
+
+* $$l_p/\sigma = 20$$: the $$6\cdot10^4$$ first frames, corresponding to $$3 l_p/\sigma$$,
+* $$l_p/\sigma = 100$$: the $$3\cdot10^5$$ first frames, corresponding to $$3 l_p/\sigma$$.
+
+Dashed lines represent arbitrary fits and are here solely as visual aids.
+
 !!! Active work
 
 We denote
@@ -11052,9 +11059,13 @@ as a function of $$\tau$$ for several values of $$\tau_0$$.
     &lt;a href=&quot;Figures/corWorkWork_Nm2000_Dk6500_Lm2000_Em1000.svg&quot;&gt;[img [Figures/corWorkWork_Nm2000_Dk6500_Lm2000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
 &lt;/div&gt;
 
-We observe that all curves collapse for different values of $$\tau_0$$, which thus indicates that
+&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
+    &lt;a href=&quot;Figures/corWorkWork_Nm2000_Dk6500_Ln1000_Em1000.svg&quot;&gt;[img [Figures/corWorkWork_Nm2000_Dk6500_Ln1000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
+&lt;/div&gt;
+
+We observe that all curves collapse for different values of $$\tau_0$$, which may indicate that
 $$
-\left&lt;\delta w(t_0, t_0 + \tau) \, \delta w(t_0, t_0 + \tau_0)\right&gt;_{t_0} = \left&lt;\delta w(t_0, t_0 + \tau) \, \delta w(t_0, t_0 + \tau)\right&gt;_{t_0} = \text{Var}(w(t_0, t_0 + \tau))_{t_0},
+\left&lt;\delta w(t_0, t_0 + \tau) \, \delta w(t_0, t_0 + \tau_0)\right&gt;_{t_0} \approx \left&lt;\delta w(t_0, t_0 + \tau) \, \delta w(t_0, t_0 + \tau)\right&gt;_{t_0} = \text{Var}(w(t_0, t_0 + \tau))_{t_0},
 $$
 independently of $$\tau_0$$.
 
@@ -11064,6 +11075,8 @@ We have
 * for $$\tau \ge l_p/\sigma$$ that we are looking at the variance of a quantity averaged over a time greater than $$l_p/\sigma$$,
 
 hence the linear variation according to the CLT.
+
+We see however that this prediciton only holds without fitting parameter up to $$\tau/(l_p/\sigma) \approx 10^{-1}$$ for $$l_p/\sigma = 20$$ and $$\tau/(l_p/\sigma) \approx 10^{-2}$$ for $$l_p/\sigma = 100$$.
 
 !!! Order parameter
 
@@ -11081,22 +11094,51 @@ $$
 $$
 from which we infer
 $$
-\left&lt;\delta \underline{\nu}(t_0 + \tau) \cdot \delta \underline{\nu}(t_0)\right&gt;_{t_0} = \frac{1}{N} e^{-\tau/(l_p/\sigma)} - \left&lt;\underline{\nu}(t_0)\right&gt;_{t_0}^2.
+\left&lt;\delta \underline{\nu}(t_0 + \tau) \cdot \delta \underline{\nu}(t_0)\right&gt;_{t_0} = \frac{1}{N} e^{-\tau/(l_p/\sigma)} - \left&lt;\underline{\nu}(t_0 + \tau)\right&gt;_{t_0} \cdot \left&lt;\underline{\nu}(t_0)\right&gt;_{t_0}.
 $$
+Note that we write $$\left&lt;\underline{\nu}(t_0 + \tau)\right&gt;_{t_0} \cdot \left&lt;\underline{\nu}(t_0)\right&gt;_{t_0}$$, and not simply $$\left&lt;\underline{\nu}(t_0)\right&gt;_{t_0}^2$$, because our limited number of frames gives us different sets on which to compute _both_ averages for each value of $$\tau$$.
 
 &lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
     &lt;a href=&quot;Figures/corOrderOrder_Nm2000_Dk6500_Lm2000_Em1000.svg&quot;&gt;[img [Figures/corOrderOrder_Nm2000_Dk6500_Lm2000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
 &lt;/div&gt;
 
 &lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
+    &lt;a href=&quot;Figures/corOrderOrder_Nm2000_Dk6500_Ln1000_Em1000.svg&quot;&gt;[img [Figures/corOrderOrder_Nm2000_Dk6500_Ln1000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
+&lt;/div&gt;
+
+We see that the theoretical prediction holds up to $$\tau/(l_p/\sigma) \approx 2$$ for $$l_p/\sigma = 20$$ and $$\tau/(l_p/\sigma) \approx 1$$ for $$l_p/\sigma = 100$$.
+
+!!! Order parameter norm
+
+&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
     &lt;a href=&quot;Figures/corOrderOrderNorm_Nm2000_Dk6500_Lm2000_Em1000.svg&quot;&gt;[img [Figures/corOrderOrderNorm_Nm2000_Dk6500_Lm2000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
 &lt;/div&gt;
+
+&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
+    &lt;a href=&quot;Figures/corOrderOrderNorm_Nm2000_Dk6500_Ln1000_Em1000.svg&quot;&gt;[img [Figures/corOrderOrderNorm_Nm2000_Dk6500_Ln1000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
+&lt;/div&gt;
+
+We observe in both cases
+$$
+\left&lt;\delta |\underline{\nu}(t_0 + \tau)| \, \delta |\underline{\nu}(t_0)|\right&gt;_{t_0} \propto e^{-2\tau/(l_p/\sigma)},
+$$
+for small enough $$\tau$$.
 
 !!! Active work and order parameter
 
 &lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
     &lt;a href=&quot;Figures/corWorkOrder_Nm2000_Dk6500_Lm2000_Em1000.svg&quot;&gt;[img [Figures/corWorkOrder_Nm2000_Dk6500_Lm2000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
-&lt;/div&gt;</pre>
+&lt;/div&gt;
+
+&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
+    &lt;a href=&quot;Figures/corWorkOrder_Nm2000_Dk6500_Ln1000_Em1000.svg&quot;&gt;[img [Figures/corWorkOrder_Nm2000_Dk6500_Ln1000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
+&lt;/div&gt;
+
+We observe in both cases
+$$
+\left&lt;\delta w(t_0 + \tau) \, \delta |\underline{\nu}(t_0)|\right&gt;_{t_0} \propto e^{-\tau/(l_p/\sigma)},
+$$
+for small enough $$\tau$$.</pre>
 </div>
 
 </div>
