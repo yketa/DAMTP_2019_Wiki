@@ -452,21 +452,19 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla/settings/fontfamily</li>
 
-<li>Active Brownian particles</li>
+<li>ABP tests</li>
 
-<li>Active work</li>
+<li>Active Brownian particles</li>
 
 <li>CustomStylesheet</li>
 
 <li>Large deviation theory</li>
 
-<li>Mean square displacement</li>
+<li>Macros</li>
 
 <li>Project</li>
 
 <li>TableOfContents</li>
-
-<li>Test simulations</li>
 
 </ul>
 </p>
@@ -9912,7 +9910,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="[[Test simulations]] Project" title="$:/StoryList">
+<div list="[[Active Brownian particles]] [[ABP tests]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -10622,7 +10620,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div created="20180620032354454" modified="20180620032356781" title="$:/temp/RemoteAssetSearch/$:/config/OfficialPluginLibrary">
 <pre>bibtex</pre>
 </div>
-<div created="20180416033117939" modified="20191014171119076" title="$:/temp/search">
+<div created="20180416033117939" modified="20191028125747994" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20180620031722320" modified="20180620031722320" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.15/index.html" url="https://tiddlywiki.com/library/v5.1.15/index.html">
@@ -10755,10 +10753,236 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div created="20190727110537306" modified="20190727110548195" title="$:/themes/tiddlywiki/vanilla/settings/fontfamily">
 <pre>&quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Lucida Grande&quot;, &quot;DejaVu Sans&quot;, sans-serif</pre>
 </div>
-<div created="20191010153112162" modified="20191011121914052" tags="TableOfContents" title="Active Brownian particles">
-<pre>We use the equations of motion of active Brownian particles in ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]) to study ABPs.
+<div created="20191003111614927" modified="20191028173508565" tags="TableOfContents" title="ABP tests">
+<pre>We check quantities from our simulations of [[active Brownian particles|Active Brownian particles]].
 
-! Equations of motion
+! Clustering
+
+We observe clustering for high densities and large persistence length. We make movies from simulations at $$\phi = 0.65$$, $$N = 100$$, and $$l_p/\sigma =$$ [ext[1|Movies/o_Nn1000_Dk6500_Ll1000.mp4]],
+ [ext[10|Movies/o_Nn1000_Dk6500_Lm1000.mp4]], [ext[40|Movies/o_Nn1000_Dk6500_Lm4000.mp4]], [ext[100|Movies/o_Nn1000_Dk6500_Ln1000.mp4]], [ext[200|Movies/o_Nn1000_Dk6500_Ln2000.mp4]]. We observe that clusters seem denser as the persistence length increases.
+
+! Active work
+
+We compute [[active work|Active work]] from our simulations.
+
+!! Mean
+
+&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
+    &lt;a href=&quot;Figures/test_aw_lp.svg&quot;&gt;[img [Figures/test_aw_lp.svg]]&lt;/a&gt;&lt;br&gt;
+&lt;/div&gt;
+
+We let the simulations &quot;equilibrate&quot; for $$t = 2 l_p/\sigma$$ and compute the normalised active work for intervals $$\tau = l_p/\sigma$$ of time.
+
+!! Variance
+
+!!! As a function of $$\tau$$
+
+We denote
+$$
+w(t_0, t_0 + \tau) =  \frac{1}{v_0 N \tau} \int_{t_0}^{t_0 +\tau} \sum_{i=1}^N \underline{u}(\theta_i(t)) \cdot \text{d}\underline{r}_i(t),
+$$
+and compute its variance with respect to the choice of $$t_0$$.
+
+Central limit theorem indicated that we should have
+$$
+\lim_{\tau \rightarrow +\infty} \tau \, \text{Var}(w(t_0, t_0 + \tau))_{t_0} = \chi,
+$$
+with $$\chi$$ some constant. Moreover, we expect for $$\tau \ll 1$$ that
+$$
+\tau \, \text{Var}(w(t_0, t_0 + \tau))_{t_0} &lt; \chi,
+$$
+because of correlations between successive short intervals of time. We thus identify the time $$\tau^*$$ at which $$\tau \, \text{Var}(w(t_0, t_0 + \tau))_{t_0}$$ saturates to the longest correlation time of the system.
+
+&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
+    &lt;a href=&quot;Figures/var_n_activeWork.svg&quot;&gt;[img [Figures/var_n_activeWork.svg]]&lt;/a&gt;&lt;br&gt;
+&lt;/div&gt;
+
+We have for this particular system $$\tau^* \sim l_p/\sigma$$, //i.e.// the rotational diffusion time.
+
+!!! As a function of $$N$$
+
+&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
+    &lt;a href=&quot;Figures/var_n_N_activeWork.svg&quot;&gt;[img [Figures/var_n_N_activeWork.svg]]&lt;/a&gt;&lt;br&gt;
+&lt;/div&gt;
+
+&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
+    &lt;a href=&quot;Figures/var_N_activeWork.svg&quot;&gt;[img [Figures/var_N_activeWork.svg]]&lt;/a&gt;&lt;br&gt;
+&lt;/div&gt;
+
+!! Distribution
+
+!!! Equal persistence length
+
+We plot histograms of the active work computed on intervals $$\tau$$ and the Gaussian functions of corresponding mean and variance to qualitatively evaluate the deviation from the Gaussian behaviour.
+
+&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
+    &lt;a href=&quot;Figures/dist_w_comp_Nm2000_Dk6500_Lm2000.svg&quot;&gt;[img [Figures/dist_w_comp_Nm2000_Dk6500_Lm2000.svg]]&lt;/a&gt;&lt;br&gt;
+&lt;/div&gt;
+
+It is hard to determine from the figure above whether the probability of finding $$w$$ such that $$|w - \left&lt;w\right&gt;| &gt; \sigma$$ is non-Gaussian. It would be useful to gather more statistics.
+
+!!! Varying persistence length
+
+We try to make the data from simulations at different persistent lengths $$l_p/\sigma$$ collapse on a single Gausian, at least close to the mean, insipired by fig. 2 in ([[Cagnetta et al., 2017|https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.119.158002]]).
+
+An issue is that the data looks Gaussian only close to the mean. We thus define, given a number $$\epsilon &gt; 0$$, and for $$W$$ an ensemble of measures of the active work, the ensemble $$W_{\epsilon} = \{w \in W, |w - \left&lt;w\right&gt;| &lt; \epsilon \sigma(w)\}$$, and denotes $$\left&lt;w\right&gt;_{\epsilon}$$  and $$\sigma(w)_{\epsilon}$$ its mean and variance.
+
+&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
+    &lt;a href=&quot;Figures/dist_w_comp_Nm1000_Dk6500.svg&quot;&gt;[img [Figures/dist_w_comp_Nm1000_Dk6500.svg]]&lt;/a&gt;&lt;br&gt;
+&lt;/div&gt;
+
+! Correlations
+
+Averages denoted by $$\left&lt;\ldots\right&gt;_{t_0}$$ are computed over values of $$t_0$$ separated by times greater than the rotational diffusion time $$l_p/\sigma$$.
+
+We exclude from our computations:
+
+* $$l_p/\sigma = 20$$: the $$6\cdot10^4$$ first frames, corresponding to $$3 l_p/\sigma$$,
+* $$l_p/\sigma = 100$$: the $$3\cdot10^5$$ first frames, corresponding to $$3 l_p/\sigma$$.
+
+Dashed lines represent arbitrary fits and are here solely as visual aids.
+
+!! Active work
+
+We denote
+$$
+\delta w(t_0, t_0 + \tau) = w(t_0, t_0 + \tau) - \left&lt;w(t_0, t_0 + \tau)\right&gt;_{t_0},
+$$
+where
+$$
+w(t_0, t_0 + \tau) = \frac{1}{\tau} \sum_{t = t_0}^{t_0 + \tau  - 1}  \tilde{w}_t
+$$
+is the normalised rate of active work between $$t_0$$ and $$t_0 + \tau$$, and
+$$
+\tilde{w}_t = \frac{1}{2N} \sum_{i=1}^N \left(\underline{u}(\theta_{i, t}) + \underline{u}(\theta_{i, t+1})\right) \cdot \left(\underline{r}_{i, t+1} - \underline{r}_{i, t}\right)
+$$
+is the &quot;instantaneous&quot; normalised rate of active work.
+
+!!! Averaged active work correlation
+
+We then compute
+$$
+\begin{aligned}
+&amp;\left&lt;\delta w(t_0, t_0 + \tau) \, \delta w(t_0, t_0 + \tau_0)\right&gt;_{t_0}\\
+&amp;= \left&lt;\left[\frac{1}{\tau_0} \sum_{t=t_0}^{t_0 + \tau_0 - 1} \tilde{w}_t - \left&lt;w(t_0, t_0 + \tau_0)\right&gt;_{t_0}\right]\left[\frac{1}{\tau} \sum_{t=t_0}^{t_0 + \tau - 1} \tilde{w}_t - \left&lt;w(t_0, t_0 + \tau)\right&gt;_{t_0}\right]\right&gt;_{t_0}\\
+&amp;= \frac{1}{\tau \tau_0} \left&lt;\sum_{t=t_0}^{t_0 + \tau_0 - 1} \sum_{t^{\prime} = t_0}^{t_0 + \tau - 1} \tilde{w}_t \tilde{w}_{t^{\prime}}\right&gt;_{t_0} -  \left&lt;w(t_0, t_0 + \tau_0)\right&gt;_{t_0}  \left&lt;w(t_0, t_0 + \tau)\right&gt;_{t_0},
+\end{aligned}
+$$
+as a function of $$\tau$$ for several values of $$\tau_0$$.
+
+&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
+    &lt;a href=&quot;Figures/corWorkWork_Nm2000_Dk6500_Lm2000_Em1000.svg&quot;&gt;[img [Figures/corWorkWork_Nm2000_Dk6500_Lm2000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
+&lt;/div&gt;
+
+&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
+    &lt;a href=&quot;Figures/corWorkWork_Nm2000_Dk6500_Ln1000_Em1000.svg&quot;&gt;[img [Figures/corWorkWork_Nm2000_Dk6500_Ln1000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
+&lt;/div&gt;
+
+We observe that all curves collapse for different values of $$\tau_0$$, which may indicate that
+$$
+\left&lt;\delta w(t_0, t_0 + \tau) \, \delta w(t_0, t_0 + \tau_0)\right&gt;_{t_0} \approx \left&lt;\delta w(t_0, t_0 + \tau) \, \delta w(t_0, t_0 + \tau)\right&gt;_{t_0} = \text{Var}(w(t_0, t_0 + \tau))_{t_0},
+$$
+independently of $$\tau_0$$.
+
+We have
+
+* for $$\tau \ll l_p/\sigma$$ that the variance is computed over intervals distant of more than $$l_p/\sigma$$,
+* for $$\tau \ge l_p/\sigma$$ that we are looking at the variance of a quantity averaged over a time greater than $$l_p/\sigma$$,
+
+hence the linear variation according to the CLT.
+
+We see however that this prediciton only holds without fitting parameter up to $$\tau/(l_p/\sigma) \approx 10^{-1}$$ for $$l_p/\sigma = 20$$ and $$\tau/(l_p/\sigma) \approx 10^{-2}$$ for $$l_p/\sigma = 100$$.
+
+!!! &quot;Instantaneous&quot; active work correlation
+
+&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
+    &lt;a href=&quot;Figures/corWorkWorkIns_Nm2000_Dk6500_Lm2000_Em1000.svg&quot;&gt;[img [Figures/corWorkWorkIns_Nm2000_Dk6500_Lm2000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
+&lt;/div&gt;
+
+We have a peak at $$\tau \approx 10^{-1}$$ which origin is unknown and, from the time at which it appears, may be related to particles bouncing against each others.
+
+We compute the same correlations but with all available interval to improve statistics, we however stress that these intervals cannot be considered independent anymore.
+
+&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
+    &lt;a href=&quot;Figures/corWorkWorkIns_bruteForce_Nm2000_Dk6500_Lm2000_Em1000.svg&quot;&gt;[img [Figures/corWorkWorkIns_bruteForce_Nm2000_Dk6500_Lm2000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
+&lt;/div&gt;
+
+We see that this peak is still present.
+
+!! Order parameter
+
+We define the order parameter
+$$
+\underline{\nu}(t) = \frac{1}{N} \sum_{i=1}^N \underline{u}(\theta_i(t)),
+$$
+and compute
+$$
+\left&lt;\delta \underline{\nu}(t_0 + \tau) \cdot \delta \underline{\nu}(t_0)\right&gt;_{t_0} = \frac{1}{N^2} \left&lt;\sum_{i=1}^N \sum_{j=1}^N \underline{u}(\theta_i(t_0 + \tau)) \cdot \underline{u}(\theta_j(t_0))\right&gt;_{t_0} - \left&lt;\underline{\nu}(t_0)\right&gt;_{t_0}^2.
+$$
+We recall that
+$$
+\left&lt;\underline{u}(\theta_i(t))\cdot\underline{u}(\theta_j(t^{\prime}))\right&gt; = \delta_{ij} e^{-|t - t^{\prime}|/(l_p/\sigma)},
+$$
+from which we infer
+$$
+\left&lt;\delta \underline{\nu}(t_0 + \tau) \cdot \delta \underline{\nu}(t_0)\right&gt;_{t_0} = \frac{1}{N} e^{-\tau/(l_p/\sigma)} - \left&lt;\underline{\nu}(t_0 + \tau)\right&gt;_{t_0} \cdot \left&lt;\underline{\nu}(t_0)\right&gt;_{t_0}.
+$$
+Note that we write $$\left&lt;\underline{\nu}(t_0 + \tau)\right&gt;_{t_0} \cdot \left&lt;\underline{\nu}(t_0)\right&gt;_{t_0}$$, and not simply $$\left&lt;\underline{\nu}(t_0)\right&gt;_{t_0}^2$$, because our limited number of frames gives us different sets on which to compute _both_ averages for each value of $$\tau$$.
+
+&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
+    &lt;a href=&quot;Figures/corOrderOrder_Nm2000_Dk6500_Lm2000_Em1000.svg&quot;&gt;[img [Figures/corOrderOrder_Nm2000_Dk6500_Lm2000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
+&lt;/div&gt;
+
+&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
+    &lt;a href=&quot;Figures/corOrderOrder_Nm2000_Dk6500_Ln1000_Em1000.svg&quot;&gt;[img [Figures/corOrderOrder_Nm2000_Dk6500_Ln1000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
+&lt;/div&gt;
+
+We see that the theoretical prediction holds up to $$\tau/(l_p/\sigma) \approx 2$$ for $$l_p/\sigma = 20$$ and $$\tau/(l_p/\sigma) \approx 1$$ for $$l_p/\sigma = 100$$.
+
+!! Active work and order parameter
+
+On the one hand, the order parameter norm $$|\underline{\nu}(t_0)|$$ is related to the alignment of the particles of the particles at time $$t_0$$, especially $$|\underline{\nu}(t_0)| = 1$$ incidicates perfect order along a single direction and $$|\underline{\nu}(t_0)| = 0$$ indicates randomness of the orientations. On the other hand, the normalised rate of active work $$w(t_0, t_0 + \tau)$$  is related to the effectiveness of the active drive of the particles between times $$t_0$$ and $$t_0 + \tau$$, especially $$w(t_0, t_0 + \tau) = 1$$ indicates a perfect alignment of the velocities and the self-propulsion at the particle scale, attributed either to flocking or a diluted system, and $$w(t_0, t_0 + \tau) = 0$$ indicates a random pairing of velocities and self-propulson, probably attributed to an arrest of the particles.
+
+We can thus wonder if a fluctuation of the order parameter norm at time $$t_0$$ would be correlated with a fluctuation of the active work from time $$t_0$$ onward.
+
+&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
+    &lt;a href=&quot;Figures/corWorkOrder_Nm2000_Dk6500_Lm2000_Em1000.svg&quot;&gt;[img [Figures/corWorkOrder_Nm2000_Dk6500_Lm2000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
+&lt;/div&gt;
+
+&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
+    &lt;a href=&quot;Figures/corWorkOrder_Nm2000_Dk6500_Ln1000_Em1000.svg&quot;&gt;[img [Figures/corWorkOrder_Nm2000_Dk6500_Ln1000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
+&lt;/div&gt;
+
+We observe in both cases
+$$
+\left&lt;\delta w(t_0 + \tau) \, \delta |\underline{\nu}(t_0)|\right&gt;_{t_0} \propto e^{-\tau/(l_p/\sigma)},
+$$
+for small enough $$\tau$$. Thus, fluctuations of the order parameter norm and the normalised rate of active work are positively correlated at short times, this over a time scale comparable to the rotational diffusion time. Moreover, for $$\tau &gt; l_p/\sigma$$ the rate of decrease of this correlation decreases, indicating longer lived correlations.
+
+!! Order parameter norm
+
+&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
+    &lt;a href=&quot;Figures/corOrderOrderNorm_Nm2000_Dk6500_Lm2000_Em1000.svg&quot;&gt;[img [Figures/corOrderOrderNorm_Nm2000_Dk6500_Lm2000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
+&lt;/div&gt;
+
+&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
+    &lt;a href=&quot;Figures/corOrderOrderNorm_Nm2000_Dk6500_Ln1000_Em1000.svg&quot;&gt;[img [Figures/corOrderOrderNorm_Nm2000_Dk6500_Ln1000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
+&lt;/div&gt;
+
+We observe in both cases
+$$
+\left&lt;\delta |\underline{\nu}(t_0 + \tau)| \, \delta |\underline{\nu}(t_0)|\right&gt;_{t_0} \propto e^{-2\tau/(l_p/\sigma)},
+$$
+for small enough $$\tau$$.</pre>
+</div>
+<div created="20191010153112162" modified="20191028190650985" tags="TableOfContents" title="Active Brownian particles">
+<pre>! Model
+
+!! Theoretical description
+
+!!! Equations of motion
+
+We use the equations of motion of active Brownian particles in ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]) to study ABPs.
 
 With $$\underline{r}_i$$ and $$\theta_i$$ the position and orientation of particle $$i$$ ($$i \in \{1, \ldots, N\}$$), we have the equations of motion of ABPs
 $$
@@ -10777,6 +11001,8 @@ where $$\Theta$$ stands for the Heaviside function, and $$\sigma$$ is the diamet
 $$
 \underline{F}_{WCA}(r = \sqrt{\Delta x^2 + \Delta y^2}, \epsilon) = - \frac{\epsilon}{\sigma^2}\left(\frac{48}{(r/\sigma)^{14}} - \frac{24}{(r/\sigma)^{8}}\right) \begin{pmatrix} \Delta x \\ \Delta y \end{pmatrix} \Theta(2^{1/6} - r/\sigma).
 $$
+
+!!! Dimensionless quantities and equations
 
 We choose the units of length and time as $$\sigma = 1$$ and $$\sigma/v_0 = 1$$. Moreover, authors chose $$D_r = 3D/\sigma^2$$ and $$\epsilon = D/\mu$$. We are thus left with an unique dimensionless parameter, besides the packing fraction $$\phi = \frac{N \pi \sigma^2}{4 L^2}$$,
 $$
@@ -10797,7 +11023,29 @@ $$
 $$
 where $$\underline{\tilde{F}}_{i, ex}$$ derives from $$V_{WCA}(r, \epsilon = 1)$$.
 
-! Numerical integration
+!!! Ito stochastic differential equations
+
+We rewrite the previous equations with the notations of ([[Gardiner, 2009|https://www.springer.com/gp/book/9783540707127]], § 4.3.1), which will be useful afterwards when deriving expressions for averages and correlations.
+
+We have that $$x_i(t)$$, $$y_i(t)$$, and $$\theta_i(t)$$ are stochastic quantities which obey Ito SDEs written as
+$$
+\begin{aligned}
+\begin{pmatrix} \text{d}x(t) \\ \text{d}y(t) \end{pmatrix} &amp;= \frac{1}{3}\frac{\sigma}{l_p} \underline{\tilde{F}}_{i, ex} \text{d}t + \begin{pmatrix} \cos \theta_i(t) \\ \sin \theta_i(t) \end{pmatrix} \text{d}t + \sqrt{\frac{2}{3} \frac{\sigma}{l_p}} \begin{pmatrix} \text{d}W_{x,i}(t) \\ \text{d}W_{y,i}(t) \end{pmatrix},\\
+\text{d}\theta_i(t) &amp;= \sqrt{2\frac{\sigma}{l_p}} \text{d}W_{\theta,i}(t),
+\end{aligned}
+$$
+where $$W_{x, i}(t)$$, $$W_{y,i}(t)$$, and $$W_{\theta,i}(t)$$ denote independent Wiener processes, which implies ([[Gardiner, 2009|https://www.springer.com/gp/book/9783540707127]], § 4.3.4)
+$$
+\begin{aligned}
+\text{d}W_{\alpha}(t) \, \text{d}W_{\beta}(t) &amp;= \delta_{\alpha\beta} \, \text{d}t,\\
+\text{d}W_{\alpha}^{N+2} &amp;= 0,\\
+\text{d}W_{\alpha} \, \text{d}t &amp;= 0,\\
+\text{d}t^{1+N} &amp;= 0,
+\end{aligned}
+$$
+for any $$N &gt; 0$$.
+
+!! Numerical integration
 
 We use a simple Euler's method with time step $$\Delta t$$ to integrate the aforementioned equations
 $$
@@ -10805,29 +11053,286 @@ $$
 \underline{r}_{i, t + 1} &amp;= \underline{r}_{i, t} + \Delta t \left(\frac{1}{3} \frac{\sigma}{l_p} \underline{\tilde{F}}_{i, ex, t} + \begin{pmatrix} \cos\theta_{i, t} \\ \sin\theta_{i, t}\end{pmatrix} \right) + \sqrt{\frac{2}{3} \frac{\sigma}{l_p} \Delta t} \, \underline{\eta}_{i, t + 1},\\
 \theta_{i, t + 1} &amp;= \theta_{i, t} + \sqrt{2 \frac{\sigma}{l_p} \Delta t} \, \xi_i.
 \end{aligned}
-$$</pre>
-</div>
-<div created="20191008105209478" modified="20191016190308157" tags="TableOfContents" title="Active work">
-<pre>! Definition
-
-We want to compute the normalised rate of active work per particle, defined in ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]) by
-$$
-w(t) = \frac{1}{v_0 N t} \int_0^t \sum_{i=1}^N  \underline{\dot{r}}_i(\tau) \cdot \underline{u}(\theta_i(\tau)) \, \text{d}\tau =  \frac{1}{v_0 N t} \int_0^t \sum_{i=1}^N \underline{u}(\theta_i(\tau)) \cdot \text{d}\underline{r}_i(\tau),
-$$
-in Stratonovich convention.
-
-We use the trapezoidal rule and the dimensionless quantities defined in [[Active Brownian particles]] to discretise and rewrite this definition
-$$
-w(\tau) = \frac{1}{2N \tau} \sum_{t=0}^{\tau - 1} \sum_{i=0}^N \left(\underline{u}(\theta_{i,t  + 1}) + \underline{u}(\theta_{i, t})\right) \cdot \left(\underline{r}_{i,t  + 1} - \underline{r}_{i, t}\right).
 $$
 
-! Variance
+&lt;&lt;compuscript path:&quot;iteration.cpp&quot;&gt;&gt;
+
+! Order parameter
+
+!! Definition
+
+We use the definition of the order parameter in ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]),
+$$
+\underline{\nu}(t) = \frac{1}{N} \sum_{i=1}^N \underline{u}(\theta_i(t)),
+$$
+which norm quantifies the alignment of the particles.
+
+We have, in the absence of spontaneous symmetry breaking, $$\left&lt;\underline{\nu}(t)\right&gt; = 0$$.
+
+!! Decorrelation of orientation
+
+We have
+$$
+\underline{u}(\theta_i(t)) \cdot \underline{u}(\theta_j(t^{\prime})) = \cos(\theta_i(t) - \theta_j(t^{\prime})),
+$$
+and
+$$
+\begin{aligned}
+\text{d}\cos(\theta_i(t) - \theta_j(t^{\prime})) =&amp; -\frac{1}{2} \, \cos(\theta_i(t) - \theta_j(t^{\prime})) \, \text{d}(\theta_i(t) - \theta_j(t^{\prime}))^2 - \sin(\theta_i(t) - \theta_j(t^{\prime})) \, \text{d}(\theta_i(t) - \theta_j(t^{\prime}))\\
+=&amp; - \sqrt{\frac{2\sigma}{l_p}} \, \sin(\theta_i(t) - \theta_j(t^{\prime})) (\text{d}W_{\theta,i}(t) - \text{d}W_{\theta,j}(t^{\prime}))\\
+&amp;- \frac{\sigma}{l_p} \, \cos(\theta_i(t) - \theta_j(t^{\prime})) (2 \, \text{d}t - 2 \, \text{d}W_{\theta,i}(t) \, \text{d}W_{\theta,j}(t^{\prime}))\\
+=&amp; - \sqrt{\frac{2\sigma}{l_p}} \, \sin(\theta_i(t) - \theta_j(t^{\prime})) (\text{d}W_{\theta,i}(t) - \text{d}W_{\theta,j}(t^{\prime}))\\
+&amp;- \frac{\sigma}{l_p} \, \cos(\theta_i(t) - \theta_j(t^{\prime})) (\, \text{d}t  + \text{d}t^{\prime} - 2 \, \delta_{ij} \, \delta(t - t^{\prime}) \, \text{d}t),
+\end{aligned}
+$$
+from which we infer for $$t &gt; t^{\prime}$$,
+$$
+\begin{aligned}
+&amp;\frac{\text{d}}{\text{d}t} \left&lt;\cos(\theta_i(t) - \theta_j(t^{\prime}))\right&gt; = - \frac{\sigma}{l_p} \left&lt;\cos(\theta_i(t) - \theta_j(t^{\prime}))\right&gt;\\
+\Rightarrow &amp;\left&lt;\cos(\theta_i(t) - \theta_j(t^{\prime}))\right&gt; = \left&lt;\cos(\theta_i(t^{\prime}) - \theta_j(t^{\prime}))\right&gt; \exp\left(-\frac{\sigma}{l_p}(t - t^{\prime})\right).
+\end{aligned}
+$$
+We have for $$\left&lt;\cos(\theta_i(t^{\prime}) - \theta_i(t^{\prime}))\right&gt; = \left&lt;\cos(0)\right&gt; = 1$$, while for $$i \neq j$$ we have
+$$
+\begin{aligned}
+&amp;\frac{\text{d}}{\text{d}t^{\prime}} \left&lt;\cos(\theta_i(t^{\prime}) - \theta_j(t^{\prime}))\right&gt; = -2\frac{\sigma}{l_p}\left&lt;\cos(\theta_i(t^{\prime}) - \theta_j(t^{\prime}))\right&gt;\\
+\Rightarrow &amp;\left&lt;\cos(\theta_i(t^{\prime}) - \theta_j(t^{\prime}))\right&gt; = \left&lt;\cos(\theta_i(0) - \theta_j(0))\right&gt; \exp\left(-\frac{\sigma}{l_p}t^{\prime}\right)
+\end{aligned}
+$$
+which decays to 0 as $$t^{\prime} \rightarrow +\infty$$. We then have for $$t, t^{\prime} \rightarrow +\infty$$ and $$t - t^{\prime}$$ constant,
+$$
+\left&lt;\underline{u}(\theta_i(t)) \cdot \underline{u}(\theta_j(t^{\prime}))\right&gt; = \left&lt;\cos(\theta_i(t) - \theta_j(t^{\prime}))\right&gt; = \delta_{ij} \exp\left(-\frac{\sigma}{l_p} |t - t^{\prime}|\right),
+$$
+where the absolute value enables to relax the $$t &gt; t^{\prime}$$ made earlier.
+
+!! Correlations
+
+On the one side, we can note that
+$$
+\begin{aligned}
+\left&lt;\delta \underline{\nu}(t) \cdot \delta \underline{\nu}(t^{\prime})\right&gt; &amp;= \left&lt;\underline{\nu}(t) \cdot \underline{\nu}(t^{\prime})\right&gt; - \left&lt;\underline{\nu}(t)\right&gt;^2\\
+&amp;= \frac{1}{N^2} \sum_{i,j = 1}^N \left&lt;\underline{u}(\theta_i(t)) \cdot \underline{u}(\theta_j(t^{\prime}))\right&gt;\\
+&amp;= \frac{1}{N} \exp\left(- \frac{\sigma}{l_p} |t - t^{\prime}|\right).
+\end{aligned}
+$$
+
+On the other side, we have from ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]], eq. (E9))
+$$
+\text{d} |\underline{\nu}(t)| = \frac{\sigma}{l_p}\left(\frac{1}{2 N |\underline{\nu}(t)|} - |\underline{\nu}(t)|\right) \, \text{d}t + \sqrt{\frac{\sigma}{N l_p}} \, \text{d}W_0(t),
+$$
+where $$W_0(t)$$ denotes a Wiener process. We have that the mean value of $$|\underline{\nu}(t)|$$ satisfies
+$$
+\text{d} \left&lt;|\underline{\nu}(t)|\right&gt; = 0 \Leftrightarrow \left&lt;|\underline{\nu}(t)|\right&gt; = \frac{1}{\sqrt{2N}}.
+$$
+We expand the previous equation for small flucutations $$\delta|\underline{\nu}(t)| \ll \left&lt;|\underline{\nu}(t)|\right&gt;$$,
+$$
+\text{d}\delta|\underline{\nu}(t)| = - 2 \frac{\sigma}{l_p} \delta|\underline{\nu}(t)| + \sqrt{\frac{\sigma}{N l_p}} \text{d}W_0(t),
+$$
+which now corresponds to an Ornstein-Uhlenbeck process with drift coefficient $${\displaystyle k = \frac{2\sigma}{l_p}}$$ and diffusion coefficient $${\displaystyle D = \frac{\sigma}{N l_p}}$$ ([[Gardiner, 2009|https://www.springer.com/gp/book/9783540707127]], § 3.8.4, § 4.5.4). We cas thus write its autocorrelation function
+$$
+\left&lt;\delta |\underline{\nu}(t)| \, \delta |\underline{\nu}(t^{\prime})|\right&gt; = \frac{D}{2k} \exp(- k |t - t^{\prime}|) = \frac{1}{4N} \exp\left(- \frac{2\sigma}{l_p} |t - t^{\prime}|\right).
+$$
+
+! Active work
+
+!! Definition
+
+We use the definition of active work in ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]), which quantifies how efficiently active forces create motion.
+
+We have the dimensionless normalised rate of active work per particle,
+$$
+w(t_0 ; \tau) = \frac{1}{N t} \int_{t_0}^{t_0 + \tau} \sum_{i=1}^N  \underline{\dot{r}}_i(\tau) \cdot \underline{u}(\theta_i(\tau)) \, \text{d}\tau =  \frac{1}{N t} \int_{t_0}^{t_0 + \tau} \sum_{i=1}^N \underline{u}(\theta_i(\tau)) \cdot \text{d}\underline{r}_i(\tau),
+$$
+in Stratonovich convention. We can thus use the trapezoidal rule to discretise and rewrite this definition
+$$
+w(t_0 ; \tau) = \frac{1}{2N \tau} \sum_{t=0}^{\tau - 1} \sum_{i=0}^N \left(\underline{u}(\theta_{i,t_0 + t  + 1}) + \underline{u}(\theta_{i, t_0 + t})\right) \cdot \left(\underline{r}_{i,t_0 + t  + 1} - \underline{r}_{i, t_0 + t}\right).
+$$
+We will denote
+$$
+\delta w(t_0; \tau) = w(t_0 ; \tau) - \left&lt;w(t_0 ; \tau)\right&gt;_{t_0}
+$$
+its deviation from its mean value.
+
+We can also define the active work per particle $$W(t)$$, such that
+$$
+w(t_0 ; \tau) = \frac{1}{\tau} \int_{t_0}^{t_0 + \tau} \text{d}W(t) = \frac{1}{\tau}(W(t_0 + \tau) - W(t_0)),
+$$
+and which satisfies the following Ito SDE
+$$
+\begin{aligned}
+\text{d}W(t) &amp;= \frac{1}{2N} \sum_{i=1}^N (\underline{u}(\theta_i(t + \text{d}t)) + \underline{u}(\theta_i(t)))\cdot \text{d}\underline{r}_i(t)\\
+&amp;= \frac{1}{2N} \sum_{i=1}^N (2\underline{u}(\theta_i(t)) + \text{d}\underline{u}(\theta_i(t)))\cdot\text{d}\underline{r}_i(t)\\
+&amp;= \frac{1}{N} \sum_{i=1}^N \underline{u}(\theta_i(t))\cdot\text{d}\underline{r}_i(t) + \frac{1}{2N} \sum_{i=1}^N \text{d}\underline{u}(\theta_i(t)) \cdot \text{d}\underline{r}_i(t).
+\end{aligned}
+$$
+We can note that $$\text{d}\underline{u}(\theta_i(t))$$ contains terms either in $$\text{d}W_{\theta,i}(t)$$ or $$\text{d}t$$, and that $$\text{d}\underline{r}_i(t)$$ contains terms either in $$\text{d}W_{x,i}(t)$$, $$\text{d}W_{y,i}(t)$$, or $$\text{d}t$$, such that the product cancels
+$$
+\forall i,~ \text{d}\underline{u}(\theta_i(t)) \cdot \text{d}\underline{r}_i(t) = 0,
+$$
+and that
+$$
+\begin{aligned}
+\text{d}W(t) &amp;= \frac{1}{N} \sum_{i=1}^N \underline{u}(\theta_i(t))\cdot\text{d}\underline{r}_i(t)\\
+&amp;= \frac{1}{N} \sum_{i=1}^N \begin{pmatrix} \cos \theta_i(t) \\ \sin \theta_i(t) \end{pmatrix} \cdot \left(\frac{1}{3} \frac{\sigma}{l_p} \tilde{\underline{F}}_{i,ex}(t) \, \text{d}t + \begin{pmatrix} \cos \theta_i(t) \\ \sin \theta_i(t) \end{pmatrix} \, \text{d}t + \sqrt{\frac{2}{3} \frac{\sigma}{l_p}} \begin{pmatrix} \text{d}W_{x,i}(t) \\ \text{d}W_{y,i}(t) \end{pmatrix}\right)\\
+&amp;= \text{d}t + \sum_{i=1}^N\left(\sqrt{\frac{2}{3}\frac{\sigma}{l_p}}\left(\cos\theta_i(t) \, \text{d}W_{x,i}(t) + \sin\theta_i(t) \, \text{d}W_{y,i}(t)\right) + \frac{1}{3}\frac{\sigma}{l_p} \, \underline{u}(\theta_i(t)) \cdot \tilde{\underline{F}}_{i, ex}(t) \, \text{d}t\right).
+\end{aligned}
+$$
+
+With $$\tau_0$$ and $$\tau$$ such that $$\tau = n \, \tau_0$$, $$n \in \mathbb{N}^*$$, we note that
+$$
+w(t_0; \tau) = \frac{1}{\tau} \int_{t_0}^{t_0 + \tau} \text{d} W(t) = \frac{1}{\tau} \sum_{i=1}^n \int_{t_0 + (i - 1) \tau_0}^{t_0 + i \tau_0} \text{d}W(t) = \frac{\tau_0}{\tau} \sum_{i=1}^N w(t_0 + (i - 1) \tau_0 ; \tau_0).
+$$
+Moreover, $$\left&lt;w(t_0 + (i - 1) \tau_0 ; \tau_0)\right&gt; = \left&lt;w(t_0 ; \tau_0)\right&gt;$$, and thus
+$$
+\left&lt;w(t_0; \tau)\right&gt; = \frac{n \tau_0}{\tau} \left&lt;w(t_0; \tau_0)\right&gt; = \left&lt;w(t_0; \tau_0)\right&gt;.
+$$
+We conclude $$\left&lt;w(t_0 ; \tau)\right&gt; = \left&lt;w\right&gt;$$.
+
+!! Correlations
+
+!!! Variance
+
+We introduce $$\tau_0$$ and $$\tau$$ such that $$\tau = n \, \tau_0$$, $$n \in \mathbb{N}^*$$. We have
+$$
+\begin{aligned}
+\left&lt;\delta w(t_0 ; \tau)^2\right&gt; &amp;=  \left&lt;w(t_0 ; \tau)^2\right&gt; - \left&lt;w\right&gt;^2\\
+&amp;= \frac{1}{\tau^2} \left&lt;\int_{t_0}^{t_0 + \tau} \int_{t_0}^{t_0 + \tau} \text{d}W(t) \, \text{d}W(t^{\prime})\right&gt; - \left&lt;w\right&gt;^2\\
+&amp;= \frac{1}{\tau^2} \sum_{i,j=1}^n \left&lt;\int_{t_0 + (i-1)\tau_0}^{t_0 + i \tau_0} \text{d}W(t) \int_{t_0 + (j-1)\tau_0}^{t_0 + j \tau_0} \text{d}W(t^{\prime})\right&gt; - \left&lt;w\right&gt;^2\\
+&amp;= \frac{\tau_0^2}{\tau^2} \sum_{i,j=1}^n \left&lt;w(t_0 + (i - 1) \tau_0; \tau_0) \, w(t_0 + (j - 1) \tau_0; \tau_0)\right&gt;.
+\end{aligned}
+$$
+We can note that
+$$
+\left&lt;w(t_0 + (i - 1) \tau_0; \tau_0) \, w(t_0 + (j - 1) \tau_0; \tau_0)\right&gt; = \left&lt;w(t_0; \tau_0) \, w(t_0 + |j - i| \tau_0; \tau_0)\right&gt;,
+$$
+so we can finally write
+$$
+\begin{aligned}
+\left&lt;\delta w(t_0 ; \tau)^2\right&gt; &amp;= \frac{1}{n^2} \sum_{i,j=1}^n \left&lt;w(t_0; \tau_0) \, w(t_0 + |j - i| \tau_0; \tau_0)\right&gt; - \left&lt;w\right&gt;^2\\
+&amp;= \frac{1}{n^2} \sum_{i,j=1}^n \left&lt;\delta w(t_0; \tau_0) \, \delta w(t_0 + |j - i| \tau_0; \tau_0)\right&gt;.
+\end{aligned}
+$$
+
+!!! Averaged active work
+
+We define
+$$
+C^{(a)}_{ww}(\tau ; \tau_0) = \text{Cov}(\delta w(t_0 ; \tau_0), \delta w(t_0; \tau))_{t_0} = \frac{\left&lt;\delta w(t_0; \tau_0) \, \delta w(t_0 ; \tau)\right&gt;_{t_0}}{\sqrt{\left&lt;\delta w(t_0; \tau_0)^2\right&gt;_{t_0} \, \left&lt;\delta w(t_0 ; \tau)^2\right&gt;_{t_0}}},
+$$
+the correlation of the normalised rate of active work averaged over a time $$\tau_0$$ and $$\tau$$ with the same starting point.
+
+!!! &quot;Instantaneous&quot; active work.
+
+We define
+$$
+C^{(i)}_{ww}(\tau ; \tau_0) = \text{Cov}(\delta w(t_0 ; \tau_0), \delta w(t_0 + \tau; \tau_0))_{t_0} = \frac{\left&lt;\delta w(t_0 ; \tau_0) \, \delta w(t_0 + \tau ; \tau_0)\right&gt;_{t_0}}{\left&lt;\delta w(t_0 ; \tau_0)^2\right&gt;}
+$$
+the correlation of the normalised rate of active work averaged over a time $$\tau_0$$ between two times separated by $$\tau$$.
+
+! One-particle quantities
+
+We focus on $$N=1$$ systems, such that the force term disappears in the equations of motion.
+
+These preliminary results enable us to check that the simulation behaves the expected way and to set a basis on which to compare the results of multi-particle simulations.
+
+!! Mean squared displacement
+
+We define the mean squared displacement
+$$
+\left&lt;|\Delta\underline{r}(\Delta t)|^2\right&gt; = \left&lt;|\underline{r}(t_0 + \Delta t) - \underline{r}(t_0)|^2\right&gt;_{t_0}.
+$$
+
+&lt;&lt;compuscript path:&quot;msd.py&quot;&gt;&gt;
+
+With the notations we have introduced, we then have
+$$
+\begin{aligned}
+\left&lt;|\Delta\underline{r}(\Delta t)|^2\right&gt; =&amp; \left&lt;\left(\int_{t_0}^{t_0 + \tau} \text{d}\underline{r}(t)\right)^2\right&gt;\\
+=&amp; \left&lt;\left(\int_{t_0}^{t_0 + \Delta t} \underline{u}(\theta(t)) \, \text{d}t + \sqrt{\frac{2}{3} \frac{\sigma}{l_p}} \, \begin{pmatrix} \text{d}W_{x}(t) \\ \text{d}W_{y}(t) \end{pmatrix} \right)^2\right&gt;\\
+=&amp; \int_{t_0}^{t_0 + \Delta t} \int_{t_0}^{t_0 + \Delta t} \text{d}t \, \text{d}t^{\prime} \, \left&lt;\underline{u}(\theta(t)) \cdot \underline{u}(\theta(t^{\prime}))\right&gt;\\
+&amp;+ \frac{2}{3} \frac{\sigma}{l_p} \int_{t_0}^{t_0 + \Delta t} \int_{t_0}^{t_0 + \Delta t} \left(\left&lt;\text{d}W_{x}(t) \, \text{d}W_{x}(t^{\prime})\right&gt; + \left&lt;\text{d}W_{y}(t) \, \text{d}W_{y}(t^{\prime})\right&gt;\right)\\
+=&amp; \int_{t_0}^{t_0 + \Delta t} \int_{t_0}^{t_0 + \Delta t} \text{d}t \, \text{d}t^{\prime} \, \exp\left(-\frac{\sigma}{l_p} |t - t^{\prime}|\right) + \frac{4}{3} \frac{\sigma}{l_p} \Delta t\\
+=&amp; 2 \frac{l_p}{\sigma}\left(\Delta t + \frac{l_p}{\sigma}\left(\exp\left(-\frac{\sigma}{l_p} \Delta t\right) - 1\right)\right) + \frac{4}{3} \frac{\sigma}{l_p} \Delta t.
+\end{aligned}
+$$
+
+We plot the computed mean squared displacement in solid line and the corresponding theoretical predicition in dashed line.
+
+&lt;&lt;plot image:&quot;1P_msd&quot;&gt;&gt;
+
+We have that the theoretical prediction accurately fits the measured mean squared displacements.
+
+!! Active work
+
+We have for a single particle
+$$
+\text{d}W(t) = \text{d}t + \sqrt{\frac{2}{3}\frac{\sigma}{l_p}}\left(\cos\theta(t) \, \text{d}W_{x}(t) + \sin\theta(t) \, \text{d}W_{y}(t)\right).
+$$
+We note that $$\theta(t)$$, $$W_x(t)$$ and $$W_y(t)$$ are independent stochastic processes, therefore
+$$
+\left&lt;\cos\theta(t) \, \text{d}W_{x}(t)\right&gt; = \left&lt;\sin\theta(t) \, \text{d}W_{y}(t)\right&gt; = 0,
+$$
+which implies
+$$
+\left&lt;w(\tau)\right&gt; = \left&lt;\frac{1}{\tau} \int_{t_0}^{t_0 + \tau} \text{d}W(t)\right&gt; = 1.
+$$
+
+!!! Correlations of averaged active work
+
+We have
+$$
+\begin{aligned}
+\left&lt;\delta w(t_0 ; \tau_0) \, \delta w(t_0 ; \tau)\right&gt; = &amp;\frac{1}{\tau\tau_0} \left&lt;\int_{t_0}^{t_0 + \tau_0} (\text{d}W(t) - \text{d}t) \int_{t_0}^{t_0 + \tau} (\text{d}W(t^{\prime}) - \text{d}t^{\prime})\right&gt;\\
+= &amp;\frac{2}{3} \frac{\sigma}{l_p} \frac{1}{\tau\tau_0} \int_{t_0}^{t_0 + \tau_0} \int_{t_0}^{t_0 + \tau} \left&lt;\cos\theta(t) \, \cos\theta(t^{\prime}) \, \text{d}W_x(t) \, \text{d}W_x(t^{\prime})\right&gt;\\
+&amp;+\frac{2}{3} \frac{\sigma}{l_p} \frac{1}{\tau\tau_0} \int_{t_0}^{t_0 + \tau_0} \int_{t_0}^{t_0 + \tau} \left&lt;\sin\theta(t) \, \sin\theta(t^{\prime}) \, \text{d}W_y(t) \, \text{d}W_y(t^{\prime})\right&gt;,
+\end{aligned}
+$$
+where, from the independence of the different stochastic processes,
+$$
+\begin{aligned}
+\left&lt;\cos\theta(t) \, \cos\theta(t^{\prime}) \, \text{d}W_x(t) \, \text{d}W_x(t^{\prime})\right&gt; &amp;= \left&lt;\cos\theta(t) \, \cos\theta(t^{\prime})\right&gt; \left&lt;\text{d}W_x(t) \, \text{d}W_x(t^{\prime})\right&gt;\\
+&amp;= \left&lt;\cos\theta(t) \, \cos\theta(t^{\prime})\right&gt; \delta(t - t^{\prime}) \, \text{d}t,\\
+\left&lt;\sin\theta(t) \, \sin\theta(t^{\prime}) \, \text{d}W_y(t) \, \text{d}W_y(t^{\prime})\right&gt; &amp;= \left&lt;\sin\theta(t) \, \sin\theta(t^{\prime})\right&gt; \left&lt;\text{d}W_y(t) \, \text{d}W_y(t^{\prime})\right&gt;\\
+&amp;= \left&lt;\sin\theta(t) \, \sin\theta(t^{\prime})\right&gt; \delta(t - t^{\prime}) \, \text{d}t,
+\end{aligned}
+$$
+so that we have
+$$
+\begin{aligned}
+\left&lt;\delta w(t_0 ; \tau_0) \, \delta w(t_0 ; \tau)\right&gt; =  \frac{2}{3} \frac{\sigma}{l_p} \frac{1}{\tau\tau_0} \int_{t_0}^{t_0 + \tau_0} \left&lt;\cos^2\theta(t) + \sin^2(\theta(t))\right&gt; \, \text{d}t = \frac{2}{3} \frac{\sigma}{l_p} \frac{1}{\tau},
+\end{aligned}
+$$
+where we have assumed $$\tau \geq \tau_0$$.
+
+We note that this result implies
+$$
+\left&lt;\delta w(t_0 ; \tau_0) \, \delta w(t_0 ; \tau)\right&gt; = \text{Var}(\delta w(t_0; \tau)) = \frac{2}{3} \frac{\sigma}{l_p} \frac{1}{\tau},
+$$
+independently of $$\tau_0$$.
+
+&lt;&lt;plot image:&quot;corWorkWorkAve_Nl1000_Dl1000_El0000&quot;&gt;&gt;
+
+We have that the theoretical prediction accurately fits the correlation measurements.
+
+!!! Correlations of instantaneous active work
+
+We have
+$$
+\begin{aligned}
+\left&lt;\delta w(t_0 ; \tau_0) \, \delta w(t_0 + \tau; \tau_0)\right&gt; = &amp;\frac{1}{\tau\tau_0} \left&lt;\int_{t_0}^{t_0 + \tau_0} (\text{d}W(t) - \text{d}t) \int_{t_0 + \tau}^{t_0 + \tau + \tau_0} (\text{d}W(t^{\prime}) - \text{d}t^{\prime})\right&gt;\\
+= &amp;\frac{2}{3} \frac{\sigma}{l_p} \frac{1}{\tau\tau_0} \int_{t_0}^{t_0 + \tau_0} \int_{t_0 + \tau}^{t_0 + \tau +  \tau_0} \left&lt;\cos\theta(t) \, \cos\theta(t^{\prime}) \, \text{d}W_x(t) \, \text{d}W_x(t^{\prime})\right&gt;\\
+&amp;+\frac{2}{3} \frac{\sigma}{l_p} \frac{1}{\tau\tau_0} \int_{t_0}^{t_0 + \tau_0} \int_{t_0 + \tau}^{t_0 + \tau + \tau_0} \left&lt;\sin\theta(t) \, \sin\theta(t^{\prime}) \, \text{d}W_y(t) \, \text{d}W_y(t^{\prime})\right&gt;,
+\end{aligned}
+$$
+where we can note, from the previous reasoning, that the integrals cancel if $$\tau \geq \tau_0$$, //i.e.//
+$$
+\forall \tau \geq \tau_0,~ \left&lt;\delta w(t_0 ; \tau_0) \, \delta w(t_0 + \tau; \tau_0)\right&gt; =  0,
+$$
+
+&lt;&lt;plot image:&quot;corWorkWorkIns_Nl1000_Dl1000_El0000&quot;&gt;&gt;
 
 
-
-! Correlations
-
-</pre>
+We have that the theoretical prediction accurately fits the correlation measurements.</pre>
 </div>
 <div created="20190812151828852" modified="20190812151845023" tags="$:/tags/Stylesheet" title="CustomStylesheet">
 <pre>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;styles/tw.css&quot; media=&quot;screen&quot;&gt;</pre>
@@ -10863,18 +11368,62 @@ exists. $$I$$ is then called the //rate function//.
 
 !! Fluctuation theorem</pre>
 </div>
-<div created="20191005162509110" modified="20191010152810578" tags="TableOfContents" title="Mean square displacement">
-<pre>According to ([[Fily et al., 2014|https://pubs.rsc.org/en/content/articlelanding/2013/sm/c3sm52469h/unauth#!divAbstract]]), the mean square displacement of an individual active Brownian particle is given by
-$$
-\left&lt;|\Delta \underline{r}(t)|^2\right&gt; = 4 D_0 \left[t + \frac{e^{- D_r t} - 1}{D_r}\right],
-$$
-where
-$$
-D_0 = D + \frac{v_0^2}{2 D_r},
-$$
-is the diffusion coefficient.
+<div created="20191028125750871" modified="20191028130917255" tags="$:/tags/Macro" title="Macros">
+<pre>\define plot(image:&quot;&quot;)
 
-Proof with $$\left&lt;\underline{u}(\theta(t)) \cdot \underline{u}(\theta(0))\right&gt; = e^{-tD_r}$$?</pre>
+&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
+    &lt;a href=&quot;Figures/$image$.svg&quot;&gt;[img [Figures/$image$.svg]]&lt;/a&gt;&lt;br&gt;
+    &lt;a
+        href=&quot;Figures/eps/$image$.eps&quot;
+        class=&quot;tc-btn-big-green&quot;
+        style=&quot;background-color:#10b10b&quot;
+        target=&quot;_blank&quot;
+        rel=&quot;noopener noreferrer&quot;
+    &gt;
+            {{$:/core/images/picture}}
+            &lt;b&gt;~PostScript image&lt;/b&gt;
+    &lt;/a&gt;
+&lt;/div&gt;
+
+\end
+
+\define compuscript(path:&quot;&quot;)
+
+&lt;div style=&quot;font-size:0.7em&quot; align=&quot;right&quot;&gt;
+    &lt;a
+        href=&quot;https://github.com/yketa/active_work/blob/master/$path$&quot;
+        class=&quot;tc-btn-big-green&quot;
+        style=&quot;background-color:#0b63b1&quot;
+        target=&quot;_blank&quot;
+        rel=&quot;noopener noreferrer&quot;
+    &gt;
+            {{$:/core/images/github}} &lt;b&gt;Script&lt;/b&gt; on ~GitHub
+    &lt;/a&gt;
+&lt;/div&gt;
+
+\end
+
+We define here macros usable for all tiddlers.
+
+---
+
+__''plot''__
+
+For figures saved as SVG images `Figures/[image].svg` and ~PostScript images `Figures/eps/[image].eps`, we define the macro ''plot'' with parameters ''image'' which displays the image with a link to the //.eps// file.
+
+''EXAMPLE''
+
+&lt;&lt;plot image:&quot;dist_w_comp_Nm2000_Dk6500_Lm2000&quot;&gt;&gt;
+
+---
+
+__''compuscript''__
+
+For scripts in the project ~GitHub [[yketa/active_work|https://github.com/yketa/active_work]], available at `yketa/active_work/[path]`, we define the macro ''compuscript'' with parameter ''path'' which displays a banner with a link to the script on ~GitHub.
+
+''EXAMPLE''
+
+&lt;&lt;compuscript path:&quot;particle.h&quot;&gt;&gt;</pre>
 </div>
 <div created="20180619220822377" modified="20191006135051164" tags="TableOfContents" title="Project">
 <pre>''Author'': Yann-Edwin Keta, //École normale supérieure de Lyon//&lt;br&gt;
@@ -10926,223 +11475,6 @@ Powered by [[TiddlyWiki|https://tiddlywiki.com/]] [img height=20 [Images/tiddlyw
 &lt;&lt;toc-selective-expandable 'TableOfContents'&gt;&gt;
 
 &lt;/div&gt;</pre>
-</div>
-<div created="20191003111614927" modified="20191019153159525" tags="TableOfContents" title="Test simulations">
-<pre>! Active Brownian particles
-
-We want to simulate [[active Brownian particles|Active Brownian particles]].
-
-!! Mean square displacement
-
-We compute [[mean square displacements|Mean square displacement]] of individual ABPs to evaluate our algorithm.
-
-According to our dimensionless equations of motion, we expect the following form
-$$
-\left&lt;|\Delta \underline{r}(t)|^2\right&gt; = 4 \left(\frac{1}{3} \frac{\sigma}{l_p} + \frac{1}{2} \frac{l_p}{\sigma}\right)\left(t + \frac{l_p}{\sigma}\left(\exp\left(-\frac{\sigma}{l_p}t\right) - 1\right)\right)
-$$
-for the mean square displacement.
-
-We run simulations with time step $$\Delta t = 1$$ for $$10^6$$ iterations.
-
-&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
-    &lt;a href=&quot;Figures/test_sim_msd.svg&quot;&gt;[img [Figures/test_sim_msd.svg]]&lt;/a&gt;&lt;br&gt;
-&lt;/div&gt;
-
-We have that for the 3 tested values of $$l_p/\sigma$$, the theoretical expression (dashed lines) is in good accordance with the output of the simulation (solid lines), on at least 3 decades for each value, including the crossover from ballistic to diffusive regime for $$l_p/\sigma = 10, 100$$.
-
-We have that at high $$\Delta t$$ the simulations deviates significantly from the theoretical expectations. We put this on the low statistics we have at these high lag times.
-
-We have that at low lag times, the computational result deviates significantly from the theoretical expression for $$l_p/\sigma = 1$$. For this simulation, we have $$l_p/\sigma$$ of the same order of the time step $$\Delta t$$ — actually equal. Therefore, the equation for the position is integrated as if the orientation of the particle is the same during the whole time step while in our model it should have changed by the end of it. This results in a higher mean square displacement for low lag times than what it theoretically should be — since the particle is propelled in an unique direction rather than a changing one —, hence the discrepancy in the graph. Solutions to this issue includes:
-
-# always take $$\Delta t \ll l_p/\sigma$$,
-# integrate $$\theta_i$$ with a lower time step than $$\underline{r}_i$$, then take in the equation for the position the mean computed orientation during the corresponding longer time step,
-# use a Verlet-type integration scheme.
-
-We will stick to the first solution.
-
-!! Clustering
-
-We observe clustering for high densities and large persistence length. We make movies from simulations at $$\phi = 0.65$$, $$N = 100$$, and $$l_p/\sigma =$$ [ext[1|Movies/o_Nn1000_Dk6500_Ll1000.mp4]],
- [ext[10|Movies/o_Nn1000_Dk6500_Lm1000.mp4]], [ext[40|Movies/o_Nn1000_Dk6500_Lm4000.mp4]], [ext[100|Movies/o_Nn1000_Dk6500_Ln1000.mp4]], [ext[200|Movies/o_Nn1000_Dk6500_Ln2000.mp4]]. We observe that clusters seem denser as the persistence length increases.
-
-!! Active work
-
-We compute [[active work|Active work]] from our simulations.
-
-!!! Mean
-
-&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
-    &lt;a href=&quot;Figures/test_aw_lp.svg&quot;&gt;[img [Figures/test_aw_lp.svg]]&lt;/a&gt;&lt;br&gt;
-&lt;/div&gt;
-
-We let the simulations &quot;equilibrate&quot; for $$t = 2 l_p/\sigma$$ and compute the normalised active work for intervals $$\tau = l_p/\sigma$$ of time.
-
-!!! Variance
-
-We denote
-$$
-w(t_0, t_0 + \tau) =  \frac{1}{v_0 N \tau} \int_{t_0}^{t_0 +\tau} \sum_{i=1}^N \underline{u}(\theta_i(t)) \cdot \text{d}\underline{r}_i(t),
-$$
-and compute its variance with respect to the choice of $$t_0$$.
-
-Central limit theorem indicated that we should have
-$$
-\lim_{\tau \rightarrow +\infty} \tau \, \text{Var}(w(t_0, t_0 + \tau))_{t_0} = \chi,
-$$
-with $$\chi$$ some constant. Moreover, we expect for $$\tau \ll 1$$ that
-$$
-\tau \, \text{Var}(w(t_0, t_0 + \tau))_{t_0} &lt; \chi,
-$$
-because of correlations between successive short intervals of time. We thus identify the time $$\tau^*$$ at which $$\tau \, \text{Var}(w(t_0, t_0 + \tau))_{t_0}$$ saturates to the longest correlation time of the system.
-
-&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
-    &lt;a href=&quot;Figures/var_n_activeWork.svg&quot;&gt;[img [Figures/var_n_activeWork.svg]]&lt;/a&gt;&lt;br&gt;
-&lt;/div&gt;
-
-We have for this particular system $$\tau^* \sim l_p/\sigma$$, //i.e.// the rotational diffusion time.
-
-&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
-    &lt;a href=&quot;Figures/var_N_activeWork.svg&quot;&gt;[img [Figures/var_N_activeWork.svg]]&lt;/a&gt;&lt;br&gt;
-&lt;/div&gt;
-
-!!! Distribution
-
-We plot histograms of the active work computed on intervals $$\tau$$ and the Gaussian functions of corresponding mean and variance to qualitatively evaluate the deviation from the Gaussian behaviour.
-
-&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
-    &lt;a href=&quot;Figures/dist_w_comp_Nm2000_Dk6500_Lm2000.svg&quot;&gt;[img [Figures/dist_w_comp_Nm2000_Dk6500_Lm2000.svg]]&lt;/a&gt;&lt;br&gt;
-&lt;/div&gt;
-
-It is hard to determine from the figure above whether the probability of finding $$w$$ such that $$|w - \left&lt;w\right&gt;| &gt; \sigma$$ is non-Gaussian. It would be useful to gather more statistics.
-
-&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
-    &lt;a href=&quot;Figures/dist_w_comp_Nm1000_Dk6500.svg&quot;&gt;[img [Figures/dist_w_comp_Nm1000_Dk6500.svg]]&lt;/a&gt;&lt;br&gt;
-&lt;/div&gt;
-
-!! Correlations
-
-Averages denoted by $$\left&lt;\ldots\right&gt;_{t_0}$$ are computed over values of $$t_0$$ separated by times greater than the rotational diffusion time $$l_p/\sigma$$.
-
-We exclude from our computations:
-
-* $$l_p/\sigma = 20$$: the $$6\cdot10^4$$ first frames, corresponding to $$3 l_p/\sigma$$,
-* $$l_p/\sigma = 100$$: the $$3\cdot10^5$$ first frames, corresponding to $$3 l_p/\sigma$$.
-
-Dashed lines represent arbitrary fits and are here solely as visual aids.
-
-!!! Active work
-
-We denote
-$$
-\delta w(t_0, t_0 + \tau) = w(t_0, t_0 + \tau) - \left&lt;w(t_0, t_0 + \tau)\right&gt;_{t_0},
-$$
-where
-$$
-w(t_0, t_0 + \tau) = \frac{1}{\tau} \sum_{t = t_0}^{t_0 + \tau  - 1}  \tilde{w}_t
-$$
-is the normalised rate of active work between $$t_0$$ and $$t_0 + \tau$$, and
-$$
-\tilde{w}_t = \frac{1}{2N} \sum_{i=1}^N \left(\underline{u}(\theta_{i, t}) + \underline{u}(\theta_{i, t+1})\right) \cdot \left(\underline{r}_{i, t+1} - \underline{r}_{i, t}\right)
-$$
-is the &quot;instantaneous&quot; normalised rate of active work.
-
-We then compute
-$$
-\begin{aligned}
-\left&lt;\delta w(t_0, t_0 + \tau) \, \delta w(t_0, t_0 + \tau_0)\right&gt;_{t_0} &amp;= \left&lt;\left[\frac{1}{\tau_0} \sum_{t=t_0}^{t_0 + \tau_0 - 1} \tilde{w}_t - \left&lt;w(t_0, t_0 + \tau_0)\right&gt;_{t_0}\right]\left[\frac{1}{\tau} \sum_{t=t_0}^{t_0 + \tau - 1} \tilde{w}_t - \left&lt;w(t_0, t_0 + \tau)\right&gt;_{t_0}\right]\right&gt;_{t_0}\\
-&amp;= \frac{1}{\tau \tau_0} \left&lt;\sum_{t=t_0}^{t_0 + \tau_0 - 1} \sum_{t^{\prime} = t_0}^{t_0 + \tau - 1} \tilde{w}_t \tilde{w}_{t^{\prime}}\right&gt;_{t_0} -  \left&lt;w(t_0, t_0 + \tau_0)\right&gt;_{t_0}  \left&lt;w(t_0, t_0 + \tau)\right&gt;_{t_0},
-\end{aligned}
-$$
-as a function of $$\tau$$ for several values of $$\tau_0$$.
-
-&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
-    &lt;a href=&quot;Figures/corWorkWork_Nm2000_Dk6500_Lm2000_Em1000.svg&quot;&gt;[img [Figures/corWorkWork_Nm2000_Dk6500_Lm2000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
-&lt;/div&gt;
-
-&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
-    &lt;a href=&quot;Figures/corWorkWork_Nm2000_Dk6500_Ln1000_Em1000.svg&quot;&gt;[img [Figures/corWorkWork_Nm2000_Dk6500_Ln1000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
-&lt;/div&gt;
-
-We observe that all curves collapse for different values of $$\tau_0$$, which may indicate that
-$$
-\left&lt;\delta w(t_0, t_0 + \tau) \, \delta w(t_0, t_0 + \tau_0)\right&gt;_{t_0} \approx \left&lt;\delta w(t_0, t_0 + \tau) \, \delta w(t_0, t_0 + \tau)\right&gt;_{t_0} = \text{Var}(w(t_0, t_0 + \tau))_{t_0},
-$$
-independently of $$\tau_0$$.
-
-We have
-
-* for $$\tau \ll l_p/\sigma$$ that the variance is computed over intervals distant of more than $$l_p/\sigma$$,
-* for $$\tau \ge l_p/\sigma$$ that we are looking at the variance of a quantity averaged over a time greater than $$l_p/\sigma$$,
-
-hence the linear variation according to the CLT.
-
-We see however that this prediciton only holds without fitting parameter up to $$\tau/(l_p/\sigma) \approx 10^{-1}$$ for $$l_p/\sigma = 20$$ and $$\tau/(l_p/\sigma) \approx 10^{-2}$$ for $$l_p/\sigma = 100$$.
-
-!!! Order parameter
-
-We define the order parameter
-$$
-\underline{\nu}(t) = \frac{1}{N} \sum_{i=1}^N \underline{u}(\theta_i(t)),
-$$
-and compute
-$$
-\left&lt;\delta \underline{\nu}(t_0 + \tau) \cdot \delta \underline{\nu}(t_0)\right&gt;_{t_0} = \frac{1}{N^2} \left&lt;\sum_{i=1}^N \sum_{j=1}^N \underline{u}(\theta_i(t_0 + \tau)) \cdot \underline{u}(\theta_j(t_0))\right&gt;_{t_0} - \left&lt;\underline{\nu}(t_0)\right&gt;_{t_0}^2.
-$$
-We recall that
-$$
-\left&lt;\underline{u}(\theta_i(t))\cdot\underline{u}(\theta_j(t^{\prime}))\right&gt; = \delta_{ij} e^{-|t - t^{\prime}|/(l_p/\sigma)},
-$$
-from which we infer
-$$
-\left&lt;\delta \underline{\nu}(t_0 + \tau) \cdot \delta \underline{\nu}(t_0)\right&gt;_{t_0} = \frac{1}{N} e^{-\tau/(l_p/\sigma)} - \left&lt;\underline{\nu}(t_0 + \tau)\right&gt;_{t_0} \cdot \left&lt;\underline{\nu}(t_0)\right&gt;_{t_0}.
-$$
-Note that we write $$\left&lt;\underline{\nu}(t_0 + \tau)\right&gt;_{t_0} \cdot \left&lt;\underline{\nu}(t_0)\right&gt;_{t_0}$$, and not simply $$\left&lt;\underline{\nu}(t_0)\right&gt;_{t_0}^2$$, because our limited number of frames gives us different sets on which to compute _both_ averages for each value of $$\tau$$.
-
-&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
-    &lt;a href=&quot;Figures/corOrderOrder_Nm2000_Dk6500_Lm2000_Em1000.svg&quot;&gt;[img [Figures/corOrderOrder_Nm2000_Dk6500_Lm2000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
-&lt;/div&gt;
-
-&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
-    &lt;a href=&quot;Figures/corOrderOrder_Nm2000_Dk6500_Ln1000_Em1000.svg&quot;&gt;[img [Figures/corOrderOrder_Nm2000_Dk6500_Ln1000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
-&lt;/div&gt;
-
-We see that the theoretical prediction holds up to $$\tau/(l_p/\sigma) \approx 2$$ for $$l_p/\sigma = 20$$ and $$\tau/(l_p/\sigma) \approx 1$$ for $$l_p/\sigma = 100$$.
-
-!!! Active work and order parameter
-
-On the one hand, the order parameter norm $$|\underline{\nu}(t_0)|$$ is related to the alignment of the particles of the particles at time $$t_0$$, especially $$|\underline{\nu}(t_0)| = 1$$ incidicates perfect order along a single direction and $$|\underline{\nu}(t_0)| = 0$$ indicates randomness of the orientations. On the other hand, the normalised rate of active work $$w(t_0, t_0 + \tau)$$  is related to the effectiveness of the active drive of the particles between times $$t_0$$ and $$t_0 + \tau$$, especially $$w(t_0, t_0 + \tau) = 1$$ indicates a perfect alignment of the velocities and the self-propulsion at the particle scale, attributed either to flocking or a diluted system, and $$w(t_0, t_0 + \tau) = 0$$ indicates a random pairing of velocities and self-propulson, probably attributed to an arrest of the particles.
-
-We can thus wonder if a fluctuation of the order parameter norm at time $$t_0$$ would be correlated with a fluctuation of the active work from time $$t_0$$ onward.
-
-&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
-    &lt;a href=&quot;Figures/corWorkOrder_Nm2000_Dk6500_Lm2000_Em1000.svg&quot;&gt;[img [Figures/corWorkOrder_Nm2000_Dk6500_Lm2000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
-&lt;/div&gt;
-
-&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
-    &lt;a href=&quot;Figures/corWorkOrder_Nm2000_Dk6500_Ln1000_Em1000.svg&quot;&gt;[img [Figures/corWorkOrder_Nm2000_Dk6500_Ln1000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
-&lt;/div&gt;
-
-We observe in both cases
-$$
-\left&lt;\delta w(t_0 + \tau) \, \delta |\underline{\nu}(t_0)|\right&gt;_{t_0} \propto e^{-\tau/(l_p/\sigma)},
-$$
-for small enough $$\tau$$. Thus, fluctuations of the order parameter norm and the normalised rate of active work are positively correlated at short times, this over a time scale comparable to the rotational diffusion time. Moreover, for $$\tau &gt; l_p/\sigma$$ the rate of decrease of this correlation decreases, indicating longer lived correlations.
-
-!!! Order parameter norm
-
-&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
-    &lt;a href=&quot;Figures/corOrderOrderNorm_Nm2000_Dk6500_Lm2000_Em1000.svg&quot;&gt;[img [Figures/corOrderOrderNorm_Nm2000_Dk6500_Lm2000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
-&lt;/div&gt;
-
-&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
-    &lt;a href=&quot;Figures/corOrderOrderNorm_Nm2000_Dk6500_Ln1000_Em1000.svg&quot;&gt;[img [Figures/corOrderOrderNorm_Nm2000_Dk6500_Ln1000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
-&lt;/div&gt;
-
-We observe in both cases
-$$
-\left&lt;\delta |\underline{\nu}(t_0 + \tau)| \, \delta |\underline{\nu}(t_0)|\right&gt;_{t_0} \propto e^{-2\tau/(l_p/\sigma)},
-$$
-for small enough $$\tau$$.</pre>
 </div>
 
 </div>
