@@ -210,6 +210,8 @@ Error message and password prompt
 
 <li>$:/state/toc/Measurements/Shear strain and vorticity fields-Shear strain correlations--1479111847</li>
 
+<li>$:/state/toc/TableOfContents-Active Brownian particles--81657105</li>
+
 <li>$:/state/toc/TableOfContents-Analysis--81657105</li>
 
 <li>$:/state/toc/TableOfContents-Analysis-1351528465</li>
@@ -225,6 +227,8 @@ Error message and password prompt
 <li>$:/state/toc/TableOfContents-Presentations--81657105</li>
 
 <li>$:/state/toc/TableOfContents-Presentations-1351528465</li>
+
+<li>$:/state/toc/TableOfContents/Active Brownian particles-Multiple ABP--81657105</li>
 
 <li>$:/state/toc/TableOfContents/Measurements-Collective mean square displacements--81657105</li>
 
@@ -454,13 +458,25 @@ Error message and password prompt
 
 <li>ABP tests</li>
 
+<li>ABP work correlations</li>
+
+<li>ABP work distribution</li>
+
+<li>ABP work variance</li>
+
 <li>Active Brownian particles</li>
 
 <li>CustomStylesheet</li>
 
+<li>Draft of 'ABP work correlations'</li>
+
 <li>Large deviation theory</li>
 
 <li>Macros</li>
+
+<li>Multiple ABP</li>
+
+<li>One ABP</li>
 
 <li>Project</li>
 
@@ -9832,7 +9848,7 @@ config.macros.bibliography = {
 <div created="20181009080146960" modified="20190801131626468" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/General</pre>
 </div>
-<div created="20180416015308350" modified="20190812151011458" title="$:/state/tab/sidebar--1835078512">
+<div created="20180416015308350" modified="20191029225514144" title="$:/state/tab/sidebar--1835078512">
 <pre>TableOfContents</pre>
 </div>
 <div created="20180418024406433" modified="20190727110635194" title="$:/state/tabs/controlpanel/toolbars-1345989671">
@@ -9855,6 +9871,9 @@ config.macros.bibliography = {
 </div>
 <div created="20180606022318016" modified="20180625224602683" title="$:/state/toc/Measurements/Shear strain and vorticity fields-Shear strain correlations--1479111847">
 <pre>close</pre>
+</div>
+<div created="20191029154446278" modified="20191029154446278" title="$:/state/toc/TableOfContents-Active Brownian particles--81657105">
+<pre>open</pre>
 </div>
 <div created="20180417231441389" modified="20190812145455410" title="$:/state/toc/TableOfContents-Analysis--81657105">
 <pre>open</pre>
@@ -9879,6 +9898,9 @@ config.macros.bibliography = {
 </div>
 <div created="20190727101834242" modified="20190727101838312" title="$:/state/toc/TableOfContents-Presentations-1351528465">
 <pre>close</pre>
+</div>
+<div created="20191029224616636" modified="20191029224616636" title="$:/state/toc/TableOfContents/Active Brownian particles-Multiple ABP--81657105">
+<pre>open</pre>
 </div>
 <div created="20180609023859864" modified="20190810090138763" title="$:/state/toc/TableOfContents/Measurements-Collective mean square displacements--81657105">
 <pre>close</pre>
@@ -9910,7 +9932,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="[[Active Brownian particles]] [[ABP tests]] Project" title="$:/StoryList">
+<div list="[[Draft of 'ABP work correlations']] [[ABP work distribution]] [[ABP work variance]] [[ABP tests]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -10620,7 +10642,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div created="20180620032354454" modified="20180620032356781" title="$:/temp/RemoteAssetSearch/$:/config/OfficialPluginLibrary">
 <pre>bibtex</pre>
 </div>
-<div created="20180416033117939" modified="20191028125747994" title="$:/temp/search">
+<div created="20180416033117939" modified="20191029225458267" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20180620031722320" modified="20180620031722320" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.15/index.html" url="https://tiddlywiki.com/library/v5.1.15/index.html">
@@ -10753,83 +10775,8 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div created="20190727110537306" modified="20190727110548195" title="$:/themes/tiddlywiki/vanilla/settings/fontfamily">
 <pre>&quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Lucida Grande&quot;, &quot;DejaVu Sans&quot;, sans-serif</pre>
 </div>
-<div created="20191003111614927" modified="20191028173508565" tags="TableOfContents" title="ABP tests">
+<div created="20191003111614927" modified="20191029232357086" tags="TableOfContents" title="ABP tests">
 <pre>We check quantities from our simulations of [[active Brownian particles|Active Brownian particles]].
-
-! Clustering
-
-We observe clustering for high densities and large persistence length. We make movies from simulations at $$\phi = 0.65$$, $$N = 100$$, and $$l_p/\sigma =$$ [ext[1|Movies/o_Nn1000_Dk6500_Ll1000.mp4]],
- [ext[10|Movies/o_Nn1000_Dk6500_Lm1000.mp4]], [ext[40|Movies/o_Nn1000_Dk6500_Lm4000.mp4]], [ext[100|Movies/o_Nn1000_Dk6500_Ln1000.mp4]], [ext[200|Movies/o_Nn1000_Dk6500_Ln2000.mp4]]. We observe that clusters seem denser as the persistence length increases.
-
-! Active work
-
-We compute [[active work|Active work]] from our simulations.
-
-!! Mean
-
-&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
-    &lt;a href=&quot;Figures/test_aw_lp.svg&quot;&gt;[img [Figures/test_aw_lp.svg]]&lt;/a&gt;&lt;br&gt;
-&lt;/div&gt;
-
-We let the simulations &quot;equilibrate&quot; for $$t = 2 l_p/\sigma$$ and compute the normalised active work for intervals $$\tau = l_p/\sigma$$ of time.
-
-!! Variance
-
-!!! As a function of $$\tau$$
-
-We denote
-$$
-w(t_0, t_0 + \tau) =  \frac{1}{v_0 N \tau} \int_{t_0}^{t_0 +\tau} \sum_{i=1}^N \underline{u}(\theta_i(t)) \cdot \text{d}\underline{r}_i(t),
-$$
-and compute its variance with respect to the choice of $$t_0$$.
-
-Central limit theorem indicated that we should have
-$$
-\lim_{\tau \rightarrow +\infty} \tau \, \text{Var}(w(t_0, t_0 + \tau))_{t_0} = \chi,
-$$
-with $$\chi$$ some constant. Moreover, we expect for $$\tau \ll 1$$ that
-$$
-\tau \, \text{Var}(w(t_0, t_0 + \tau))_{t_0} &lt; \chi,
-$$
-because of correlations between successive short intervals of time. We thus identify the time $$\tau^*$$ at which $$\tau \, \text{Var}(w(t_0, t_0 + \tau))_{t_0}$$ saturates to the longest correlation time of the system.
-
-&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
-    &lt;a href=&quot;Figures/var_n_activeWork.svg&quot;&gt;[img [Figures/var_n_activeWork.svg]]&lt;/a&gt;&lt;br&gt;
-&lt;/div&gt;
-
-We have for this particular system $$\tau^* \sim l_p/\sigma$$, //i.e.// the rotational diffusion time.
-
-!!! As a function of $$N$$
-
-&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
-    &lt;a href=&quot;Figures/var_n_N_activeWork.svg&quot;&gt;[img [Figures/var_n_N_activeWork.svg]]&lt;/a&gt;&lt;br&gt;
-&lt;/div&gt;
-
-&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
-    &lt;a href=&quot;Figures/var_N_activeWork.svg&quot;&gt;[img [Figures/var_N_activeWork.svg]]&lt;/a&gt;&lt;br&gt;
-&lt;/div&gt;
-
-!! Distribution
-
-!!! Equal persistence length
-
-We plot histograms of the active work computed on intervals $$\tau$$ and the Gaussian functions of corresponding mean and variance to qualitatively evaluate the deviation from the Gaussian behaviour.
-
-&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
-    &lt;a href=&quot;Figures/dist_w_comp_Nm2000_Dk6500_Lm2000.svg&quot;&gt;[img [Figures/dist_w_comp_Nm2000_Dk6500_Lm2000.svg]]&lt;/a&gt;&lt;br&gt;
-&lt;/div&gt;
-
-It is hard to determine from the figure above whether the probability of finding $$w$$ such that $$|w - \left&lt;w\right&gt;| &gt; \sigma$$ is non-Gaussian. It would be useful to gather more statistics.
-
-!!! Varying persistence length
-
-We try to make the data from simulations at different persistent lengths $$l_p/\sigma$$ collapse on a single Gausian, at least close to the mean, insipired by fig. 2 in ([[Cagnetta et al., 2017|https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.119.158002]]).
-
-An issue is that the data looks Gaussian only close to the mean. We thus define, given a number $$\epsilon &gt; 0$$, and for $$W$$ an ensemble of measures of the active work, the ensemble $$W_{\epsilon} = \{w \in W, |w - \left&lt;w\right&gt;| &lt; \epsilon \sigma(w)\}$$, and denotes $$\left&lt;w\right&gt;_{\epsilon}$$  and $$\sigma(w)_{\epsilon}$$ its mean and variance.
-
-&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
-    &lt;a href=&quot;Figures/dist_w_comp_Nm1000_Dk6500.svg&quot;&gt;[img [Figures/dist_w_comp_Nm1000_Dk6500.svg]]&lt;/a&gt;&lt;br&gt;
-&lt;/div&gt;
 
 ! Correlations
 
@@ -10841,73 +10788,6 @@ We exclude from our computations:
 * $$l_p/\sigma = 100$$: the $$3\cdot10^5$$ first frames, corresponding to $$3 l_p/\sigma$$.
 
 Dashed lines represent arbitrary fits and are here solely as visual aids.
-
-!! Active work
-
-We denote
-$$
-\delta w(t_0, t_0 + \tau) = w(t_0, t_0 + \tau) - \left&lt;w(t_0, t_0 + \tau)\right&gt;_{t_0},
-$$
-where
-$$
-w(t_0, t_0 + \tau) = \frac{1}{\tau} \sum_{t = t_0}^{t_0 + \tau  - 1}  \tilde{w}_t
-$$
-is the normalised rate of active work between $$t_0$$ and $$t_0 + \tau$$, and
-$$
-\tilde{w}_t = \frac{1}{2N} \sum_{i=1}^N \left(\underline{u}(\theta_{i, t}) + \underline{u}(\theta_{i, t+1})\right) \cdot \left(\underline{r}_{i, t+1} - \underline{r}_{i, t}\right)
-$$
-is the &quot;instantaneous&quot; normalised rate of active work.
-
-!!! Averaged active work correlation
-
-We then compute
-$$
-\begin{aligned}
-&amp;\left&lt;\delta w(t_0, t_0 + \tau) \, \delta w(t_0, t_0 + \tau_0)\right&gt;_{t_0}\\
-&amp;= \left&lt;\left[\frac{1}{\tau_0} \sum_{t=t_0}^{t_0 + \tau_0 - 1} \tilde{w}_t - \left&lt;w(t_0, t_0 + \tau_0)\right&gt;_{t_0}\right]\left[\frac{1}{\tau} \sum_{t=t_0}^{t_0 + \tau - 1} \tilde{w}_t - \left&lt;w(t_0, t_0 + \tau)\right&gt;_{t_0}\right]\right&gt;_{t_0}\\
-&amp;= \frac{1}{\tau \tau_0} \left&lt;\sum_{t=t_0}^{t_0 + \tau_0 - 1} \sum_{t^{\prime} = t_0}^{t_0 + \tau - 1} \tilde{w}_t \tilde{w}_{t^{\prime}}\right&gt;_{t_0} -  \left&lt;w(t_0, t_0 + \tau_0)\right&gt;_{t_0}  \left&lt;w(t_0, t_0 + \tau)\right&gt;_{t_0},
-\end{aligned}
-$$
-as a function of $$\tau$$ for several values of $$\tau_0$$.
-
-&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
-    &lt;a href=&quot;Figures/corWorkWork_Nm2000_Dk6500_Lm2000_Em1000.svg&quot;&gt;[img [Figures/corWorkWork_Nm2000_Dk6500_Lm2000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
-&lt;/div&gt;
-
-&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
-    &lt;a href=&quot;Figures/corWorkWork_Nm2000_Dk6500_Ln1000_Em1000.svg&quot;&gt;[img [Figures/corWorkWork_Nm2000_Dk6500_Ln1000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
-&lt;/div&gt;
-
-We observe that all curves collapse for different values of $$\tau_0$$, which may indicate that
-$$
-\left&lt;\delta w(t_0, t_0 + \tau) \, \delta w(t_0, t_0 + \tau_0)\right&gt;_{t_0} \approx \left&lt;\delta w(t_0, t_0 + \tau) \, \delta w(t_0, t_0 + \tau)\right&gt;_{t_0} = \text{Var}(w(t_0, t_0 + \tau))_{t_0},
-$$
-independently of $$\tau_0$$.
-
-We have
-
-* for $$\tau \ll l_p/\sigma$$ that the variance is computed over intervals distant of more than $$l_p/\sigma$$,
-* for $$\tau \ge l_p/\sigma$$ that we are looking at the variance of a quantity averaged over a time greater than $$l_p/\sigma$$,
-
-hence the linear variation according to the CLT.
-
-We see however that this prediciton only holds without fitting parameter up to $$\tau/(l_p/\sigma) \approx 10^{-1}$$ for $$l_p/\sigma = 20$$ and $$\tau/(l_p/\sigma) \approx 10^{-2}$$ for $$l_p/\sigma = 100$$.
-
-!!! &quot;Instantaneous&quot; active work correlation
-
-&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
-    &lt;a href=&quot;Figures/corWorkWorkIns_Nm2000_Dk6500_Lm2000_Em1000.svg&quot;&gt;[img [Figures/corWorkWorkIns_Nm2000_Dk6500_Lm2000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
-&lt;/div&gt;
-
-We have a peak at $$\tau \approx 10^{-1}$$ which origin is unknown and, from the time at which it appears, may be related to particles bouncing against each others.
-
-We compute the same correlations but with all available interval to improve statistics, we however stress that these intervals cannot be considered independent anymore.
-
-&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
-    &lt;a href=&quot;Figures/corWorkWorkIns_bruteForce_Nm2000_Dk6500_Lm2000_Em1000.svg&quot;&gt;[img [Figures/corWorkWorkIns_bruteForce_Nm2000_Dk6500_Lm2000_Em1000.svg]]&lt;/a&gt;&lt;br&gt;
-&lt;/div&gt;
-
-We see that this peak is still present.
 
 !! Order parameter
 
@@ -10975,8 +10855,100 @@ $$
 $$
 for small enough $$\tau$$.</pre>
 </div>
-<div created="20191010153112162" modified="20191028190650985" tags="TableOfContents" title="Active Brownian particles">
-<pre>! Model
+<div created="20191029154238656" modified="20191029224230114" tags="[[Multiple ABP]]" title="ABP work correlations">
+<pre>&lt;&lt;compuscript path:&quot;work.py&quot;&gt;&gt;
+
+! Averaged active work correlations
+
+&lt;&lt;plot image:&quot;corWorkWorkAve_Nm2000_Dk6500_Lm2000_Em1000&quot;&gt;&gt;
+
+We observe that curves collapse for different values of $$\tau_0$$ for $$\tau \ll 1$$, which may indicate that
+$$
+\left&lt;\delta w(t_0, t_0 + \tau) \, \delta w(t_0, t_0 + \tau_0)\right&gt;_{t_0} \approx \left&lt;\delta w(t_0, t_0 + \tau) \, \delta w(t_0, t_0 + \tau)\right&gt;_{t_0} = \text{Var}(w(t_0, t_0 + \tau))_{t_0},
+$$
+independently of $$\tau_0$$.
+
+We note however a separation of the curves and a deviation from the variance as $$\tau$$ increases above 1. This deviation might be due to poor statistics but this has not been verified.
+
+! &quot;Instantaneous&quot; active work correlations
+
+!! Initial result
+
+&lt;&lt;plot image:&quot;corWorkWorkIns_Nm2000_Dk6500_Lm2000_Em1000&quot;&gt;&gt;
+
+We have a peak at $$\tau \approx 10^{-1}$$ which origin is unknown and, from the time at which it appears, may be related to particles bouncing against each others. This motivates an investigation the force autocorrelation.
+
+!! Consistency tests
+
+!!! Increased statistics
+
+We compute the same correlations but with all available interval to improve statistics, we however stress that these intervals cannot be considered independent anymore.
+
+&lt;&lt;plot image:&quot;corWorkWorkIns_bruteForce_Nm2000_Dk6500_Lm2000_Em1000&quot;&gt;&gt;
+
+We see that this peak is still present and furthermore that this curve is qualitatively identical to the former, this time with better statistics.
+
+!!! Computation of variance
+
+&lt;&lt;plot image:&quot;varWorkFromCorWork_Nm2000_Dk6500_Lm2000_Em1000&quot;&gt;&gt;
+
+Moreover, the measure of the &quot;instantaneous&quot; active work correlations is consistent with the measure of the variance, from the formula we have derived in [[Active Brownian particles]].</pre>
+</div>
+<div created="20191029190136095" modified="20191029232318588" tags="[[Multiple ABP]]" title="ABP work distribution">
+<pre>! Mean
+
+&lt;&lt;plot image:&quot;mean_aw_Nn1000_Dk65000_El0000&quot;&gt;&gt;
+
+! Distribution
+
+!! Varying averaging time
+
+We plot histograms of the active work computed on intervals $$\tau$$ and the Gaussian functions of corresponding mean and variance to qualitatively evaluate the deviation from the Gaussian behaviour.
+
+&lt;&lt;plot image:&quot;dist_w_comp_Nm1000_Dk6500_Lm4000&quot;&gt;&gt;
+
+We have for $$\tau$$ small enough, data points quite far from the Gaussian expectation.
+
+!! Varying persistence length
+
+We try to make the data from simulations at different persistent lengths $$l_p/\sigma$$ collapse on a single Gausian, at least close to the mean, insipired by fig. 2 in ([[Cagnetta et al., 2017|https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.119.158002]]).
+
+An issue is that the data looks Gaussian only close to the mean. We thus define, given a number $$\epsilon &gt; 0$$, and for $$W$$ an ensemble of measures of the active work, the ensemble $$W_{\epsilon} = \{w \in W, |w - \left&lt;w\right&gt;| &lt; \epsilon \sigma(w)\}$$, and denotes $$\left&lt;w\right&gt;_{\epsilon}$$  and $$\sigma(w)_{\epsilon}$$ its mean and variance.
+
+&lt;&lt;plot image:&quot;dist_w_comp_Nm1000_Dk6500&quot;&gt;&gt;</pre>
+</div>
+<div created="20191029190356627" modified="20191029224302941" tags="[[Multiple ABP]]" title="ABP work variance">
+<pre>! As a function of $$\tau$$
+
+Central limit theorem indicated that we should have
+$$
+\lim_{\tau \rightarrow +\infty} \tau \, \text{Var}(w(t_0 ; \tau))_{t_0} = \chi,
+$$
+with $$\chi$$ some constant. Moreover, we expect for $$\tau \ll 1$$ that
+$$
+\tau \, \text{Var}(w(t_0 ; \tau))_{t_0} &lt; \chi,
+$$
+because of correlations between successive short intervals of time. We thus identify the time $$\tau^*$$ at which $$\tau \, \text{Var}(w(t_0 ; \tau))_{t_0}$$ saturates to the longest correlation time of the system.
+
+&lt;&lt;plot image:&quot;var_n_activeWork&quot;&gt;&gt;
+
+We have that for $$l_p/\sigma = 20$$, the $$\tau \, \text{Var}(w(t_0 ; \tau))_{t_0}$$ saturates at $$\tau \approx l_p/\sigma$$, indicating that the rotational diffusion time may be the longest correlation of the system. However the picture seems more complex for $$l_p/\sigma = 100$$.
+
+! As a function of $$N$$
+
+!!! As a function of $$N$$
+
+&lt;&lt;plot image:&quot;var_n_N_activeWork&quot;&gt;&gt;
+
+&lt;&lt;plot image:&quot;var_N_activeWork&quot;&gt;&gt;
+</pre>
+</div>
+<div created="20191010153112162" modified="20191029225435458" tags="TableOfContents" title="Active Brownian particles">
+<pre>We define our model of active Brownian particles and derive some analytical results.
+
+Analyses of simulation results can be found for [[one particle|One ABP]] and [[multiple particles|Multiple ABP]].
+
+! Model
 
 !! Theoretical description
 
@@ -11188,6 +11160,10 @@ $$
 $$
 We conclude $$\left&lt;w(t_0 ; \tau)\right&gt; = \left&lt;w\right&gt;$$.
 
+!! Entropy production
+
+Densities of the Wiener processes are known, ratio of forward and backward probabilities can be found this way and there elerges the active work which is thus linked to the entropy production (and dissipation in the thermostat?)
+
 !! Correlations
 
 !!! Variance
@@ -11209,7 +11185,9 @@ so we can finally write
 $$
 \begin{aligned}
 \left&lt;\delta w(t_0 ; \tau)^2\right&gt; &amp;= \frac{1}{n^2} \sum_{i,j=1}^n \left&lt;w(t_0; \tau_0) \, w(t_0 + |j - i| \tau_0; \tau_0)\right&gt; - \left&lt;w\right&gt;^2\\
-&amp;= \frac{1}{n^2} \sum_{i,j=1}^n \left&lt;\delta w(t_0; \tau_0) \, \delta w(t_0 + |j - i| \tau_0; \tau_0)\right&gt;.
+&amp;= \frac{1}{n^2} \sum_{i,j=1}^n \left&lt;\delta w(t_0; \tau_0) \, \delta w(t_0 + |j - i| \tau_0; \tau_0)\right&gt;\\
+&amp;= \frac{1}{n^2} \left(n \left&lt;\delta w(t_0; \tau_0)^2\right&gt; + \sum_{i=1}^{n - 1} 2 (n-d) \left&lt;\delta w(t_0 ; \tau_0) \delta w (t_0 + i \tau_0 ; \tau_0)\right&gt;\right)\\
+&amp;= \frac{1}{n} \left&lt;\delta w(t_0; \tau_0)^2\right&gt; + \frac{1}{n^2} \sum_{i=1}^{n - 1} 2 (n-d) \left&lt;\delta w(t_0 ; \tau_0) \delta w (t_0 + i \tau_0 ; \tau_0)\right&gt;.
 \end{aligned}
 $$
 
@@ -11229,7 +11207,160 @@ C^{(i)}_{ww}(\tau ; \tau_0) = \text{Cov}(\delta w(t_0 ; \tau_0), \delta w(t_0 + 
 $$
 the correlation of the normalised rate of active work averaged over a time $$\tau_0$$ between two times separated by $$\tau$$.
 
-! One-particle quantities
+! Observations
+
+&lt;div class=&quot;tc-table-of-contents&quot;&gt;
+&lt;&lt;toc-selective-expandable 'Active Brownian particles''&gt;&gt;
+&lt;/div&gt;</pre>
+</div>
+<div created="20190812151828852" modified="20190812151845023" tags="$:/tags/Stylesheet" title="CustomStylesheet">
+<pre>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;styles/tw.css&quot; media=&quot;screen&quot;&gt;</pre>
+</div>
+<div created="20191029154238656" draft.of="ABP work correlations" draft.title="ABP work correlations" modified="20191029232457473" tags="[[Multiple ABP]]" title="Draft of 'ABP work correlations'">
+<pre>We compute correlations of the active work with itself and with the order parameter (see [[Active Brownian particles]]).
+
+&lt;&lt;compuscript path:&quot;work.py&quot;&gt;&gt;
+
+! Averaged active work correlations
+
+&lt;&lt;plot image:&quot;corWorkWorkAve_Nm2000_Dk6500_Lm2000_Em1000&quot;&gt;&gt;
+
+We observe that curves collapse for different values of $$\tau_0$$ for $$\tau \ll 1$$, which may indicate that
+$$
+\left&lt;\delta w(t_0, t_0 + \tau) \, \delta w(t_0, t_0 + \tau_0)\right&gt;_{t_0} \approx \left&lt;\delta w(t_0, t_0 + \tau) \, \delta w(t_0, t_0 + \tau)\right&gt;_{t_0} = \text{Var}(w(t_0, t_0 + \tau))_{t_0},
+$$
+independently of $$\tau_0$$.
+
+We note however a separation of the curves and a deviation from the variance as $$\tau$$ increases above 1. This deviation might be due to poor statistics but this has not been verified.
+
+! &quot;Instantaneous&quot; active work correlations
+
+!! Initial result
+
+&lt;&lt;plot image:&quot;corWorkWorkIns_Nm2000_Dk6500_Lm2000_Em1000&quot;&gt;&gt;
+
+We have a peak at $$\tau \approx 10^{-1}$$ which origin is unknown and, from the time at which it appears, may be related to particles bouncing against each others. This motivates an investigation the force autocorrelation.
+
+!! Consistency tests
+
+!!! Increased statistics
+
+We compute the same correlations but with all available interval to improve statistics, we however stress that these intervals cannot be considered independent anymore.
+
+&lt;&lt;plot image:&quot;corWorkWorkIns_bruteForce_Nm2000_Dk6500_Lm2000_Em1000&quot;&gt;&gt;
+
+We see that this peak is still present and furthermore that this curve is qualitatively identical to the former, this time with better statistics.
+
+!!! Computation of variance
+
+&lt;&lt;plot image:&quot;varWorkFromCorWork_Nm2000_Dk6500_Lm2000_Em1000&quot;&gt;&gt;
+
+Moreover, the measure of the &quot;instantaneous&quot; active work correlations is consistent with the measure of the variance, from the formula we have derived in [[Active Brownian particles]].</pre>
+</div>
+<div created="20191010145659974" modified="20191016091839168" tags="TableOfContents" title="Large deviation theory">
+<pre>! General theory
+
+!! Large deviation principle
+
+Following ([[Touchette, 2009|https://www.sciencedirect.com/science/article/pii/S0370157309001410]]), we introduce $$A_n$$ a random vairable indexed by the integer $$n$$ and $$P(A_n \in [a; a + \text{d}a]) \equiv P(A_n \in \text{d}a)$$ the probability of finding $$A_n$$ in the interval $$[a; a + \text{d}a]$$. $$A_n$$ is said to follow a //large deviation principle// if the limit
+$$
+I(a) = \lim_{n \rightarrow +\infty} -\frac{1}{n} \ln P(A_n \in \text{d}a)
+$$
+exists. $$I$$ is then called the //rate function//.
+
+!! Gärtner-Ellis and Varadhan's theorems
+
+!! CGF and free energy
+
+! LDP of time averaged-quantities
+
+!! Biased ensemble of trajectory
+
+!! Eigenproblem formulation
+
+!! Control representation
+
+!! Dynamical phase transitions
+
+! LDP of the active work
+
+!! Active work and entropy production rate
+
+!! Fluctuation theorem</pre>
+</div>
+<div created="20191028125750871" modified="20191028130917255" tags="$:/tags/Macro" title="Macros">
+<pre>\define plot(image:&quot;&quot;)
+
+&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
+    &lt;a href=&quot;Figures/$image$.svg&quot;&gt;[img [Figures/$image$.svg]]&lt;/a&gt;&lt;br&gt;
+    &lt;a
+        href=&quot;Figures/eps/$image$.eps&quot;
+        class=&quot;tc-btn-big-green&quot;
+        style=&quot;background-color:#10b10b&quot;
+        target=&quot;_blank&quot;
+        rel=&quot;noopener noreferrer&quot;
+    &gt;
+            {{$:/core/images/picture}}
+            &lt;b&gt;~PostScript image&lt;/b&gt;
+    &lt;/a&gt;
+&lt;/div&gt;
+
+\end
+
+\define compuscript(path:&quot;&quot;)
+
+&lt;div style=&quot;font-size:0.7em&quot; align=&quot;right&quot;&gt;
+    &lt;a
+        href=&quot;https://github.com/yketa/active_work/blob/master/$path$&quot;
+        class=&quot;tc-btn-big-green&quot;
+        style=&quot;background-color:#0b63b1&quot;
+        target=&quot;_blank&quot;
+        rel=&quot;noopener noreferrer&quot;
+    &gt;
+            {{$:/core/images/github}} &lt;b&gt;Script&lt;/b&gt; on ~GitHub
+    &lt;/a&gt;
+&lt;/div&gt;
+
+\end
+
+We define here macros usable for all tiddlers.
+
+---
+
+__''plot''__
+
+For figures saved as SVG images `Figures/[image].svg` and ~PostScript images `Figures/eps/[image].eps`, we define the macro ''plot'' with parameters ''image'' which displays the image with a link to the //.eps// file.
+
+''EXAMPLE''
+
+&lt;&lt;plot image:&quot;dist_w_comp_Nm2000_Dk6500_Lm2000&quot;&gt;&gt;
+
+---
+
+__''compuscript''__
+
+For scripts in the project ~GitHub [[yketa/active_work|https://github.com/yketa/active_work]], available at `yketa/active_work/[path]`, we define the macro ''compuscript'' with parameter ''path'' which displays a banner with a link to the script on ~GitHub.
+
+''EXAMPLE''
+
+&lt;&lt;compuscript path:&quot;particle.h&quot;&gt;&gt;</pre>
+</div>
+<div created="20191029224124514" modified="20191029224412096" tags="[[Active Brownian particles]]" title="Multiple ABP">
+<pre>! Multi-particles quantities
+
+!! Qualitative observations
+
+We observe clustering for high densities and large persistence length. We make movies from simulations at $$\phi = 0.65$$, $$N = 100$$, and $$l_p/\sigma =$$ [ext[1|Movies/o_Nn1000_Dk6500_Ll1000.mp4]],
+ [ext[10|Movies/o_Nn1000_Dk6500_Lm1000.mp4]], [ext[40|Movies/o_Nn1000_Dk6500_Lm4000.mp4]], [ext[100|Movies/o_Nn1000_Dk6500_Ln1000.mp4]], [ext[200|Movies/o_Nn1000_Dk6500_Ln2000.mp4]]. We observe that clusters seem denser as the persistence length increases.
+
+!! Quantitative observations
+
+&lt;div class=&quot;tc-table-of-contents&quot;&gt;
+&lt;&lt;toc-selective-expandable 'Multiple ABP'&gt;&gt;
+&lt;/div&gt;</pre>
+</div>
+<div created="20191029223954694" modified="20191029224107865" tags="[[Active Brownian particles]]" title="One ABP">
+<pre>! One-particle quantities
 
 We focus on $$N=1$$ systems, such that the force term disappears in the equations of motion.
 
@@ -11332,98 +11463,20 @@ $$
 &lt;&lt;plot image:&quot;corWorkWorkIns_Nl1000_Dl1000_El0000&quot;&gt;&gt;
 
 
-We have that the theoretical prediction accurately fits the correlation measurements.</pre>
-</div>
-<div created="20190812151828852" modified="20190812151845023" tags="$:/tags/Stylesheet" title="CustomStylesheet">
-<pre>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;styles/tw.css&quot; media=&quot;screen&quot;&gt;</pre>
-</div>
-<div created="20191010145659974" modified="20191016091839168" tags="TableOfContents" title="Large deviation theory">
-<pre>! General theory
+We have that the theoretical prediction accurately fits the correlation measurements.
 
-!! Large deviation principle
-
-Following ([[Touchette, 2009|https://www.sciencedirect.com/science/article/pii/S0370157309001410]]), we introduce $$A_n$$ a random vairable indexed by the integer $$n$$ and $$P(A_n \in [a; a + \text{d}a]) \equiv P(A_n \in \text{d}a)$$ the probability of finding $$A_n$$ in the interval $$[a; a + \text{d}a]$$. $$A_n$$ is said to follow a //large deviation principle// if the limit
+We note that both these findings are consistent with the previously found relation, for $$\tau = n \tau_0$$,
 $$
-I(a) = \lim_{n \rightarrow +\infty} -\frac{1}{n} \ln P(A_n \in \text{d}a)
+\left&lt;\delta w(t_0 ; \tau)^2\right&gt; = \frac{1}{n} \left&lt;\delta w(t_0; \tau_0)^2\right&gt; + \frac{1}{n^2} \sum_{i=1}^{n - 1} 2 (n-d) \left&lt;\delta w(t_0 ; \tau_0) \delta w (t_0 + i \tau_0 ; \tau_0)\right&gt;,
 $$
-exists. $$I$$ is then called the //rate function//.
-
-!! Gärtner-Ellis and Varadhan's theorems
-
-!! CGF and free energy
-
-! LDP of time averaged-quantities
-
-!! Biased ensemble of trajectory
-
-!! Eigenproblem formulation
-
-!! Control representation
-
-!! Dynamical phase transitions
-
-! LDP of the active work
-
-!! Active work and entropy production rate
-
-!! Fluctuation theorem</pre>
-</div>
-<div created="20191028125750871" modified="20191028130917255" tags="$:/tags/Macro" title="Macros">
-<pre>\define plot(image:&quot;&quot;)
-
-&lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
-    &lt;a href=&quot;Figures/$image$.svg&quot;&gt;[img [Figures/$image$.svg]]&lt;/a&gt;&lt;br&gt;
-    &lt;a
-        href=&quot;Figures/eps/$image$.eps&quot;
-        class=&quot;tc-btn-big-green&quot;
-        style=&quot;background-color:#10b10b&quot;
-        target=&quot;_blank&quot;
-        rel=&quot;noopener noreferrer&quot;
-    &gt;
-            {{$:/core/images/picture}}
-            &lt;b&gt;~PostScript image&lt;/b&gt;
-    &lt;/a&gt;
-&lt;/div&gt;
-
-\end
-
-\define compuscript(path:&quot;&quot;)
-
-&lt;div style=&quot;font-size:0.7em&quot; align=&quot;right&quot;&gt;
-    &lt;a
-        href=&quot;https://github.com/yketa/active_work/blob/master/$path$&quot;
-        class=&quot;tc-btn-big-green&quot;
-        style=&quot;background-color:#0b63b1&quot;
-        target=&quot;_blank&quot;
-        rel=&quot;noopener noreferrer&quot;
-    &gt;
-            {{$:/core/images/github}} &lt;b&gt;Script&lt;/b&gt; on ~GitHub
-    &lt;/a&gt;
-&lt;/div&gt;
-
-\end
-
-We define here macros usable for all tiddlers.
-
----
-
-__''plot''__
-
-For figures saved as SVG images `Figures/[image].svg` and ~PostScript images `Figures/eps/[image].eps`, we define the macro ''plot'' with parameters ''image'' which displays the image with a link to the //.eps// file.
-
-''EXAMPLE''
-
-&lt;&lt;plot image:&quot;dist_w_comp_Nm2000_Dk6500_Lm2000&quot;&gt;&gt;
-
----
-
-__''compuscript''__
-
-For scripts in the project ~GitHub [[yketa/active_work|https://github.com/yketa/active_work]], available at `yketa/active_work/[path]`, we define the macro ''compuscript'' with parameter ''path'' which displays a banner with a link to the script on ~GitHub.
-
-''EXAMPLE''
-
-&lt;&lt;compuscript path:&quot;particle.h&quot;&gt;&gt;</pre>
+where we now have
+$$
+\forall i \geq 1,~ \left&lt;\delta w(t_0 ; \tau_0) \delta w (t_0 + i \tau_0 ; \tau_0)\right&gt; = 0,
+$$
+and thus
+$$
+\frac{\left&lt;\delta w(t_0 ; \tau)^2\right&gt;}{\left&lt;\delta w(t_0; \tau_0)^2\right&gt;} = \frac{1}{n} = \frac{\tau_0}{\tau}.
+$$</pre>
 </div>
 <div created="20180619220822377" modified="20191006135051164" tags="TableOfContents" title="Project">
 <pre>''Author'': Yann-Edwin Keta, //École normale supérieure de Lyon//&lt;br&gt;
