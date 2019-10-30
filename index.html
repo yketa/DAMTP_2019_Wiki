@@ -230,6 +230,8 @@ Error message and password prompt
 
 <li>$:/state/toc/TableOfContents/Active Brownian particles-Multiple ABP--81657105</li>
 
+<li>$:/state/toc/TableOfContents/Active Brownian particles-One ABP--81657105</li>
+
 <li>$:/state/toc/TableOfContents/Measurements-Collective mean square displacements--81657105</li>
 
 <li>$:/state/toc/TableOfContents/Measurements-Cooperativity--81657105</li>
@@ -455,6 +457,12 @@ Error message and password prompt
 <li>$:/themes/tiddlywiki/vanilla/options/sidebarlayout</li>
 
 <li>$:/themes/tiddlywiki/vanilla/settings/fontfamily</li>
+
+<li>ABP 1P mean squared displacement</li>
+
+<li>ABP 1P work correlations</li>
+
+<li>ABP force correlations</li>
 
 <li>ABP order correlations</li>
 
@@ -9900,6 +9908,9 @@ config.macros.bibliography = {
 <div created="20191029224616636" modified="20191029224616636" title="$:/state/toc/TableOfContents/Active Brownian particles-Multiple ABP--81657105">
 <pre>open</pre>
 </div>
+<div created="20191030185434552" modified="20191030185434552" title="$:/state/toc/TableOfContents/Active Brownian particles-One ABP--81657105">
+<pre>open</pre>
+</div>
 <div created="20180609023859864" modified="20190810090138763" title="$:/state/toc/TableOfContents/Measurements-Collective mean square displacements--81657105">
 <pre>close</pre>
 </div>
@@ -10640,7 +10651,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div created="20180620032354454" modified="20180620032356781" title="$:/temp/RemoteAssetSearch/$:/config/OfficialPluginLibrary">
 <pre>bibtex</pre>
 </div>
-<div created="20180416033117939" modified="20191030120840380" title="$:/temp/search">
+<div created="20180416033117939" modified="20191030193729194" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20180620031722320" modified="20180620031722320" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.15/index.html" url="https://tiddlywiki.com/library/v5.1.15/index.html">
@@ -10773,6 +10784,29 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div created="20190727110537306" modified="20190727110548195" title="$:/themes/tiddlywiki/vanilla/settings/fontfamily">
 <pre>&quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Lucida Grande&quot;, &quot;DejaVu Sans&quot;, sans-serif</pre>
 </div>
+<div created="20191030185345647" modified="20191030185437578" tags="[[One ABP]]" title="ABP 1P mean squared displacement">
+<pre>We plot the computed mean squared displacement in solid line and the corresponding theoretical predicition in dashed line.
+
+&lt;&lt;plot image:&quot;1P_msd&quot;&gt;&gt;
+
+We have that the theoretical prediction accurately fits the measured mean squared displacements.</pre>
+</div>
+<div created="20191030185541254" modified="20191030185806965" tags="[[One ABP]]" title="ABP 1P work correlations">
+<pre>! Averaged active work correlations
+
+&lt;&lt;plot image:&quot;corWorkWorkAve_Nl1000_Dl1000_El0000&quot;&gt;&gt;
+
+! Instantanerous active work correlations
+
+&lt;&lt;plot image:&quot;corWorkWorkIns_Nl1000_Dl1000_El0000&quot;&gt;&gt;
+
+We have that the theoretical prediction accurately fits the correlation measurements.</pre>
+</div>
+<div created="20191030124122157" modified="20191030124745913" tags="[[Multiple ABP]]" title="ABP force correlations">
+<pre>&lt;&lt;plot image:&quot;corForce_Nm2000_Dk6500_Lm2000_Em1000&quot;&gt;&gt;
+
+&lt;&lt;plot image:&quot;corForceOrientation_Nm2000_Dk6500_Lm2000_Em1000&quot;&gt;&gt;</pre>
+</div>
 <div created="20191030112133404" modified="20191030113120722" tags="[[Multiple ABP]]" title="ABP order correlations">
 <pre>We have derived in [[Active Brownian particles]],
 $$
@@ -10788,7 +10822,7 @@ $$
 
 Our simulation results are in qualitative accordance with these theoretical predictions.</pre>
 </div>
-<div created="20191029154238656" modified="20191030115520153" tags="[[Multiple ABP]]" title="ABP work correlations">
+<div created="20191029154238656" modified="20191030184903807" tags="[[Multiple ABP]]" title="ABP work correlations">
 <pre>We compute correlations of the active work with itself and with the order parameter (see [[Active Brownian particles]]).
 
 &lt;&lt;compuscript path:&quot;work.py&quot;&gt;&gt;
@@ -10831,11 +10865,22 @@ Moreover, the measure of the &quot;instantaneous&quot; active work correlations 
 
 ! Averaged active work and order parameter norm correlations
 
-&lt;&lt;plot image:&quot;corWorkOrder_Nm2000_Dk6500_Em1000&quot;&gt;&gt;
+We recall
+$$
+C^{(a)}_{wo}(\tau) = \frac{\left&lt;\delta w(t_0; \tau) \, \delta |\underline{\nu}(t_0)|\right&gt;_{t_0}}{\sqrt{\left&lt;\delta w(t_0; \tau)^2\right&gt;_{t_0} \, \left&lt;\delta |\underline{\nu}(t_0)|^2\right&gt;_{t_0}}}.
+$$
+
+&lt;&lt;plot image:&quot;corWorkOrderAve_Nm2000_Dk6500_Em1000&quot;&gt;&gt;
+
+First of all, we note that this correlation function is non-monontic. This can rationalised by the fact that the variance of the active work,
+$$
+\left&lt;\delta w(t_0; \tau)^2\right&gt;_{t_0},
+$$
+is a monotonically decreasing function of $$\tau$$.
 
 We have that the fluctuations of the normalised rate of active work $$w$$ over an interval $$[t_0; t_0 + \tau]$$ are positively correlated with fluctuations of the order parameter $$|\underline{\nu}|$$ at the beginning of this interval. This may indicate that positive fluctuations of the order parameter norm at a given time leads to an increased active work at following times. This can be explained by the fact that nematically ordered particles — //i.e.// high $$|\underline{\nu}|$$ — have fewer collisions, so that active forces translates more efficiently into particle motion ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]).
 
-We also note that, on the one hand, these correlations decay on a length scale larger than the rotational diffusion time, and on the other hand, that correlations for systems at different persistence lengths are qualitatively identical if the time is rescaled by the rotational diffusion time.</pre>
+We also note that these correlations decay on a length scale larger than the rotational diffusion time — the dashed black line is here for illustration purposes and does not reflect any theoretical predicition. Furthermore, we have that the correlations between the averaged active work and the order parameter norm are higher in the $$l_p/\sigma=100$$ than in the $$l_p/\sigma = 20$$ system — this may however be due, in part or completely, to the fact that the variance of the active work is higher in the latter (see [[ABP work variance]]).</pre>
 </div>
 <div created="20191029190136095" modified="20191029232318588" tags="[[Multiple ABP]]" title="ABP work distribution">
 <pre>! Mean
@@ -10888,10 +10933,10 @@ This variance is also computed in [[ABP work correlations]].
 &lt;&lt;plot image:&quot;var_N_activeWork&quot;&gt;&gt;
 </pre>
 </div>
-<div created="20191010153112162" modified="20191030121631567" tags="TableOfContents" title="Active Brownian particles">
+<div created="20191010153112162" modified="20191030190113912" tags="TableOfContents" title="Active Brownian particles">
 <pre>We define our model of active Brownian particles, based on ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]), some quantities to describe the system, and derive some analytical results.
 
-Analyses of simulation results can be found for [[one particle|One ABP]] and [[multiple particles|Multiple ABP]].
+Some other theoretical developments and simulation results can be found for [[one particle|One ABP]] and [[multiple particles|Multiple ABP]].
 
 ! Model
 
@@ -11140,7 +11185,7 @@ $$
 
 We define
 $$
-C^{(a)}_{ww}(\tau ; \tau_0) = \text{Cov}(\delta w(t_0 ; \tau_0), \delta w(t_0; \tau))_{t_0} = \frac{\left&lt;\delta w(t_0; \tau_0) \, \delta w(t_0 ; \tau)\right&gt;_{t_0}}{\sqrt{\left&lt;\delta w(t_0; \tau_0)^2\right&gt;_{t_0} \, \left&lt;\delta w(t_0 ; \tau)^2\right&gt;_{t_0}}},
+C^{(a)}_{ww}(\tau ; \tau_0) = \frac{\left&lt;\delta w(t_0; \tau_0) \, \delta w(t_0 ; \tau)\right&gt;_{t_0}}{\sqrt{\left&lt;\delta w(t_0; \tau_0)^2\right&gt;_{t_0} \, \left&lt;\delta w(t_0 ; \tau)^2\right&gt;_{t_0}}},
 $$
 the correlation between the fluctuations of the normalised rate of active work averaged over a time $$\tau_0$$ and $$\tau$$ with the same starting point.
 
@@ -11148,7 +11193,7 @@ the correlation between the fluctuations of the normalised rate of active work a
 
 We define
 $$
-C^{(i)}_{ww}(\tau ; \tau_0) = \text{Cov}(\delta w(t_0 ; \tau_0), \delta w(t_0 + \tau; \tau_0))_{t_0} = \frac{\left&lt;\delta w(t_0 ; \tau_0) \, \delta w(t_0 + \tau ; \tau_0)\right&gt;_{t_0}}{\left&lt;\delta w(t_0 ; \tau_0)^2\right&gt;}
+C^{(i)}_{ww}(\tau ; \tau_0) = \frac{\left&lt;\delta w(t_0 ; \tau_0) \, \delta w(t_0 + \tau ; \tau_0)\right&gt;_{t_0}}{\left&lt;\delta w(t_0 ; \tau_0)^2\right&gt;}
 $$
 the correlation of the fluctuations of the normalised rate of active work averaged over a time $$\tau_0$$ between two times separated by $$\tau$$.
 
@@ -11157,7 +11202,7 @@ the correlation of the fluctuations of the normalised rate of active work averag
 We define
 $$
 \begin{aligned}
-C^{(a)}_{wo}(\tau) &amp;= \text{Cov}(\delta w(t_0 ; \tau), \delta |\underline{\nu}(t_0)|)_{t_0} = \frac{\left&lt;\delta w(t_0; \tau) \, \delta |\underline{\nu}(t_0)|\right&gt;_{t_0}}{\sqrt{\left&lt;\delta w(t_0; \tau)^2\right&gt;_{t_0} \, \left&lt;\delta |\underline{\nu}(t_0)|^2\right&gt;_{t_0}}}\\
+C^{(a)}_{wo}(\tau) &amp;= \frac{\left&lt;\delta w(t_0; \tau) \, \delta |\underline{\nu}(t_0)|\right&gt;_{t_0}}{\sqrt{\left&lt;\delta w(t_0; \tau)^2\right&gt;_{t_0} \, \left&lt;\delta |\underline{\nu}(t_0)|^2\right&gt;_{t_0}}}\\
 &amp;= \left&lt;\delta w(t_0; \tau) \, \delta |\underline{\nu}(t_0)|\right&gt;_{t_0} \sqrt{\frac{4N}{\left&lt;\delta w(t_0; \tau)^2\right&gt;_{t_0}}},
 \end{aligned}
 $$
@@ -11168,7 +11213,7 @@ the correlation between the fluctuations of the normalised rate of active work o
 We define
 $$
 \begin{aligned}
-C^{(i)}_{wo}(\tau ; \tau_0) &amp;= \text{Cov}(\delta w(t_0 + \tau ; \tau_0), \delta |\underline{\nu}(t_0)|)_{t_0} = \frac{\left&lt;\delta w(t_0 + \tau; \tau_0) \, \delta |\underline{\nu}(t_0)|\right&gt;_{t_0}}{\sqrt{\left&lt;\delta w(t_0 + \tau; \tau_0)^2\right&gt;_{t_0} \, \left&lt;\delta |\underline{\nu}(t_0)|^2\right&gt;_{t_0}}}\\
+C^{(i)}_{wo}(\tau ; \tau_0) &amp;= \frac{\left&lt;\delta w(t_0 + \tau; \tau_0) \, \delta |\underline{\nu}(t_0)|\right&gt;_{t_0}}{\sqrt{\left&lt;\delta w(t_0 + \tau; \tau_0)^2\right&gt;_{t_0} \, \left&lt;\delta |\underline{\nu}(t_0)|^2\right&gt;_{t_0}}}\\
 &amp;= \left&lt;\delta w(t_0 + \tau; \tau_0) \, \delta |\underline{\nu}(t_0)|\right&gt;_{t_0} \sqrt{\frac{4N}{\left&lt;\delta w(t_0; \tau_0)^2\right&gt;_{t_0}}},
 \end{aligned}
 $$
@@ -11214,7 +11259,7 @@ exists. $$I$$ is then called the //rate function//.
 
 !! Fluctuation theorem</pre>
 </div>
-<div created="20191028125750871" modified="20191030120835905" tags="$:/tags/Macro" title="Macros">
+<div created="20191028125750871" modified="20191030185114896" tags="$:/tags/Macro" title="Macros">
 <pre>\define plot(image:&quot;&quot;)
 
 &lt;div style=&quot;font-size:0.6em;text-align:center;&quot;&gt;
@@ -11267,7 +11312,7 @@ For figures saved as SVG images `Figures/[image].svg` and ~PostScript images `Fi
 
 ''EXAMPLE''
 
-&lt;&lt;plot image:&quot;dist_w_comp_Nm2000_Dk6500_Lm2000&quot;&gt;&gt;
+&lt;&lt;plot image:&quot;1P_msd&quot;&gt;&gt;
 
 ---
 
@@ -11289,22 +11334,20 @@ Use macro ''toc'' with parameter ''label'' to display a table of contents of tid
 
 &lt;&lt;toc label:&quot;TableOfContents&quot;&gt;&gt;</pre>
 </div>
-<div created="20191029224124514" modified="20191030121508166" tags="[[Active Brownian particles]]" title="Multiple ABP">
-<pre>! Multi-particles quantities
-
-!! Qualitative observations
+<div created="20191029224124514" modified="20191030190009934" tags="[[Active Brownian particles]]" title="Multiple ABP">
+<pre>! Qualitative observations
 
 We observe clustering for high densities and large persistence length. We make movies from simulations at $$\phi = 0.65$$, $$N = 100$$, and $$l_p/\sigma =$$ [ext[1|Movies/o_Nn1000_Dk6500_Ll1000.mp4]],
  [ext[10|Movies/o_Nn1000_Dk6500_Lm1000.mp4]], [ext[40|Movies/o_Nn1000_Dk6500_Lm4000.mp4]], [ext[100|Movies/o_Nn1000_Dk6500_Ln1000.mp4]], [ext[200|Movies/o_Nn1000_Dk6500_Ln2000.mp4]]. We observe that clusters seem denser as the persistence length increases.
 
-!! Quantitative observations
+! Quantitative observations
 
 &lt;&lt;toc label:&quot;Multiple ABP&quot;&gt;&gt;</pre>
 </div>
-<div created="20191029223954694" modified="20191029224107865" tags="[[Active Brownian particles]]" title="One ABP">
-<pre>! One-particle quantities
+<div created="20191029223954694" modified="20191030201409757" tags="[[Active Brownian particles]]" title="One ABP">
+<pre>! Free active Brownian particle
 
-We focus on $$N=1$$ systems, such that the force term disappears in the equations of motion.
+We focus on $$N=1$$ systems, without external potential, such that the force term disappears in the equations of motion.
 
 These preliminary results enable us to check that the simulation behaves the expected way and to set a basis on which to compare the results of multi-particle simulations.
 
@@ -11329,11 +11372,7 @@ $$
 \end{aligned}
 $$
 
-We plot the computed mean squared displacement in solid line and the corresponding theoretical predicition in dashed line.
-
-&lt;&lt;plot image:&quot;1P_msd&quot;&gt;&gt;
-
-We have that the theoretical prediction accurately fits the measured mean squared displacements.
+We compare this theoretical prediction to our simulations results in [[ABP 1P mean squared displacement]].
 
 !! Active work
 
@@ -11383,10 +11422,6 @@ $$
 $$
 independently of $$\tau_0$$.
 
-&lt;&lt;plot image:&quot;corWorkWorkAve_Nl1000_Dl1000_El0000&quot;&gt;&gt;
-
-We have that the theoretical prediction accurately fits the correlation measurements.
-
 !!! Correlations of instantaneous active work
 
 We have
@@ -11399,13 +11434,8 @@ $$
 $$
 where we can note, from the previous reasoning, that the integrals cancel if $$\tau \geq \tau_0$$, //i.e.//
 $$
-\forall \tau \geq \tau_0,~ \left&lt;\delta w(t_0 ; \tau_0) \, \delta w(t_0 + \tau; \tau_0)\right&gt; =  0,
+\forall \tau \geq \tau_0,~ \left&lt;\delta w(t_0 ; \tau_0) \, \delta w(t_0 + \tau; \tau_0)\right&gt; =  0.
 $$
-
-&lt;&lt;plot image:&quot;corWorkWorkIns_Nl1000_Dl1000_El0000&quot;&gt;&gt;
-
-
-We have that the theoretical prediction accurately fits the correlation measurements.
 
 We note that both these findings are consistent with the previously found relation, for $$\tau = n \tau_0$$,
 $$
@@ -11418,7 +11448,85 @@ $$
 and thus
 $$
 \frac{\left&lt;\delta w(t_0 ; \tau)^2\right&gt;}{\left&lt;\delta w(t_0; \tau_0)^2\right&gt;} = \frac{1}{n} = \frac{\tau_0}{\tau}.
-$$</pre>
+$$
+
+We compare these theoretical predictions to our simulations results in [[ABP 1P work correlations]].
+
+! Infinite persistence length ABP in a harmonic trap
+
+As a simple model of a particle in a cluster, we study a single ABP in a harmonic trap — to model the interactions with the surrounding particles —, and with an infinite persistence length — we are interested in the case where the relevant time scales are negligible compared to the rotational diffusion time.
+
+!! Equation of motion
+
+We have the following Ito SDE describing the evolution of the position of the particle
+$$
+\begin{pmatrix} \text{d}x(t) \\ \text{d}y(t) \end{pmatrix} = - \frac{1}{3} \frac{\sigma}{l_p} \nabla V(\underline{r}(t)) \, \text{d}t+ \underline{u}(\theta_0) \, \text{d}t + \sqrt{\frac{2}{3}\frac{\sigma}{l_p}} \begin{pmatrix} \text{d}W_x(t) \\ \text{d}W_y(t) \end{pmatrix},
+$$
+with the following harmonic potential
+$$
+V(\underline{r}) = \frac{1}{2} k (\underline{r} - \underline{r}_0)^2.
+$$
+Without loss of generality, we will take
+$$
+\theta_0 = 0,~ \underline{r}_0 = \underline{0},
+$$
+such that the equation of motion can be rewritten
+$$
+\begin{pmatrix} \text{d}\tilde{x}(t) \\ \text{d}\tilde{y}(t) \end{pmatrix} = - \frac{1}{3} \frac{\sigma}{l_p} k \begin{pmatrix} \tilde{x}(t) \\ \tilde{y}(t) \end{pmatrix} \text{d}t + \sqrt{\frac{2}{3}\frac{\sigma}{l_p}} \begin{pmatrix} \text{d}W_x(t) \\ \text{d}W_y(t) \end{pmatrix},
+$$
+where we have made the change of variables
+$$
+\tilde{x}(t) = x(t) - 3 \frac{1}{k} \frac{l_p}{\sigma},~ \tilde{y}(t) = y(t).
+$$
+We then have that $$\tilde{x}(t)$$ and $$\tilde{y}(t)$$ are two indenpendent Ornstein-Ulhenbeck processes ([[Gardiner, 2009|https://www.springer.com/gp/book/9783540707127]], § 3.8.4, § 4.5.4), with identical drift and diffusion parameters, therefore,  for $$t, t^{\prime} \rightarrow \infty$$ and $$t - t^{\prime}$$ constant, we have
+$$
+\left&lt;\tilde{x}(t)\right&gt; = \left&lt;\tilde{y}(t)\right&gt; = 0,
+$$
+$$
+\left&lt;\tilde{x}(t) \tilde{x}(t^{\prime})\right&gt; = \left&lt;\tilde{y}(t) \tilde{y}(t^{\prime})\right&gt; = \frac{1}{k} \exp\left(- \frac{1}{3} \frac{\sigma}{l_p} k |t - t^{\prime}|\right),
+$$
+$$
+\left&lt;\tilde{x}(t) \tilde{y}(t^{\prime})\right&gt; = 0.
+$$
+
+!! Active work
+
+We have the following Ito SDE describing the evolution of the active work
+$$
+\text{d}W(t) = \underline{u}(\theta_0) \cdot \text{d}\underline{r}(t) = \left(1 - \frac{1}{3} \frac{\sigma}{l_p} k \, x(t) \right) \text{d}t + \sqrt{\frac{2}{3} \frac{\sigma}{l_p}} \text{d}W_x(t),
+$$
+from which we can infer
+$$
+\left&lt;w(\tau)\right&gt; = \frac{1}{\tau} \left&lt;\int_{t_0}^{t_0 + \tau} \text{d}W(t)\right&gt; = 1 - \frac{1}{3}\frac{\sigma}{l_p}\left&lt;x\right&gt; = 1 - k.
+$$
+We then write
+$$
+\begin{aligned}
+\left&lt;\delta w(t_0; \tau_0) \, \delta w(t_0 + \tau; \tau_0)\right&gt; =&amp; \frac{1}{\tau_0}^2 \left&lt;\int_{t_0}^{t_0 + \tau_0} \left(\text{d}W(t) - (1-k) \, \text{d}t\right)\int_{t_0 + \tau}^{t_0 + \tau + \tau_0} \left(\text{d}W(t) - (1-k) \, \text{d}t\right)\right&gt;\\
+=&amp; \frac{1}{\tau_0^2} \bigg&lt;\int_{t_0}^{t_0 + \tau_0}\int_{t_0 + \tau}^{t_0 + \tau + \tau_0} \left(\frac{1}{3} \frac{\sigma}{l_p} k \right)^2 \tilde{x}(t) \tilde{x}(t^{\prime}) \, \text{d}t \, \text{d}t^{\prime}\\
+&amp;+\int_{t_0}^{t_0 + \tau_0}\int_{t_0 + \tau}^{t_0 + \tau + \tau_0} \frac{2}{3} \frac{\sigma}{l_p} \, \text{d}W_x(t) \, \text{d}W_x(t^{\prime})\bigg&gt;,
+\end{aligned}
+$$
+where the mean of the second integral cancels for
+$$
+\tau \geq \tau_0.
+$$
+We are then left with
+$$
+\begin{aligned}
+\left&lt;\delta w(t_0; \tau_0) \, \delta w(t_0 + \tau; \tau_0)\right&gt; &amp;= \frac{1}{\tau_0^2} \left(\frac{1}{3} \frac{\sigma}{l_p} k \right)^2 \int_{t_0}^{t_0 + \tau_0}\int_{t_0 + \tau}^{t_0 + \tau + \tau_0} \left&lt;\tilde{x}(t) \tilde{x}(t^{\prime})\right&gt; \, \text{d}t \, \text{d}t^{\prime}\\
+&amp;= \frac{1}{\tau_0^2} k \left(\frac{1}{3} \frac{\sigma}{l_p}\right)^2 \int_{t_0}^{t_0 + \tau_0}\int_{t_0 + \tau}^{t_0 + \tau + \tau_0} \exp\left(- \frac{1}{3} \frac{\sigma}{l_p} k |t - t^{\prime}|\right) \, \text{d}t \, \text{d}t^{\prime}\\
+&amp;= \frac{2}{\tau_0^2 k}\left(\cosh\left(\frac{1}{3} \frac{\sigma}{l_p} k \tau_0\right) - 1\right)\exp\left(- \frac{1}{3} \frac{\sigma}{l_p} k \tau\right).
+\end{aligned}
+$$
+We note that we recover $$\left&lt;\delta w(t_0; \tau_0) \, \delta w(t_0 + \tau; \tau_0)\right&gt; = 0$$ in the limit where the external potential vanishes, //i.e.// $$k \rightarrow 0$$. Moreover, we have
+$$
+\lim_{\tau \rightarrow +\infty} \left&lt;\delta w(t_0; \tau_0) \, \delta w(t_0 + \tau; \tau_0)\right&gt; = 0.
+$$
+
+! Quantitative observations
+
+&lt;&lt;toc label:&quot;One ABP&quot;&gt;&gt;</pre>
 </div>
 <div created="20180619220822377" modified="20191030121545746" tags="TableOfContents" title="Project">
 <pre>''Author'': Yann-Edwin Keta, //École normale supérieure de Lyon//&lt;br&gt;
