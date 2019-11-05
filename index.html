@@ -10822,7 +10822,7 @@ $$
 
 Our simulation results are in qualitative accordance with these theoretical predictions.</pre>
 </div>
-<div created="20191029154238656" modified="20191104172614088" tags="[[Multiple ABP]]" title="ABP work correlations">
+<div created="20191029154238656" modified="20191105180113286" tags="[[Multiple ABP]]" title="ABP work correlations">
 <pre>We compute correlations of the active work with itself and with the order parameter (see [[Active Brownian particles]]).
 
 &lt;&lt;compuscript path:&quot;work.py&quot;&gt;&gt;
@@ -10876,6 +10876,20 @@ $$
 computed with all available intervals to improve statistics.
 
 We have that the correlations of the &quot;instantaneous&quot; force part of the active work is a monotically decreasing function.
+
+! Cross correlations of &quot;instantaneous&quot; parts of the active work
+
+All available intervals are used to improve statistics when computing correlations. We use $$\tau_0 = 5\cdot10^{-3}$$.
+
+&lt;&lt;plot image:&quot;crossCor_Nm2000_Dk6500_Lm2000_En1000&quot;&gt;&gt;
+
+&lt;&lt;plot image:&quot;crossCor_Nm2000_Dk6500_Ln1000_En1000&quot;&gt;&gt;
+
+We infer from these plots
+$$
+\left&lt;\delta w(t_0; \tau_0) \delta w(t_0 + \tau; \tau_0)\right&gt; \approx \left&lt;\delta w_f(t_0; \tau_0) \delta w_f(t_0 + \tau; \tau_0)\right&gt; + \left&lt;\delta w_{\eta}(t_0; \tau_0) \delta w_f(t_0 + \tau; \tau_0)\right&gt;,
+$$
+all other cross correlations being of negligible amplitudes over the probed interval.
 
 ! Averaged active work and order parameter norm correlations
 
@@ -10947,7 +10961,7 @@ This variance is also computed in [[ABP work correlations]].
 &lt;&lt;plot image:&quot;var_N_activeWork&quot;&gt;&gt;
 </pre>
 </div>
-<div created="20191010153112162" modified="20191104143325341" tags="TableOfContents" title="Active Brownian particles">
+<div created="20191010153112162" modified="20191105175507537" tags="TableOfContents" title="Active Brownian particles">
 <pre>We define our model of active Brownian particles, based on ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]), some quantities to describe the system, and derive some analytical results.
 
 Some other theoretical developments and simulation results can be found for [[one particle|One ABP]] and [[multiple particles|Multiple ABP]].
@@ -11023,13 +11037,16 @@ for any $$N &gt; 0$$.
 
 !! Numerical integration
 
-We use a simple Euler's method with time step $$\Delta t$$ to integrate the aforementioned equations
+We use a simple Euler's method with time step $$\Delta t$$ to integrate the aforementioned equations,
 $$
 \begin{aligned}
-\underline{r}_{i, t + 1} &amp;= \underline{r}_{i, t} + \Delta t \left(\frac{1}{3} \frac{\sigma}{l_p} \underline{\tilde{F}}_{i, ex, t} + \begin{pmatrix} \cos\theta_{i, t} \\ \sin\theta_{i, t}\end{pmatrix} \right) + \sqrt{\frac{2}{3} \frac{\sigma}{l_p} \Delta t} \, \underline{\eta}_{i, t + 1},\\
-\theta_{i, t + 1} &amp;= \theta_{i, t} + \sqrt{2 \frac{\sigma}{l_p} \Delta t} \, \xi_i.
+\underline{r}_{i, t + 1} &amp;= \underline{r}_{i, t} + \Delta t \left(\frac{1}{3} \frac{\sigma}{l_p} \underline{\tilde{F}}_{i, ex, t} + \begin{pmatrix} \cos\theta_{i, t} \\ \sin\theta_{i, t}\end{pmatrix} \right) + \sqrt{\frac{2}{3} \frac{\sigma}{l_p} \Delta t} \, \begin{pmatrix} \eta_{i, x, t + 1} \\ \eta_{i, y, t + 1} \end{pmatrix},\\
+\theta_{i, t + 1} &amp;= \theta_{i, t} + \sqrt{2 \frac{\sigma}{l_p} \Delta t} \, \xi_{i, t+1},
 \end{aligned}
 $$
+where the $$\eta_{i, x, t}$$, $$\eta_{i, y, t}$$, and $$\xi_{i, t}$$ are independent random numbers taken from a Gaussian distribution with zero mean and unit variance.
+
+In order to avoid large displacements between two consecutive frame, we redraw these random numbers if they exceed a certain threshold.
 
 &lt;&lt;compuscript path:&quot;iteration.cpp&quot;&gt;&gt;
 
@@ -11129,6 +11146,8 @@ $$
 $$
 its deviation from its mean value.
 
+!! Decomposition
+
 We note that with the integration scheme described above, we can rewrite the normalised rate of active work
 $$
 \begin{aligned}
@@ -11145,7 +11164,10 @@ w_f(t_0 ; \tau) = \frac{1}{2N \tau} \sum_{t=0}^{\tau - 1} \sum_{i=1}^N \left(\un
 $$
 the force part of the active work,
 $$
-w_{\theta}(t_0; \tau) = \frac{1}{2}\left(1 + \frac{1}{N\tau} \sum_{t=0}^{\tau - 1} \sum_{i=1}^N \underline{u}(\theta_{i,t_0 + t  + 1}) \cdot \underline{u}(\theta_{i,t_0 + t})\right),
+\begin{aligned}
+w_{\theta}(t_0; \tau) &amp;= \frac{1}{2}\left(1 + \frac{1}{N\tau} \sum_{t=0}^{\tau - 1} \sum_{i=1}^N \underline{u}(\theta_{i,t_0 + t  + 1}) \cdot \underline{u}(\theta_{i,t_0 + t})\right)\\
+&amp;= \frac{1}{2}\left(1 + \frac{1}{N\tau} \sum_{t=0}^{\tau - 1} \sum_{i=1}^N \cos(\theta_{i,t_0 + t  + 1} - \theta_{i,t_0 + t})\right),
+\end{aligned}
 $$
 the orientation part of the active work, and
 $$
@@ -11155,6 +11177,39 @@ the noise part of the active work, such that
 $$
 w(t_0; \tau) = w_f(t_0; \tau) + w_{\theta}(t_0; \tau) + w_{\eta}(t_0; \tau).
 $$
+
+We have that the mean and variance of the orientation part of the active work can be derived analytically. On the one hand,
+$$
+\left&lt;w_{\theta}(t_0; \tau)\right&gt; = \frac{1}{2}\left(1 + \frac{1}{N\tau}\sum_{t=0}^{\tau - 1} \sum_{i=1}^N \left&lt;\cos(\theta_{i,t_0 + t  + 1} - \theta_{i,t_0 + t})\right&gt;\right) = \frac{1}{2}\left(1 + \exp\left(-\frac{\sigma}{l_p} \Delta t\right)\right).
+$$
+On the other hand,
+$$
+\begin{aligned}
+\delta w_{\theta}(t_0; \tau) &amp;= \frac{1}{2 N \tau} \sum_{t=0}^{\tau - 1} \sum_{i=1}^N \left(\cos(\theta_{i,t_0 + t  + 1} - \theta_{i,t_0 + t}) - \exp\left(-\frac{\sigma}{l_p} \Delta t\right)\right)\\
+&amp;= \frac{1}{2 N \tau} \sum_{t=0}^{\tau - 1} \sum_{i=1}^N \left(\cos\left(\sqrt{2 \frac{\sigma}{l_p} \Delta t} \, \xi_{i, t+1}\right) - \exp\left(-\frac{\sigma}{l_p} \Delta t\right)\right),
+\end{aligned}
+$$
+where we have to the first order in $$\Delta t$$ when $$\Delta t \rightarrow 0$$,
+$$
+\begin{aligned}
+\cos\left(\sqrt{2 \frac{\sigma}{l_p} \Delta t} \, \xi_{i, t+1}\right) &amp;= 1 - \frac{\sigma}{l_p} \Delta t \, \xi_{i, t+1}^2,\\
+\exp\left(-\frac{\sigma}{l_p} \Delta t\right) &amp;= 1 - \frac{\sigma}{l_p} \Delta t,
+\end{aligned}
+$$
+such that
+$$
+\delta w_{\theta}(t_0; \tau) = \frac{\Delta t}{2 N \tau} \frac{\sigma}{l_p} \sum_{t=0}^{\tau - 1} \sum_{i=1}^N \left(1 - \xi_{i, t+1}^2\right),
+$$
+and consequently
+$$
+\begin{aligned}
+\left&lt;\delta w_{\theta}(t_0; \tau)^2\right&gt; &amp;= \left(\frac{\Delta t}{2 N \tau} \frac{\sigma}{l_p}\right)^2 \sum_{t, t^{\prime}=0}^{\tau - 1} \sum_{i, j=1}^N \left&lt;\left(1 - \xi_{i, t+1}^2\right) \left(1 - \xi_{j, t^{\prime}+1}^2\right)\right&gt;\\
+&amp;= \left(\frac{\Delta t}{2 N \tau} \frac{\sigma}{l_p}\right)^2 \sum_{t=0}^{\tau - 1} \sum_{i=1}^N \left&lt;\left(1 - \xi_{i, t+1}^2\right)^2\right&gt;\\
+&amp;= \frac{1}{2 N \tau} \left(\frac{\sigma}{l_p} \Delta t\right)^2.
+\end{aligned}
+$$
+
+!! Differential
 
 We can also define the active work per particle $$W(t)$$, such that
 $$
