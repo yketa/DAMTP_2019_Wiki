@@ -9947,7 +9947,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="[[ABP CM transition]] [[ABP work and order LDP]]" title="$:/StoryList">
+<div list="Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -10838,10 +10838,8 @@ $$
 
 Our simulation results are in qualitative accordance with these theoretical predictions.</pre>
 </div>
-<div created="20191113124812892" modified="20191113174332496" tags="[[Active Brownian particles]]" title="ABP work and order LDP">
-<pre>! LDP
-
-We redefine the normalised rate of active work
+<div created="20191113124812892" modified="20191121183210790" tags="[[Active Brownian particles]]" title="ABP work and order LDP">
+<pre>We redefine the normalised rate of active work
 $$
 w_{\tau} = \frac{1}{N \tau} \, (S)\int_0^{\tau} \sum_{i=1}^N \underline{u}(\theta_i(t))\cdot\text{d}\underline{r}_i(t),
 $$
@@ -10851,12 +10849,68 @@ $$
 $$
 where $$(S)\int$$ denotes in both cases a Stratonovitch integral.
 
+! $$w_{\tau}$$
+
+!! LDP
+
+We assume that a [[large deviation principle|Large deviation theory]] holds,
+$$
+P_N(w_{\tau}) \asymp \exp\left(- \tau I_N(w_{\tau})\right),
+$$
+where $$I_N$$ denotes the rate function. We define the scaled cumulant generating function (SCGF),
+$$
+\begin{aligned}
+\psi_N(s, \tau) &amp;= \frac{1}{\tau} \log \left&lt;e^{- s \tau w_{\tau}}\right&gt;_0,\\
+\Psi_N(\tau) &amp;= \lim_{\tau \rightarrow \infty} \psi_N(s, \tau),
+\end{aligned}
+$$
+where $$\left&lt;\right&gt;_0$$ denotes on average in the unbiased ensemble. We can thus define, from $$P_{\tau}(\mathcal{C})$$ the probability density of a trajectory $$\mathcal{C}$$ in the unbiased ensemble, the probability density in the biased ensemble ([[Jack, 2019|https://arxiv.org/abs/1910.09883]]),
+$$
+P^s_{\tau}(\mathcal{C}) = P_{\tau}(\mathcal{C}) e^{-s \tau w_{\tau}} e^{-\tau \psi_N(s, \tau)},
+$$
+and the average of an observable $$O$$ in the biased ensemble,
+$$
+\left&lt;O\right&gt;_s = \frac{\left&lt;O e^{-s \tau w_{\tau}}\right&gt;_0}{\left&lt;e^{-s \tau w_{\tau}}\right&gt;_0}.
+$$
+Particularly, we have
+$$
+\left&lt;w_{\tau}\right&gt;_s = - \Psi^{\prime}_N(s).
+$$
+We note that the SCGF and the rate function are related through Legendre transform,
+$$
+\Psi_N(s) = \sup_{w} \left\{- s w - I_N(w)\right\}.
+$$
+
+!! Relation to covariances
+
+We can show that
+$$
+\begin{aligned}
+\psi_{N}^{\prime\prime}(0, \tau) &amp;= \tau \, \text{Var}(w_{\tau})_0,\\
+\Psi_{N}^{\prime\prime}(0) &amp;= \lim_{\tau \rightarrow \infty} \tau \, \text{Var}(w_{\tau})_0,
+\end{aligned}
+$$
+and, //via// the Legendre transform,
+$$
+I^{\prime\prime}_N(\left&lt;w_{\tau}\right&gt;_0) = \frac{1}{\Psi^{\prime\prime}(0)} = \lim_{\tau \rightarrow \infty} 
+ \frac{1}{\tau \, \text{Var}(w_{\tau})}_0.
+$$
+Moreover, we get
+$$
+\left.\frac{\partial}{\partial s} \left&lt;\overline{\nu}_{\tau}\right&gt;_s\right|_{s=0} = - \tau \, \text{Cov}(\overline{\nu}_{\tau}, w_{\tau})_0,
+$$
+which should not depend on $$\tau$$ as long as the trajectory is long enough.
+
+! $$(w_{\tau}, \overline{\nu}_{\tau})$$
+
+!! LDP
+
 We assume that a joint [[large deviation principle|Large deviation theory]] holds,
 $$
 P_N(\overline{\nu}_{\tau}, w_{\tau}) \asymp \exp\left(- \tau I_N(\overline{\nu}_{\tau}, w_{\tau})\right).
 $$
 
-! Relation to covariances
+!! Relation to covariances
 
 We assume that $$I_N$$ has a single 0 at $$(\overline{\nu}_{\tau}^*, w_{\tau}^*)$$, such that for $$\overline{\nu}_{\tau} \rightarrow \overline{\nu}_{\tau}^*$$ and $$w_{\tau} \rightarrow w_{\tau}^*$$,
 $$
