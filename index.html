@@ -480,8 +480,6 @@ Error message and password prompt
 
 <li>CustomStylesheet</li>
 
-<li>Large deviation theory</li>
-
 <li>Macros</li>
 
 <li>Multiple ABP</li>
@@ -10838,7 +10836,7 @@ $$
 
 Our simulation results are in qualitative accordance with these theoretical predictions.</pre>
 </div>
-<div created="20191113124812892" modified="20191121183210790" tags="[[Active Brownian particles]]" title="ABP work and order LDP">
+<div created="20191113124812892" modified="20191122145353987" tags="[[Active Brownian particles]]" title="ABP work and order LDP">
 <pre>We redefine the normalised rate of active work
 $$
 w_{\tau} = \frac{1}{N \tau} \, (S)\int_0^{\tau} \sum_{i=1}^N \underline{u}(\theta_i(t))\cdot\text{d}\underline{r}_i(t),
@@ -10853,7 +10851,7 @@ where $$(S)\int$$ denotes in both cases a Stratonovitch integral.
 
 !! LDP
 
-We assume that a [[large deviation principle|Large deviation theory]] holds,
+We assume that a large deviation principle ([[Touchette, 2009|https://www.sciencedirect.com/science/article/pii/S0370157309001410]]) holds,
 $$
 P_N(w_{\tau}) \asymp \exp\left(- \tau I_N(w_{\tau})\right),
 $$
@@ -10901,11 +10899,81 @@ $$
 $$
 which should not depend on $$\tau$$ as long as the trajectory is long enough.
 
+!! Fluctuation relation
+
+!!! Trajectory probabilities
+
+We can re-write the equations of motion for an ABP within our model
+$$
+\underline{\eta}_i(t) = \sqrt{\frac{3}{2} \frac{l_p}{\sigma}} \left(\dot{\underline{r}}_i(t) - \underline{u}_i(t) - \frac{1}{3} \frac{\sigma}{l_p} \tilde{\underline{F}}_{i, ex}(t)\right).
+$$
+We recall that $$\underline{\eta}_i(t) = (\eta_{x, i}(t), \eta_{y, i}(t))$$ are independent Gaussian white noises with zero-mean and unit variance, we can then write the probability of a given noise trajectory $$\{\underline{\eta}_i\}_0^{\tau}$$ ([[Cates, 2019|https://arxiv.org/abs/1904.01330]]),
+$$
+\mathcal{P}\left[\{\underline{\eta}_i\}_0^{\tau}\right] \propto \exp\left(-\frac{1}{2} \sum_{i=1}^N \int_0^{\tau} \underline{\eta}_i^2(t) \, \text{d}t\right),
+$$
+which for particle trajectories $$\{\underline{r}_i, \underline{u}_i\}_0^{\tau}$$ gives
+$$
+\mathcal{P}\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] \propto \exp\left(-\frac{3}{4} \frac{l_p}{\sigma} \sum_{i=1}^N \int_0^{\tau} \left[\dot{\underline{r}}_i(t) - \underline{u}(t) - \frac{1}{3} \frac{\sigma}{l_p} \tilde{\underline{F}}_{i, ex}(t)\right]^2 \, \text{d}t\right),
+$$
+and the reverse path probability
+$$
+\mathcal{P}^R\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] \propto \exp\left(-\frac{3}{4} \frac{l_p}{\sigma} \sum_{i=1}^N \int_0^{\tau} \left[-\dot{\underline{r}}_i(t) - \underline{u}(t) - \frac{1}{3} \frac{\sigma}{l_p} \tilde{\underline{F}}_{i, ex}(t)\right]^2 \, \text{d}t\right).
+$$
+
+!!! Entropy production
+
+We define the entropy production rate for a given trajectory $$\{\underline{r}_i, \underline{u}_i\}_0^{\tau}$$ ([[Nardini et al., 2017|https://journals.aps.org/prx/abstract/10.1103/PhysRevX.7.021007]]),
+$$
+\mathcal{S}\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] = \frac{1}{\tau} \ln\frac{\mathcal{P}\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]}{\mathcal{P}^R\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]},
+$$
+such that the steady state entropy production rate is
+$$
+\mathcal{S} = \lim_{\tau \rightarrow \infty} \left&lt;\mathcal{S}\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]\right&gt;.
+$$
+We have
+$$
+\begin{aligned}
+\frac{\mathcal{P}\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]}{\mathcal{P}^R\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]} &amp;= \exp\left(3 \frac{l_p}{\sigma} \sum_{i=1}^N \int_0^{\tau} \left[\dot{\underline{r}}_i(t)\cdot\underline{u}_i(t) + \frac{1}{3}\frac{\sigma}{l_p} \dot{\underline{r}}_i(t)\cdot\tilde{\underline{F}}_{i,ex}(t)\right] \, \text{d}t \right)\\
+&amp;= \exp\left(3 \frac{l_p}{\sigma} N \tau w_{\tau} + \left[U_{int}\right]_0^{\tau}\right),
+\end{aligned}
+$$
+where $$U_{int}$$ is the interaction potential energy, which we will assume is bounded — this assumption is made inspired by ([[Nardini et al., 2017|https://journals.aps.org/prx/abstract/10.1103/PhysRevX.7.021007]]), however the WCA potential used in our model is not bounded. We can thus write
+$$
+\tau \rightarrow \infty,~ \mathcal{S}\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] = 3 \frac{l_p}{\sigma} N w_{\tau},
+$$
+$$
+\mathcal{S} = 3 \frac{l_p}{\sigma} \left&lt;w\right&gt;,
+$$
+hence the relation between active work and entropy production.
+
+!!! Relation for SCGF and rate function
+
+We have that the cumulant generating function of the entropy production rate satisfies the following fluctuation relation ([[Lebowitz and Spohn, 1999|https://link.springer.com/article/10.1023/A:1004589714161]], [[Taniguchi and Cohen, 2006|https://link.springer.com/article/10.1007/s10955-006-9252-2]], [[Jack, 2019|https://arxiv.org/abs/1910.09883]]),
+$$
+\left&lt;\exp\left(- s \, \tau \, \mathcal{S}\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]\right)\right&gt; = \left&lt;\exp\left(- (1 - s) \, \tau \, \mathcal{S}\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]\right)\right&gt;,
+$$
+which, using the relation between production rate and active work, we conclude for the SCGF,
+$$
+\begin{aligned}
+\psi_N(s, \tau) &amp;= \psi_N\left(3\frac{l_p}{\sigma} N - s, \tau\right),\\
+\Psi_N(s) &amp;= \Psi_N\left(3\frac{l_p}{\sigma} N - s\right)
+\end{aligned}
+$$
+See ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]], appendix B) for a compact demonstration of this result.
+
+We then have for $$\psi_N$$ convex and through Legendre transform ([[Touchette, 2009|https://www.sciencedirect.com/science/article/pii/S0370157309001410]], [[Jack, 2019|https://arxiv.org/abs/1910.09883]]),
+$$
+\begin{aligned}
+I_N(-w) &amp;= \sup_s\left\{s\, w - \Psi_N\left(3\frac{l_p}{\sigma} N - s\right)\right\} = \sup_k \left\{-k \, w - \Psi_N(k)\right\} + 3 \frac{l_p}{\sigma}N w\\
+&amp;= I_N(w) + 3 \frac{l_p}{\sigma}N w.
+\end{aligned}
+$$
+
 ! $$(w_{\tau}, \overline{\nu}_{\tau})$$
 
 !! LDP
 
-We assume that a joint [[large deviation principle|Large deviation theory]] holds,
+We assume that a joint large deviation principle holds,
 $$
 P_N(\overline{\nu}_{\tau}, w_{\tau}) \asymp \exp\left(- \tau I_N(\overline{\nu}_{\tau}, w_{\tau})\right).
 $$
@@ -11145,7 +11213,7 @@ This variance is also computed in [[ABP work correlations]].
 
 &lt;&lt;plot image:&quot;varWorkN_Dk6500_Ln1000_El2000&quot;&gt;&gt;</pre>
 </div>
-<div created="20191010153112162" modified="20191113125013090" tags="TableOfContents" title="Active Brownian particles">
+<div created="20191010153112162" modified="20191122132440973" tags="TableOfContents" title="Active Brownian particles">
 <pre>We define our model of active Brownian particles, based on ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]), some quantities to describe the system, and derive some analytical results.
 
 Some other theoretical developments and simulation results can be found for [[one particle|One ABP]] and [[multiple particles|Multiple ABP]].
@@ -11434,7 +11502,7 @@ We conclude $$\left&lt;w(t_0 ; \tau)\right&gt; = \left&lt;w\right&gt;$$.
 
 !! Entropy production
 
-Densities of the Wiener processes are known, ratio of forward and backward probabilities can be found this way and there elerges the active work which is thus linked to the entropy production (and dissipation in the thermostat?)
+Active work is linked to the rate of entropy production and consequently the dissipation into the thermostat. ([[ABP work and order LDP]]).
 
 !! Correlations
 
@@ -11509,40 +11577,6 @@ A relation between the rate of active work, the interparticle potential, and the
 </div>
 <div created="20190812151828852" modified="20190812151845023" tags="$:/tags/Stylesheet" title="CustomStylesheet">
 <pre>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;styles/tw.css&quot; media=&quot;screen&quot;&gt;</pre>
-</div>
-<div created="20191010145659974" modified="20191113131337740" tags="TableOfContents" title="Large deviation theory">
-<pre>! General theory
-
-!! Large deviation principle
-
-Following ([[Touchette, 2009|https://www.sciencedirect.com/science/article/pii/S0370157309001410]]), we introduce $$A_n$$ a random vairable indexed by the integer $$n$$ and $$P(A_n \in [a; a + \text{d}a]) \equiv P(A_n \in \text{d}a)$$ the probability of finding $$A_n$$ in the interval $$[a; a + \text{d}a]$$. $$A_n$$ is said to follow a //large deviation principle// if the limit
-$$
-I(a) = \lim_{n \rightarrow +\infty} -\frac{1}{n} \ln P(A_n \in \text{d}a)
-$$
-exists. $$I$$ is then called the //rate function// and we will write
-$$
-P(A_n \in \text{d}a) \asymp \exp\left(-n \, I(a)\right).
-$$
-
-!! Gärtner-Ellis and Varadhan's theorems
-
-!! CGF and free energy
-
-! LDP of time averaged-quantities
-
-!! Biased ensemble of trajectory
-
-!! Eigenproblem formulation
-
-!! Control representation
-
-!! Dynamical phase transitions
-
-! LDP of the active work
-
-!! Active work and entropy production rate
-
-!! Fluctuation theorem</pre>
 </div>
 <div created="20191028125750871" modified="20191113152052210" tags="$:/tags/Macro" title="Macros">
 <pre>\define plot(image:&quot;&quot;)
