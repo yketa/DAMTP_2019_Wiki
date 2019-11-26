@@ -11640,14 +11640,16 @@ the correlation between the fluctuations of the order parameter norm at a time $
 
 A relation between the rate of active work, the interparticle potential, and the two- and three-body density correlation functions can be derived for a system of active particles ([[Tociu et al., 2019|https://journals.aps.org/prx/abstract/10.1103/PhysRevX.9.041026]]).</pre>
 </div>
-<div created="20191126153600341" modified="20191126170237197" tags="TableOfContents" title="Cloning algorithm">
-<pre>! Large deviations
+<div created="20191126153600341" modified="20191126194347277" tags="TableOfContents" title="Cloning algorithm">
+<pre>We introduce a cloning algorithm described in ([[Brewer et al., 2018|https://iopscience.iop.org/article/10.1088/1742-5468/aab3ef/meta]]).
+
+! Large deviations
 
 Large deviations from typical behaviour are hard to analyse because the corresponding events are rare, meaning that averages such as
 $$
 \left&lt;e^{-s B_{\tau}(\mathcal{C})}\right&gt;_0,
 $$
-with $$B_{\tau}(\mathcal{C})$$ the biasing observable for a trajectory $$\mathcal{C}$$ of length $$t$$, are dominated by trajectories which are not typical of the system with unbiased dynamics ([[Brewer et al., 2018|https://iopscience.iop.org/article/10.1088/1742-5468/aab3ef/meta]]).
+with $$B_{\tau}(\mathcal{C})$$ the biasing observable for a trajectory $$\mathcal{C}$$ of length $$\tau$$, are dominated by trajectories which are not typical of the system with unbiased dynamics.
 
 With $$P(\mathcal{C})$$ the probability of a given trajectory $$\mathcal{C}$$ in the unbiased ensemble, we define
 $$
@@ -11692,7 +11694,7 @@ and clone each version $$i$$ of the system so that its proportion of descendants
 $$
 \Psi(s) \approx \frac{1}{t_{\text{obs}}} \sum_{\beta = 1}^M \log \left(\frac{1}{n_c} \sum_{i=1}^{n_c} \Upsilon^s_{\tau}(\mathcal{C}_i^{\beta})\right),
 $$
-for which errors should vanish as $$M, n_c \rightarrow \infty$$ ([[Brewer et al., 2018|https://iopscience.iop.org/article/10.1088/1742-5468/aab3ef/meta]]).
+for which errors should vanish as $$M, n_c \rightarrow \infty$$.
 
 !! Implementation
 
