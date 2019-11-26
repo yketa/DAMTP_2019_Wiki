@@ -482,6 +482,8 @@ Error message and password prompt
 
 <li>Active Brownian particles</li>
 
+<li>Cloning algorithm</li>
+
 <li>CustomStylesheet</li>
 
 <li>Macros</li>
@@ -9952,7 +9954,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="Project" title="$:/StoryList">
+<div list="[[Cloning algorithm]] [[ABP work and order LDP]] [[ABP biased averages]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -11637,6 +11639,72 @@ the correlation between the fluctuations of the order parameter norm at a time $
 !! Rate of active work and structure of the liquid
 
 A relation between the rate of active work, the interparticle potential, and the two- and three-body density correlation functions can be derived for a system of active particles ([[Tociu et al., 2019|https://journals.aps.org/prx/abstract/10.1103/PhysRevX.9.041026]]).</pre>
+</div>
+<div created="20191126153600341" modified="20191126170237197" tags="TableOfContents" title="Cloning algorithm">
+<pre>! Large deviations
+
+Large deviations from typical behaviour are hard to analyse because the corresponding events are rare, meaning that averages such as
+$$
+\left&lt;e^{-s B_{\tau}(\mathcal{C})}\right&gt;_0,
+$$
+with $$B_{\tau}(\mathcal{C})$$ the biasing observable for a trajectory $$\mathcal{C}$$ of length $$t$$, are dominated by trajectories which are not typical of the system with unbiased dynamics ([[Brewer et al., 2018|https://iopscience.iop.org/article/10.1088/1742-5468/aab3ef/meta]]).
+
+With $$P(\mathcal{C})$$ the probability of a given trajectory $$\mathcal{C}$$ in the unbiased ensemble, we define
+$$
+P_{\tau}^s(\mathcal{C}) = P(\mathcal{C}) e^{-s B_{\tau}(\mathcal{C})} e^{-\tau \psi(s, \tau)},
+$$
+its probability in the biased ensemble, with $$s$$ the biasing parameter, where
+$$
+\begin{aligned}
+\psi(s, \tau) &amp;= \frac{1}{\tau} \log \left&lt;e^{-s B_{\tau}(\mathcal{C})}\right&gt;_0,\\
+\Psi(s) &amp;= \lim_{\tau \rightarrow \infty} \psi(s, \tau),
+\end{aligned}
+$$
+is the scaled cumulant generating function (SCGF), and $$\left&lt;\right&gt;_0$$ denotes an average in the unbiased ensemble.
+
+! Controlled dynamics
+
+Our goal is to compute the SCGF $$\psi(s, \tau)$$, which as we explained is dominated by untypical trajectories of the system. Our first step is then to make these trajectories typical by modifying (or controlling) the dynamics, such that the path probability of a given trajectory $$\mathcal{C}$$ is now
+$$
+P^{\text{con}}(\mathcal{C}) = P(\mathcal{C})e^{U_{\tau}(\mathcal{C})},
+$$
+where $$U_{\tau}(\mathcal{C})$$ is the weight function for a trajectory $$\mathcal{C}$$ of length $$\tau$$. With
+$$
+\Upsilon_{\tau}^s(\mathcal{C}) = \exp\left(- U_{\tau}(\mathcal{C}) - sB_{\tau}(\mathcal{C})\right),
+$$
+we then have
+$$
+\psi(s, \tau) = \frac{1}{\tau} \log \left&lt;\Upsilon_{\tau}^s(\mathcal{C})\right&gt;_{\text{con}},
+$$
+where $$\left&lt;\right&gt;_{\text{con}}$$ denotes an average with controled dynamics.
+
+! Cloning procedure
+
+!! Principle
+
+Consider $$n_c$$ versions of a given system which evolve independently with the controlled dynamics introduced earlier for a step time $$\tau$$, after which these versions will be cloned and deleted.
+
+We introduce $$t_{\text{obs}} = M \tau$$ a total observation time, and $$\mathcal{C}_i^{\beta}$$ the trajectory of the clone $$i \in \{1, \ldots, n_c\}$$ on the interval of time $$[(\beta - 1)\tau; \beta \tau]$$, $$\beta \in \{1, \ldots, M\}$$. At each step, we want to keep the clones that will contribute the most to the average with which the SCGF is defined. We thus introduce
+$$
+\Upsilon_{\tau}^{s, \beta} = \sum_{i=1}^{n_c} \Upsilon^s_{\tau}(\mathcal{C}_i^{\beta}),
+$$
+and clone each version $$i$$ of the system so that its proportion of descendants approaches $$\Upsilon^s_{\tau}(\mathcal{C}_i^{\beta})/\Upsilon_{\tau}^{s, \beta}$$. We can therefore estimate
+$$
+\Psi(s) \approx \frac{1}{t_{\text{obs}}} \sum_{\beta = 1}^M \log \left(\frac{1}{n_c} \sum_{i=1}^{n_c} \Upsilon^s_{\tau}(\mathcal{C}_i^{\beta})\right),
+$$
+for which errors should vanish as $$M, n_c \rightarrow \infty$$ ([[Brewer et al., 2018|https://iopscience.iop.org/article/10.1088/1742-5468/aab3ef/meta]]).
+
+!! Implementation
+
+During step $$\beta$$, the population evolves with the controlled dynamics. At the end of the step, we define
+$$
+\alpha_j^{\beta} = \frac{j + d - 1}{n_c}\Upsilon_{\tau}^{s, \beta},~ j \in \{1, \ldots, n_c\},
+$$
+with $$d \in [0, 1]$$ a random number. We note that these numbers are equally spaced on $$[0, \Upsilon_{\tau}^{s, \beta}]$$. Clone $$j$$ of the new population — for which we will compute the evolution at step $$\beta + 1$$ — is then pulled from clone $$i$$ of the old population, such that
+$$
+\sum_{k=1}^i \Upsilon_{\tau}^s(\mathcal{C}_k^{\beta}) \leq \alpha_j^{\beta} &lt; \sum_{k=1}^{i + 1} \Upsilon_{\tau}^s(\mathcal{C}_k^{\beta}).
+$$
+We refer to the bottom panel of Fig. 5 in ([[Brewer et al., 2018|https://iopscience.iop.org/article/10.1088/1742-5468/aab3ef/meta]]) for illustration of this method.</pre>
 </div>
 <div created="20190812151828852" modified="20190812151845023" tags="$:/tags/Stylesheet" title="CustomStylesheet">
 <pre>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;styles/tw.css&quot; media=&quot;screen&quot;&gt;</pre>
