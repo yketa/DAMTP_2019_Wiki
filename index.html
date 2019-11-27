@@ -10815,14 +10815,8 @@ We have that the theoretical prediction accurately fits the measured mean square
 
 We have that the theoretical prediction accurately fits the correlation measurements.</pre>
 </div>
-<div created="20191125144024165" modified="20191125191208658" tags="[[ABP work and order LDP]]" title="ABP biased averages">
-<pre>We have the fluctuation relation
-$$
-\psi_N(3 \frac{l_p}{\sigma} N - s, \tau) = \psi_N(s, \tau),
-$$
-therefore we will plot quantities for different number of particles and persistence lengths as functions of $$s/(N(l_p/\sigma))$$.
-
-We note that computing the average
+<div created="20191125144024165" modified="20191127203647025" tags="[[ABP work and order LDP]]" title="ABP biased averages">
+<pre>We note that computing the average
 $$
 \left&lt;O\right&gt;_s = \frac{\left&lt;O e^{-s \tau w_{\tau}}\right&gt;_0}{\left&lt;e^{-s \tau w_{\tau}}\right&gt;_0}
 $$
@@ -10845,21 +10839,74 @@ in order to only keep statisctially relevant data.
 
 !! Varying $$\tau$$
 
+We have from the analysis of the [[active work variance|ABP work variance]] that these saturate for an averaging time $$\tau$$ of the order of 1 to 10 $$l_p/\sigma$$. We study here the effect of this average time.
 
+!!! SCGF
+
+&lt;&lt;plot image:&quot;SCGF_scaled_tau_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;
+&lt;&lt;plot image:&quot;SCGF_unscaled_tau_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;
+
+!!! Work average
+
+&lt;&lt;plot image:&quot;sWork_scaled_tau_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;
+&lt;&lt;plot image:&quot;sWork_unscaled_tau_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;
+
+!!! Order average
+
+&lt;&lt;plot image:&quot;sOrder_scaled_tau_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;
+&lt;&lt;plot image:&quot;sOrder_unscaled_tau_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;
 
 !! Varying $$N$$
 
-&lt;&lt;plot image:&quot;SCGF_N&quot;&gt;&gt;
+We are eventually interested by $$N \rightarrow \infty$$ limit to characterise a potential dynamical phase transition.
 
-&lt;&lt;plot image:&quot;sWork_N&quot;&gt;&gt;
+!!! SCGF
 
-&lt;&lt;plot image:&quot;sOrder_N&quot;&gt;&gt;
+&lt;&lt;plot image:&quot;SCGF_scaled_N_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;
+&lt;&lt;plot image:&quot;SCGF_unscaled_N_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;
 
-!! Varying $$l_p/\sigma$$
+!!! Work average
+
+&lt;&lt;plot image:&quot;sWork_scaled_N_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;
+&lt;&lt;plot image:&quot;sWork_unscaled_N_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;
+
+!!! Order average
+
+&lt;&lt;plot image:&quot;sOrder_scaled_N_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;
+&lt;&lt;plot image:&quot;sOrder_unscaled_N_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;
 
 ! Discussion
 
-Deviations from the straight line fitting of $$\left&lt;w_{\tau}\right&gt;_s$$ and $$\left&lt;\overline{\nu}_{\tau}\right&gt;_s$$ confirms the non-Gaussian distribution of both these quantities.</pre>
+Deviations from the straight line fitting of $$\left&lt;w_{\tau}\right&gt;_s$$ and $$\left&lt;\overline{\nu}_{\tau}\right&gt;_s$$ confirms the non-Gaussian distribution of both these quantities.
+
+We have that looking at $$\psi_N(s, \tau)/\left&lt;w_{\tau}\right&gt;_0$$ is a very bad estimate of the convergence in any of the $$\tau, N \rightarrow \infty$$ limits since all these curves look to have collapsed while the $$\left&lt;w_{\tau}\right&gt;_s$$ and $$\left&lt;\overline{\nu}_{\tau}\right&gt;_s$$ still show significant differences.
+
+We have that the unbiased averages $$\left&lt;w_{\tau}\right&gt;_0$$ and $$\left&lt;\overline{\nu}_{\tau}\right&gt;_0$$ are insensitive to $$\tau$$ in the values that we chose but are decreasing functions of $$N$$. We expected for the parameter,
+$$
+\left&lt;\overline{\nu}_{\tau}\right&gt;_0 \sim \frac{1}{\sqrt{N}},
+$$
+which is consistent with this observation.
+
+We have at low $$\tau$$ or $$N$$,
+$$
+\begin{aligned}
+\left. \frac{\partial^2}{\partial s^2} \left&lt;\overline{\nu}_{\tau}\right&gt;_s \right|_{s=0} &amp;&gt; 0,\\
+\left. \frac{\partial}{\partial s} \left&lt;\overline{\nu}_{\tau}\right&gt;_s \right|_{s=0} &amp;&lt; 0,
+\end{aligned}
+$$
+however, since $$\left&lt;\overline{\nu}_{\tau}\right&gt;_s$$ is bounded, we expect
+$$
+\lim_{s \rightarrow -\infty} \frac{\partial}{\partial s} \left&lt;\overline{\nu}_{\tau}\right&gt;_s = 0,
+$$
+therefore there should exist an inflexion point $$s_i(N, \tau)$$ such that
+$$
+\left. \frac{\partial^2}{\partial s^2} \left&lt;\overline{\nu}_{\tau}\right&gt;_s \right|_{s=s_i(N, \tau)} = 0.
+$$
+We observe for large $$N$$ that
+$$
+\lim_{s \rightarrow -\infty} \frac{\partial}{\partial s} \left&lt;\overline{\nu}_{\tau}\right&gt;_s &gt; 0,
+$$
+for low enough negative $$s$$.</pre>
 </div>
 <div created="20191113174242793" modified="20191113181148052" tags="[[Active Brownian particles]]" title="ABP CM transition">
 <pre>We are interested in the dynamical phase transition to collective motion (CM) described in ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]).
@@ -10891,7 +10938,7 @@ $$
 
 Our simulation results are in qualitative accordance with these theoretical predictions.</pre>
 </div>
-<div created="20191113124812892" modified="20191125144545007" tags="[[Active Brownian particles]]" title="ABP work and order LDP">
+<div created="20191113124812892" modified="20191127183105512" tags="[[Active Brownian particles]]" title="ABP work and order LDP">
 <pre>We redefine the normalised rate of active work
 $$
 w_{\tau} = \frac{1}{N \tau} \, (S)\int_0^{\tau} \sum_{i=1}^N \underline{u}(\theta_i(t))\cdot\text{d}\underline{r}_i(t),
@@ -10912,22 +10959,22 @@ where $$(S)\int$$ denotes in both cases a Stratonovitch integral.
 
 We assume that a large deviation principle ([[Touchette, 2009|https://www.sciencedirect.com/science/article/pii/S0370157309001410]]) holds,
 $$
-P_N(w_{\tau}) \asymp \exp\left(- \tau I_N(w_{\tau})\right),
+P_N(w_{\tau}) \asymp \exp\left(- \tau N I_N(w_{\tau})\right),
 $$
 where $$I_N$$ denotes the rate function. We define the scaled cumulant generating function (SCGF),
 $$
 \begin{aligned}
-\psi_N(s, \tau) &amp;= \frac{1}{\tau} \log \left&lt;e^{- s \tau w_{\tau}}\right&gt;_0,\\
-\Psi_N(\tau) &amp;= \lim_{\tau \rightarrow \infty} \psi_N(s, \tau),
+\psi_N(s, \tau) &amp;= \frac{1}{\tau N} \log \left&lt;e^{- s \tau N w_{\tau}}\right&gt;_0,\\
+\Psi_N(s) &amp;= \lim_{\tau \rightarrow \infty} \psi_N(s, \tau),
 \end{aligned}
 $$
 where $$\left&lt;\right&gt;_0$$ denotes on average in the unbiased ensemble. We can thus define, from $$P_{\tau}(\mathcal{C})$$ the probability density of a trajectory $$\mathcal{C}$$ in the unbiased ensemble, the probability density in the biased ensemble ([[Jack, 2019|https://arxiv.org/abs/1910.09883]]),
 $$
-P^s_{\tau}(\mathcal{C}) = P_{\tau}(\mathcal{C}) e^{-s \tau w_{\tau}} e^{-\tau \psi_N(s, \tau)},
+P^s_{\tau}(\mathcal{C}) = P_{\tau}(\mathcal{C}) e^{-s \tau N w_{\tau}} e^{-\tau N \psi_N(s, \tau)},
 $$
 and the average of an observable $$O$$ in the biased ensemble,
 $$
-\left&lt;O\right&gt;_s = \frac{\left&lt;O e^{-s \tau w_{\tau}}\right&gt;_0}{\left&lt;e^{-s \tau w_{\tau}}\right&gt;_0}.
+\left&lt;O\right&gt;_s = \frac{\left&lt;O e^{-s \tau N w_{\tau}}\right&gt;_0}{\left&lt;e^{-s \tau N w_{\tau}}\right&gt;_0} = \left&lt;O e^{-s \tau N w_{\tau}}\right&gt;_0 e^{-\tau N \psi_N(s, \tau)}.
 $$
 Particularly, we have
 $$
@@ -10943,18 +10990,18 @@ $$
 We can show that
 $$
 \begin{aligned}
-\psi_{N}^{\prime\prime}(0, \tau) &amp;= \tau \, \text{Var}(w_{\tau})_0,\\
-\Psi_{N}^{\prime\prime}(0) &amp;= \lim_{\tau \rightarrow \infty} \tau \, \text{Var}(w_{\tau})_0,
+\psi_{N}^{\prime\prime}(0, \tau) &amp;= \tau N \, \text{Var}(w_{\tau})_0,\\
+\Psi_{N}^{\prime\prime}(0) &amp;= \lim_{\tau \rightarrow \infty} \tau N \, \text{Var}(w_{\tau})_0,
 \end{aligned}
 $$
 and, //via// the Legendre transform,
 $$
 I^{\prime\prime}_N(\left&lt;w_{\tau}\right&gt;_0) = \frac{1}{\Psi^{\prime\prime}(0)} = \lim_{\tau \rightarrow \infty} 
- \frac{1}{\tau \, \text{Var}(w_{\tau})}_0.
+ \frac{1}{\tau N \, \text{Var}(w_{\tau})}_0.
 $$
 Moreover, we get
 $$
-\left.\frac{\partial}{\partial s} \left&lt;\overline{\nu}_{\tau}\right&gt;_s\right|_{s=0} = - \tau \, \text{Cov}(\overline{\nu}_{\tau}, w_{\tau})_0,
+\left.\frac{\partial}{\partial s} \left&lt;\overline{\nu}_{\tau}\right&gt;_s\right|_{s=0} = - \tau N \, \text{Cov}(\overline{\nu}_{\tau}, w_{\tau})_0,
 $$
 which should not depend on $$\tau$$ as long as the trajectory is long enough.
 
@@ -10968,46 +11015,50 @@ $$
 $$
 We recall that $$\underline{\eta}_i(t) = (\eta_{x, i}(t), \eta_{y, i}(t))$$ are independent Gaussian white noises with zero-mean and unit variance, we can then write the probability of a given noise trajectory $$\{\underline{\eta}_i\}_0^{\tau}$$ ([[Cates, 2019|https://arxiv.org/abs/1904.01330]]),
 $$
-\mathcal{P}\left[\{\underline{\eta}_i\}_0^{\tau}\right] \propto \exp\left(-\frac{1}{2} \sum_{i=1}^N \int_0^{\tau} \underline{\eta}_i^2(t) \, \text{d}t\right),
+\mathcal{P}_N\left[\{\underline{\eta}_i\}_0^{\tau}\right] \propto \exp\left(-\frac{1}{2} \sum_{i=1}^N \int_0^{\tau} \underline{\eta}_i^2(t) \, \text{d}t\right),
 $$
 which for particle trajectories $$\{\underline{r}_i, \underline{u}_i\}_0^{\tau}$$ gives
 $$
-\mathcal{P}\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] \propto \exp\left(-\frac{3}{4} \frac{l_p}{\sigma} \sum_{i=1}^N \int_0^{\tau} \left[\dot{\underline{r}}_i(t) - \underline{u}(t) - \frac{1}{3} \frac{\sigma}{l_p} \tilde{\underline{F}}_{i, ex}(t)\right]^2 \, \text{d}t\right),
+\mathcal{P}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] \propto \exp\left(-\frac{3}{4} \frac{l_p}{\sigma} \sum_{i=1}^N \int_0^{\tau} \left[\dot{\underline{r}}_i(t) - \underline{u}(t) - \frac{1}{3} \frac{\sigma}{l_p} \tilde{\underline{F}}_{i, ex}(t)\right]^2 \, \text{d}t\right),
 $$
 and the reverse path probability
 $$
-\mathcal{P}^R\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] \propto \exp\left(-\frac{3}{4} \frac{l_p}{\sigma} \sum_{i=1}^N \int_0^{\tau} \left[-\dot{\underline{r}}_i(t) - \underline{u}(t) - \frac{1}{3} \frac{\sigma}{l_p} \tilde{\underline{F}}_{i, ex}(t)\right]^2 \, \text{d}t\right).
+\mathcal{P}_N^R\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] \propto \exp\left(-\frac{3}{4} \frac{l_p}{\sigma} \sum_{i=1}^N \int_0^{\tau} \left[-\dot{\underline{r}}_i(t) - \underline{u}(t) - \frac{1}{3} \frac{\sigma}{l_p} \tilde{\underline{F}}_{i, ex}(t)\right]^2 \, \text{d}t\right).
 $$
 
 !!! Entropy production
 
 We define the entropy production rate for a given trajectory $$\{\underline{r}_i, \underline{u}_i\}_0^{\tau}$$ ([[Nardini et al., 2017|https://journals.aps.org/prx/abstract/10.1103/PhysRevX.7.021007]]),
 $$
-\mathcal{S}\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] = \frac{1}{\tau} \ln\frac{\mathcal{P}\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]}{\mathcal{P}^R\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]},
+\mathcal{S}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] = \frac{1}{\tau} \ln\frac{\mathcal{P}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]}{\mathcal{P}_N^R\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]},
 $$
 such that the steady state entropy production rate is
 $$
-\mathcal{S} = \lim_{\tau \rightarrow \infty} \left&lt;\mathcal{S}\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]\right&gt;.
+\mathcal{S}_N = \lim_{\tau \rightarrow \infty} \left&lt;\mathcal{S}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]\right&gt;.
 $$
 We have
 $$
 \begin{aligned}
-\frac{\mathcal{P}\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]}{\mathcal{P}^R\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]} &amp;= \exp\left(3 \frac{l_p}{\sigma} \sum_{i=1}^N \int_0^{\tau} \left[\dot{\underline{r}}_i(t)\cdot\underline{u}_i(t) + \frac{1}{3}\frac{\sigma}{l_p} \dot{\underline{r}}_i(t)\cdot\tilde{\underline{F}}_{i,ex}(t)\right] \, \text{d}t \right)\\
+\frac{\mathcal{P}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]}{\mathcal{P}_N^R\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]} &amp;= \exp\left(3 \frac{l_p}{\sigma} \sum_{i=1}^N \int_0^{\tau} \left[\dot{\underline{r}}_i(t)\cdot\underline{u}_i(t) + \frac{1}{3}\frac{\sigma}{l_p} \dot{\underline{r}}_i(t)\cdot\tilde{\underline{F}}_{i,ex}(t)\right] \, \text{d}t \right)\\
 &amp;= \exp\left(3 \frac{l_p}{\sigma} N \tau w_{\tau} + \left[U_{int}\right]_0^{\tau}\right),
 \end{aligned}
 $$
-where $$U_{int}$$ is the interaction potential energy, which we will assume is bounded — this assumption is made inspired by ([[Nardini et al., 2017|https://journals.aps.org/prx/abstract/10.1103/PhysRevX.7.021007]]), however the WCA potential used in our model is not bounded. We can thus write
+where $$U_{int}$$ is the interaction potential energy, which we will assume is bounded — this assumption is made inspired by ([[Nardini et al., 2017|https://journals.aps.org/prx/abstract/10.1103/PhysRevX.7.021007]]), however the WCA potential used in our model is not bounded. We recall that in [[our model|Active Brownian particles]] the Péclet number,
 $$
-\tau \rightarrow \infty,~ \mathcal{S}\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] = 3 \frac{l_p}{\sigma} N w_{\tau},
+\text{Pe} = 3 \frac{l_p}{\sigma},
+$$
+so that we can finally write
+$$
+\tau \rightarrow \infty,~ \mathcal{S}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] = \text{Pe} \, N w_{\tau},
 $$
 $$
-\mathcal{S} = 3 \frac{l_p}{\sigma} N \left&lt;w\right&gt;,
+\mathcal{S}_N = \text{Pe} \, N \left&lt;w\right&gt;,
 $$
 hence the relation between active work and entropy production.
 
-We note that $$\mathcal{S}$$ quantifies the distance to equilibrium — or degree of irreversibility ([[Fodor et al., 2016|https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.117.038103]]). We then notice that
+We note that $$\mathcal{S}_N$$ quantifies the distance to equilibrium — or degree of irreversibility ([[Fodor et al., 2016|https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.117.038103]]). We then notice that
 $$
-\lim_{l_p/\sigma \rightarrow 0} \mathcal{S} = 0,
+\lim_{l_p/\sigma \rightarrow 0} \mathcal{S}_N = 0,
 $$
 consistent with the limit of equilibrium overdamped Brownian particles in interaction.
 
@@ -11015,13 +11066,13 @@ consistent with the limit of equilibrium overdamped Brownian particles in intera
 
 We have that the cumulant generating function of the entropy production rate satisfies the following fluctuation relation ([[Lebowitz and Spohn, 1999|https://link.springer.com/article/10.1023/A:1004589714161]], [[Taniguchi and Cohen, 2006|https://link.springer.com/article/10.1007/s10955-006-9252-2]], [[Jack, 2019|https://arxiv.org/abs/1910.09883]]),
 $$
-\left&lt;\exp\left(- s \, \tau \, \mathcal{S}\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]\right)\right&gt; = \left&lt;\exp\left(- (1 - s) \, \tau \, \mathcal{S}\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]\right)\right&gt;,
+\left&lt;\exp\left(- s \, \tau \, \mathcal{S}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]\right)\right&gt; = \left&lt;\exp\left(- (1 - s) \, \tau \, \mathcal{S}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]\right)\right&gt;,
 $$
 which, using the relation between production rate and active work, we conclude for the SCGF,
 $$
 \begin{aligned}
-\psi_N(s, \tau) &amp;= \psi_N\left(3\frac{l_p}{\sigma} N - s, \tau\right),\\
-\Psi_N(s) &amp;= \Psi_N\left(3\frac{l_p}{\sigma} N - s\right).
+\psi_N(s, \tau) &amp;= \psi_N\left(\text{Pe} - s, \tau\right),\\
+\Psi_N(s) &amp;= \Psi_N\left(\text{Pe} - s\right).
 \end{aligned}
 $$
 See ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]], appendix B) for a compact demonstration of this result.
@@ -11029,8 +11080,8 @@ See ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRev
 We then have for $$\psi_N$$ convex and through Legendre transform ([[Touchette, 2009|https://www.sciencedirect.com/science/article/pii/S0370157309001410]], [[Jack, 2019|https://arxiv.org/abs/1910.09883]]),
 $$
 \begin{aligned}
-I_N(-w) &amp;= \sup_s\left\{s\, w - \Psi_N\left(3\frac{l_p}{\sigma} N - s\right)\right\} = \sup_k \left\{-k \, w - \Psi_N(k)\right\} + 3 \frac{l_p}{\sigma}N w\\
-&amp;= I_N(w) + 3 \frac{l_p}{\sigma}N w.
+I_N(-w) &amp;= \sup_s\left\{s\, w - \Psi_N\left(\text{Pe} - s\right)\right\} = \sup_k \left\{-k \, w - \Psi_N(k)\right\} + \text{Pe} \, w\\
+&amp;= I_N(w) + \text{Pe} \, w.
 \end{aligned}
 $$
 
@@ -11640,7 +11691,7 @@ the correlation between the fluctuations of the order parameter norm at a time $
 
 A relation between the rate of active work, the interparticle potential, and the two- and three-body density correlation functions can be derived for a system of active particles ([[Tociu et al., 2019|https://journals.aps.org/prx/abstract/10.1103/PhysRevX.9.041026]]).</pre>
 </div>
-<div created="20191126153600341" modified="20191126194347277" tags="TableOfContents" title="Cloning algorithm">
+<div created="20191126153600341" modified="20191127151136815" tags="TableOfContents" title="Cloning algorithm">
 <pre>We introduce a cloning algorithm described in ([[Brewer et al., 2018|https://iopscience.iop.org/article/10.1088/1742-5468/aab3ef/meta]]).
 
 ! Large deviations
@@ -11670,7 +11721,11 @@ Our goal is to compute the SCGF $$\psi(s, \tau)$$, which as we explained is domi
 $$
 P^{\text{con}}(\mathcal{C}) = P(\mathcal{C})e^{U_{\tau}(\mathcal{C})},
 $$
-where $$U_{\tau}(\mathcal{C})$$ is the weight function for a trajectory $$\mathcal{C}$$ of length $$\tau$$. With
+where
+$$
+U_{\tau}(\mathcal{C}) = \log \frac{P^{\text{con}}(\mathcal{C})}{P(\mathcal{C})},
+$$
+is the weight function for a trajectory $$\mathcal{C}$$ of length $$\tau$$. With
 $$
 \Upsilon_{\tau}^s(\mathcal{C}) = \exp\left(- U_{\tau}(\mathcal{C}) - sB_{\tau}(\mathcal{C})\right),
 $$
@@ -11695,6 +11750,8 @@ $$
 \Psi(s) \approx \frac{1}{t_{\text{obs}}} \sum_{\beta = 1}^M \log \left(\frac{1}{n_c} \sum_{i=1}^{n_c} \Upsilon^s_{\tau}(\mathcal{C}_i^{\beta})\right),
 $$
 for which errors should vanish as $$M, n_c \rightarrow \infty$$.
+
+We note that $$\tau$$ has to be chosen so that relevant fluctuations may happen during this time. While choosing $$\tau$$ too small will essentialy make the algorithm slower, choosing $$\tau$$ too large will kill such fluctuations and is therefore not interesting.
 
 !! Implementation
 
