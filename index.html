@@ -11691,8 +11691,8 @@ the correlation between the fluctuations of the order parameter norm at a time $
 
 A relation between the rate of active work, the interparticle potential, and the two- and three-body density correlation functions can be derived for a system of active particles ([[Tociu et al., 2019|https://journals.aps.org/prx/abstract/10.1103/PhysRevX.9.041026]]).</pre>
 </div>
-<div created="20191126153600341" modified="20191127151136815" tags="TableOfContents" title="Cloning algorithm">
-<pre>We introduce a cloning algorithm described in ([[Brewer et al., 2018|https://iopscience.iop.org/article/10.1088/1742-5468/aab3ef/meta]]).
+<div created="20191126153600341" modified="20191128175619212" tags="TableOfContents" title="Cloning algorithm">
+<pre>We introduce a cloning algorithm described in ([[Brewer et al., 2018|https://iopscience.iop.org/article/10.1088/1742-5468/aab3ef/meta]]) and in ([[Lestang, 2018|https://tel.archives-ouvertes.fr/tel-01974316]], chapter 4).
 
 ! Large deviations
 
@@ -11741,11 +11741,23 @@ where $$\left&lt;\right&gt;_{\text{con}}$$ denotes an average with controled dyn
 
 Consider $$n_c$$ versions of a given system which evolve independently with the controlled dynamics introduced earlier for a step time $$\tau$$, after which these versions will be cloned and deleted.
 
-We introduce $$t_{\text{obs}} = M \tau$$ a total observation time, and $$\mathcal{C}_i^{\beta}$$ the trajectory of the clone $$i \in \{1, \ldots, n_c\}$$ on the interval of time $$[(\beta - 1)\tau; \beta \tau]$$, $$\beta \in \{1, \ldots, M\}$$. At each step, we want to keep the clones that will contribute the most to the average with which the SCGF is defined. We thus introduce
+We introduce $$t_{\text{obs}} = M \tau$$ a total observation time, and $$\mathcal{C}_i^{\beta}$$ the trajectory of the clone $$i \in \{1, \ldots, n_c\}$$ on the interval of time $$[(\beta - 1)\tau; \beta \tau]$$, $$\beta \in \{1, \ldots, M\}$$. At each step, we define
 $$
-\Upsilon_{\tau}^{s, \beta} = \sum_{i=1}^{n_c} \Upsilon^s_{\tau}(\mathcal{C}_i^{\beta}),
+\Upsilon_{\tau}^{s, \beta} = \frac{1}{n_c} \sum_{i=1}^{n_c} \Upsilon^s_{\tau}(\mathcal{C}_i^{\beta}),
 $$
-and clone each version $$i$$ of the system so that its proportion of descendants approaches $$\Upsilon^s_{\tau}(\mathcal{C}_i^{\beta})/\Upsilon_{\tau}^{s, \beta}$$. We can therefore estimate
+and attribute to each clone $$i$$ the weight
+$$
+w_i^{\beta} = \frac{\Upsilon^s_{\tau}(\mathcal{C}_i^{\beta})}{\Upsilon_{\tau}^{s, \beta}},
+$$
+so that in average it is replaced by $$w_i^{\beta}$$ copies on the next step ([[Lestang, 2018|https://tel.archives-ouvertes.fr/tel-01974316]]). We can then write that after $$M$$ iterations, the probability of observing a trajectory $$\{\mathcal{C}^1, \ldots, \mathcal{C}^M\}$$ is, for $$n_c \rightarrow \infty$$,
+$$
+P^{\text{clo}}(\{\mathcal{C}^1, \ldots, \mathcal{C}^M\}) = P^{\text{con}}(\{\mathcal{C}^1, \ldots, \mathcal{C}^M\}) \frac{\Upsilon^s_{M\tau}(\{\mathcal{C}^1, \ldots, \mathcal{C}^M\})}{\prod_{\gamma=1}^{\beta} \Upsilon_{\tau}^{s, \beta}},
+$$
+so that we can write
+$$
+\left&lt;\Upsilon^s_{M\tau}(\{\mathcal{C}^1, \ldots, \mathcal{C}^M\})\right&gt;_{\text{con}} = \prod_{\gamma=1}^{\beta} \Upsilon_{\tau}^{s, \beta},
+$$
+and thus
 $$
 \Psi(s) \approx \frac{1}{t_{\text{obs}}} \sum_{\beta = 1}^M \log \left(\frac{1}{n_c} \sum_{i=1}^{n_c} \Upsilon^s_{\tau}(\mathcal{C}_i^{\beta})\right),
 $$
