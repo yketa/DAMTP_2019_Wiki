@@ -466,6 +466,8 @@ Error message and password prompt
 
 <li>ABP biased averages</li>
 
+<li>ABP biased averages (cloning)</li>
+
 <li>ABP CM transition</li>
 
 <li>ABP force correlations</li>
@@ -9954,7 +9956,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="[[Cloning algorithm]] [[ABP work and order LDP]] [[ABP biased averages]] Project" title="$:/StoryList">
+<div list="[[ABP biased averages (cloning)]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -10815,8 +10817,10 @@ We have that the theoretical prediction accurately fits the measured mean square
 
 We have that the theoretical prediction accurately fits the correlation measurements.</pre>
 </div>
-<div created="20191125144024165" modified="20191127203647025" tags="[[ABP work and order LDP]]" title="ABP biased averages">
-<pre>We note that computing the average
+<div created="20191125144024165" modified="20191201132127481" tags="[[ABP work and order LDP]]" title="ABP biased averages">
+<pre>We compute here averages of active work and order parameter in the biased ensemble from unbiased dynamics measurements in order to have a basis of results to compare with the [[output of cloning algorithms|ABP biased averages (cloning)]].
+
+We note that computing the average
 $$
 \left&lt;O\right&gt;_s = \frac{\left&lt;O e^{-s \tau w_{\tau}}\right&gt;_0}{\left&lt;e^{-s \tau w_{\tau}}\right&gt;_0}
 $$
@@ -10907,6 +10911,33 @@ $$
 \lim_{s \rightarrow -\infty} \frac{\partial}{\partial s} \left&lt;\overline{\nu}_{\tau}\right&gt;_s &gt; 0,
 $$
 for low enough negative $$s$$.</pre>
+</div>
+<div created="20191201131923848" modified="20191202203938395" tags="[[ABP work and order LDP]]" title="ABP biased averages (cloning)">
+<pre>We compute here averages of active work and order parameter in the biased ensemble from the [[cloning algorithm|Cloning algorithm]]. Results from unbiased dynamics can be found in [[this tiddler|ABP biased averages]].
+
+&lt;&lt;compuscript path:&quot;cloning.py&quot;&gt;&gt;
+
+! Consistency with averages from unbiased dynamics
+
+Error bars are given by the different runs.
+
+!! SCGF
+
+&lt;&lt;plot image:&quot;SCGF_compare_unscaled_Nm1000_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;
+
+We have an excellent agreement between the results from unbiased dynamics and the cloning algorithm. However, it has already been noted that the SCGF did not change much when varying either $$\tau$$ or $$N$$ and this should be a good test for consistency.
+
+!! Work average
+
+&lt;&lt;plot image:&quot;sWork_compare_unscaled_Nm1000_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;
+
+We have a good agreement for $$s &gt; 0$$. We note that at $$s = 0$$, even though the curves are relatively close, we could have expected a perfect agreement since this corresponds to the unbiased dynamics. We can rationalise this by noting that in total, each clone in the cloning algorithm has been simuated for $$t = 10^2$$ while the unbiased dynamics has been simulated for $$t = 10^5$$.
+
+!! Order average
+
+&lt;&lt;plot image:&quot;sOrder_compare_unscaled_Nm1000_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;
+
+Same remarks here: good agreement for $$s &gt; 0$$ but should have been closer at $$s = 0$$.</pre>
 </div>
 <div created="20191113174242793" modified="20191113181148052" tags="[[Active Brownian particles]]" title="ABP CM transition">
 <pre>We are interested in the dynamical phase transition to collective motion (CM) described in ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]).
