@@ -9852,8 +9852,8 @@ config.macros.bibliography = {
 <div created="20190725184441855" modified="20190725184747575" title="$:/state/ShowPaletteEditor">
 <pre>yes</pre>
 </div>
-<div created="20180417005127058" modified="20191208164040124" title="$:/state/sidebar">
-<pre>no</pre>
+<div created="20180417005127058" modified="20191208214724872" title="$:/state/sidebar">
+<pre>yes</pre>
 </div>
 <div created="20190727110717182" modified="20190727111019209" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Shadows</pre>
@@ -9966,7 +9966,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="CustomStylesheet [[ABP high Pe]] [[Cloning algorithm]] [[ABP cloning algorithm]] [[ABP work and order LDP]] [[Path action]] Project" title="$:/StoryList">
+<div list="[[Active Brownian particles]] [[ABP high Pe]] [[Cloning algorithm]] [[ABP cloning algorithm]] [[ABP work and order LDP]] [[Path action]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -11107,7 +11107,7 @@ $$
 $$
 for low enough negative $$s$$.</pre>
 </div>
-<div created="20191204151816691" modified="20191208144158065" tags="[[ABP work and order LDP]]" title="ABP cloning algorithm">
+<div created="20191204151816691" modified="20191208214713143" tags="[[ABP work and order LDP]]" title="ABP cloning algorithm">
 <pre>We use the cloning algorithm framework detailed in [[Cloning algorithm]].
 
 ! Controlled dynamics
@@ -11127,13 +11127,13 @@ $$
 &amp;\qquad\qquad -\frac{1}{6}\frac{\sigma}{l_p} \sum_{i=1}^N \int_0^{\tau} \frac{\partial}{\partial \underline{r}_i(t)} \underline{\tilde{F}}_{i,ex}(t)\, \text{d}t\Bigg)\\
 &amp;\times \exp\left(-\frac{1}{4}\frac{l_p}{\sigma}\sum_{i=1}^N \int_0^{\tau} \dot{\theta}_i^2(t) \, \text{d}t\right)\\
 \propto&amp; \, \mathcal{P}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]\\
-&amp;\times\exp\left(- \frac{3}{4} \frac{l_p}{\sigma} \sum_{i=1}^N \int_0^{\tau} \left[2 \left(\dot{\underline{r}}_i(t) - \underline{u}_i(t) - \frac{1}{3} \frac{\sigma}{l_p}\tilde{\underline{F}}_{i,ex}\right) \cdot f \underline{u}_i(t) - f^2 \right] \, \text{d}t\right)\\
-\propto&amp; \, \mathcal{P}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] \, \exp\left(-\frac{3}{2} \frac{\sigma}{l_p} N \tau f \left[w_{\tau} - \left(1 - \frac{f}{2} + w_{f, \tau}\right)\right]\right),
+&amp;\times\exp\left(\frac{3}{4} \frac{l_p}{\sigma} \sum_{i=1}^N \int_0^{\tau} \left[2 \left(\dot{\underline{r}}_i(t) - \underline{u}_i(t) - \frac{1}{3} \frac{\sigma}{l_p}\tilde{\underline{F}}_{i,ex}\right) \cdot f \underline{u}_i(t) - f^2 \right] \, \text{d}t\right)\\
+\propto&amp; \, \mathcal{P}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] \, \exp\left(\frac{3}{2} \frac{\sigma}{l_p} N \tau f \left[w_{\tau} - \left(1 - \frac{f}{2} + w_{f, \tau}\right)\right]\right),
 \end{aligned}
 $$
 where $$\mathcal{P}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]$$ denotes the trajectory probability without the modification of the EOM, $$w_{\tau}$$ is the normalised rate of active work for this trajectory and $$w_{f,\tau}$$ its force part (see [[Active Brownian particles]]). A convenient choice of $$f$$ is then
 $$
-f = \frac{2}{3} \frac{l_p}{\sigma} s,
+f = -\frac{2}{3} \frac{l_p}{\sigma} s,
 $$
 so that we can write
 $$
@@ -11147,7 +11147,35 @@ Therefore, starting from the same initial configuration $$\{\underline{r}_i, \un
 
 !! Second method
 
-([[Nemoto et al., 2016|https://journals.aps.org/pre/pdf/10.1103/PhysRevE.93.062123]])</pre>
+Authors of ([[Nemoto et al., 2016|https://journals.aps.org/pre/pdf/10.1103/PhysRevE.93.062123]]) noted that the probability cost for creating a large fluctuation of the active work is dominated, for $$s &lt; 0$$ where flocking can be observed, by the cost to create an improbable global orientation. An orientation aligning force may thus reduce the required number of clones to simulate such flocking dynamics.
+
+We conserve the previously introduced modification to the translational equation of motion and add an auxiliary force the orientational equation of motion,
+$$
+\dot{\theta}_i = - g N \frac{\partial}{\partial \theta_i} |\underline{\nu}|^2 + \sqrt{2\frac{\sigma}{l_p}} \xi_i = \frac{2 g}{N} \sum_{j \neq i} \sin(\theta_j - \theta_i) + \sqrt{2\frac{\sigma}{l_p}} \xi_i ,
+$$
+where $$\underline{\nu}$$ is the instantaneous global order parameter (see [[Active Brownian particles]]), and $$g$$ is a free parameter.
+
+With $$\mathcal{P}_N^{(2)}\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]$$ the probability of a given trajectory $$\{\underline{r}_i, \underline{u}_i\}_0^{\tau}$$ with modifications to both the translational and rotation EOM, we have
+$$
+\begin{aligned}
+\mathcal{P}_N^{(2)}\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] \propto&amp; \, \exp\Bigg(- \frac{3}{4} \frac{l_p}{\sigma} \sum_{i=1}^N \int_0^{\tau} \left[\left(\dot{\underline{r}}_i(t) - \underline{u}_i(t) - \frac{1}{3} \frac{\sigma}{l_p}\tilde{\underline{F}}_{i,ex}\right) + \frac{2}{3}\frac{l_p}{\sigma} s \,  \underline{u}_i(t)\right]^2 \, \text{d}t\\
+&amp;\qquad\qquad -\frac{1}{6}\frac{\sigma}{l_p} \sum_{i=1}^N \int_0^{\tau} \frac{\partial}{\partial \underline{r}_i(t)} \underline{\tilde{F}}_{i,ex}(t)\, \text{d}t\Bigg)\\
+&amp;\times \exp\Bigg(-\frac{1}{4}\frac{l_p}{\sigma}\sum_{i=1}^N \int_0^{\tau} \left[\dot{\theta}_i(t) - \frac{2g}{N} \sum_{j \neq i} \sin(\theta_j(t) - \theta_i(t))\right]^2 \, \text{d}t\\
+&amp;\qquad\qquad- \frac{g}{N}\sum_{i, j=1, i \neq j}^N \int_0^{\tau} \frac{\partial}{\partial \theta_i(t)} \sin(\theta_j(t) - \theta_i(t)) \, \text{d}t\Bigg),\\
+\propto&amp; \, \mathcal{P}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] \, \exp\left(-sN\tau w_{\tau}\right) \exp\left(sN\tau w^{(1)}_{\tau}\right)\\
+&amp;\times \exp\left(\int_0^{\tau} \left[g - gN|\underline{\nu}(t)|^2 - \frac{g^2}{s N |\underline{\nu}(t)|^2} \frac{l_p}{\sigma} \sum_{i=1}^N \sin^2(\theta_i(t) - \varphi(t))\right] \, \text{d}t\right),
+\end{aligned}
+$$
+where $$\varphi$$ denotes the globa phase, so that we can write
+$$
+\mathcal{P}_N^{(2)}\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] \, \exp\left(-s N \tau w^{(2)}_{\tau}\right) \propto \mathcal{P}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] \, \exp\left(- s N \tau w_{\tau}\right),
+$$
+where we have denoted
+$$
+w^{(2)}_{\tau} = 1 - \frac{1}{3}\frac{\sigma}{l_p}s + w_{f,\tau} + \int_0^{\tau} \left[g - gN|\underline{\nu}(t)|^2 - \frac{g^2}{s N |\underline{\nu}(t)|^2} \frac{l_p}{\sigma} \sum_{i=1}^N \sin^2(\theta_i(t) - \varphi(t))\right] \, \text{d}t.
+$$
+We can draw the same conclusions on the cloning procedure as for the first method. Importantly, the relation between $$\mathcal{P}^{(2)}_N$$ and $$\mathcal{P}_N$$ holds irrespective of the value $$g$$.
+</pre>
 </div>
 <div created="20191113174242793" modified="20191113181148052" tags="[[Active Brownian particles]]" title="ABP CM transition">
 <pre>We are interested in the dynamical phase transition to collective motion (CM) described in ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]).
@@ -11595,7 +11623,7 @@ This variance is also computed in [[ABP work correlations]].
 
 &lt;&lt;plot image:&quot;varWorkN_Dk6500_Ln1000_El2000&quot;&gt;&gt;</pre>
 </div>
-<div created="20191010153112162" modified="20191208140657552" tags="TableOfContents" title="Active Brownian particles">
+<div created="20191010153112162" modified="20191208210425593" tags="TableOfContents" title="Active Brownian particles">
 <pre>We define our model of active Brownian particles, based on ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]), some quantities to describe the system, and derive some analytical results.
 
 Some other theoretical developments and simulation results can be found for [[one particle|One ABP]] and [[multiple particles|Multiple ABP]].
@@ -11696,9 +11724,17 @@ We use the definition of the order parameter in ([[Nemoto et al., 2019|https://j
 $$
 \underline{\nu}(t) = \frac{1}{N} \sum_{i=1}^N \underline{u}(\theta_i(t)),
 $$
-which norm quantifies the alignment of the particles.
+which norm,
+$$|\underline{\nu}(t)| = \frac{1}{N} \sqrt{\sum_{i,j=1}^N \cos(\theta_i(t) - \theta_j(t))},
+$$
+quantifies the alignment of the particles.
 
 We have, in the absence of spontaneous symmetry breaking, $$\left&lt;\underline{\nu}(t)\right&gt; = 0$$.
+
+We also introduce a global phase $$\varphi$$, such that
+$$
+|\underline{\nu}(t)|e^{\text{i}\varphi(t)} \equiv \frac{1}{N} \sum_{i=1}^N e^{\text{i}\theta_i(t)},~ \textit{i.e. } \begin{cases} \cos\varphi(t) = \frac{1}{N|\underline{\nu}(t)|} \sum_{i=1}^N \cos\theta_i(t), \\ \sin\varphi(t) = \frac{1}{N|\underline{\nu}(t)|} \sum_{i=1}^N \sin\theta_i(t).\end{cases}
+$$
 
 !! Decorrelation of orientation
 
