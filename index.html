@@ -468,6 +468,8 @@ Error message and password prompt
 
 <li>ABP averages (cloning) — checks</li>
 
+<li>ABP averages (control) — checks</li>
+
 <li>ABP averages (unbiased dynamics)</li>
 
 <li>ABP cloning algorithm</li>
@@ -499,6 +501,8 @@ Error message and password prompt
 <li>Multiple ABP</li>
 
 <li>One ABP</li>
+
+<li>Path action</li>
 
 <li>Project</li>
 
@@ -9848,7 +9852,7 @@ config.macros.bibliography = {
 <div created="20190725184441855" modified="20190725184747575" title="$:/state/ShowPaletteEditor">
 <pre>yes</pre>
 </div>
-<div created="20180417005127058" modified="20191204153604979" title="$:/state/sidebar">
+<div created="20180417005127058" modified="20191208142701695" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
 <div created="20190727110717182" modified="20190727111019209" title="$:/state/tab--1498284803">
@@ -9962,7 +9966,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="[[Cloning algorithm]] [[ABP cloning algorithm]] [[Active Brownian particles]] Project" title="$:/StoryList">
+<div list="[[Cloning algorithm]] [[ABP cloning algorithm]] [[ABP work and order LDP]] [[Path action]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -10672,7 +10676,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div created="20180620032354454" modified="20180620032356781" title="$:/temp/RemoteAssetSearch/$:/config/OfficialPluginLibrary">
 <pre>bibtex</pre>
 </div>
-<div created="20180416033117939" modified="20191204165723995" title="$:/temp/search">
+<div created="20180416033117939" modified="20191205144826842" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20180620031722320" modified="20180620031722320" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.15/index.html" url="https://tiddlywiki.com/library/v5.1.15/index.html">
@@ -10826,8 +10830,8 @@ We have that the theoretical prediction accurately fits the measured mean square
 
 We have that the theoretical prediction accurately fits the correlation measurements.</pre>
 </div>
-<div created="20191201131923848" modified="20191204151829820" tags="[[ABP work and order LDP]]" title="ABP averages (cloning) — checks">
-<pre>We compute here averages of active work and order parameter in the biased ensemble from the [[cloning algorithm|ABP cloning algorithm]] without modifying the equations of motion, check their consistency with results from unbiased dynamics can be found in [[this tiddler|ABP averages (unbiased dynamics)]], and asses the convergence of the cloning algorithm.
+<div created="20191201131923848" modified="20191205121804272" tags="[[ABP work and order LDP]]" title="ABP averages (cloning) — checks">
+<pre>We compute here averages of active work and order parameter in the biased ensemble from the [[cloning algorithm|ABP cloning algorithm]] without modifying the equations of motion, check their consistency with the results from unbiased dynamics which can be found in [[this tiddler|ABP averages (unbiased dynamics)]], and asses the convergence of the cloning algorithm.
 
 &lt;&lt;compuscript path:&quot;cloning.py&quot;&gt;&gt;
 
@@ -10918,6 +10922,95 @@ Parameters are set by default to $$t=100$$, $$N_{clones}=100$$, $$N_{runs}=10$$,
 !!! Order average
 
 &lt;&lt;plot image:&quot;convCloning_sOrder_tau_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;</pre>
+</div>
+<div created="20191205121159428" modified="20191205185016684" tags="[[ABP work and order LDP]]" title="ABP averages (control) — checks">
+<pre>We compute here averages of active work and order parameter in the biased ensemble from the [[cloning algorithm|ABP cloning algorithm]] with modification of the translational equation of motion (EOM), check their consistency and convergence compared to the cloning without modification of the translational EOM.
+
+&lt;&lt;compuscript path:&quot;cloning.py&quot;&gt;&gt;
+
+! Consistency with averages from unbiased dynamics and without modification of the EOM
+
+Error bars are given by the different runs.
+
+!! SCGF
+
+&lt;&lt;plot image:&quot;SCGF_compare_modified_unscaled_Nm1000_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;
+
+!! Work average
+
+&lt;&lt;plot image:&quot;sWork_compare_modified_unscaled_Nm1000_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;
+
+Results from the cloning algorithm with and without the modification of the dynamics are consistent. We have that the modification of the dynamics seems not advantageous as the error bars are not diminished.
+
+!! Order average
+
+&lt;&lt;plot image:&quot;sOrder_compare_modified_unscaled_Nm1000_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;
+
+Same remarks as for the work average.
+
+! Convergence analysis with varying parameters
+
+We assess the convergence of the cloning algorithm as a function of:
+
+* $$t$$: the total simulation time per clone,
+* $$N_{clones}$$: the total number of clones,
+* $$N_{runs}$$: the total number of successive runs of the cloning algorithm,
+* $$t_{init}$$: the total initial simulation time per clone before launching the cloning procedure,
+* $$\tau$$: the simulation time between each cloning step.
+
+Parameters are set by default to $$t=100$$, $$N_{clones}=100$$, $$N_{runs}=10$$, $$t_{init}=15$$, $$\tau=0.5$$.
+
+Black dashed lined correspond to the entire trajectory average from unbiased dynamics.
+
+!! Varying $$t$$
+
+!!! Work average
+
+&lt;&lt;plot image:&quot;convCloningAll_sWork_tmax_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;
+
+!!! Order average
+
+&lt;&lt;plot image:&quot;convCloningAll_sOrder_tmax_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;
+
+!! Varying $$N_{clones}$$
+
+!!! Work average
+
+&lt;&lt;plot image:&quot;convCloningAll_sWork_nc_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;
+
+!!! Order average
+
+&lt;&lt;plot image:&quot;convCloningAll_sOrder_nc_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;
+
+!! Varying $$N_{runs}$$
+
+!!! Work average
+
+&lt;&lt;plot image:&quot;convCloningAll_sWork_nRuns_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;
+
+!!! Order average
+
+&lt;&lt;plot image:&quot;convCloningAll_sOrder_nRuns_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;
+
+!! Varying $$t_{init}$$
+
+!!! Work average
+
+&lt;&lt;plot image:&quot;convCloningAll_sWork_initSim_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;
+
+!!! Order average
+
+&lt;&lt;plot image:&quot;convCloningAll_sOrder_initSim_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;
+
+!! Varying $$\tau$$
+
+!!! Work average
+
+&lt;&lt;plot image:&quot;convCloningAll_sWork_tau_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;
+
+!!! Order average
+
+&lt;&lt;plot image:&quot;convCloningAll_sOrder_tau_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;</pre>
 </div>
 <div created="20191125144024165" modified="20191204151728096" tags="[[ABP work and order LDP]]" title="ABP averages (unbiased dynamics)">
 <pre>We compute here averages of active work and order parameter in the biased ensemble from unbiased dynamics measurements in order to have a basis of results to compare with the [[output of cloning algorithms|ABP averages (cloning) — checks]].
@@ -11014,23 +11107,47 @@ $$
 $$
 for low enough negative $$s$$.</pre>
 </div>
-<div created="20191204151816691" modified="20191204200157676" tags="[[ABP work and order LDP]]" title="ABP cloning algorithm">
+<div created="20191204151816691" modified="20191208144158065" tags="[[ABP work and order LDP]]" title="ABP cloning algorithm">
 <pre>We use the cloning algorithm framework detailed in [[Cloning algorithm]].
 
 ! Controlled dynamics
 
-In order to enhance the convergence of the algorithm, we can rely on modified (or controlled) dynamics. Authors of ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]], appendix C) propose to modify the self-propulsion force so that the dimensionless translational equation of motion now reads
+In order to enhance the convergence of the algorithm, we can rely on modified (or controlled) dynamics.
+
+!! First method
+
+Authors of ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]], appendix C) first propose to modify the self-propulsion force so that the dimensionless translational equation of motion (EOM) now reads
 $$
-\dot{\underline{r}}_i = \frac{1}{3} \frac{\sigma}{l_p} \tilde{\underline{F}}_{i,ex} + \left(1 - \frac{2}{3}\frac{\sigma}{l_p}s\right)\underline{u}(\theta_i) + \sqrt{\frac{2}{3} \frac{\sigma}{l_p}} \underline{\eta}_i,
+\dot{\underline{r}}_i = \frac{1}{3} \frac{\sigma}{l_p} \tilde{\underline{F}}_{i,ex} + \left(1 + f\right)\underline{u}_i + \sqrt{\frac{2}{3} \frac{\sigma}{l_p}} \underline{\eta}_i,
 $$
-and to keep the rotational equation of motion unchanged. We then introduce the bias
+and to keep the rotational equation of motion unchanged. With $$\mathcal{P}_N^{(1)}\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]$$ the probability of a given trajectory $$\{\underline{r}_i, \underline{u}_i\}_0^{\tau}$$ with this modification of the EOM, we have (see [[ABP work and order LDP]])
 $$
 \begin{aligned}
-\tilde{w}_{\tau} &amp;= 1 - \frac{1}{3} \frac{\sigma}{l_p} s + \frac{1}{N\tau} \frac{1}{3}\frac{\sigma}{l_p} \sum_{i=1}^N \int_0^{\tau} \tilde{\underline{F}}_{i,ex}(t) \cdot \underline{u}(\theta_i(t))\\
-&amp;= 1 -  \frac{1}{3} \frac{\sigma}{l_p} s + w_{f,\tau},
+\mathcal{P}_N^{(1)}\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] \propto&amp; \, \exp\Bigg(- \frac{3}{4} \frac{l_p}{\sigma} \sum_{i=1}^N \int_0^{\tau} \left[\left(\dot{\underline{r}}_i(t) - \underline{u}_i(t) - \frac{1}{3} \frac{\sigma}{l_p}\tilde{\underline{F}}_{i,ex}\right) - f \underline{u}_i(t)\right]^2 \, \text{d}t\\
+&amp;\qquad\qquad -\frac{1}{6}\frac{\sigma}{l_p} \sum_{i=1}^N \int_0^{\tau} \frac{\partial}{\partial \underline{r}_i(t)} \underline{\tilde{F}}_{i,ex}(t)\, \text{d}t\Bigg)\\
+&amp;\times \exp\left(-\frac{1}{4}\frac{l_p}{\sigma}\sum_{i=1}^N \int_0^{\tau} \dot{\theta}_i^2(t) \, \text{d}t\right)\\
+\propto&amp; \, \mathcal{P}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]\\
+&amp;\times\exp\left(- \frac{3}{4} \frac{l_p}{\sigma} \sum_{i=1}^N \int_0^{\tau} \left[2 \left(\dot{\underline{r}}_i(t) - \underline{u}_i(t) - \frac{1}{3} \frac{\sigma}{l_p}\tilde{\underline{F}}_{i,ex}\right) \cdot f \underline{u}_i(t) - f^2 \right] \, \text{d}t\right)\\
+\propto&amp; \, \mathcal{P}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] \, \exp\left(-\frac{3}{2} \frac{\sigma}{l_p} N \tau f \left[w_{\tau} - \left(1 - \frac{f}{2} + w_{f, \tau}\right)\right]\right),
 \end{aligned}
 $$
-where $$w_{f,\tau}$$ denotes the force part of the normalised rate of active work, such that simulating the modified equation of motion with the biasing observable $$N\tau \tilde{w}_{\tau}$$ is equivalent to simulating the unmodified equation of motion with the biasing observable $$N \tau w_{\tau}$$.</pre>
+where $$\mathcal{P}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]$$ denotes the trajectory probability without the modification of the EOM, $$w_{\tau}$$ is the normalised rate of active work for this trajectory and $$w_{f,\tau}$$ its force part (see [[Active Brownian particles]]). A convenient choice of $$f$$ is then
+$$
+f = \frac{2}{3} \frac{l_p}{\sigma} s,
+$$
+so that we can write
+$$
+\mathcal{P}_N^{(1)}\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] \, \exp\left(-s N \tau \left(1 - \frac{1}{3}\frac{\sigma}{l_p}s + w_{f,\tau}\right)\right) \propto \mathcal{P}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] \, \exp\left(- s N \tau w_{\tau}\right),
+$$
+where we will denote
+$$
+w^{(1)}_{\tau} = 1 - \frac{1}{3}\frac{\sigma}{l_p}s + w_{f,\tau}.
+$$
+Therefore, starting from the same initial configuration $$\{\underline{r}_i, \underline{u}_i\}_0$$, biasing the trajectories of the uncontrolled dynamics with respect to $$N \tau w_{\tau}$$ is equivalent to biasing the trajectories of the controlled dynamics we have introduced with respect to $$N \tau w^{(1)}_{\tau}$$. We stress that, to eventually recover the unbiased average, we have to choose the initial configuration from its distribution in the unbiased ensemble.
+
+!! Second method
+
+([[Nemoto et al., 2016|https://journals.aps.org/pre/pdf/10.1103/PhysRevE.93.062123]])</pre>
 </div>
 <div created="20191113174242793" modified="20191113181148052" tags="[[Active Brownian particles]]" title="ABP CM transition">
 <pre>We are interested in the dynamical phase transition to collective motion (CM) described in ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]).
@@ -11047,9 +11164,10 @@ Given the [[joint rate function|ABP work and order LDP]] $$I_N(\overline{\nu}_{\
 
 &lt;&lt;plot image:&quot;corForceOrientation_Nm2000_Dk6500_Lm2000_Em1000&quot;&gt;&gt;</pre>
 </div>
-<div created="20191204152553144" modified="20191204170240751" tags="[[Active Brownian particles]]" title="ABP high Pe">
+<div created="20191204152553144" modified="20191206130631628" tags="[[Active Brownian particles]]" title="ABP high Pe">
 <pre>We are interested in the high $$\text{Pe}$$ behaviour of our [[model active Brownian particles|Active Brownian particles]], in particular the characteristics of their cooperative motion and its relation to individual particles orientations.
 
+|custom-table|k
 | Observations |&lt;|&lt;|&lt;|&lt;|&lt;|h
 | ! $$N$$ | ! $$l_p/\sigma$$ | ! $$\phi$$ | ! $$\Delta t/(l_p/\sigma)$$ | ! focus | ! data |
 | $$10^3$$ | $$200$$ | $$0.8$$ | $$5 \cdot 10^{-4}$$ | orientations | [ext[movie|Movies/u_No1000_Dk8000_Ln2000_Tm1000.mp4]] |
@@ -11060,6 +11178,8 @@ Given the [[joint rate function|ABP work and order LDP]] $$I_N(\overline{\nu}_{\
 |~|~|~| $$2.5 \cdot 10^{-3}$$ | displacements | [ext[movie|Movies/d_No1000_Dl1200_Ln2000_Tm5000.mp4]] |
 |~|~|1.4| $$2.5 \cdot 10^{-3}$$ | orientations | [ext[movie|Movies/u_No1000_Dl1400_Ln2000_Tm5000.mp4]] |
 |~|~|~| $$2.5 \cdot 10^{-3}$$ | displacements | [ext[movie|Movies/d_No1000_Dl1400_Ln2000_Tm5000.mp4]] |
+|~|~|1.5| $$2.5 \cdot 10^{-3}$$ | orientations | [ext[movie|Movies/u_No1000_Dl1500_Ln2000_Tm5000.mp4]] |
+|~|~|~| $$2.5 \cdot 10^{-3}$$ | displacements | [ext[movie|Movies/d_No1000_Dl1500_Ln2000_Tm5000.mp4]] |
 |~|~|1.6| $$2.5 \cdot 10^{-3}$$ | orientations | [ext[movie|Movies/u_No1000_Dl1600_Ln2000_Tm5000.mp4]] |
 |~|~|~| $$2.5 \cdot 10^{-3}$$ | displacements | [ext[movie|Movies/d_No1000_Dl1600_Ln2000_Tm5000.mp4]] |
 |~|~|~|~|
@@ -11083,7 +11203,7 @@ $$
 
 Our simulation results are in qualitative accordance with these theoretical predictions.</pre>
 </div>
-<div created="20191113124812892" modified="20191204152137765" tags="[[Active Brownian particles]]" title="ABP work and order LDP">
+<div created="20191113124812892" modified="20191208142657274" tags="[[Active Brownian particles]]" title="ABP work and order LDP">
 <pre>We redefine the normalised rate of active work
 $$
 w_{\tau} = \frac{1}{N \tau} \, (S)\int_0^{\tau} \sum_{i=1}^N \underline{u}(\theta_i(t))\cdot\text{d}\underline{r}_i(t),
@@ -11154,32 +11274,36 @@ which should not depend on $$\tau$$ as long as the trajectory is long enough.
 
 !!! Trajectory probabilities
 
-We can re-write the equations of motion for an ABP within our model
+We have from our equations of motion (see [[Active Brownian particles]]) and our results on [[path action|Path action]] that the probability of a system trajectory $$\{\underline{r}_i, \underline{u}_i\}_0^{\tau}$$,
 $$
-\underline{\eta}_i(t) = \sqrt{\frac{3}{2} \frac{l_p}{\sigma}} \left(\dot{\underline{r}}_i(t) - \underline{u}_i(t) - \frac{1}{3} \frac{\sigma}{l_p} \tilde{\underline{F}}_{i, ex}(t)\right).
+\mathcal{P}_N[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}] = \mathcal{P}_N[\{\underline{r}_i\}_0^{\tau} | \{\underline{u}_i\}_0^{\tau}] \, \mathcal{P}_N[\{\underline{u}_i\}_0^{\tau}],
 $$
-We recall that $$\underline{\eta}_i(t) = (\eta_{x, i}(t), \eta_{y, i}(t))$$ are independent Gaussian white noises with zero-mean and unit variance, we can then write the probability of a given noise trajectory $$\{\underline{\eta}_i\}_0^{\tau}$$ ([[Cates, 2019|https://arxiv.org/abs/1904.01330]]),
+can be written
 $$
-\mathcal{P}_N\left[\{\underline{\eta}_i\}_0^{\tau}\right] \propto \exp\left(-\frac{1}{2} \sum_{i=1}^N \int_0^{\tau} \underline{\eta}_i^2(t) \, \text{d}t\right),
+\begin{aligned}
+\mathcal{P}_N[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}] \propto&amp; \exp\Bigg(-\frac{3}{4} \frac{l_p}{\sigma} \sum_{i=1}^N \int_0^{\tau} \left[\dot{\underline{r}}_i(t) - \underline{u}_i(t) - \frac{1}{3} \frac{\sigma}{l_p} \tilde{\underline{F}}_{i, ex}(t)\right]^2 \, \text{d}t\\
+&amp;\qquad\qquad -\frac{1}{6}\frac{\sigma}{l_p} \sum_{i=1}^N \int_0^{\tau} \frac{\partial}{\partial \underline{r}_i(t)} \underline{\tilde{F}}_{i,ex}(t)\, \text{d}t\Bigg)\\
+&amp;\times \exp\left(-\frac{1}{4}\frac{l_p}{\sigma}\sum_{i=1}^N \int_0^{\tau} \dot{\theta}_i^2(t) \, \text{d}t\right),
+\end{aligned}
 $$
-which for particle trajectories $$\{\underline{r}_i, \underline{u}_i\}_0^{\tau}$$ gives
+and for the reverse path probability
 $$
-\mathcal{P}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] \propto \exp\left(-\frac{3}{4} \frac{l_p}{\sigma} \sum_{i=1}^N \int_0^{\tau} \left[\dot{\underline{r}}_i(t) - \underline{u}(t) - \frac{1}{3} \frac{\sigma}{l_p} \tilde{\underline{F}}_{i, ex}(t)\right]^2 \, \text{d}t\right),
-$$
-and the reverse path probability
-$$
-\mathcal{P}_N^R\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] \propto \exp\left(-\frac{3}{4} \frac{l_p}{\sigma} \sum_{i=1}^N \int_0^{\tau} \left[-\dot{\underline{r}}_i(t) - \underline{u}(t) - \frac{1}{3} \frac{\sigma}{l_p} \tilde{\underline{F}}_{i, ex}(t)\right]^2 \, \text{d}t\right).
+\begin{aligned}
+\mathcal{P}^R_N[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}] \propto&amp; \exp\Bigg(-\frac{3}{4} \frac{l_p}{\sigma} \sum_{i=1}^N \int_0^{\tau} \left[-\dot{\underline{r}}_i(t) - \underline{u}_i(t) - \frac{1}{3} \frac{\sigma}{l_p} \tilde{\underline{F}}_{i, ex}(t)\right]^2 \, \text{d}t\\
+&amp;\qquad\qquad -\frac{1}{6}\frac{\sigma}{l_p} \sum_{i=1}^N \int_0^{\tau} \frac{\partial}{\partial \underline{r}_i(t)} \underline{\tilde{F}}_{i,ex}(t)\, \text{d}t\Bigg)\\
+&amp;\times \exp\left(-\frac{1}{4}\frac{l_p}{\sigma}\sum_{i=1}^N \int_0^{\tau} \dot{\theta}_i^2(t) \, \text{d}t\right).
+\end{aligned}
 $$
 
 !!! Entropy production
 
 We define the entropy production rate for a given trajectory $$\{\underline{r}_i, \underline{u}_i\}_0^{\tau}$$ ([[Nardini et al., 2017|https://journals.aps.org/prx/abstract/10.1103/PhysRevX.7.021007]]),
 $$
-\mathcal{S}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] = \frac{1}{\tau} \ln\frac{\mathcal{P}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]}{\mathcal{P}_N^R\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]},
+\dot{\mathcal{S}}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] = \frac{1}{\tau} \ln\frac{\mathcal{P}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]}{\mathcal{P}_N^R\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]},
 $$
 such that the steady state entropy production rate is
 $$
-\mathcal{S}_N = \lim_{\tau \rightarrow \infty} \left&lt;\mathcal{S}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]\right&gt;.
+\dot{\mathcal{S}}_N = \lim_{\tau \rightarrow \infty} \left&lt;\dot{\mathcal{S}}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]\right&gt;.
 $$
 We have
 $$
@@ -11194,16 +11318,16 @@ $$
 $$
 so that we can finally write
 $$
-\tau \rightarrow \infty,~ \mathcal{S}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] = \text{Pe} \, N w_{\tau},
+\tau \rightarrow \infty,~ \dot{\mathcal{S}}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] = \text{Pe} \, N w_{\tau},
 $$
 $$
-\mathcal{S}_N = \text{Pe} \, N \left&lt;w\right&gt;,
+\dot{\mathcal{S}}_N = \text{Pe} \, N \left&lt;w\right&gt;,
 $$
 hence the relation between active work and entropy production.
 
-We note that $$\mathcal{S}_N$$ quantifies the distance to equilibrium — or degree of irreversibility ([[Fodor et al., 2016|https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.117.038103]]). We then notice that
+We note that $$\dot{\mathcal{S}}_N$$ quantifies the distance to equilibrium — or degree of irreversibility ([[Fodor et al., 2016|https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.117.038103]]). We then notice that
 $$
-\lim_{l_p/\sigma \rightarrow 0} \mathcal{S}_N = 0,
+\lim_{l_p/\sigma \rightarrow 0} \dot{\mathcal{S}}_N = 0,
 $$
 consistent with the limit of equilibrium overdamped Brownian particles in interaction.
 
@@ -11211,7 +11335,7 @@ consistent with the limit of equilibrium overdamped Brownian particles in intera
 
 We have that the cumulant generating function of the entropy production rate satisfies the following fluctuation relation ([[Lebowitz and Spohn, 1999|https://link.springer.com/article/10.1023/A:1004589714161]], [[Taniguchi and Cohen, 2006|https://link.springer.com/article/10.1007/s10955-006-9252-2]], [[Jack, 2019|https://arxiv.org/abs/1910.09883]]),
 $$
-\left&lt;\exp\left(- s \, \tau \, \mathcal{S}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]\right)\right&gt; = \left&lt;\exp\left(- (1 - s) \, \tau \, \mathcal{S}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]\right)\right&gt;,
+\left&lt;\exp\left(- s \, \tau \, \dot{\mathcal{S}}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]\right)\right&gt; = \left&lt;\exp\left(- (1 - s) \, \tau \, \dot{\mathcal{S}}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]\right)\right&gt;,
 $$
 which, using the relation between production rate and active work, we conclude for the SCGF,
 $$
@@ -11474,7 +11598,7 @@ This variance is also computed in [[ABP work correlations]].
 
 &lt;&lt;plot image:&quot;varWorkN_Dk6500_Ln1000_El2000&quot;&gt;&gt;</pre>
 </div>
-<div created="20191010153112162" modified="20191204192407789" tags="TableOfContents" title="Active Brownian particles">
+<div created="20191010153112162" modified="20191208140657552" tags="TableOfContents" title="Active Brownian particles">
 <pre>We define our model of active Brownian particles, based on ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]), some quantities to describe the system, and derive some analytical results.
 
 Some other theoretical developments and simulation results can be found for [[one particle|One ABP]] and [[multiple particles|Multiple ABP]].
@@ -11496,7 +11620,7 @@ $$
 \dot{\theta}_i &amp;= \sqrt{2 D_r} \xi_i,
 \end{aligned}
 $$
-where $$\underline{\eta}_i, \xi_i$$ are zero-mean unit-variance Gaussian white noises, $$\mu$$ is the mobility, $$v_0$$ the self-propulsion speed, $$\underline{u}(\theta_i) = (\cos\theta_i, \sin\theta_i)$$, and $$D$$ and $$D_r$$ the translational and rotation diffusivities. The force between particles derives from the WCA potential
+where $$\underline{\eta}_i, \xi_i$$ are zero-mean unit-variance Gaussian white noises, $$\mu$$ is the mobility, $$v_0$$ the self-propulsion speed, $$\underline{u}(\theta_i) = (\cos\theta_i, \sin\theta_i) = \underline{u}_i$$, and $$D$$ and $$D_r$$ the translational and rotation diffusivities. The force between particles derives from the WCA potential
 $$
 \begin{aligned}
 V_{WCA}(r, \epsilon) &amp;= \left\{4 \epsilon \left(\frac{1}{(r/\sigma)^{12}} - \frac{1}{(r/\sigma)^6}\right) + 1\right\} \Theta(2^{1/6} - r/\sigma),
@@ -11549,6 +11673,8 @@ $$
 \end{aligned}
 $$
 for any $$N &gt; 0$$.
+
+We note that since the noise is not multiplicative, the Ito and Stratonovitch interpretation of this SDE are equivalent ([[Gardiner, 2009|https://www.springer.com/gp/book/9783540707127]], § 4.4.2).
 
 !! Numerical integration
 
@@ -11649,9 +11775,9 @@ We use the definition of active work in ([[Nemoto et al., 2019|https://journals.
 
 We have the dimensionless normalised rate of active work per particle,
 $$
-w(t_0 ; \tau) = \frac{1}{N \tau} \int_{t_0}^{t_0 + \tau} \sum_{i=1}^N  \underline{\dot{r}}_i(t) \cdot \underline{u}(\theta_i(t)) \, \text{d}t =  \frac{1}{N \tau} \int_{t_0}^{t_0 + \tau} \sum_{i=1}^N \underline{u}(\theta_i(t)) \cdot \text{d}\underline{r}_i(t),
+w(t_0 ; \tau) = \frac{1}{N \tau} \int_{t_0}^{t_0 + \tau} \sum_{i=1}^N  \underline{\dot{r}}_i(t) \circ \underline{u}(\theta_i(t)) \, \text{d}t =  \frac{1}{N \tau} \int_{t_0}^{t_0 + \tau} \sum_{i=1}^N \underline{u}(\theta_i(t)) \circ \text{d}\underline{r}_i(t),
 $$
-in Stratonovich convention. We can thus use the trapezoidal rule to discretise and rewrite this definition
+where $$\circ$$ denotes a Stratonovich product. We can thus use the trapezoidal rule to discretise and rewrite this definition
 $$
 w(t_0 ; \tau) = \frac{1}{2N \, \tau \, \Delta t} \sum_{t=0}^{\tau - 1} \sum_{i=1}^N \left(\underline{u}(\theta_{i,t_0 + t  + 1}) + \underline{u}(\theta_{i, t_0 + t})\right) \cdot \left(\underline{r}_{i,t_0 + t  + 1} - \underline{r}_{i, t_0 + t}\right).
 $$
@@ -11730,7 +11856,7 @@ We can also define the active work per particle $$W(t)$$, such that
 $$
 w(t_0 ; \tau) = \frac{1}{\tau} \int_{t_0}^{t_0 + \tau} \text{d}W(t) = \frac{1}{\tau}(W(t_0 + \tau) - W(t_0)),
 $$
-and which satisfies the following Ito SDE
+and which satisfies the following SDE
 $$
 \begin{aligned}
 \text{d}W(t) &amp;= \frac{1}{2N} \sum_{i=1}^N (\underline{u}(\theta_i(t + \text{d}t)) + \underline{u}(\theta_i(t)))\cdot \text{d}\underline{r}_i(t)\\
@@ -11763,7 +11889,7 @@ We conclude $$\left&lt;w(t_0 ; \tau)\right&gt; = \left&lt;w\right&gt;$$.
 
 !! Entropy production
 
-Active work is linked to the rate of entropy production and consequently the dissipation into the thermostat. ([[ABP work and order LDP]]).
+Active work is proportional to the rate of entropy production and consequently the dissipation into the thermostat (see [[ABP work and order LDP]]).
 
 !! Correlations
 
@@ -11836,7 +11962,7 @@ the correlation between the fluctuations of the order parameter norm at a time $
 
 A relation between the rate of active work, the interparticle potential, and the two- and three-body density correlation functions can be derived for a system of active particles ([[Tociu et al., 2019|https://journals.aps.org/prx/abstract/10.1103/PhysRevX.9.041026]]).</pre>
 </div>
-<div created="20191126153600341" modified="20191202204132076" tags="TableOfContents" title="Cloning algorithm">
+<div created="20191126153600341" modified="20191205200506614" tags="TableOfContents" title="Cloning algorithm">
 <pre>We introduce a cloning algorithm described in ([[Brewer et al., 2018|https://iopscience.iop.org/article/10.1088/1742-5468/aab3ef/meta]]) and in ([[Lestang, 2018|https://tel.archives-ouvertes.fr/tel-01974316]], chapter 4).
 
 &lt;&lt;compuscript path:&quot;cloningserial.hpp&quot;&gt;&gt;
@@ -11880,7 +12006,7 @@ we then have
 $$
 \psi(s, \tau) = \frac{1}{\tau} \log \left&lt;\Upsilon_{\tau}^s(\mathcal{C})\right&gt;_{\text{con}},
 $$
-where $$\left&lt;\right&gt;_{\text{con}}$$ denotes an average with controled dynamics.
+where $$\left&lt;\right&gt;_{\text{con}}$$ denotes an average with controlled dynamics.
 
 ! Cloning procedure
 
@@ -11922,12 +12048,26 @@ with $$d \in [0, 1]$$ a random number. We note that these numbers are equally sp
 $$
 \sum_{k=1}^i \Upsilon_{\tau}^s(\mathcal{C}_k^{\beta}) \leq \alpha_j^{\beta} &lt; \sum_{k=1}^{i + 1} \Upsilon_{\tau}^s(\mathcal{C}_k^{\beta}).
 $$
-We refer to the bottom panel of Fig. 5 in ([[Brewer et al., 2018|https://iopscience.iop.org/article/10.1088/1742-5468/aab3ef/meta]]) for illustration of this method.</pre>
+We refer to the bottom panel of Fig. 5 in ([[Brewer et al., 2018|https://iopscience.iop.org/article/10.1088/1742-5468/aab3ef/meta]]) for illustration of this method.
+
+!! Optimally controlled process
+
+An optimally controlled process is such that it directly generates the path probability $$P^s_{\tau}(\mathcal{C})$$ ([[Nemoto et al., 2016|https://journals.aps.org/pre/pdf/10.1103/PhysRevE.93.062123]]), therefore the modification to the dynamics exactly mathces the rare events leading to a large deviation of the biasing field.
+
+It can be shown that for such a process ([[Jack, 2019|https://arxiv.org/abs/1910.09883]]),
+$$
+\tau \psi(s, \tau) = \left&lt;- s B_{\tau}(\mathcal{C})\right&gt;_{\text{con}}.
+$$
+While finding the optimal modification is as difficult as solving the large deviation problem analytically, a dynamical updating of the controlled process during the cloning algorithm which would enforce the above condition should improve its convergence ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]).</pre>
 </div>
-<div created="20190812151828852" modified="20191204160832694" tags="$:/tags/Stylesheet" title="CustomStylesheet">
-<pre>/* table headers */
+<div created="20190812151828852" modified="20191205144738942" tags="$:/tags/Stylesheet" title="CustomStylesheet">
+<pre>/* TABLES */
+/* header background */
 div.tc-tiddler-frame thead td { background-color: #4d4d4d !important; }
-div.tc-tiddler-frame tbody th { background-color: #8c8c8c !important; }</pre>
+div.tc-tiddler-frame tbody th { background-color: #8c8c8c !important; }
+/* borders */
+div.tc-tiddler-frame table.custom-table td { border-top: 2px solid #808080 !important; border-bottom: 2px solid #808080 !important;  }
+div.tc-tiddler-frame table.custom-table { border: 2px solid #808080 !important; }</pre>
 </div>
 <div created="20191028125750871" modified="20191204150609561" tags="$:/tags/Macro" title="Macros">
 <pre>\define plot(image:&quot;&quot;)
@@ -12291,6 +12431,125 @@ $$
 ! Quantitative observations
 
 &lt;&lt;toc label:&quot;One ABP&quot;&gt;&gt;</pre>
+</div>
+<div created="20191207140445278" modified="20191208141940909" tags="TableOfContents" title="Path action">
+<pre>We derive the action $$\mathbb{A}[\{\underline{r}\}_0^{\tau}]$$ associtated to a trajectory $$\{\underline{r}\}_0^{\tau}$$, where the evolution of $$\underline{r}$$ is governed by a Langevin equation with additive noise, such that the propability associated to this path is $$\mathcal{P}[\{\underline{r}\}_0^{\tau}] \propto \exp(-\mathbb{A}[\{\underline{r}\}_0^{\tau}])$$.
+
+We consider the following SDE for the evolution of $$\underline{r}$$,
+$$
+\text{d}\underline{r}(t) = \underline{\mu}(\underline{r}(t), t) \, \text{d}t + \sqrt{2D} \, \text{d}\underline{W}(t),
+$$
+where $$\underline{W}(t) = (W_x(t), W_y(t))$$ are two independent Wiener processes ([[Gardiner, 2009|https://www.springer.com/gp/book/9783540707127]], § 4.3.1) and are thus Markovian. Since the equation of evolution of $$\underline{r}(t)$$ is linear and first order, we have that it is also a Markovian process ([[Gardiner, 2009|https://www.springer.com/gp/book/9783540707127]], § 4.3.3).
+
+We rewrite this equation in discretised form,
+$$
+\Delta \underline{r}(t) = \underline{r}(t + \Delta t) - \underline{r}(t) = \underline{\mu}(\underline{r}(t), t) \, \Delta t + \sqrt{2D \Delta t} \, \underline{w}(t),
+$$
+where $$\underline{w}(t)$$ is again an unit-variance zero-mean Gaussian white noise.
+
+! Conditional PDF
+
+We have that the probability density function for the vector $$\underline{r}(t + \Delta t)$$ conditioned on $$\underline{r}(t)$$ and $$\underline{w}(t)$$ is given by a Dirac function constrained to the solution of the SDE ([[Chow and Buice, 2015|https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4385267/pdf/13408_2015_Article_18.pdf]]),
+$$
+P\left[\underline{r}(t + \Delta t)| \underline{r}(t), \underline{w}(t)\right] = \delta\left(\underline{r}(t + \Delta t) - \underline{r}(t) - \underline{\mu}(\underline{r}(t), t) \, \Delta t - \sqrt{2D \Delta t} \, \underline{w}(t)\right),
+$$
+where we can write the Dirac function in Fourrier notation,
+$$
+\delta(\underline{u}) = \frac{1}{(2\pi)^2} \int_{\mathbb{R}^2} \text{d}\underline{k} \, \exp\left(- \text{i}\underline{k}\cdot\underline{u}\right),
+$$
+so that
+$$
+\begin{aligned}
+&amp;P\left[\underline{r}(t + \Delta t)| \underline{r}(t), \underline{w}(t)\right]\\
+&amp;\qquad = \frac{1}{(2\pi)^2} \int_{\mathbb{R}^2} \text{d}\underline{k} \, \exp\left(-\text{i}\underline{k} \cdot \left(\underline{r}(t + \Delta t) - \underline{r}(t) - \underline{\mu}(\underline{r}(t), t) \, \Delta t - \sqrt{2D \Delta t} \, \underline{w}(t)\right)\right),
+\end{aligned}
+$$
+which we can then integrate over the possible outcomes of $$\underline{w}(t)$$,
+$$
+\begin{aligned}
+&amp;P[\underline{r}(t + \Delta t)|\underline{r}(t)] = \int_{\mathbb{R}^2} \text{d}\underline{w} \, P\left[\underline{r}(t + \Delta t)| \underline{r}(t), \underline{w}\right] \, P[\underline{w}]\\
+&amp;\qquad = \int_{\mathbb{R}^2} \text{d}\underline{w} \, P\left[\underline{r}(t + \Delta t)| \underline{r}(t), \underline{w}\right] \, \frac{1}{2\pi} \exp\left(-\frac{1}{2} \underline{w}^2\right)\\
+&amp;\qquad = \frac{1}{(2\pi)^{2}} \int_{\mathbb{R}^2} \text{d}\underline{k} \, \exp\left(-\text{i}\underline{k} \cdot \left(\underline{r}(t + \Delta t) - \underline{r}(t) - \underline{\mu}(\underline{r}(t), t) \, \Delta t\right)\right)\\
+&amp;\qquad\qquad \times \frac{1}{2\pi}\int_{\mathbb{R}^2} \text{d}\underline{w}\, \exp\left(\frac{1}{2} (\text{i}\underline{w})^2 + \sqrt{2D\Delta t} \, \underline{k} \cdot (\text{i}\underline{w})\right),
+\end{aligned}
+$$
+where
+$$
+\begin{aligned}
+&amp;\frac{1}{2\pi}\int_{\mathbb{R}^2} \text{d}\underline{w}\, \exp\left(\frac{1}{2} (\text{i}\underline{w})^2 + \sqrt{2D\Delta t} \, \underline{k} \cdot (\text{i}\underline{w})\right)\\
+&amp;\qquad = \frac{1}{2\pi}\int_{\mathbb{R}^2} \text{d}\underline{w}\, \exp\left(\frac{1}{2} \left(\text{i}\underline{w}(t) + \sqrt{2D\Delta t} \, \underline{k}\right)^2 - D \Delta t \, \underline{k}^2\right) = \exp\left(- D \Delta t \, \underline{k}^2\right),
+\end{aligned}
+$$
+therefore
+$$
+\begin{aligned}
+&amp;P[\underline{r}(t + \Delta t)|\underline{r}(t)] = \frac{1}{(2\pi)^{2}} \int_{\mathbb{R}^2} \text{d}\underline{k} \, \exp\left(-\text{i}\underline{k} \cdot \left(\underline{r}(t + \Delta t) - \underline{r}(t) - \underline{\mu}(\underline{r}(t), t) \, \Delta t\right) - D \Delta t \, \underline{k}^2\right)\\
+&amp;\qquad = \frac{1}{(2\pi)^{2}} \int_{\mathbb{R}^2} \text{d}\underline{k} \, \exp\left(\frac{1}{2}\left(\sqrt{2 D\Delta t}(\text{i} \underline{k}) - \frac{1}{\sqrt{2D\Delta t}}\left(\underline{r}(t + \Delta t) - \underline{r}(t) - \underline{\mu}(\underline{r}(t), t) \, \Delta t\right)\right)^2\right)\\
+&amp;\qquad\qquad \times \exp\left(- \frac{1}{4D\Delta t} \left(\underline{r}(t + \Delta t) - \underline{r}(t) - \underline{\mu}(\underline{r}(t), t) \, \Delta t\right)^2\right)\\
+&amp;\qquad = \frac{1}{2\pi} \exp\left(- \frac{\Delta t}{4D} \left(\frac{\underline{r}(t + \Delta t) - \underline{r}(t)}{\Delta t} - \underline{\mu}(\underline{r}(t), t)\right)^2\right).
+\end{aligned}
+$$
+
+! Drift term
+
+We develop the drift term in the previous equation according to te convention and in the limit $$\Delta t \rightarrow 0$$.
+
+We have,
+$$
+\overline{\underline{r}(t)} = \underline{r}(t) + (1-\alpha) \Delta \underline{r}(t),
+$$
+with $$\alpha = 1$$ in Ito convention, and $$\alpha = \frac{1}{2}$$ in Stratonovitch convention.
+
+!! Ito convention
+
+We have
+$$
+\underline{\mu}(\underline{r}(t), t) = \underline{\mu}(\overline{\underline{r}(t)}, t),
+$$
+therefore
+$$
+P[\underline{r}(t + \Delta t)|\underline{r}(t)] =  \frac{1}{2\pi} \exp\left(- \frac{\Delta t}{4D} \left(\dot{\underline{r}}(t) - \underline{\mu}(\underline{r}(t), t)\right)^2\right),~ \Delta t \rightarrow 0.
+$$
+
+!! Stratonovitch convention
+
+We have
+$$
+\underline{\mu}(\underline{r}(t), t) = \underline{\mu}\left(\overline{\underline{r}(t)} - \frac{1}{2} \Delta \underline{r}(t), t\right) = \underline{\mu}(\overline{\underline{r}(t)}, t) - \frac{1}{2}(\Delta\underline{r}(t) \cdot \nabla) \underline{\mu}(\overline{\underline{r}(t)}, t),~ \Delta t \rightarrow 0,
+$$
+with $$\nabla \equiv \partial/\partial\underline{r}(t)$$, then
+$$
+\begin{aligned}
+\left(\frac{\Delta \underline{r}(t)}{\Delta t} - \mu(\overline{\underline{r}(t)}, t)\right)^2 &amp;= \left(\frac{\Delta \underline{r}(t)}{\Delta t} - \mu(\overline{\underline{r}(t)}, t) + \frac{1}{2}(\Delta\underline{r}(t) \cdot \nabla) \underline{\mu}(\overline{\underline{r}(t)}, t)\right)^2\\
+&amp;= \left(\frac{\Delta \underline{r}(t)}{\Delta t} - \mu(\overline{\underline{r}(t)}, t)\right)^2 + \frac{\Delta \underline{r}(t)^2}{\Delta t} \, \nabla\cdot\underline{\mu}(\overline{\underline{r}(t)}, t),~ \Delta t \rightarrow 0,\\
+&amp;= \left(\frac{\Delta \underline{r}(t)}{\Delta t} - \mu(\overline{\underline{r}(t)}, t)\right)^2 + 2D \, \nabla\cdot\underline{\mu}(\overline{\underline{r}(t)}, t),~ \Delta t \rightarrow 0,
+\end{aligned}
+$$
+where last line follows from Ito prescription ([[Cugliandolo and Lecomte, 2017|https://iopscience.iop.org/article/10.1088/1751-8121/aa7dd6]]). We therefore have
+$$
+P[\underline{r}(t + \Delta t)|\underline{r}(t)] =  \frac{1}{2\pi} \exp\left(- \frac{\Delta t}{4D} \left(\dot{\underline{r}}(t) - \underline{\mu}(\overline{\underline{r}(t)}, t)\right)^2 - \frac{\Delta t}{2} \nabla\cdot\underline{\mu}(\overline{\underline{r}(t)}, t)\right),~ \Delta t \rightarrow 0.
+$$
+
+! Path probability
+
+We use the Markovian property of $$\underline{r}(t)$$ to write path probabilites as a product of the conditional PDF that we have derived ([[Onsager and Machlup, 1953|https://journals.aps.org/pr/abstract/10.1103/PhysRev.91.1505]]), //i.e.//
+$$
+\mathcal{P}[\{\underline{r}\}_0^{\tau}] \propto \prod P[\underline{r}(t + \Delta t)|\underline{r}(t)].
+$$
+
+!! Ito convention
+
+$$
+\mathbb{A}_{\text{Ito}}[\{\underline{r}\}_0^{\tau}] \propto \int_0^{\tau} \text{d}t \, \frac{1}{4D}\left(\dot{\underline{r}}(t) - \underline{\mu}(\underline{r}(t), t)\right)^2
+$$
+
+!! Stratonovitch convention
+
+$$
+\mathbb{A}_{\text{Str}}[\{\underline{r}\}_0^{\tau}] \propto \int_0^{\tau} \text{d}t \, \left(\frac{1}{4D}\left(\dot{\underline{r}}(t) - \underline{\mu}(\overline{\underline{r}(t)}, t)\right)^2  + \frac{1}{2} \nabla \cdot \underline{\mu}(\overline{\underline{r}(t)}, t)\right)
+$$
+
+([[Cugliandolo and Lecomte, 2017|https://iopscience.iop.org/article/10.1088/1751-8121/aa7dd6]], [[Cugliandolo et al., 2019|http://arxiv.org/abs/1806.09486]])</pre>
 </div>
 <div created="20180619220822377" modified="20191204183842004" tags="TableOfContents" title="Project">
 <pre>''Author'': Yann-Edwin Keta, //École normale supérieure de Lyon//&lt;br&gt;
