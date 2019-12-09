@@ -9966,7 +9966,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="[[Active Brownian particles]] [[ABP high Pe]] [[Cloning algorithm]] [[ABP cloning algorithm]] [[ABP work and order LDP]] [[Path action]] Project" title="$:/StoryList">
+<div list="[[Active Brownian particles]] [[ABP cloning algorithm]] [[ABP averages (control) — checks]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -11107,7 +11107,7 @@ $$
 $$
 for low enough negative $$s$$.</pre>
 </div>
-<div created="20191204151816691" modified="20191208214713143" tags="[[ABP work and order LDP]]" title="ABP cloning algorithm">
+<div created="20191204151816691" modified="20191209190119829" tags="[[ABP work and order LDP]]" title="ABP cloning algorithm">
 <pre>We use the cloning algorithm framework detailed in [[Cloning algorithm]].
 
 ! Controlled dynamics
@@ -11163,19 +11163,58 @@ $$
 &amp;\times \exp\Bigg(-\frac{1}{4}\frac{l_p}{\sigma}\sum_{i=1}^N \int_0^{\tau} \left[\dot{\theta}_i(t) - \frac{2g}{N} \sum_{j \neq i} \sin(\theta_j(t) - \theta_i(t))\right]^2 \, \text{d}t\\
 &amp;\qquad\qquad- \frac{g}{N}\sum_{i, j=1, i \neq j}^N \int_0^{\tau} \frac{\partial}{\partial \theta_i(t)} \sin(\theta_j(t) - \theta_i(t)) \, \text{d}t\Bigg),\\
 \propto&amp; \, \mathcal{P}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] \, \exp\left(-sN\tau w_{\tau}\right) \exp\left(sN\tau w^{(1)}_{\tau}\right)\\
-&amp;\times \exp\left(\int_0^{\tau} \left[g - gN|\underline{\nu}(t)|^2 - \frac{g^2}{s N |\underline{\nu}(t)|^2} \frac{l_p}{\sigma} \sum_{i=1}^N \sin^2(\theta_i(t) - \varphi(t))\right] \, \text{d}t\right),
+&amp;\times \exp\left(\int_0^{\tau} \left[g - gN|\underline{\nu}(t)|^2 - \frac{g^2}{|\underline{\nu}(t)|^2} \frac{l_p}{\sigma} \sum_{i=1}^N \sin^2(\theta_i(t) - \varphi(t))\right] \, \text{d}t\right),
 \end{aligned}
 $$
-where $$\varphi$$ denotes the globa phase, so that we can write
+where $$\varphi$$ denotes the global phase, so that we can write
 $$
 \mathcal{P}_N^{(2)}\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] \, \exp\left(-s N \tau w^{(2)}_{\tau}\right) \propto \mathcal{P}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] \, \exp\left(- s N \tau w_{\tau}\right),
 $$
 where we have denoted
 $$
-w^{(2)}_{\tau} = 1 - \frac{1}{3}\frac{\sigma}{l_p}s + w_{f,\tau} + \int_0^{\tau} \left[g - gN|\underline{\nu}(t)|^2 - \frac{g^2}{s N |\underline{\nu}(t)|^2} \frac{l_p}{\sigma} \sum_{i=1}^N \sin^2(\theta_i(t) - \varphi(t))\right] \, \text{d}t.
+\begin{aligned}
+w^{(2)}_{\tau} &amp;= 1 - \frac{1}{3}\frac{\sigma}{l_p}s + w_{f,\tau} + \frac{1}{s N\tau}\int_0^{\tau} \left[g - gN|\underline{\nu}(t)|^2 - \frac{g^2}{|\underline{\nu}(t)|^2} \frac{l_p}{\sigma} \sum_{i=1}^N \sin^2(\theta_i(t) - \varphi(t))\right] \, \text{d}t\\
+&amp;= 1 - \frac{1}{3}\frac{\sigma}{l_p}s + w_{f,\tau} + \frac{g}{s N} - \frac{g}{s} \mathcal{I}_{1, \tau} - \frac{g^2}{s} \frac{l_p}{\sigma} \mathcal{I}_{2,\tau}\\
+&amp;= w^{(1)}_{\tau} + \frac{g}{s}\left(\frac{1}{N} - \mathcal{I}_{1, \tau} - g \frac{l_p}{\sigma} \mathcal{I}_{2,\tau}\right),
+\end{aligned}
 $$
-We can draw the same conclusions on the cloning procedure as for the first method. Importantly, the relation between $$\mathcal{P}^{(2)}_N$$ and $$\mathcal{P}_N$$ holds irrespective of the value $$g$$.
-</pre>
+and defined
+$$
+\begin{aligned}
+\mathcal{I}_{1, \tau} &amp;= \frac{1}{\tau} \int_0^{\tau} |\underline{\nu}(t)|^2 \, \text{d}t,\\
+\mathcal{I}_{2, \tau} &amp;= \frac{1}{N \tau} \int_0^{\tau} \frac{1}{|\underline{\nu}(t)|^2} \sum_{i=1}^N \sin^2(\theta_i(t) - \varphi(t)) \, \text{d}t,
+\end{aligned}
+$$
+for further ease of notation. We can draw the same conclusions on the cloning procedure as for the first method. Importantly, the relation between $$\mathcal{P}^{(2)}_N$$ and $$\mathcal{P}_N$$ holds irrespective of the value $$g$$.
+
+!!! Control from unbiased dynamics
+
+We can show that with the controlled dynamics described above we have
+$$
+\left&lt;|\underline{\nu}(t)|^2\right&gt;_{\text{con}} = \frac{1}{N} \frac{1}{1 + g (l_p/\sigma)},
+$$
+then for a given value of $$\left&lt;|\underline{\nu}(t)|^2\right&gt;$$ we can make sure that the unbiased controlled system takes the expected value of the desired orientation by choosing $$g$$ from the previous equation,
+$$
+g = \frac{\sigma}{l_p} \left(\frac{1}{N \left&lt;|\underline{\nu}(t)|^2\right&gt;} - 1\right).
+$$
+
+!!! Control with feedback
+
+We can enforce the condition
+$$
+\psi(s, \tau) = \left&lt;-s w_{\tau}^{(2)}\right&gt;_{\text{clo}},
+$$
+which would be verified if the controlled process was optimal. We have that every terms and factors in the expression of $$w^{(2)}_{\tau}$$ and in the relation above can computed from our cloning algorithm, we thus solve this equation for $$g$$,
+$$
+g^2 \left(\frac{l_p}{\sigma} \left&lt;\mathcal{I}_{2, \tau}\right&gt;_{\text{clo}}\right) + g \left(\left&lt;\mathcal{I}_{1, \tau}\right&gt;_{clo} - \frac{1}{N}\right) + \left(s\left[\frac{1}{3}\frac{\sigma}{l_p}s  - \left&lt;w_{f, \tau}\right&gt;_{\text{clo}} - 1\right] - \psi(s, \tau)\right) = 0,
+$$
+and modify its value at each cloning step of the algorithm.
+
+We can note that for $$s = 0$$, the above equation has $$g = 0$$ as a solution, and will thus use
+$$
+\left.w^{(2)}_{\tau}\right|_{s=0} = \left.w^{(1)}_{\tau}\right|_{s=0} = 1 + w_{f, \tau},
+$$
+in this case for the purpose of the SCGF computation.</pre>
 </div>
 <div created="20191113174242793" modified="20191113181148052" tags="[[Active Brownian particles]]" title="ABP CM transition">
 <pre>We are interested in the dynamical phase transition to collective motion (CM) described in ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]).
@@ -11623,7 +11662,7 @@ This variance is also computed in [[ABP work correlations]].
 
 &lt;&lt;plot image:&quot;varWorkN_Dk6500_Ln1000_El2000&quot;&gt;&gt;</pre>
 </div>
-<div created="20191010153112162" modified="20191208210425593" tags="TableOfContents" title="Active Brownian particles">
+<div created="20191010153112162" modified="20191209230956957" tags="TableOfContents" title="Active Brownian particles">
 <pre>We define our model of active Brownian particles, based on ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]), some quantities to describe the system, and derive some analytical results.
 
 Some other theoretical developments and simulation results can be found for [[one particle|One ABP]] and [[multiple particles|Multiple ABP]].
@@ -11703,6 +11742,8 @@ We note that since the noise is not multiplicative, the Ito and Stratonovitch in
 
 !! Numerical integration
 
+!!! Euler scheme
+
 We use a simple Euler's method with time step $$\Delta t$$ to integrate the aforementioned equations,
 $$
 \begin{aligned}
@@ -11715,6 +11756,10 @@ where the $$\eta_{i, x, t}$$, $$\eta_{i, y, t}$$, and $$\xi_{i, t}$$ are indepen
 In order to avoid large displacements between two consecutive frame, we redraw these random numbers if they exceed a certain threshold.
 
 &lt;&lt;compuscript path:&quot;iteration.cpp&quot;&gt;&gt;
+
+!!! Heun scheme
+
+We stress that when particles are crowded or when they move fast towards each other, this Euler scheme may not be adapted since the WCA potential is very steep. Others integration scheme such as the Heun scheme ([[Mannella, 2002|https://www.worldscientific.com/doi/abs/10.1142/S0129183102004042]]) or the adaptative time step method may be more suited — though the latter may dramatically slow down the algorithm at high packing fraction.
 
 ! Order parameter
 
@@ -11995,7 +12040,7 @@ the correlation between the fluctuations of the order parameter norm at a time $
 
 A relation between the rate of active work, the interparticle potential, and the two- and three-body density correlation functions can be derived for a system of active particles ([[Tociu et al., 2019|https://journals.aps.org/prx/abstract/10.1103/PhysRevX.9.041026]]).</pre>
 </div>
-<div created="20191126153600341" modified="20191205200506614" tags="TableOfContents" title="Cloning algorithm">
+<div created="20191126153600341" modified="20191209141448041" tags="TableOfContents" title="Cloning algorithm">
 <pre>We introduce a cloning algorithm described in ([[Brewer et al., 2018|https://iopscience.iop.org/article/10.1088/1742-5468/aab3ef/meta]]) and in ([[Lestang, 2018|https://tel.archives-ouvertes.fr/tel-01974316]], chapter 4).
 
 &lt;&lt;compuscript path:&quot;cloningserial.hpp&quot;&gt;&gt;
@@ -12023,7 +12068,9 @@ is the scaled cumulant generating function (SCGF), and $$\left&lt;\right&gt;_0$$
 
 ! Controlled dynamics
 
-Our goal is to compute the SCGF $$\psi(s, \tau)$$, which as we explained is dominated by untypical trajectories of the system. Our first step is then to make these trajectories typical by modifying (or controlling) the dynamics, such that the path probability of a given trajectory $$\mathcal{C}$$ is now
+Our goal is to compute the SCGF $$\psi(s, \tau)$$ which, as we explained, is dominated by untypical trajectories of the system. With a small number of clones (see cloning procedure below), the scarcity of these fluctuations can be the origin of large systematic errors ([[Nemoto et al., 2016|https://journals.aps.org/pre/pdf/10.1103/PhysRevE.93.062123]]). To improve convergence of the algorithm, a modification (or control) of the dynamics, informed by that the typical behaviour of the system for large fluctuations of the biasing observable, may be need.
+
+We modify the dynamics such that the path probability of a given trajectory $$\mathcal{C}$$ is now
 $$
 P^{\text{con}}(\mathcal{C}) = P(\mathcal{C})e^{U_{\tau}(\mathcal{C})},
 $$
@@ -12085,13 +12132,23 @@ We refer to the bottom panel of Fig. 5 in ([[Brewer et al., 2018|https://iopscie
 
 !! Optimally controlled process
 
-An optimally controlled process is such that it directly generates the path probability $$P^s_{\tau}(\mathcal{C})$$ ([[Nemoto et al., 2016|https://journals.aps.org/pre/pdf/10.1103/PhysRevE.93.062123]]), therefore the modification to the dynamics exactly mathces the rare events leading to a large deviation of the biasing field.
-
+An optimally controlled process is such that it directly generates the path probability $$P^s_{\tau}(\mathcal{C})$$ ([[Nemoto et al., 2016|https://journals.aps.org/pre/pdf/10.1103/PhysRevE.93.062123]]), //i.e.//
+$$
+P^{\text{con}}(\mathcal{C}) = P_{\tau}^s(\mathcal{C}),
+$$
+therefore the modification to the dynamics exactly matches the rare events leading to a large deviation of the biasing field. A consequence of this is that each clone is generated with multiplicity 1 within the cloning procedure, meaning that we aslo have
+$$
+P^{\text{con}}(\mathcal{C}) = P^{\text{clo}}(\mathcal{C}).
+$$
 It can be shown that for such a process ([[Jack, 2019|https://arxiv.org/abs/1910.09883]]),
 $$
-\tau \psi(s, \tau) = \left&lt;- s B_{\tau}(\mathcal{C})\right&gt;_{\text{con}}.
+\tau \psi(s, \tau) = \left&lt;- s B_{\tau}(\mathcal{C})\right&gt;_{\text{con}},
 $$
-While finding the optimal modification is as difficult as solving the large deviation problem analytically, a dynamical updating of the controlled process during the cloning algorithm which would enforce the above condition should improve its convergence ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]).</pre>
+which, with previous argument, leads to
+$$
+\tau \psi(s, \tau) = \left&lt;- s B_{\tau}(\mathcal{C})\right&gt;_{\text{clo}},
+$$
+therefore, despite finding the optimal modification being as difficult as solving the large deviation problem itself analytically, a dynamical updating of the controlled process during the cloning algorithm which would enforce the above condition should improve its convergence ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]).</pre>
 </div>
 <div created="20190812151828852" modified="20191208164300100" tags="$:/tags/Stylesheet" title="CustomStylesheet">
 <pre>/* TABLES */
