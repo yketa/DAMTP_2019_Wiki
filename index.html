@@ -468,7 +468,11 @@ Error message and password prompt
 
 <li>ABP averages (cloning) — checks</li>
 
+<li>ABP averages (control)</li>
+
 <li>ABP averages (control) — checks</li>
+
+<li>ABP averages (feedback) — checks</li>
 
 <li>ABP averages (unbiased dynamics)</li>
 
@@ -9852,7 +9856,7 @@ config.macros.bibliography = {
 <div created="20190725184441855" modified="20190725184747575" title="$:/state/ShowPaletteEditor">
 <pre>yes</pre>
 </div>
-<div created="20180417005127058" modified="20191208214724872" title="$:/state/sidebar">
+<div created="20180417005127058" modified="20191215184558771" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
 <div created="20190727110717182" modified="20190727111019209" title="$:/state/tab--1498284803">
@@ -9966,7 +9970,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="[[Active Brownian particles]] [[ABP cloning algorithm]] [[ABP averages (control) — checks]] Project" title="$:/StoryList">
+<div list="[[ABP averages (control) — checks]] [[ABP cloning algorithm]] [[ABP averages (feedback) — checks]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -10923,6 +10927,19 @@ Parameters are set by default to $$t=100$$, $$N_{clones}=100$$, $$N_{runs}=10$$,
 
 &lt;&lt;plot image:&quot;convCloning_sOrder_tau_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;</pre>
 </div>
+<div created="20191211115456848" modified="20191211115739002" tags="[[ABP work and order LDP]]" title="ABP averages (control)">
+<pre>! SCGF
+
+&lt;&lt;plot image:&quot;SCGF_modified_Nm1000_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;
+
+! Work average
+
+&lt;&lt;plot image:&quot;sWork_modified_Nm1000_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;
+
+! Order average
+
+&lt;&lt;plot image:&quot;sOrder_modified_Nm1000_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;</pre>
+</div>
 <div created="20191205121159428" modified="20191205185016684" tags="[[ABP work and order LDP]]" title="ABP averages (control) — checks">
 <pre>We compute here averages of active work and order parameter in the biased ensemble from the [[cloning algorithm|ABP cloning algorithm]] with modification of the translational equation of motion (EOM), check their consistency and convergence compared to the cloning without modification of the translational EOM.
 
@@ -11011,6 +11028,41 @@ Black dashed lined correspond to the entire trajectory average from unbiased dyn
 !!! Order average
 
 &lt;&lt;plot image:&quot;convCloningAll_sOrder_tau_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;</pre>
+</div>
+<div created="20191215123336975" modified="20191215185846175" tags="[[ABP work and order LDP]]" title="ABP averages (feedback) — checks">
+<pre>We compute here averages of active work and order parameter in the biased ensemble from the [[cloning algorithm|ABP cloning algorithm]] with modification of the translational and rotational equation of motion (EOM), check their consistency and convergence.
+
+&lt;&lt;compuscript path:&quot;cloning.py&quot;&gt;&gt;
+
+! Consistency 
+
+Error bars are given by the different runs.
+
+!! SCGF
+
+&lt;&lt;plot image:&quot;SCGF_compare_modified_Nm1000_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;
+
+We have that modifying the translational EOM does not qualitatively change the outcome of the algorithm for even lower $$s$$ than what have been studied in [[ABP averages (control) — checks]].
+
+We explain the discrepancy between two methods of feedback (red and light blue curves) by the fact that the $$g$$-polynomial computed during the algorithm actually rarely has a real root, the algorithm thus runs with $$g = 0$$ which is equivalent to only modifying the translational EOM (green curve).
+
+We have that the red curves deviates significantly from the others, except for $$s = 0$$, where the algorithm imposes $$g=0$$, hence the agreement. Note that for these simulations, we have used the approximation
+$$
+\mathcal{I}_{0, \tau} \approx \frac{1}{N} \frac{\sigma}{l_p},
+$$
+which should only holds for large $$\tau$$. We may have not simulated a long enough trajectory so that the systematic error in the SCGF vanishes.
+
+!! Work avergae
+
+&lt;&lt;plot image:&quot;sWork_compare_modified_Nm1000_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;
+
+We note that the red curve is smoother and has lower error bars than the others. Moreover, it is significantly higher.
+
+!! Order average
+
+&lt;&lt;plot image:&quot;sOrder_compare_modified_Nm1000_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;
+
+Same remarks as for the active work. We recall that we expect trajectories for $$s &lt; 0$$ to display flocking, hence the modification of the dynamics. This modification is consistent with the increase of the order parameter.</pre>
 </div>
 <div created="20191125144024165" modified="20191204151728096" tags="[[ABP work and order LDP]]" title="ABP averages (unbiased dynamics)">
 <pre>We compute here averages of active work and order parameter in the biased ensemble from unbiased dynamics measurements in order to have a basis of results to compare with the [[output of cloning algorithms|ABP averages (cloning) — checks]].
@@ -11107,8 +11159,10 @@ $$
 $$
 for low enough negative $$s$$.</pre>
 </div>
-<div created="20191204151816691" modified="20191209190119829" tags="[[ABP work and order LDP]]" title="ABP cloning algorithm">
+<div created="20191204151816691" modified="20191215185258212" tags="[[ABP work and order LDP]]" title="ABP cloning algorithm">
 <pre>We use the cloning algorithm framework detailed in [[Cloning algorithm]].
+
+&lt;&lt;compuscript path:&quot;cloning.py&quot;&gt;&gt;
 
 ! Controlled dynamics
 
@@ -11149,53 +11203,83 @@ Therefore, starting from the same initial configuration $$\{\underline{r}_i, \un
 
 Authors of ([[Nemoto et al., 2016|https://journals.aps.org/pre/pdf/10.1103/PhysRevE.93.062123]]) noted that the probability cost for creating a large fluctuation of the active work is dominated, for $$s &lt; 0$$ where flocking can be observed, by the cost to create an improbable global orientation. An orientation aligning force may thus reduce the required number of clones to simulate such flocking dynamics.
 
+We recall the norm of the order parameter $$\underline{\nu}$$ (see [[Active Brownian particles]]),
+$$
+|\underline{\nu}(t)| = \frac{1}{N} \sqrt{\sum_{i, j = 1}^N \cos(\theta_i(t) - \theta_j(t))} = \frac{1}{N} \sum_{i=1}^N \cos(\theta_i(t) - \varphi(t)),
+$$
+where $$\varphi$$ is the global phase.
+
+
 We conserve the previously introduced modification to the translational equation of motion and add an auxiliary force the orientational equation of motion,
 $$
-\dot{\theta}_i = - g N \frac{\partial}{\partial \theta_i} |\underline{\nu}|^2 + \sqrt{2\frac{\sigma}{l_p}} \xi_i = \frac{2 g}{N} \sum_{j \neq i} \sin(\theta_j - \theta_i) + \sqrt{2\frac{\sigma}{l_p}} \xi_i ,
+\dot{\theta}_i = - g N \frac{\partial}{\partial \theta_i} |\underline{\nu}|^2 + \sqrt{2\frac{\sigma}{l_p}} \xi_i = \frac{2 g}{N} \sum_{j \neq i} \sin(\theta_i - \theta_j) + \sqrt{2\frac{\sigma}{l_p}} \xi_i ,
 $$
-where $$\underline{\nu}$$ is the instantaneous global order parameter (see [[Active Brownian particles]]), and $$g$$ is a free parameter.
+where $$\underline{\nu}$$ is the instantaneous global order parameter (see [[Active Brownian particles]]), and $$g$$ is a free parameter. Our goal is to promote flockin, //i.e.// to increase $$|\underline{\nu}|^2$$, we must thus choose $$g &lt; 0$$.
 
 With $$\mathcal{P}_N^{(2)}\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]$$ the probability of a given trajectory $$\{\underline{r}_i, \underline{u}_i\}_0^{\tau}$$ with modifications to both the translational and rotation EOM, we have
 $$
 \begin{aligned}
 \mathcal{P}_N^{(2)}\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] \propto&amp; \, \exp\Bigg(- \frac{3}{4} \frac{l_p}{\sigma} \sum_{i=1}^N \int_0^{\tau} \left[\left(\dot{\underline{r}}_i(t) - \underline{u}_i(t) - \frac{1}{3} \frac{\sigma}{l_p}\tilde{\underline{F}}_{i,ex}\right) + \frac{2}{3}\frac{l_p}{\sigma} s \,  \underline{u}_i(t)\right]^2 \, \text{d}t\\
 &amp;\qquad\qquad -\frac{1}{6}\frac{\sigma}{l_p} \sum_{i=1}^N \int_0^{\tau} \frac{\partial}{\partial \underline{r}_i(t)} \underline{\tilde{F}}_{i,ex}(t)\, \text{d}t\Bigg)\\
-&amp;\times \exp\Bigg(-\frac{1}{4}\frac{l_p}{\sigma}\sum_{i=1}^N \int_0^{\tau} \left[\dot{\theta}_i(t) - \frac{2g}{N} \sum_{j \neq i} \sin(\theta_j(t) - \theta_i(t))\right]^2 \, \text{d}t\\
-&amp;\qquad\qquad- \frac{g}{N}\sum_{i, j=1, i \neq j}^N \int_0^{\tau} \frac{\partial}{\partial \theta_i(t)} \sin(\theta_j(t) - \theta_i(t)) \, \text{d}t\Bigg),\\
+&amp;\times \exp\Bigg(-\frac{1}{4}\frac{l_p}{\sigma}\sum_{i=1}^N \int_0^{\tau} \left[\dot{\theta}_i(t) + g N \frac{\partial}{\partial \theta_i} |\underline{\nu}(t)|^2\right]^2 \, \text{d}t\\
+&amp;\qquad\qquad+ \frac{1}{2}\, g N\sum_{i=1}^N \int_0^{\tau} \frac{\partial^2}{\partial \theta_i^2} |\underline{\nu}(t)|^2 \, \text{d}t\Bigg),\\
 \propto&amp; \, \mathcal{P}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] \, \exp\left(-sN\tau w_{\tau}\right) \exp\left(sN\tau w^{(1)}_{\tau}\right)\\
-&amp;\times \exp\left(\int_0^{\tau} \left[g - gN|\underline{\nu}(t)|^2 - \frac{g^2}{|\underline{\nu}(t)|^2} \frac{l_p}{\sigma} \sum_{i=1}^N \sin^2(\theta_i(t) - \varphi(t))\right] \, \text{d}t\right),
+&amp;\times \exp\Bigg(\int_0^{\tau} \Bigg[- \frac{1}{2} \frac{l_p}{\sigma} g N \sum_{i=1}^N \dot{\theta}_i(t) \frac{\partial}{\partial \theta_i} |\underline{\nu}(t)|^2 - \frac{1}{4} \frac{l_p}{\sigma} g^2 N^2 \sum_{i=1}^N \left(\frac{\partial}{\partial \theta_i} |\underline{\nu}(t)|^2\right)^2\\
+&amp;\qquad\qquad\qquad +\frac{1}{2} g N \sum_{i=1}^N \frac{\partial^2}{\partial \theta_i^2} |\underline{\nu}(t)|^2\Bigg] \, \text{d}t\Bigg),
 \end{aligned}
 $$
-where $$\varphi$$ denotes the global phase, so that we can write
+where we can identify,
+$$
+\begin{aligned}
+\sum_{i=1}^N \dot{\theta}_i(t) \frac{\partial}{\partial \theta_i} |\underline{\nu}(t)|^2 &amp;= -\frac{2}{N} |\underline{\nu}(t)| \sum_{i=1}^N \dot{\theta}_i(t) \sin(\theta_i(t) - \varphi(t)),\\
+\sum_{i=1}^N \left(\frac{\partial}{\partial \theta_i} |\underline{\nu}(t)|^2\right)^2 &amp;= \frac{4}{N^2} |\underline{\nu}(t)|^2 \sum_{i=1}^N \sin(\theta_i(t) - \varphi(t))^2\\
+&amp;= \frac{4}{N^4} \sum_{i=1}^N \left(\sum_{j=1}^N \sin(\theta_i(t) - \theta_j(t))\right)^2,\\
+\sum_{i=1}^N \frac{\partial^2}{\partial \theta_i^2} |\underline{\nu}(t)|^2 &amp;= - 2 |\underline{\nu}(t)|^2,
+\end{aligned}
+$$
+so that we can write
 $$
 \mathcal{P}_N^{(2)}\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] \, \exp\left(-s N \tau w^{(2)}_{\tau}\right) \propto \mathcal{P}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] \, \exp\left(- s N \tau w_{\tau}\right),
 $$
 where we have denoted
 $$
 \begin{aligned}
-w^{(2)}_{\tau} &amp;= 1 - \frac{1}{3}\frac{\sigma}{l_p}s + w_{f,\tau} + \frac{1}{s N\tau}\int_0^{\tau} \left[g - gN|\underline{\nu}(t)|^2 - \frac{g^2}{|\underline{\nu}(t)|^2} \frac{l_p}{\sigma} \sum_{i=1}^N \sin^2(\theta_i(t) - \varphi(t))\right] \, \text{d}t\\
-&amp;= 1 - \frac{1}{3}\frac{\sigma}{l_p}s + w_{f,\tau} + \frac{g}{s N} - \frac{g}{s} \mathcal{I}_{1, \tau} - \frac{g^2}{s} \frac{l_p}{\sigma} \mathcal{I}_{2,\tau}\\
-&amp;= w^{(1)}_{\tau} + \frac{g}{s}\left(\frac{1}{N} - \mathcal{I}_{1, \tau} - g \frac{l_p}{\sigma} \mathcal{I}_{2,\tau}\right),
+w^{(2)}_{\tau} &amp;= 1 - \frac{1}{3}\frac{\sigma}{l_p}s + w_{f,\tau} + \frac{1}{s N\tau} \int_0^{\tau} \Bigg[g\frac{l_p}{\sigma} |\underline{\nu}(t)| \sum_{i=1}^N \dot{\theta}_i(t) \sin(\theta_i(t) - \varphi(t))\\
+&amp;\qquad\qquad\qquad- gN|\underline{\nu}(t)|^2 - g^2 \frac{l_p}{\sigma} |\underline{\nu}(t)|^2 \sum_{i=1}^N \sin^2(\theta_i(t) - \varphi(t))\Bigg] \, \text{d}t\\
+&amp;= 1 - \frac{1}{3}\frac{\sigma}{l_p}s + w_{f,\tau} + \frac{g}{s} \frac{l_p}{\sigma} \mathcal{I}_{0,\tau} - \frac{g}{s} \mathcal{I}_{1, \tau} - \frac{g^2}{s} \frac{l_p}{\sigma} \mathcal{I}_{2,\tau}\\
+&amp;= w^{(1)}_{\tau} + \frac{g}{s}\left(\frac{l_p}{\sigma} \mathcal{I}_{0,\tau} - \mathcal{I}_{1, \tau} - g \frac{l_p}{\sigma} \mathcal{I}_{2,\tau}\right),
 \end{aligned}
 $$
 and defined
 $$
 \begin{aligned}
+\mathcal{I}_{0, \tau} &amp;= \frac{1}{N \tau} \int_0^{\tau} |\underline{\nu}(t)| \sum_{i=1}^N \dot{\theta}_i(t) \sin(\theta_i(t) - \varphi(t)) \, \text{d}t\\
+&amp;= \frac{1}{N \tau} \int_0^{\tau} |\underline{\nu}(t)| \sum_{i=1}^N \sin(\theta_i(t) - \varphi(t)) \, \text{d}\theta_i(t),\\
 \mathcal{I}_{1, \tau} &amp;= \frac{1}{\tau} \int_0^{\tau} |\underline{\nu}(t)|^2 \, \text{d}t,\\
-\mathcal{I}_{2, \tau} &amp;= \frac{1}{N \tau} \int_0^{\tau} \frac{1}{|\underline{\nu}(t)|^2} \sum_{i=1}^N \sin^2(\theta_i(t) - \varphi(t)) \, \text{d}t,
+\mathcal{I}_{2, \tau} &amp;= \frac{1}{N \tau} \int_0^{\tau} |\underline{\nu}(t)|^2 \sum_{i=1}^N \sin^2(\theta_i(t) - \varphi(t)) \, \text{d}t,
 \end{aligned}
 $$
 for further ease of notation. We can draw the same conclusions on the cloning procedure as for the first method. Importantly, the relation between $$\mathcal{P}^{(2)}_N$$ and $$\mathcal{P}_N$$ holds irrespective of the value $$g$$.
 
+Note that in ([[Nemoto et al., 2016|https://journals.aps.org/pre/pdf/10.1103/PhysRevE.93.062123]], eq. (C9)), the approximation
+$$
+\mathcal{I}_{0, \tau} \approx \frac{1}{N} \frac{\sigma}{l_p},
+$$
+in the limit $$\tau \rightarrow \infty$$ has been used, which derives from the approximation
+$$
+\sum_{i=1}^N \dot{\theta}_i(t) \frac{\partial}{\partial \theta_i} |\underline{\nu}(t)|^2 \approx - 2 \frac{\sigma}{l_p} \frac{1}{N},
+$$
+up to time non-extensive terms.
+
 !!! Control from unbiased dynamics
 
-We can show that with the controlled dynamics described above we have
+We can show that with the controlled dynamic described above without bias we have
 $$
 \left&lt;|\underline{\nu}(t)|^2\right&gt;_{\text{con}} = \frac{1}{N} \frac{1}{1 + g (l_p/\sigma)},
 $$
-then for a given value of $$\left&lt;|\underline{\nu}(t)|^2\right&gt;$$ we can make sure that the unbiased controlled system takes the expected value of the desired orientation by choosing $$g$$ from the previous equation,
+then for a given value of $$\left&lt;|\underline{\nu}(t)|^2\right&gt;_{\text{clo}}$$ we can make sure that the unbiased controlled system takes the expected value of the desired orientation by choosing $$g$$ from the previous equation,
 $$
-g = \frac{\sigma}{l_p} \left(\frac{1}{N \left&lt;|\underline{\nu}(t)|^2\right&gt;} - 1\right).
+g = \frac{\sigma}{l_p} \left(\frac{1}{N \left&lt;|\underline{\nu}(t)|^2\right&gt;_{\text{clo}}} - 1\right).
 $$
 
 !!! Control with feedback
@@ -11206,7 +11290,7 @@ $$
 $$
 which would be verified if the controlled process was optimal. We have that every terms and factors in the expression of $$w^{(2)}_{\tau}$$ and in the relation above can computed from our cloning algorithm, we thus solve this equation for $$g$$,
 $$
-g^2 \left(\frac{l_p}{\sigma} \left&lt;\mathcal{I}_{2, \tau}\right&gt;_{\text{clo}}\right) + g \left(\left&lt;\mathcal{I}_{1, \tau}\right&gt;_{clo} - \frac{1}{N}\right) + \left(s\left[\frac{1}{3}\frac{\sigma}{l_p}s  - \left&lt;w_{f, \tau}\right&gt;_{\text{clo}} - 1\right] - \psi(s, \tau)\right) = 0,
+g^2 \left(\frac{l_p}{\sigma} \left&lt;\mathcal{I}_{2, \tau}\right&gt;_{\text{clo}}\right) + g \left(\left&lt;\mathcal{I}_{1, \tau}\right&gt;_{clo} - \frac{l_p}{\sigma} \left&lt;\mathcal{I}_{0, \tau}\right&gt;_{clo}\right) + \left(s\left[\frac{1}{3}\frac{\sigma}{l_p}s  - \left&lt;w_{f, \tau}\right&gt;_{\text{clo}} - 1\right] - \psi(s, \tau)\right) = 0,
 $$
 and modify its value at each cloning step of the algorithm.
 
@@ -11662,7 +11746,7 @@ This variance is also computed in [[ABP work correlations]].
 
 &lt;&lt;plot image:&quot;varWorkN_Dk6500_Ln1000_El2000&quot;&gt;&gt;</pre>
 </div>
-<div created="20191010153112162" modified="20191209230956957" tags="TableOfContents" title="Active Brownian particles">
+<div created="20191010153112162" modified="20191210163355183" tags="TableOfContents" title="Active Brownian particles">
 <pre>We define our model of active Brownian particles, based on ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]), some quantities to describe the system, and derive some analytical results.
 
 Some other theoretical developments and simulation results can be found for [[one particle|One ABP]] and [[multiple particles|Multiple ABP]].
@@ -11778,7 +11862,11 @@ We have, in the absence of spontaneous symmetry breaking, $$\left&lt;\underline{
 
 We also introduce a global phase $$\varphi$$, such that
 $$
-|\underline{\nu}(t)|e^{\text{i}\varphi(t)} \equiv \frac{1}{N} \sum_{i=1}^N e^{\text{i}\theta_i(t)},~ \textit{i.e. } \begin{cases} \cos\varphi(t) = \frac{1}{N|\underline{\nu}(t)|} \sum_{i=1}^N \cos\theta_i(t), \\ \sin\varphi(t) = \frac{1}{N|\underline{\nu}(t)|} \sum_{i=1}^N \sin\theta_i(t).\end{cases}
+|\underline{\nu}(t)|e^{\text{i}\varphi(t)} \equiv \frac{1}{N} \sum_{i=1}^N e^{\text{i}\theta_i(t)},~ \textit{i.e. } \begin{cases} \cos\varphi(t) = \frac{1}{N|\underline{\nu}(t)|} \sum_{i=1}^N \cos\theta_i(t), \\ \sin\varphi(t) = \frac{1}{N|\underline{\nu}(t)|} \sum_{i=1}^N \sin\theta_i(t),\end{cases}
+$$
+and thus
+$$
+|\underline{\nu}(t)| = \frac{1}{N} \sum_{i=1}^N \cos(\theta_i(t) - \varphi(t)).
 $$
 
 !! Decorrelation of orientation
