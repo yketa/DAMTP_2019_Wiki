@@ -9970,7 +9970,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="[[ABP averages (control) — checks]] [[ABP cloning algorithm]] [[ABP averages (feedback) — checks]] Project" title="$:/StoryList">
+<div list="[[ABP cloning algorithm]] [[ABP averages (feedback) — checks]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -11029,7 +11029,7 @@ Black dashed lined correspond to the entire trajectory average from unbiased dyn
 
 &lt;&lt;plot image:&quot;convCloningAll_sOrder_tau_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;</pre>
 </div>
-<div created="20191215123336975" modified="20191215185846175" tags="[[ABP work and order LDP]]" title="ABP averages (feedback) — checks">
+<div created="20191215123336975" modified="20191216124036656" tags="[[ABP work and order LDP]]" title="ABP averages (feedback) — checks">
 <pre>We compute here averages of active work and order parameter in the biased ensemble from the [[cloning algorithm|ABP cloning algorithm]] with modification of the translational and rotational equation of motion (EOM), check their consistency and convergence.
 
 &lt;&lt;compuscript path:&quot;cloning.py&quot;&gt;&gt;
@@ -11044,7 +11044,7 @@ Error bars are given by the different runs.
 
 We have that modifying the translational EOM does not qualitatively change the outcome of the algorithm for even lower $$s$$ than what have been studied in [[ABP averages (control) — checks]].
 
-We explain the discrepancy between two methods of feedback (red and light blue curves) by the fact that the $$g$$-polynomial computed during the algorithm actually rarely has a real root, the algorithm thus runs with $$g = 0$$ which is equivalent to only modifying the translational EOM (green curve).
+We explain the discrepancy between the two methods of feedback (red and light blue curves) by the fact that the $$g$$-polynomial computed during the algorithm actually rarely has a real root, the algorithm thus runs with $$g = 0$$ which is equivalent to only modifying the translational EOM (green curve).
 
 We have that the red curves deviates significantly from the others, except for $$s = 0$$, where the algorithm imposes $$g=0$$, hence the agreement. Note that for these simulations, we have used the approximation
 $$
@@ -11062,7 +11062,29 @@ We note that the red curve is smoother and has lower error bars than the others.
 
 &lt;&lt;plot image:&quot;sOrder_compare_modified_Nm1000_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;
 
-Same remarks as for the active work. We recall that we expect trajectories for $$s &lt; 0$$ to display flocking, hence the modification of the dynamics. This modification is consistent with the increase of the order parameter.</pre>
+Same remarks as for the active work. We recall that we expect trajectories for $$s &lt; 0$$ to display flocking, hence the modification of the dynamics. This modification is consistent with the increase of the order parameter.
+
+! Convergence
+
+!! SCGF
+
+&lt;&lt;plot image:&quot;SCGF_compareNC_modified_Nm1000_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;
+
+!! Work average
+
+&lt;&lt;plot image:&quot;sWork_compareNC_modified_Nm1000_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;
+
+We have that the purple curves (without modification of the rotational EOM)
+
+# become smoother,
+# have decreasing error bars,
+# get significantly closer to the orange curves,
+
+as the number of clones $$N_{\text{clones}}$$ is increased from 100 to 1000. This indicates that the algorithm still has not converged without modification of the rotational EOM. On the contrary, orange curves do not significantly change between $$N_{\text{clones}}=100$$ and $$1000$$, which indicated a better convergence with respect to the number of clones when modifying the rotational EOM.
+
+!! Order average
+
+&lt;&lt;plot image:&quot;sOrder_compareNC_modified_Nm1000_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;</pre>
 </div>
 <div created="20191125144024165" modified="20191204151728096" tags="[[ABP work and order LDP]]" title="ABP averages (unbiased dynamics)">
 <pre>We compute here averages of active work and order parameter in the biased ensemble from unbiased dynamics measurements in order to have a basis of results to compare with the [[output of cloning algorithms|ABP averages (cloning) — checks]].
