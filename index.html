@@ -9970,7 +9970,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="[[ABP cloning algorithm]] [[ABP averages (feedback) — checks]] Project" title="$:/StoryList">
+<div list="[[Cloning algorithm]] [[ABP cloning algorithm]] [[ABP work and order LDP]] [[ABP averages (feedback) — checks]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -11029,14 +11029,23 @@ Black dashed lined correspond to the entire trajectory average from unbiased dyn
 
 &lt;&lt;plot image:&quot;convCloningAll_sOrder_tau_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;</pre>
 </div>
-<div created="20191215123336975" modified="20191216124036656" tags="[[ABP work and order LDP]]" title="ABP averages (feedback) — checks">
+<div created="20191215123336975" modified="20191217125525447" tags="[[ABP work and order LDP]]" title="ABP averages (feedback) — checks">
 <pre>We compute here averages of active work and order parameter in the biased ensemble from the [[cloning algorithm|ABP cloning algorithm]] with modification of the translational and rotational equation of motion (EOM), check their consistency and convergence.
 
-&lt;&lt;compuscript path:&quot;cloning.py&quot;&gt;&gt;
+&lt;&lt;compuscript path:&quot;cloningserial.hpp&quot;&gt;&gt;
 
-! Consistency 
+We recall the different methods used:
+
+* //uncontrolled dynamics//,
+* //controlled trans. EOM//,
+* //controlled trans. &amp; rot. EOM (1)//: free parameter $$g$$ in rotational EOM is determined from the $$\left&lt;\overline{\nu}_{\tau}^2\right&gt;_{\text{clo}}$$,
+* //controlled trans. &amp; rot. EOM (2)//: free parameter $$g$$ in rotational EOM is determined by enforcing the condition $$\left&lt;-s w_{\text{mod}}\right&gt;_{\text{clo}} = \psi_N(s, \tau)$$, which leads to a second order polynomial in $$g$$ from which we take the highest real root if it exists and 0 otherwise.
+
+Moreover, the integral $$\mathcal{I}_{0, \tau}$$ is computed exactly in the algorithm.
 
 Error bars are given by the different runs.
+
+! Consistency 
 
 !! SCGF
 
@@ -11044,47 +11053,50 @@ Error bars are given by the different runs.
 
 We have that modifying the translational EOM does not qualitatively change the outcome of the algorithm for even lower $$s$$ than what have been studied in [[ABP averages (control) — checks]].
 
-We explain the discrepancy between the two methods of feedback (red and light blue curves) by the fact that the $$g$$-polynomial computed during the algorithm actually rarely has a real root, the algorithm thus runs with $$g = 0$$ which is equivalent to only modifying the translational EOM (green curve).
-
-We have that the red curves deviates significantly from the others, except for $$s = 0$$, where the algorithm imposes $$g=0$$, hence the agreement. Note that for these simulations, we have used the approximation
-$$
-\mathcal{I}_{0, \tau} \approx \frac{1}{N} \frac{\sigma}{l_p},
-$$
-which should only holds for large $$\tau$$. We may have not simulated a long enough trajectory so that the systematic error in the SCGF vanishes.
+We note that qualitative observations of the output of the algorithm show that the values of $$g$$ from the first and second methods are quantitatively different, hence the discrepancy between the red and light blue curves. We add that the value $$g = 0$$ is artificially enforced at $$s = 0$$ for both these methods. While it seems to make sense for the second method (light blue), the first method (red) leads to a discontinuous — or non-monotonic — SCGF close to $$s = 0$$.
 
 !! Work avergae
 
 &lt;&lt;plot image:&quot;sWork_compare_modified_Nm1000_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;
 
-We note that the red curve is smoother and has lower error bars than the others. Moreover, it is significantly higher.
+We note that the red curve is smoother and has lower error bars than the others. Moreover, red and light blue curves are significantly higher than the others.
+
+We recall
+$$
+\left&lt;w_{\tau}\right&gt;_s = -\frac{\partial}{\partial s} \psi_N(s, \tau),
+$$
+and we qualitatively have that the red SCGF curve is steeper than the dark blue and green ones — ignoring 
+$$s = 0$$. However, that the light blue SCGF curve is flatter than the dark blue and green ones for $$s$$ close to 0, which is not translated into a lower active work at theses values of the biasing parameter. These indicate that something may be wrong in the way the SCGF is computed.
 
 !! Order average
 
 &lt;&lt;plot image:&quot;sOrder_compare_modified_Nm1000_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;
 
-Same remarks as for the active work. We recall that we expect trajectories for $$s &lt; 0$$ to display flocking, hence the modification of the dynamics. This modification is consistent with the increase of the order parameter.
+We recall that we expect trajectories for $$s &lt; 0$$ to display flocking, hence the modification of the dynamics. This modification is consistent with the increase of the order parameter for the red and light blue curves.
 
 ! Convergence
 
 !! SCGF
 
-&lt;&lt;plot image:&quot;SCGF_compareNC_modified_Nm1000_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;
+&lt;&lt;plot image:&quot;SCGF_compareNC_modified_M123_Nm1000_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;
 
 !! Work average
 
-&lt;&lt;plot image:&quot;sWork_compareNC_modified_Nm1000_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;
+&lt;&lt;plot image:&quot;sWork_compareNC_modified_M123_Nm1000_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;
 
-We have that the purple curves (without modification of the rotational EOM)
+We have that the green curves (without modification of the rotational EOM)
 
 # become smoother,
 # have decreasing error bars,
-# get significantly closer to the orange curves,
+# get significantly closer to the light and dark blue curves,
 
-as the number of clones $$N_{\text{clones}}$$ is increased from 100 to 1000. This indicates that the algorithm still has not converged without modification of the rotational EOM. On the contrary, orange curves do not significantly change between $$N_{\text{clones}}=100$$ and $$1000$$, which indicated a better convergence with respect to the number of clones when modifying the rotational EOM.
+as the number of clones $$N_{\text{clones}}$$ is increased from 100 to 1000. This indicates that the algorithm still has not converged without modification of the rotational EOM.
+
+On the contrary, light and dark blue curves change significantly less between $$N_{\text{clones}}=100$$ and $$1000$$, which indicates a better convergence with respect to the number of clones when modifying the rotational EOM. Moreover, we note that the convergence seems better for the first method (light blue) than the second (dark blue).
 
 !! Order average
 
-&lt;&lt;plot image:&quot;sOrder_compareNC_modified_Nm1000_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;</pre>
+&lt;&lt;plot image:&quot;sOrder_compareNC_modified_M123_Nm1000_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;</pre>
 </div>
 <div created="20191125144024165" modified="20191204151728096" tags="[[ABP work and order LDP]]" title="ABP averages (unbiased dynamics)">
 <pre>We compute here averages of active work and order parameter in the biased ensemble from unbiased dynamics measurements in order to have a basis of results to compare with the [[output of cloning algorithms|ABP averages (cloning) — checks]].
