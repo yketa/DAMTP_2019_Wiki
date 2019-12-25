@@ -9856,7 +9856,7 @@ config.macros.bibliography = {
 <div created="20190725184441855" modified="20190725184747575" title="$:/state/ShowPaletteEditor">
 <pre>yes</pre>
 </div>
-<div created="20180417005127058" modified="20191215184558771" title="$:/state/sidebar">
+<div created="20180417005127058" modified="20191223232349545" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
 <div created="20190727110717182" modified="20190727111019209" title="$:/state/tab--1498284803">
@@ -9970,7 +9970,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="[[ABP high Pe]] [[Active Brownian particles]] [[Cloning algorithm]] [[ABP cloning algorithm]] [[ABP work and order LDP]] [[ABP averages (feedback) — checks]] Project" title="$:/StoryList">
+<div list="[[ABP 1P mean squared displacement]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -10816,10 +10816,22 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div created="20190727110537306" modified="20190727110548195" title="$:/themes/tiddlywiki/vanilla/settings/fontfamily">
 <pre>&quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Lucida Grande&quot;, &quot;DejaVu Sans&quot;, sans-serif</pre>
 </div>
-<div created="20191030185345647" modified="20191030185437578" tags="[[One ABP]]" title="ABP 1P mean squared displacement">
-<pre>We plot the computed mean squared displacement in solid line and the corresponding theoretical predicition in dashed line.
+<div created="20191030185345647" modified="20191224170236340" tags="[[One ABP]]" title="ABP 1P mean squared displacement">
+<pre>! Custom relations between parameters
+
+We use the relations between parameterds from ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]).
+
+We plot the computed mean squared displacement in solid line and the corresponding theoretical predicition in dashed line.
 
 &lt;&lt;plot image:&quot;1P_msd&quot;&gt;&gt;
+
+We have that the theoretical prediction accurately fits the measured mean squared displacements.
+
+! Independent parameters
+
+We plot the computed mean squared displacement in solid line and the corresponding theoretical predicition in dashed line.
+
+&lt;&lt;plot image:&quot;1P_msd0&quot;&gt;&gt;
 
 We have that the theoretical prediction accurately fits the measured mean squared displacements.</pre>
 </div>
@@ -11029,7 +11041,7 @@ Black dashed lined correspond to the entire trajectory average from unbiased dyn
 
 &lt;&lt;plot image:&quot;convCloningAll_sOrder_tau_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;</pre>
 </div>
-<div created="20191215123336975" modified="20191217125525447" tags="[[ABP work and order LDP]]" title="ABP averages (feedback) — checks">
+<div created="20191215123336975" modified="20191218122722729" tags="[[ABP work and order LDP]]" title="ABP averages (feedback) — checks">
 <pre>We compute here averages of active work and order parameter in the biased ensemble from the [[cloning algorithm|ABP cloning algorithm]] with modification of the translational and rotational equation of motion (EOM), check their consistency and convergence.
 
 &lt;&lt;compuscript path:&quot;cloningserial.hpp&quot;&gt;&gt;
@@ -11054,6 +11066,16 @@ Error bars are given by the different runs.
 We have that modifying the translational EOM does not qualitatively change the outcome of the algorithm for even lower $$s$$ than what have been studied in [[ABP averages (control) — checks]].
 
 We note that qualitative observations of the output of the algorithm show that the values of $$g$$ from the first and second methods are quantitatively different, hence the discrepancy between the red and light blue curves. We add that the value $$g = 0$$ is artificially enforced at $$s = 0$$ for both these methods. While it seems to make sense for the second method (light blue), the first method (red) leads to a discontinuous — or non-monotonic — SCGF close to $$s = 0$$.
+
+We have for the first method that $$g$$ is determined self-consistently from
+$$
+g= \frac{\sigma}{l_p} \left(\frac{1}{N\left&lt;\nu^2\right&gt;} - 1\right),
+$$
+and we expect
+$$
+\left&lt;\nu^2\right&gt;_{s=0} = \frac{1}{N},
+$$
+in the limit of $$N \rightarrow \infty$$, which should then lay $$g = 0$$. With as few as 10 particles here, we are from this limit and thus $$g$$ may not vanish as $$s \rightarrow 0$$, which thus leads to a non-zero $$\psi_N$$.
 
 !! Work avergae
 
@@ -11193,7 +11215,7 @@ $$
 $$
 for low enough negative $$s$$.</pre>
 </div>
-<div created="20191204151816691" modified="20191215185258212" tags="[[ABP work and order LDP]]" title="ABP cloning algorithm">
+<div created="20191204151816691" modified="20191220144259223" tags="[[ABP work and order LDP]]" title="ABP cloning algorithm">
 <pre>We use the cloning algorithm framework detailed in [[Cloning algorithm]].
 
 &lt;&lt;compuscript path:&quot;cloning.py&quot;&gt;&gt;
@@ -11241,8 +11263,18 @@ We recall the norm of the order parameter $$\underline{\nu}$$ (see [[Active Brow
 $$
 |\underline{\nu}(t)| = \frac{1}{N} \sqrt{\sum_{i, j = 1}^N \cos(\theta_i(t) - \theta_j(t))} = \frac{1}{N} \sum_{i=1}^N \cos(\theta_i(t) - \varphi(t)),
 $$
-where $$\varphi$$ is the global phase.
-
+where $$\varphi$$ is the global phase. We note that
+$$
+|\underline{\nu}(t)|^2 = \frac{1}{N^2} \sum_{i, j = 1}^N \cos(\theta_i(t) - \theta_j(t)),
+$$
+so that we can write
+$$
+\begin{aligned}
+\frac{\partial}{\partial \theta_i} |\underline{\nu}(t)|^2 &amp;= - \frac{2}{N^2} \sum_{j \neq i} \sin(\theta_i(t) - \theta_j(t)) = - \frac{2}{N^2} \sum_{j =1}^N \sin(\theta_i(t) - \theta_j(t)),\\
+\frac{\partial^2}{\partial \theta_i^2} |\underline{\nu}(t)|^2 &amp;= - \frac{2}{N^2} \sum_{j \neq i} \cos(\theta_i(t) - \theta_j(t)) = - \frac{2}{N^2}\left(\sum_{j=1}^N \cos(\theta_i(t) - \theta_j(t)) - 1\right),
+\end{aligned}
+$$
+its partial derivatives with respect to $$\theta_i$$.
 
 We conserve the previously introduced modification to the translational equation of motion and add an auxiliary force the orientational equation of motion,
 $$
@@ -11265,49 +11297,44 @@ $$
 where we can identify,
 $$
 \begin{aligned}
-\sum_{i=1}^N \dot{\theta}_i(t) \frac{\partial}{\partial \theta_i} |\underline{\nu}(t)|^2 &amp;= -\frac{2}{N} |\underline{\nu}(t)| \sum_{i=1}^N \dot{\theta}_i(t) \sin(\theta_i(t) - \varphi(t)),\\
-\sum_{i=1}^N \left(\frac{\partial}{\partial \theta_i} |\underline{\nu}(t)|^2\right)^2 &amp;= \frac{4}{N^2} |\underline{\nu}(t)|^2 \sum_{i=1}^N \sin(\theta_i(t) - \varphi(t))^2\\
-&amp;= \frac{4}{N^4} \sum_{i=1}^N \left(\sum_{j=1}^N \sin(\theta_i(t) - \theta_j(t))\right)^2,\\
-\sum_{i=1}^N \frac{\partial^2}{\partial \theta_i^2} |\underline{\nu}(t)|^2 &amp;= - 2 |\underline{\nu}(t)|^2,
+\sum_{i=1}^N \dot{\theta}_i(t) \frac{\partial}{\partial \theta_i} |\underline{\nu}(t)|^2 &amp;= \frac{\text{d}}{\text{d}t} |\underline{\nu}(t)|^2,\\
+\sum_{i=1}^N \left(\frac{\partial}{\partial \theta_i} |\underline{\nu}(t)|^2\right)^2 &amp;= \frac{4}{N^4} \sum_{i=1}^N \left(\sum_{j=1}^N \sin(\theta_i(t) - \theta_j(t))\right)^2,\\
+&amp;= \frac{4}{N^2} |\underline{\nu}(t)|^2 \sum_{i=1}^N \sin(\theta_i(t) - \varphi(t))^2\\
+\sum_{i=1}^N \frac{\partial^2}{\partial \theta_i^2} |\underline{\nu}(t)|^2 &amp;= - 2 |\underline{\nu}(t)|^2 + \frac{2}{N},
 \end{aligned}
 $$
-so that we can write
+where the first line derives from chain rule in Stratonovitch convention, so that we can write
 $$
 \mathcal{P}_N^{(2)}\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] \, \exp\left(-s N \tau w^{(2)}_{\tau}\right) \propto \mathcal{P}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] \, \exp\left(- s N \tau w_{\tau}\right),
 $$
 where we have denoted
 $$
 \begin{aligned}
-w^{(2)}_{\tau} &amp;= 1 - \frac{1}{3}\frac{\sigma}{l_p}s + w_{f,\tau} + \frac{1}{s N\tau} \int_0^{\tau} \Bigg[g\frac{l_p}{\sigma} |\underline{\nu}(t)| \sum_{i=1}^N \dot{\theta}_i(t) \sin(\theta_i(t) - \varphi(t))\\
-&amp;\qquad\qquad\qquad- gN|\underline{\nu}(t)|^2 - g^2 \frac{l_p}{\sigma} |\underline{\nu}(t)|^2 \sum_{i=1}^N \sin^2(\theta_i(t) - \varphi(t))\Bigg] \, \text{d}t\\
-&amp;= 1 - \frac{1}{3}\frac{\sigma}{l_p}s + w_{f,\tau} + \frac{g}{s} \frac{l_p}{\sigma} \mathcal{I}_{0,\tau} - \frac{g}{s} \mathcal{I}_{1, \tau} - \frac{g^2}{s} \frac{l_p}{\sigma} \mathcal{I}_{2,\tau}\\
-&amp;= w^{(1)}_{\tau} + \frac{g}{s}\left(\frac{l_p}{\sigma} \mathcal{I}_{0,\tau} - \mathcal{I}_{1, \tau} - g \frac{l_p}{\sigma} \mathcal{I}_{2,\tau}\right),
+w^{(2)}_{\tau} &amp;= 1 - \frac{1}{3}\frac{\sigma}{l_p}s + w_{f,\tau} + \frac{1}{s N\tau} \int_0^{\tau} \Bigg[- \frac{1}{2} \frac{l_p}{\sigma} g N \frac{\text{d}}{\text{d}t} |\underline{\nu}(t)|^2\\
+&amp;\qquad\qquad\qquad + g - gN|\underline{\nu}(t)|^2 - g^2 \frac{l_p}{\sigma} \frac{1}{N^2} \sum_{i=1}^N \left(\sum_{j=1}^N \sin(\theta_i(t) - \theta_j(t))\right)^2\Bigg] \, \text{d}t\\
+&amp;= 1 - \frac{1}{3}\frac{\sigma}{l_p}s + w_{f,\tau} + \frac{1}{s N\tau} \int_0^{\tau} \Bigg[- \frac{1}{2} \frac{l_p}{\sigma} g N \frac{\text{d}}{\text{d}t} |\underline{\nu}(t)|^2\\
+&amp;\qquad\qquad\qquad + g - gN|\underline{\nu}(t)|^2 - g^2 \frac{l_p}{\sigma} |\underline{\nu}(t)|^2 \sum_{i=1}^N \sin^2(\theta_i(t) - \varphi(t))\Bigg] \, \text{d}t\\
+&amp;\simeq 1 - \frac{1}{3}\frac{\sigma}{l_p}s + w_{f,\tau} + \frac{g}{sN} - \frac{g}{s} \mathcal{I}_{1, \tau} - \frac{g^2}{s} \frac{l_p}{\sigma} \mathcal{I}_{2,\tau}\\
+&amp;\simeq w^{(1)}_{\tau} + \frac{g}{s}\left(\frac{1}{N} - \mathcal{I}_{1, \tau} - g \frac{l_p}{\sigma} \mathcal{I}_{2,\tau}\right),
 \end{aligned}
+$$
+where $$\simeq$$ denotes an equality up to a time non-extensive term, namely the one proportional to
+$$
+\int_0^{\tau} \frac{\text{d}}{\text{d}t} |\underline{\nu}(t)|^2 \, \text{d}t = \int_0^{\tau} \text{d}|\underline{\nu}(t)|^2 = |\underline{\nu}(\tau)|^2 -|\underline{\nu}(0)|^2,
 $$
 and defined
 $$
 \begin{aligned}
-\mathcal{I}_{0, \tau} &amp;= \frac{1}{N \tau} \int_0^{\tau} |\underline{\nu}(t)| \sum_{i=1}^N \dot{\theta}_i(t) \sin(\theta_i(t) - \varphi(t)) \, \text{d}t\\
-&amp;= \frac{1}{N \tau} \int_0^{\tau} |\underline{\nu}(t)| \sum_{i=1}^N \sin(\theta_i(t) - \varphi(t)) \, \text{d}\theta_i(t),\\
 \mathcal{I}_{1, \tau} &amp;= \frac{1}{\tau} \int_0^{\tau} |\underline{\nu}(t)|^2 \, \text{d}t,\\
-\mathcal{I}_{2, \tau} &amp;= \frac{1}{N \tau} \int_0^{\tau} |\underline{\nu}(t)|^2 \sum_{i=1}^N \sin^2(\theta_i(t) - \varphi(t)) \, \text{d}t,
+\mathcal{I}_{2, \tau} &amp;= \frac{1}{N \tau} \int_0^{\tau} \frac{1}{N^2} \sum_{i=1}^N \left(\sum_{j=1}^N \sin(\theta_i(t) - \theta_j(t))\right)^2 \, \text{d}t\\
+&amp;= \frac{1}{N \tau} \int_0^{\tau} |\underline{\nu}(t)|^2 \sum_{i=1}^N \sin^2(\theta_i(t) - \varphi(t)) \, \text{d}t,
 \end{aligned}
 $$
 for further ease of notation. We can draw the same conclusions on the cloning procedure as for the first method. Importantly, the relation between $$\mathcal{P}^{(2)}_N$$ and $$\mathcal{P}_N$$ holds irrespective of the value $$g$$.
 
-Note that in ([[Nemoto et al., 2016|https://journals.aps.org/pre/pdf/10.1103/PhysRevE.93.062123]], eq. (C9)), the approximation
-$$
-\mathcal{I}_{0, \tau} \approx \frac{1}{N} \frac{\sigma}{l_p},
-$$
-in the limit $$\tau \rightarrow \infty$$ has been used, which derives from the approximation
-$$
-\sum_{i=1}^N \dot{\theta}_i(t) \frac{\partial}{\partial \theta_i} |\underline{\nu}(t)|^2 \approx - 2 \frac{\sigma}{l_p} \frac{1}{N},
-$$
-up to time non-extensive terms.
-
 !!! Control from unbiased dynamics
 
-We can show that with the controlled dynamic described above without bias we have
+We can show that with the controlled dynamic described above and without bias we have
 $$
 \left&lt;|\underline{\nu}(t)|^2\right&gt;_{\text{con}} = \frac{1}{N} \frac{1}{1 + g (l_p/\sigma)},
 $$
@@ -11316,23 +11343,28 @@ $$
 g = \frac{\sigma}{l_p} \left(\frac{1}{N \left&lt;|\underline{\nu}(t)|^2\right&gt;_{\text{clo}}} - 1\right).
 $$
 
+We expect this expression of the mean squared order parameter to only hold when $$N \rightarrow \infty$$, therefore this method has to be used with precaution when using a few particles.
+
 !!! Control with feedback
 
-We can enforce the condition
+We can minimise
 $$
-\psi(s, \tau) = \left&lt;-s w_{\tau}^{(2)}\right&gt;_{\text{clo}},
+\begin{aligned}
+&amp;\psi(s, \tau) + \left&lt;s w_{\tau}^{(2)}\right&gt;_{\text{clo}}\\
+&amp;\qquad= \psi(s, \tau) + s\left[1 +  \left&lt;w_{f, \tau}\right&gt;_{\text{clo}} - \frac{1}{3}\frac{\sigma}{l_p}s\right] - g^2 \left(\frac{l_p}{\sigma} \left&lt;\mathcal{I}_{2, \tau}\right&gt;_{\text{clo}}\right) - g \left(\left&lt;\mathcal{I}_{1, \tau}\right&gt;_{clo} - \frac{1}{N}\right),
+\end{aligned}
 $$
-which would be verified if the controlled process was optimal. We have that every terms and factors in the expression of $$w^{(2)}_{\tau}$$ and in the relation above can computed from our cloning algorithm, we thus solve this equation for $$g$$,
+with respect to $$g$$. We will use
 $$
-g^2 \left(\frac{l_p}{\sigma} \left&lt;\mathcal{I}_{2, \tau}\right&gt;_{\text{clo}}\right) + g \left(\left&lt;\mathcal{I}_{1, \tau}\right&gt;_{clo} - \frac{l_p}{\sigma} \left&lt;\mathcal{I}_{0, \tau}\right&gt;_{clo}\right) + \left(s\left[\frac{1}{3}\frac{\sigma}{l_p}s  - \left&lt;w_{f, \tau}\right&gt;_{\text{clo}} - 1\right] - \psi(s, \tau)\right) = 0,
+g = \frac{\frac{1}{N} - \left&lt;\mathcal{I}_{1, \tau}\right&gt;_{clo}}{2 \frac{l_p}{\sigma} \left&lt;\mathcal{I}_{2, \tau}\right&gt;_{\text{clo}}},
 $$
 and modify its value at each cloning step of the algorithm.
 
-We can note that for $$s = 0$$, the above equation has $$g = 0$$ as a solution, and will thus use
+We can note that for $$s = 0$$, we expect
 $$
-\left.w^{(2)}_{\tau}\right|_{s=0} = \left.w^{(1)}_{\tau}\right|_{s=0} = 1 + w_{f, \tau},
+\left&lt;|\underline{\nu}(t)|^2\right&gt;_0 = \frac{1}{N} = \left&lt;\mathcal{I}_{1, \tau}\right&gt;_{clo},
 $$
-in this case for the purpose of the SCGF computation.</pre>
+which should then lead to $$g = 0$$.</pre>
 </div>
 <div created="20191113174242793" modified="20191113181148052" tags="[[Active Brownian particles]]" title="ABP CM transition">
 <pre>We are interested in the dynamical phase transition to collective motion (CM) described in ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]).
@@ -11782,7 +11814,7 @@ This variance is also computed in [[ABP work correlations]].
 
 &lt;&lt;plot image:&quot;varWorkN_Dk6500_Ln1000_El2000&quot;&gt;&gt;</pre>
 </div>
-<div created="20191010153112162" modified="20191217171900855" tags="TableOfContents" title="Active Brownian particles">
+<div created="20191010153112162" modified="20191224141803425" tags="TableOfContents" title="Active Brownian particles">
 <pre>We define our model of active Brownian particles, based on ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]), some quantities to describe the system, and derive some analytical results.
 
 Some other theoretical developments and simulation results can be found for [[one particle|One ABP]] and [[multiple particles|Multiple ABP]].
@@ -11804,20 +11836,34 @@ $$
 \dot{\theta}_i &amp;= \sqrt{2 D_r} \xi_i,
 \end{aligned}
 $$
-where $$\underline{\eta}_i, \xi_i$$ are zero-mean unit-variance Gaussian white noises, $$\mu$$ is the mobility, $$v_0$$ the self-propulsion speed, $$\underline{u}(\theta_i) = (\cos\theta_i, \sin\theta_i) = \underline{u}_i$$, and $$D$$ and $$D_r$$ the translational and rotation diffusivities. The force between particles derives from the WCA potential
+where $$\underline{\eta}_i, \xi_i$$ are zero-mean unit-variance Gaussian white noises, $$\mu$$ is the mobility, $$v_0$$ the self-propulsion speed, $$\underline{u}(\theta_i) = (\cos\theta_i, \sin\theta_i) = \underline{u}_i$$, and $$D$$ and $$D_r$$ the translational and rotation diffusivities.
+
+!!! Interaction potential
+
+With
+$$
+\sigma_{ij} = \frac{\sigma_i + \sigma_j}{2},
+$$
+the mean diameter of particles $$i$$ and $$j$$, we define the interparticle force deriving from the WCA potential between these particles separated by distance $$r$$,
 $$
 \begin{aligned}
-V_{WCA}(r, \epsilon) &amp;= \left\{4 \epsilon \left(\frac{1}{(r/\sigma)^{12}} - \frac{1}{(r/\sigma)^6}\right) + 1\right\} \Theta(2^{1/6} - r/\sigma),
+V_{WCA}(r, \epsilon) &amp;= \left\{4 \epsilon \left(\frac{1}{(r/\sigma_{ij})^{12}} - \frac{1}{(r/\sigma_{ij})^6}\right) + 1\right\} \Theta(2^{1/6} - r/\sigma_{ij}),
 \end{aligned}
 $$
 where $$\Theta$$ stands for the Heaviside function, and $$\sigma$$ is the diameter of particles. We thus have a force of the form
 $$
-\underline{F}_{WCA}(r = \sqrt{\Delta x^2 + \Delta y^2}, \epsilon) = - \frac{\epsilon}{\sigma^2}\left(\frac{48}{(r/\sigma)^{14}} - \frac{24}{(r/\sigma)^{8}}\right) \begin{pmatrix} \Delta x \\ \Delta y \end{pmatrix} \Theta(2^{1/6} - r/\sigma).
+\underline{F}_{WCA}(r = \sqrt{\Delta x^2 + \Delta y^2}, \epsilon) = - \frac{\epsilon}{\sigma_{ij}^2}\left(\frac{48}{(r/\sigma_{ij})^{14}} - \frac{24}{(r/\sigma_{ij})^{8}}\right) \begin{pmatrix} \Delta x \\ \Delta y \end{pmatrix} \Theta(2^{1/6} - r/\sigma_{ij}).
 $$
+
+!!! Polydispersity
+
+In the case where the system is polydisperse, we will denote $$0 \leq I &lt; 1$$ its polydensity index, such that the diamters of particles are uniformly distributed in $$[1-I; 1+I]$$. We note that, defined this way, the mean diameter of particles is $$\sigma = 1$$.
 
 !!! Dimensionless quantities and equations
 
-We choose the units of length and time as $$\sigma = 1$$ and $$\sigma/v_0 = 1$$. Moreover, authors chose $$D_r = 3D/\sigma^2$$ (according to Stokes-Einstein-Debye relation) and $$\epsilon = D/\mu$$. We are thus left with an unique dimensionless parameter, besides the packing fraction $$\phi = \frac{N \pi \sigma^2}{4 L^2}$$,
+We use the relations between parameters used in ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]).
+
+We choose the units of length and time as $$\sigma = 1$$ and $$\sigma/v_0 = 1$$, with $$\sigma$$ the diameter of particles, the system being monodisperse. Moreover, authors chose $$D_r = 3D/\sigma^2$$ (according to Stokes-Einstein-Debye relation) and $$\epsilon = D/\mu$$. We are thus left with an unique dimensionless parameter, besides the packing fraction $$\phi = \frac{N \pi \sigma^2}{4 L^2}$$,
 $$
 \frac{l_p}{\sigma} = \frac{v_0}{D_r \sigma},
 $$
@@ -11835,6 +11881,10 @@ $$
 \end{aligned}
 $$
 where $$\underline{\tilde{F}}_{i, ex}$$ derives from $$V_{WCA}(r, \epsilon = 1)$$.
+
+We stress that this choice of relations between the physical parameters implies that the particles get softer as the persistence length is increased, as seen by the decrease of $$\epsilon$$ with increasing $$1/D_r$$.
+
+When considering the whole ensemble of parameters, we still keep $$\mu = 1$$ since only the product $$\mu \epsilon$$ is relevant. Please note that most further developments are done considering the previous relations.
 
 !!! Ito stochastic differential equations
 
@@ -11942,29 +11992,29 @@ and
 $$
 \begin{aligned}
 \text{d}\cos(\theta_i(t) - \theta_j(t^{\prime})) =&amp; -\frac{1}{2} \, \cos(\theta_i(t) - \theta_j(t^{\prime})) \, \text{d}(\theta_i(t) - \theta_j(t^{\prime}))^2 - \sin(\theta_i(t) - \theta_j(t^{\prime})) \, \text{d}(\theta_i(t) - \theta_j(t^{\prime}))\\
-=&amp; - \sqrt{\frac{2\sigma}{l_p}} \, \sin(\theta_i(t) - \theta_j(t^{\prime})) (\text{d}W_{\theta,i}(t) - \text{d}W_{\theta,j}(t^{\prime}))\\
-&amp;- \frac{\sigma}{l_p} \, \cos(\theta_i(t) - \theta_j(t^{\prime})) (2 \, \text{d}t - 2 \, \text{d}W_{\theta,i}(t) \, \text{d}W_{\theta,j}(t^{\prime}))\\
-=&amp; - \sqrt{\frac{2\sigma}{l_p}} \, \sin(\theta_i(t) - \theta_j(t^{\prime})) (\text{d}W_{\theta,i}(t) - \text{d}W_{\theta,j}(t^{\prime}))\\
-&amp;- \frac{\sigma}{l_p} \, \cos(\theta_i(t) - \theta_j(t^{\prime})) (\, \text{d}t  + \text{d}t^{\prime} - 2 \, \delta_{ij} \, \delta(t - t^{\prime}) \, \text{d}t),
+=&amp; - \sqrt{2 \, D_r} \, \sin(\theta_i(t) - \theta_j(t^{\prime})) (\text{d}W_{\theta,i}(t) - \text{d}W_{\theta,j}(t^{\prime}))\\
+&amp;- D_r \, \cos(\theta_i(t) - \theta_j(t^{\prime})) (2 \, \text{d}t - 2 \, \text{d}W_{\theta,i}(t) \, \text{d}W_{\theta,j}(t^{\prime}))\\
+=&amp; - \sqrt{2 \, D_r} \, \sin(\theta_i(t) - \theta_j(t^{\prime})) (\text{d}W_{\theta,i}(t) - \text{d}W_{\theta,j}(t^{\prime}))\\
+&amp;- D_r \, \cos(\theta_i(t) - \theta_j(t^{\prime})) (\, \text{d}t  + \text{d}t^{\prime} - 2 \, \delta_{ij} \, \delta(t - t^{\prime}) \, \text{d}t),
 \end{aligned}
 $$
 from which we infer for $$t &gt; t^{\prime}$$,
 $$
 \begin{aligned}
-&amp;\frac{\text{d}}{\text{d}t} \left&lt;\cos(\theta_i(t) - \theta_j(t^{\prime}))\right&gt; = - \frac{\sigma}{l_p} \left&lt;\cos(\theta_i(t) - \theta_j(t^{\prime}))\right&gt;\\
-\Rightarrow &amp;\left&lt;\cos(\theta_i(t) - \theta_j(t^{\prime}))\right&gt; = \left&lt;\cos(\theta_i(t^{\prime}) - \theta_j(t^{\prime}))\right&gt; \exp\left(-\frac{\sigma}{l_p}(t - t^{\prime})\right).
+&amp;\frac{\text{d}}{\text{d}t} \left&lt;\cos(\theta_i(t) - \theta_j(t^{\prime}))\right&gt; = - D_r  \left&lt;\cos(\theta_i(t) - \theta_j(t^{\prime}))\right&gt;\\
+\Rightarrow &amp;\left&lt;\cos(\theta_i(t) - \theta_j(t^{\prime}))\right&gt; = \left&lt;\cos(\theta_i(t^{\prime}) - \theta_j(t^{\prime}))\right&gt; \exp\left(-D_r \, (t - t^{\prime})\right).
 \end{aligned}
 $$
 We have for $$\left&lt;\cos(\theta_i(t^{\prime}) - \theta_i(t^{\prime}))\right&gt; = \left&lt;\cos(0)\right&gt; = 1$$, while for $$i \neq j$$ we have
 $$
 \begin{aligned}
-&amp;\frac{\text{d}}{\text{d}t^{\prime}} \left&lt;\cos(\theta_i(t^{\prime}) - \theta_j(t^{\prime}))\right&gt; = -2\frac{\sigma}{l_p}\left&lt;\cos(\theta_i(t^{\prime}) - \theta_j(t^{\prime}))\right&gt;\\
-\Rightarrow &amp;\left&lt;\cos(\theta_i(t^{\prime}) - \theta_j(t^{\prime}))\right&gt; = \left&lt;\cos(\theta_i(0) - \theta_j(0))\right&gt; \exp\left(-2\frac{\sigma}{l_p}t^{\prime}\right)
+&amp;\frac{\text{d}}{\text{d}t^{\prime}} \left&lt;\cos(\theta_i(t^{\prime}) - \theta_j(t^{\prime}))\right&gt; = -2 \, D_r \, \left&lt;\cos(\theta_i(t^{\prime}) - \theta_j(t^{\prime}))\right&gt;\\
+\Rightarrow &amp;\left&lt;\cos(\theta_i(t^{\prime}) - \theta_j(t^{\prime}))\right&gt; = \left&lt;\cos(\theta_i(0) - \theta_j(0))\right&gt; \exp\left(-2\, D_r \, t^{\prime}\right)
 \end{aligned}
 $$
 which decays to 0 as $$t^{\prime} \rightarrow +\infty$$. We then have for $$t, t^{\prime} \rightarrow +\infty$$ and $$t - t^{\prime}$$ constant,
 $$
-\left&lt;\underline{u}(\theta_i(t)) \cdot \underline{u}(\theta_j(t^{\prime}))\right&gt; = \left&lt;\cos(\theta_i(t) - \theta_j(t^{\prime}))\right&gt; = \delta_{ij} \exp\left(-\frac{\sigma}{l_p} |t - t^{\prime}|\right),
+\left&lt;\underline{u}(\theta_i(t)) \cdot \underline{u}(\theta_j(t^{\prime}))\right&gt; = \left&lt;\cos(\theta_i(t) - \theta_j(t^{\prime}))\right&gt; = \delta_{ij} \exp\left(-D_r \, |t - t^{\prime}|\right),
 $$
 where the absolute value enables to relax the $$t &gt; t^{\prime}$$ made earlier.
 
@@ -11975,13 +12025,13 @@ $$
 \begin{aligned}
 \left&lt;\delta \underline{\nu}(t) \cdot \delta \underline{\nu}(t^{\prime})\right&gt; &amp;= \left&lt;\underline{\nu}(t) \cdot \underline{\nu}(t^{\prime})\right&gt; - \left&lt;\underline{\nu}(t)\right&gt;^2\\
 &amp;= \frac{1}{N^2} \sum_{i,j = 1}^N \left&lt;\underline{u}(\theta_i(t)) \cdot \underline{u}(\theta_j(t^{\prime}))\right&gt;\\
-&amp;= \frac{1}{N} \exp\left(- \frac{\sigma}{l_p} |t - t^{\prime}|\right).
+&amp;= \frac{1}{N} \exp\left(- D_r \, |t - t^{\prime}|\right).
 \end{aligned}
 $$
 
 On the other side, we have from ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]], eq. (E9))
 $$
-\text{d} |\underline{\nu}(t)| = \frac{\sigma}{l_p}\left(\frac{1}{2 N |\underline{\nu}(t)|} - |\underline{\nu}(t)|\right) \, \text{d}t + \sqrt{\frac{\sigma}{N l_p}} \, \text{d}W_0(t),
+\text{d} |\underline{\nu}(t)| = D_r \, \left(\frac{1}{2 N |\underline{\nu}(t)|} - |\underline{\nu}(t)|\right) \, \text{d}t + \sqrt{\frac{D_r}{N}} \, \text{d}W_0(t),
 $$
 where $$W_0(t)$$ denotes a Wiener process, in the limit of $$|\underline{\nu}(t)| \ll 1$$ and large $$N$$. We have that the mean value of $$|\underline{\nu}(t)|$$ satisfies
 $$
@@ -11989,11 +12039,11 @@ $$
 $$
 We Taylor-expand the previous equation for small flucutations $$\delta|\underline{\nu}(t)| \ll \left&lt;|\underline{\nu}(t)|\right&gt;$$,
 $$
-\text{d}\delta|\underline{\nu}(t)| = - 2 \frac{\sigma}{l_p} \delta|\underline{\nu}(t)| + \sqrt{\frac{\sigma}{N l_p}} \text{d}W_0(t),
+\text{d}\delta|\underline{\nu}(t)| = - 2 D_r \delta|\underline{\nu}(t)| + \sqrt{\frac{D_r}{N}} \text{d}W_0(t),
 $$
-which now corresponds to an Ornstein-Uhlenbeck process with drift coefficient $${\displaystyle k = \frac{2\sigma}{l_p}}$$ and diffusion coefficient $${\displaystyle D = \frac{\sigma}{N l_p}}$$ ([[Gardiner, 2009|https://www.springer.com/gp/book/9783540707127]], § 3.8.4, § 4.5.4). We cas thus write its autocorrelation function
+which now corresponds to an Ornstein-Uhlenbeck process with drift coefficient $$\mathcal{K} = 2 D_r$$ and diffusion coefficient $${\displaystyle \mathcal{D} = \frac{D_r}{N}}$$ ([[Gardiner, 2009|https://www.springer.com/gp/book/9783540707127]], § 3.8.4, § 4.5.4). We cas thus write its autocorrelation function
 $$
-\left&lt;\delta |\underline{\nu}(t)| \, \delta |\underline{\nu}(t^{\prime})|\right&gt; = \frac{D}{2k} \exp(- k |t - t^{\prime}|) = \frac{1}{4N} \exp\left(- \frac{2\sigma}{l_p} |t - t^{\prime}|\right).
+\left&lt;\delta |\underline{\nu}(t)| \, \delta |\underline{\nu}(t^{\prime})|\right&gt; = \frac{\mathcal{D}}{2\mathcal{K}} \exp(- \mathcal{K} |t - t^{\prime}|) = \frac{1}{4N} \exp\left(- 2 \, D_r \, |t - t^{\prime}|\right).
 $$
 
 ! Active work
@@ -12191,7 +12241,7 @@ the correlation between the fluctuations of the order parameter norm at a time $
 
 A relation between the rate of active work, the interparticle potential, and the two- and three-body density correlation functions can be derived for a system of active particles ([[Tociu et al., 2019|https://journals.aps.org/prx/abstract/10.1103/PhysRevX.9.041026]]).</pre>
 </div>
-<div created="20191126153600341" modified="20191209141448041" tags="TableOfContents" title="Cloning algorithm">
+<div created="20191126153600341" modified="20191218173923100" tags="TableOfContents" title="Cloning algorithm">
 <pre>We introduce a cloning algorithm described in ([[Brewer et al., 2018|https://iopscience.iop.org/article/10.1088/1742-5468/aab3ef/meta]]) and in ([[Lestang, 2018|https://tel.archives-ouvertes.fr/tel-01974316]], chapter 4).
 
 &lt;&lt;compuscript path:&quot;cloningserial.hpp&quot;&gt;&gt;
@@ -12283,23 +12333,28 @@ We refer to the bottom panel of Fig. 5 in ([[Brewer et al., 2018|https://iopscie
 
 !! Optimally controlled process
 
-An optimally controlled process is such that it directly generates the path probability $$P^s_{\tau}(\mathcal{C})$$ ([[Nemoto et al., 2016|https://journals.aps.org/pre/pdf/10.1103/PhysRevE.93.062123]]), //i.e.//
+It can be shown that 
+([[Jack, 2019|https://arxiv.org/abs/1910.09883]]),
 $$
-P^{\text{con}}(\mathcal{C}) = P_{\tau}^s(\mathcal{C}),
+\tau \psi(s, \tau) + \left&lt;s B_{\tau}(\mathcal{C})\right&gt;_{\text{con}} \geq -\mathcal{D}(P^{\text{con}}||P),
 $$
-therefore the modification to the dynamics exactly matches the rare events leading to a large deviation of the biasing field. A consequence of this is that each clone is generated with multiplicity 1 within the cloning procedure, meaning that we aslo have
+where
 $$
-P^{\text{con}}(\mathcal{C}) = P^{\text{clo}}(\mathcal{C}).
+\mathcal{D}(P^{\text{con}}||P) = \left&lt;\log \frac{P^{\text{con}}(\mathcal{C})}{P(\mathcal{C})}\right&gt;_{\text{con}},
 $$
-It can be shown that for such a process ([[Jack, 2019|https://arxiv.org/abs/1910.09883]]),
+is the Kullback-Leibler divergence between $$P^{\text{con}}$$ and $$P$$. We stress that this quantity is non-negative and is equal to zero only if $$P^{\text{con}} = P$$. Moreover, we can note that
 $$
-\tau \psi(s, \tau) = \left&lt;- s B_{\tau}(\mathcal{C})\right&gt;_{\text{con}},
+\left&lt;-sB_{\tau}(\mathcal{C})\right&gt;_{\text{con}} - \mathcal{D}(P^{\text{con}}||P) = \psi(s, \tau) - \mathcal{D}(P^{\text{con}}||P^s_{\tau}), 
 $$
-which, with previous argument, leads to
+then equality is possible only if $$P^{\text{con}} = P_{\tau}^s$$. We qualify such a process as optimal since it directly generates the path probability $$P^s_{\tau}(\mathcal{C})$$ ([[Nemoto et al., 2016|https://journals.aps.org/pre/pdf/10.1103/PhysRevE.93.062123]]), //i.e.// the modification to the dynamics exactly matches the rare events leading to a large deviation of the biasing field. A consequence of this is that each clone is generated with multiplicity 1 within the cloning procedure, meaning that we aslo have
+$$
+P^{\text{con}}(\mathcal{C}) = P^{\text{clo}}(\mathcal{C}),
+$$
+therefore, despite finding the optimal modification being as difficult as solving the large deviation problem itself analytically, a dynamical updating of the controlled process during the cloning algorithm which would enforce ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]])
 $$
 \tau \psi(s, \tau) = \left&lt;- s B_{\tau}(\mathcal{C})\right&gt;_{\text{clo}},
 $$
-therefore, despite finding the optimal modification being as difficult as solving the large deviation problem itself analytically, a dynamical updating of the controlled process during the cloning algorithm which would enforce the above condition should improve its convergence ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]).</pre>
+or at least minimise the difference between these terms should improve its convergence.</pre>
 </div>
 <div created="20190812151828852" modified="20191208164300100" tags="$:/tags/Stylesheet" title="CustomStylesheet">
 <pre>/* TABLES */
@@ -12465,7 +12520,7 @@ We observe clustering for high densities and large persistence length. We make m
 
 &lt;&lt;toc label:&quot;Multiple ABP&quot;&gt;&gt;</pre>
 </div>
-<div created="20191029223954694" modified="20191112124124992" tags="[[Active Brownian particles]]" title="One ABP">
+<div created="20191029223954694" modified="20191223234440021" tags="[[Active Brownian particles]]" title="One ABP">
 <pre>! Free active Brownian particle
 
 We focus on $$N=1$$ systems, without external potential, such that the force term disappears in the equations of motion.
@@ -12484,14 +12539,30 @@ $$
 With the notations we have introduced, we then have
 $$
 \begin{aligned}
-\left&lt;|\Delta\underline{r}(\Delta t)|^2\right&gt; =&amp; \left&lt;\left(\int_{t_0}^{t_0 + \tau} \text{d}\underline{r}(t)\right)^2\right&gt;\\
-=&amp; \left&lt;\left(\int_{t_0}^{t_0 + \Delta t} \underline{u}(\theta(t)) \, \text{d}t + \sqrt{\frac{2}{3} \frac{\sigma}{l_p}} \, \begin{pmatrix} \text{d}W_{x}(t) \\ \text{d}W_{y}(t) \end{pmatrix} \right)^2\right&gt;\\
+\left&lt;|\Delta\underline{r}(\Delta t)|^2\right&gt; =&amp; \left&lt;\left(\int_{t_0}^{t_0 + \Delta t} \text{d}\underline{r}(t)\right)^2\right&gt;\\
+=&amp; \left&lt;\left(\int_{t_0}^{t_0 + \Delta t} \underline{u}(\theta(t)) \, \text{d}t + \int_{t_0}^{t_0 + \Delta t} \sqrt{\frac{2}{3} \frac{\sigma}{l_p}} \, \begin{pmatrix} \text{d}W_{x}(t) \\ \text{d}W_{y}(t) \end{pmatrix} \right)^2\right&gt;\\
 =&amp; \int_{t_0}^{t_0 + \Delta t} \int_{t_0}^{t_0 + \Delta t} \text{d}t \, \text{d}t^{\prime} \, \left&lt;\underline{u}(\theta(t)) \cdot \underline{u}(\theta(t^{\prime}))\right&gt;\\
 &amp;+ \frac{2}{3} \frac{\sigma}{l_p} \int_{t_0}^{t_0 + \Delta t} \int_{t_0}^{t_0 + \Delta t} \left(\left&lt;\text{d}W_{x}(t) \, \text{d}W_{x}(t^{\prime})\right&gt; + \left&lt;\text{d}W_{y}(t) \, \text{d}W_{y}(t^{\prime})\right&gt;\right)\\
 =&amp; \int_{t_0}^{t_0 + \Delta t} \int_{t_0}^{t_0 + \Delta t} \text{d}t \, \text{d}t^{\prime} \, \exp\left(-\frac{\sigma}{l_p} |t - t^{\prime}|\right) + \frac{4}{3} \frac{\sigma}{l_p} \Delta t\\
-=&amp; 2 \frac{l_p}{\sigma}\left(\Delta t + \frac{l_p}{\sigma}\left(\exp\left(-\frac{\sigma}{l_p} \Delta t\right) - 1\right)\right) + \frac{4}{3} \frac{\sigma}{l_p} \Delta t.
+=&amp; 2 \frac{l_p}{\sigma}\left(\Delta t + \frac{l_p}{\sigma}\left(\exp\left(-\frac{\sigma}{l_p} \Delta t\right) - 1\right)\right) + \frac{4}{3} \frac{\sigma}{l_p} \Delta t,
 \end{aligned}
 $$
+and similarly in the general case
+$$
+\begin{aligned}
+\left&lt;|\Delta\underline{r}(\Delta t)|^2\right&gt; =&amp; \left&lt;\left(\int_{t_0}^{t_0 + \Delta t} \dot{\underline{r}}(t) \, \text{d}t\right)^2\right&gt;\\
+&amp;= \left&lt;\left(\int_{t_0}^{t_0 + \Delta t} v_0 \, \underline{u}(\theta(t)) \, \text{d}t + \int_{t_0}^{t_0 + \Delta t} \sqrt{2D} \, \underline{\eta}(t) \, \text{d}t\right)^2\right&gt;\\
+&amp;= v_0^2 \int_{t_0}^{t_0 + \Delta t} \int_{t_0}^{t_0 + \Delta t} \text{d}t \, \text{d}t^{\prime} \, \left&lt;\underline{u}(\theta(t)) \cdot \underline{u}(\theta(t^{\prime}))\right&gt;\\
+&amp;+ v_0 \sqrt{2D} \int_{t_0}^{t_0 + \Delta t} \int_{t_0}^{t_0 + \Delta t} \text{d}t \, \text{d}t^{\prime} \, \left&lt;\underline{u}(\theta(t)) \cdot \underline{\eta}(t^{\prime})\right&gt;\\
+&amp;+ 2D \int_{t_0}^{t_0 + \Delta t} \int_{t_0}^{t_0 + \Delta t} \text{d}t \, \text{d}t^{\prime} \, \left&lt;\underline{\eta}(t) \cdot \underline{\eta}(t^{\prime})\right&gt;\\
+&amp;= 2 \frac{v_0^2}{D_r} \left(\Delta t + \frac{1}{D_r} \left(\exp(-D_r \, \Delta t) - 1\right)\right) + 4 \, D \, \Delta t,
+\end{aligned}
+$$
+where we have used
+$$
+\left&lt;\underline{u}(\theta(t)) \cdot \underline{\eta}(t^{\prime})\right&gt; = 0,
+$$
+in Ito convention.
 
 We compare this theoretical prediction to our simulations results in [[ABP 1P mean squared displacement]].
 
