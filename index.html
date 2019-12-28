@@ -500,6 +500,8 @@ Error message and password prompt
 
 <li>CustomStylesheet</li>
 
+<li>FIRE algorithm</li>
+
 <li>Macros</li>
 
 <li>Multiple ABP</li>
@@ -9880,7 +9882,7 @@ config.macros.bibliography = {
 <div created="20181009080146960" modified="20190801131626468" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/General</pre>
 </div>
-<div created="20180416015308350" modified="20191204152213463" title="$:/state/tab/sidebar--1835078512">
+<div created="20180416015308350" modified="20191226215816168" title="$:/state/tab/sidebar--1835078512">
 <pre>TableOfContents</pre>
 </div>
 <div created="20180418024406433" modified="20190727110635194" title="$:/state/tabs/controlpanel/toolbars-1345989671">
@@ -9970,7 +9972,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="[[Multiple ABP]] [[Active Brownian particles]] [[ABP 1P work correlations]] [[ABP 1P mean squared displacement]] Project" title="$:/StoryList">
+<div list="[[ABP high Pe]] Summaries [[ABP cloning algorithm]] [[Active Brownian particles]] [[FIRE algorithm]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -11814,7 +11816,7 @@ This variance is also computed in [[ABP work correlations]].
 
 &lt;&lt;plot image:&quot;varWorkN_Dk6500_Ln1000_El2000&quot;&gt;&gt;</pre>
 </div>
-<div created="20191010153112162" modified="20191226215623370" tags="TableOfContents" title="Active Brownian particles">
+<div created="20191010153112162" modified="20191227193800603" tags="TableOfContents" title="Active Brownian particles">
 <pre>We define our model of active Brownian particles, based on ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]), some quantities to describe the system, and derive some analytical results.
 
 Some other theoretical developments and simulation results can be found for [[one particle|One ABP]] and [[multiple particles|Multiple ABP]].
@@ -11913,6 +11915,12 @@ We note that since the noise is not multiplicative, the Ito and Stratonovitch in
 !! Numerical integration
 
 &lt;&lt;compuscript path:&quot;iteration.cpp&quot;&gt;&gt;
+
+!!! Initialisation
+
+Simulations with custom parameter relations start with a uniform grid of particles.
+
+Simulations of general ABPs start by randomly placing the particles in the system box ($$T\rightarrow\infty$$) and using the [[FIRE algorithm]] to minismise the particles' overlaps.
 
 !!! Euler's scheme
 
@@ -12364,6 +12372,9 @@ div.tc-tiddler-frame tbody th { background-color: #8c8c8c !important; }
 /* borders */
 div.tc-tiddler-frame table.custom-table td { border-top: 1px solid #808080 !important; border-bottom: 1px solid #808080 !important;  }
 div.tc-tiddler-frame table.custom-table { border: 2px solid #808080 !important; }</pre>
+</div>
+<div created="20191227135258014" modified="20191227135437290" tags="TableOfContents" title="FIRE algorithm">
+<pre>([[Bitzek et al., 2006|https://link.aps.org/doi/10.1103/PhysRevLett.97.170201]], [[Guénolé et al., 2019|http://arxiv.org/abs/1908.02038]])</pre>
 </div>
 <div created="20191028125750871" modified="20191204150609561" tags="$:/tags/Macro" title="Macros">
 <pre>\define plot(image:&quot;&quot;)
@@ -12863,8 +12874,12 @@ $$
 
 ([[Cugliandolo and Lecomte, 2017|https://iopscience.iop.org/article/10.1088/1751-8121/aa7dd6]], [[Cugliandolo et al., 2019|http://arxiv.org/abs/1806.09486]])</pre>
 </div>
-<div created="20180619220822377" modified="20191204183842004" tags="TableOfContents" title="Project">
-<pre>''Author'': Yann-Edwin Keta, //École normale supérieure de Lyon//&lt;br&gt;
+<div created="20180619220822377" modified="20191228114904891" tags="TableOfContents" title="Project">
+<pre>&lt;div style=&quot;font-size:0.7em;text-align:center;margin-top:3em;margin-bottom:3em;&quot;&gt;
+[img [Images/header.svg]] 
+&lt;/div&gt;
+
+''Author'': Yann-Edwin Keta, //École normale supérieure de Lyon//&lt;br&gt;
 &lt;div style=&quot;margin-left: 20px;&quot;&gt;[[yketa.xyz|https://yketa.xyz]]&amp;nbsp;&amp;bull;&amp;nbsp;[[yann-edwin.keta@ens-lyon.fr|mailto:yann-edwin.keta@ens-lyon.fr]]&lt;/div&gt;&lt;br&gt;
 ''Supervisor'': Robert L. Jack, //Department of Applied Mathematics and Theoretical Physics//, //University of Cambridge//
 
