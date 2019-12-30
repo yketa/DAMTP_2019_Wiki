@@ -9882,7 +9882,7 @@ config.macros.bibliography = {
 <div created="20181009080146960" modified="20190801131626468" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/General</pre>
 </div>
-<div created="20180416015308350" modified="20191226215816168" title="$:/state/tab/sidebar--1835078512">
+<div created="20180416015308350" modified="20191229191341301" title="$:/state/tab/sidebar--1835078512">
 <pre>TableOfContents</pre>
 </div>
 <div created="20180418024406433" modified="20190727110635194" title="$:/state/tabs/controlpanel/toolbars-1345989671">
@@ -9972,7 +9972,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="[[ABP high Pe]] Summaries [[ABP cloning algorithm]] [[Active Brownian particles]] [[FIRE algorithm]] Project" title="$:/StoryList">
+<div list="[[ABP high Pe]] [[Active Brownian particles]] [[FIRE algorithm]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -10682,7 +10682,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div created="20180620032354454" modified="20180620032356781" title="$:/temp/RemoteAssetSearch/$:/config/OfficialPluginLibrary">
 <pre>bibtex</pre>
 </div>
-<div created="20180416033117939" modified="20191208164038193" title="$:/temp/search">
+<div created="20180416033117939" modified="20191230130719782" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20180620031722320" modified="20180620031722320" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.15/index.html" url="https://tiddlywiki.com/library/v5.1.15/index.html">
@@ -11383,8 +11383,10 @@ Given the [[joint rate function|ABP work and order LDP]] $$I_N(\overline{\nu}_{\
 
 &lt;&lt;plot image:&quot;corForceOrientation_Nm2000_Dk6500_Lm2000_Em1000&quot;&gt;&gt;</pre>
 </div>
-<div created="20191204152553144" modified="20191217194745784" tags="[[Active Brownian particles]]" title="ABP high Pe">
+<div created="20191204152553144" modified="20191230134738889" tags="[[Active Brownian particles]]" title="ABP high Pe">
 <pre>We are interested in the high $$\text{Pe}$$ behaviour of our [[model active Brownian particles|Active Brownian particles]], in particular the characteristics of their cooperative motion and its relation to individual particles orientations.
+
+! Custom relations between parameters
 
 |custom-table|k
 | Observations |&lt;|&lt;|&lt;|&lt;|&lt;|h
@@ -11404,7 +11406,22 @@ Given the [[joint rate function|ABP work and order LDP]] $$I_N(\overline{\nu}_{\
 |~|~|1.6| $$2.5 \cdot 10^{-3}$$ | orientations | [ext[movie|Movies/u_No1000_Dl1600_Ln2000_Tm5000.mp4]] |
 |~|~|~| $$2.5 \cdot 10^{-3}$$ | displacements | [ext[movie|Movies/d_No1000_Dl1600_Ln2000_Tm5000.mp4]] |
 |~|~|~| $$1 \cdot 10^{-2}$$ | orientations | [ext[movie|Movies/u_No1000_Dl1600_Ln2000_Tn2000.mp4]] |
-|~|~|~| $$1 \cdot 10^{-2}$$ | displacements | [ext[movie|Movies/d_No1000_Dl1600_Ln2000_Tn2000.mp4]] |</pre>
+|~|~|~| $$1 \cdot 10^{-2}$$ | displacements | [ext[movie|Movies/d_No1000_Dl1600_Ln2000_Tn2000.mp4]] |
+
+! General ABPs
+
+|custom-table|k
+| Observations |&lt;|&lt;|&lt;|&lt;|&lt;|&lt;|&lt;|&lt;|h
+| ! $$N$$ | ! $$v_0$$ | ! $$D$$ | ! $$\epsilon$$ | ! $$\phi$$ | ! $$D_r$$ | ! $$D_r \Delta t$$ | ! focus | ! data |
+| $$10^3$$ | $$1$$ | $$0$$ | $$1$$ | $$0.65$$ | $$10^{-2}$$ | $$1 \cdot 10^{-2}$$ | orientations | [ext[movie|Movies/o_No1000_Fl1000_Vl1000_Tl0000_Rj1000_Dk6500_El0000.mp4]] |
+|~|~|~|~|~|~| $$1 \cdot 10^{-2}$$ | displacements | [ext[movie|Movies/d_No1000_Fl1000_Vl1000_Tl0000_Rj1000_Dk6500_El0000.mp4]] |
+|~|~|~|~|~|~| $$1 \cdot 10^{-2}$$ | none | [ext[movie|Movies/b_No1000_Fl1000_Vl1000_Tl0000_Rj1000_Dk6500_El0000.mp4]] |
+|~|~|~|~| $$0.70$$ | $$10^{-2}$$ | $$1 \cdot 10^{-2}$$ | orientations | [ext[movie|Movies/o_No1000_Fl1000_Vl1000_Tl0000_Rj1000_Dk7000_El0000.mp4]] |
+|~|~|~|~|~|~| $$1 \cdot 10^{-2}$$ | displacements | [ext[movie|Movies/d_No1000_Fl1000_Vl1000_Tl0000_Rj1000_Dk7000_El0000.mp4]] |
+|~|~|~|~|~|~| $$1 \cdot 10^{-2}$$ | none | [ext[movie|Movies/b_No1000_Fl1000_Vl1000_Tl0000_Rj1000_Dk7000_El0000.mp4]] |
+|~|~|~|~| $$0.75$$ | $$10^{-2}$$ | $$1 \cdot 10^{-2}$$ | orientations | [ext[movie|Movies/o_No1000_Fl1000_Vl1000_Tl0000_Rj1000_Dk7500_El0000.mp4]] |
+|~|~|~|~|~|~| $$1 \cdot 10^{-2}$$ | displacements | [ext[movie|Movies/d_No1000_Fl1000_Vl1000_Tl0000_Rj1000_Dk7500_El0000.mp4]] |
+|~|~|~|~|~|~| $$1 \cdot 10^{-2}$$ | none | [ext[movie|Movies/b_No1000_Fl1000_Vl1000_Tl0000_Rj1000_Dk7500_El0000.mp4]] |</pre>
 </div>
 <div created="20191030112133404" modified="20191108142542165" tags="[[Multiple ABP]]" title="ABP order correlations">
 <pre>We have derived in [[Active Brownian particles]],
@@ -11816,7 +11833,7 @@ This variance is also computed in [[ABP work correlations]].
 
 &lt;&lt;plot image:&quot;varWorkN_Dk6500_Ln1000_El2000&quot;&gt;&gt;</pre>
 </div>
-<div created="20191010153112162" modified="20191227193800603" tags="TableOfContents" title="Active Brownian particles">
+<div created="20191010153112162" modified="20191230130930158" tags="TableOfContents" title="Active Brownian particles">
 <pre>We define our model of active Brownian particles, based on ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]), some quantities to describe the system, and derive some analytical results.
 
 Some other theoretical developments and simulation results can be found for [[one particle|One ABP]] and [[multiple particles|Multiple ABP]].
@@ -11920,7 +11937,7 @@ We note that since the noise is not multiplicative, the Ito and Stratonovitch in
 
 Simulations with custom parameter relations start with a uniform grid of particles.
 
-Simulations of general ABPs start by randomly placing the particles in the system box ($$T\rightarrow\infty$$) and using the [[FIRE algorithm]] to minismise the particles' overlaps.
+Simulations of general polydisperse ABPs also start with a uniform grid of particles, we then use the [[FIRE algorithm]] to minismise the overlaps of particles.
 
 !!! Euler's scheme
 
@@ -12373,8 +12390,12 @@ div.tc-tiddler-frame tbody th { background-color: #8c8c8c !important; }
 div.tc-tiddler-frame table.custom-table td { border-top: 1px solid #808080 !important; border-bottom: 1px solid #808080 !important;  }
 div.tc-tiddler-frame table.custom-table { border: 2px solid #808080 !important; }</pre>
 </div>
-<div created="20191227135258014" modified="20191227135437290" tags="TableOfContents" title="FIRE algorithm">
-<pre>([[Bitzek et al., 2006|https://link.aps.org/doi/10.1103/PhysRevLett.97.170201]], [[Guénolé et al., 2019|http://arxiv.org/abs/1908.02038]])</pre>
+<div created="20191227135258014" modified="20191230130957978" tags="TableOfContents" title="FIRE algorithm">
+<pre>We use the fast inertial relaxation engine (FIRE) algorithm ([[Bitzek et al., 2006|https://link.aps.org/doi/10.1103/PhysRevLett.97.170201]], [[Guénolé et al., 2019|http://arxiv.org/abs/1908.02038]]) to minimise the potential energy of an initial configuration of particles.
+
+We [ext[illustrate this algorithm|Movies/fire.mp4]] with $$N=10^3$$ particles, at packing fraction $$\phi = 0.75$$, with uniformly and continously distributed radii between 0.8 and 1.2, interacting via a WCA potential.
+
+&lt;&lt;compuscript path:&quot;fire.hpp&quot;&gt;&gt;</pre>
 </div>
 <div created="20191028125750871" modified="20191204150609561" tags="$:/tags/Macro" title="Macros">
 <pre>\define plot(image:&quot;&quot;)
@@ -12874,10 +12895,10 @@ $$
 
 ([[Cugliandolo and Lecomte, 2017|https://iopscience.iop.org/article/10.1088/1751-8121/aa7dd6]], [[Cugliandolo et al., 2019|http://arxiv.org/abs/1806.09486]])</pre>
 </div>
-<div created="20180619220822377" modified="20191228114904891" tags="TableOfContents" title="Project">
+<div created="20180619220822377" modified="20191230121521257" tags="TableOfContents" title="Project">
 <pre>&lt;div style=&quot;font-size:0.7em;text-align:center;margin-top:3em;margin-bottom:3em;&quot;&gt;
-[img [Images/header.svg]] 
-&lt;/div&gt;
+&lt;a href=&quot;Images/header.svg&quot;&gt;[img [Images/header.svg]] 
+&lt;/a&gt;&lt;/div&gt;
 
 ''Author'': Yann-Edwin Keta, //École normale supérieure de Lyon//&lt;br&gt;
 &lt;div style=&quot;margin-left: 20px;&quot;&gt;[[yketa.xyz|https://yketa.xyz]]&amp;nbsp;&amp;bull;&amp;nbsp;[[yann-edwin.keta@ens-lyon.fr|mailto:yann-edwin.keta@ens-lyon.fr]]&lt;/div&gt;&lt;br&gt;
@@ -12910,7 +12931,7 @@ $$
 
 !!! ''License''
 
-This work is made available under the terms of the [[Creative Commons Attribution 4.0 International|https://creativecommons.org/licenses/by/4.0/]] license, with the exception of all images in [[this folder|https://github.com/yketa/DAMTP_2019_Wiki/tree/master/Images]] (logos, figures) but `cc-by.svg`.
+This work is made available under the terms of the [[Creative Commons Attribution 4.0 International|https://creativecommons.org/licenses/by/4.0/]] license, with the exception of all images in [[this folder|https://github.com/yketa/DAMTP_2019_Wiki/tree/master/Images]] (logos, figures) but `header.svg` and `cc-by.svg`.
 
 You are free to copy and redistribute this work in any medium or format, as well as to remix, transform, and build upon it for any purpose, as long as you give appropriate credit, provide a link to [[this license|https://raw.githubusercontent.com/yketa/DAMTP_2019_Wiki/master/LICENSE]], and indicate if changes were made.
 
