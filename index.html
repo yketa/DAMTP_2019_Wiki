@@ -9972,7 +9972,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="[[ABP high Pe]] [[Active Brownian particles]] [[FIRE algorithm]] Project" title="$:/StoryList">
+<div list="[[ABP high Pe]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -10682,7 +10682,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div created="20180620032354454" modified="20180620032356781" title="$:/temp/RemoteAssetSearch/$:/config/OfficialPluginLibrary">
 <pre>bibtex</pre>
 </div>
-<div created="20180416033117939" modified="20191230130719782" title="$:/temp/search">
+<div created="20180416033117939" modified="20200103145506167" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20180620031722320" modified="20180620031722320" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.15/index.html" url="https://tiddlywiki.com/library/v5.1.15/index.html">
@@ -11383,45 +11383,66 @@ Given the [[joint rate function|ABP work and order LDP]] $$I_N(\overline{\nu}_{\
 
 &lt;&lt;plot image:&quot;corForceOrientation_Nm2000_Dk6500_Lm2000_Em1000&quot;&gt;&gt;</pre>
 </div>
-<div created="20191204152553144" modified="20191230154403252" tags="[[Active Brownian particles]]" title="ABP high Pe">
+<div created="20191204152553144" modified="20200104140110905" tags="[[Active Brownian particles]]" title="ABP high Pe">
 <pre>We are interested in the high $$\text{Pe}$$ behaviour of our [[model active Brownian particles|Active Brownian particles]], in particular the characteristics of their cooperative motion and its relation to individual particles orientations.
 
 ! Custom relations between parameters
 
 |custom-table|k
 | Observations |&lt;|&lt;|&lt;|&lt;|&lt;|h
-| ! $$N$$ | ! $$l_p/\sigma$$ | ! $$\phi$$ | ! $$\Delta t/(l_p/\sigma)$$ | ! focus | ! data |
-| $$10^3$$ | $$200$$ | $$0.8$$ | $$5 \cdot 10^{-4}$$ | orientations | [ext[movie|Movies/u_No1000_Dk8000_Ln2000_Tm1000.mp4]] |
-|~|~|~| $$5 \cdot 10^{-4}$$ | none | [ext[movie|Movies/b_No1000_Dk8000_Ln2000_Tm1000.mp4]] |
-|~|~|~| $$2.5 \cdot 10^{-3}$$ | none | [ext[movie|Movies/b_No1000_Dk8000_Ln2000_Tm5000.mp4]] |
-|~|~| $$1$$ | $$2.5 \cdot 10^{-3}$$ | orientations | [ext[movie|Movies/u_No1000_Dl1000_Ln2000_Tm5000.mp4]] |
-|~|~|~| $$2.5 \cdot 10^{-3}$$ | displacements | [ext[movie|Movies/d_No1000_Dl1000_Ln2000_Tm5000.mp4]] |
-|~|~|~| $$5\cdot10^{-2}$$ | displacements | image ([ext[.svg|Figures/u_No1000_Dl1000_Ln2000_To1000.svg]], [ext[.eps|Figures/eps/u_No1000_Dl1000_Ln2000_To1000.eps]]) |
-|~|~|1.2| $$2.5 \cdot 10^{-3}$$ | orientations | [ext[movie|Movies/u_No1000_Dl1200_Ln2000_Tm5000.mp4]] |
-|~|~|~| $$2.5 \cdot 10^{-3}$$ | displacements | [ext[movie|Movies/d_No1000_Dl1200_Ln2000_Tm5000.mp4]] |
-|~|~|1.4| $$2.5 \cdot 10^{-3}$$ | orientations | [ext[movie|Movies/u_No1000_Dl1400_Ln2000_Tm5000.mp4]] |
-|~|~|~| $$2.5 \cdot 10^{-3}$$ | displacements | [ext[movie|Movies/d_No1000_Dl1400_Ln2000_Tm5000.mp4]] |
-|~|~|1.5| $$2.5 \cdot 10^{-3}$$ | orientations | [ext[movie|Movies/u_No1000_Dl1500_Ln2000_Tm5000.mp4]] |
-|~|~|~| $$2.5 \cdot 10^{-3}$$ | displacements | [ext[movie|Movies/d_No1000_Dl1500_Ln2000_Tm5000.mp4]] |
-|~|~|1.6| $$2.5 \cdot 10^{-3}$$ | orientations | [ext[movie|Movies/u_No1000_Dl1600_Ln2000_Tm5000.mp4]] |
-|~|~|~| $$2.5 \cdot 10^{-3}$$ | displacements | [ext[movie|Movies/d_No1000_Dl1600_Ln2000_Tm5000.mp4]] |
-|~|~|~| $$1 \cdot 10^{-2}$$ | orientations | [ext[movie|Movies/u_No1000_Dl1600_Ln2000_Tn2000.mp4]] |
-|~|~|~| $$1 \cdot 10^{-2}$$ | displacements | [ext[movie|Movies/d_No1000_Dl1600_Ln2000_Tn2000.mp4]] |
+| ! $$N$$ | ! $$l_p/\sigma$$ | ! $$\phi$$ | ! focus | ! data | ! $$\Delta t/(l_p/\sigma)$$ |
+| $$10^3$$ | $$200$$ | $$0.8$$ | orientations | [ext[movie|Movies/u_No1000_Dk8000_Ln2000_Tm1000.mp4]] | $$5 \cdot 10^{-4}$$ |
+|~|~|~| none | [ext[movie|Movies/b_No1000_Dk8000_Ln2000_Tm1000.mp4]] |~|
+|~|~|~| none | [ext[movie|Movies/b_No1000_Dk8000_Ln2000_Tm5000.mp4]] | $$2.5 \cdot 10^{-3}$$ |
+|~|~| $$1$$ | orientations | [ext[movie|Movies/u_No1000_Dl1000_Ln2000_Tm5000.mp4]] |~|
+|~|~|~| displacements | [ext[movie|Movies/d_No1000_Dl1000_Ln2000_Tm5000.mp4]] |~|
+|~|~|~| displacements | image ([ext[.svg|Figures/u_No1000_Dl1000_Ln2000_To1000.svg]], [ext[.eps|Figures/eps/u_No1000_Dl1000_Ln2000_To1000.eps]]) | $$5\cdot10^{-2}$$ |
+|~|~|1.2| orientations | [ext[movie|Movies/u_No1000_Dl1200_Ln2000_Tm5000.mp4]] | $$2.5 \cdot 10^{-3}$$ |
+|~|~|~| displacements | [ext[movie|Movies/d_No1000_Dl1200_Ln2000_Tm5000.mp4]] |~|
+|~|~|1.4| orientations | [ext[movie|Movies/u_No1000_Dl1400_Ln2000_Tm5000.mp4]] |~|
+|~|~|~| displacements | [ext[movie|Movies/d_No1000_Dl1400_Ln2000_Tm5000.mp4]] |~|
+|~|~|1.5| orientations | [ext[movie|Movies/u_No1000_Dl1500_Ln2000_Tm5000.mp4]] |~|
+|~|~|~| displacements | [ext[movie|Movies/d_No1000_Dl1500_Ln2000_Tm5000.mp4]] |~|
+|~|~|1.6| orientations | [ext[movie|Movies/u_No1000_Dl1600_Ln2000_Tm5000.mp4]] |~|
+|~|~|~| displacements | [ext[movie|Movies/d_No1000_Dl1600_Ln2000_Tm5000.mp4]] |~|
+|~|~|~| orientations | [ext[movie|Movies/u_No1000_Dl1600_Ln2000_Tn2000.mp4]] | $$1 \cdot 10^{-2}$$ |
+|~|~|~| displacements | [ext[movie|Movies/d_No1000_Dl1600_Ln2000_Tn2000.mp4]] |~|
 
 ! General ABPs
 
 |custom-table|k
 | Observations |&lt;|&lt;|&lt;|&lt;|&lt;|&lt;|&lt;|&lt;|h
-| ! $$N$$ | ! $$v_0$$ | ! $$\epsilon$$ | ! $$D$$ | ! $$D_r$$ | ! $$\phi$$ | ! $$D_r \Delta t$$ | ! focus | ! data |
-| $$10^3$$ | $$1$$ | $$1$$ | $$0$$ | $$10^{-2}$$ | $$0.65$$ | $$1 \cdot 10^{-2}$$ | orientations | [ext[movie|Movies/o_No1000_Fl1000_Vl1000_Tl0000_Rj1000_Dk6500_El0000.mp4]] |
-|~|~|~|~|~|~| $$1 \cdot 10^{-2}$$ | displacements | [ext[movie|Movies/d_No1000_Fl1000_Vl1000_Tl0000_Rj1000_Dk6500_El0000.mp4]] |
-|~|~|~|~|~|~| $$1 \cdot 10^{-2}$$ | none | [ext[movie|Movies/b_No1000_Fl1000_Vl1000_Tl0000_Rj1000_Dk6500_El0000.mp4]] |
-|~|~|~|~|~| $$0.70$$ | $$1 \cdot 10^{-2}$$ | orientations | [ext[movie|Movies/o_No1000_Fl1000_Vl1000_Tl0000_Rj1000_Dk7000_El0000.mp4]] |
-|~|~|~|~|~|~| $$1 \cdot 10^{-2}$$ | displacements | [ext[movie|Movies/d_No1000_Fl1000_Vl1000_Tl0000_Rj1000_Dk7000_El0000.mp4]] |
-|~|~|~|~|~|~| $$1 \cdot 10^{-2}$$ | none | [ext[movie|Movies/b_No1000_Fl1000_Vl1000_Tl0000_Rj1000_Dk7000_El0000.mp4]] |
-|~|~|~|~|~| $$0.75$$ | $$1 \cdot 10^{-2}$$ | orientations | [ext[movie|Movies/o_No1000_Fl1000_Vl1000_Tl0000_Rj1000_Dk7500_El0000.mp4]] |
-|~|~|~|~|~|~| $$1 \cdot 10^{-2}$$ | displacements | [ext[movie|Movies/d_No1000_Fl1000_Vl1000_Tl0000_Rj1000_Dk7500_El0000.mp4]] |
-|~|~|~|~|~|~| $$1 \cdot 10^{-2}$$ | none | [ext[movie|Movies/b_No1000_Fl1000_Vl1000_Tl0000_Rj1000_Dk7500_El0000.mp4]] |</pre>
+| ! $$N$$ | ! $$v_0$$ | ! $$\epsilon$$ | ! $$D$$ | ! $$\phi$$ | ! $$D_r$$ | ! focus | ! data | ! $$\Delta t$$ |
+| $$10^3$$ | $$1$$ | $$1$$ | $$0$$ | $$0.65$$ | $$1 \cdot 10^{-2}$$ | orientations | [ext[movie|Movies/o_No1000_Fl1000_Vl1000_Tl0000_Rj1000_Dk6500_El0000.mp4]] | $$1$$ |
+|~|~|~|~|~|~| displacements | [ext[movie|Movies/d_No1000_Fl1000_Vl1000_Tl0000_Rj1000_Dk6500_El0000.mp4]] |~|
+|~|~|~|~|~|~| none | [ext[movie|Movies/b_No1000_Fl1000_Vl1000_Tl0000_Rj1000_Dk6500_El0000.mp4]] |~|
+|~|~|~|~| $$0.70$$ | $$5 \cdot 10^{-3}$$ | orientations | [ext[movie|Movies/o_No1000_Fl1000_Vl1000_Tl0000_Ri5000_Dk7000_El0000.mp4]] |~|
+|~|~|~|~|~|~| displacements | [ext[movie|Movies/d_No1000_Fl1000_Vl1000_Tl0000_Ri5000_Dk7000_El0000.mp4]] |~|
+|~|~|~|~|~|~| none | [ext[movie|Movies/b_No1000_Fl1000_Vl1000_Tl0000_Ri5000_Dk7000_El0000.mp4]] |~|
+|~|~|~|~|~| $$1 \cdot 10^{-2}$$ | orientations | [ext[movie|Movies/o_No1000_Fl1000_Vl1000_Tl0000_Rj1000_Dk7000_El0000.mp4]] |~|
+|~|~|~|~|~|~| displacements | [ext[movie|Movies/d_No1000_Fl1000_Vl1000_Tl0000_Rj1000_Dk7000_El0000.mp4]] |~|
+|~|~|~|~|~|~| none | [ext[movie|Movies/b_No1000_Fl1000_Vl1000_Tl0000_Rj1000_Dk7000_El0000.mp4]] |~|
+|~|~|~|~|~| $$2 \cdot 10^{-2}$$ | orientations | [ext[movie|Movies/o_No1000_Fl1000_Vl1000_Tl0000_Rj2000_Dk7000_El0000.mp4]] |~|
+|~|~|~|~|~|~| displacements | [ext[movie|Movies/d_No1000_Fl1000_Vl1000_Tl0000_Rj2000_Dk7000_El0000.mp4]] |~|
+|~|~|~|~|~|~| none | [ext[movie|Movies/b_No1000_Fl1000_Vl1000_Tl0000_Rj2000_Dk7000_El0000.mp4]] |~|
+|~|~|~|~|~| $$5 \cdot 10^{-2}$$ | orientations | [ext[movie|Movies/o_No1000_Fl1000_Vl1000_Tl0000_Rj5000_Dk7000_El0000.mp4]] |~|
+|~|~|~|~|~|~| displacements | [ext[movie|Movies/d_No1000_Fl1000_Vl1000_Tl0000_Rj5000_Dk7000_El0000.mp4]] |~|
+|~|~|~|~|~|~| none | [ext[movie|Movies/b_No1000_Fl1000_Vl1000_Tl0000_Rj5000_Dk7000_El0000.mp4]] |~|
+|~|~|~|~|~| $$1 \cdot 10^{-1}$$ | orientations | [ext[movie|Movies/o_No1000_Fl1000_Vl1000_Tl0000_Rk1000_Dk7000_El0000.mp4]] |~|
+|~|~|~|~|~|~| displacements | [ext[movie|Movies/d_No1000_Fl1000_Vl1000_Tl0000_Rk1000_Dk7000_El0000.mp4]] |~|
+|~|~|~|~|~|~| none | [ext[movie|Movies/b_No1000_Fl1000_Vl1000_Tl0000_Rk1000_Dk7000_El0000.mp4]] |~|
+|~|~|~|~|~| $$2 \cdot 10^{-1}$$ | orientations | [ext[movie|Movies/o_No1000_Fl1000_Vl1000_Tl0000_Rk2000_Dk7000_El0000.mp4]] |~|
+|~|~|~|~|~|~| displacements | [ext[movie|Movies/d_No1000_Fl1000_Vl1000_Tl0000_Rk2000_Dk7000_El0000.mp4]] |~|
+|~|~|~|~|~|~| none | [ext[movie|Movies/b_No1000_Fl1000_Vl1000_Tl0000_Rk2000_Dk7000_El0000.mp4]] |~|
+|~|~|~|~|~| $$5 \cdot 10^{-1}$$ | orientations | [ext[movie|Movies/o_No1000_Fl1000_Vl1000_Tl0000_Rk5000_Dk7000_El0000.mp4]] |~|
+|~|~|~|~|~|~| displacements | [ext[movie|Movies/d_No1000_Fl1000_Vl1000_Tl0000_Rk5000_Dk7000_El0000.mp4]] |~|
+|~|~|~|~|~|~| none | [ext[movie|Movies/b_No1000_Fl1000_Vl1000_Tl0000_Rk5000_Dk7000_El0000.mp4]] |~|
+|~|~|~|~|~| $$1 \cdot 10^{0}$$ | orientations | [ext[movie|Movies/o_No1000_Fl1000_Vl1000_Tl0000_Rl1000_Dk7000_El0000.mp4]] |~|
+|~|~|~|~|~|~| displacements | [ext[movie|Movies/d_No1000_Fl1000_Vl1000_Tl0000_Rl1000_Dk7000_El0000.mp4]] |~|
+|~|~|~|~|~|~| none | [ext[movie|Movies/b_No1000_Fl1000_Vl1000_Tl0000_Rl1000_Dk7000_El0000.mp4]] |~|
+|~|~|~|~| $$0.75$$ | $$1 \cdot 10^{-2}$$ | orientations | [ext[movie|Movies/o_No1000_Fl1000_Vl1000_Tl0000_Rj1000_Dk7500_El0000.mp4]] |~|
+|~|~|~|~|~|~| displacements | [ext[movie|Movies/d_No1000_Fl1000_Vl1000_Tl0000_Rj1000_Dk7500_El0000.mp4]] |~|
+|~|~|~|~|~|~| none | [ext[movie|Movies/b_No1000_Fl1000_Vl1000_Tl0000_Rj1000_Dk7500_El0000.mp4]] |~|</pre>
 </div>
 <div created="20191030112133404" modified="20191108142542165" tags="[[Multiple ABP]]" title="ABP order correlations">
 <pre>We have derived in [[Active Brownian particles]],
@@ -12381,21 +12402,32 @@ $$
 $$
 or at least minimise the difference between these terms should improve its convergence.</pre>
 </div>
-<div created="20190812151828852" modified="20191208164300100" tags="$:/tags/Stylesheet" title="CustomStylesheet">
+<div created="20190812151828852" modified="20200102165742809" tags="$:/tags/Stylesheet" title="CustomStylesheet">
 <pre>/* TABLES */
 /* header background */
 div.tc-tiddler-frame thead td { background-color: #4d4d4d !important; }
 div.tc-tiddler-frame tbody th { background-color: #8c8c8c !important; }
 /* borders */
 div.tc-tiddler-frame table.custom-table td { border-top: 1px solid #808080 !important; border-bottom: 1px solid #808080 !important;  }
-div.tc-tiddler-frame table.custom-table { border: 2px solid #808080 !important; }</pre>
+div.tc-tiddler-frame table.custom-table { border: 2px solid #808080 !important; }
+/* IMAGES */
+/* invert colors */
+/*img { filter: invert(100%); }*/</pre>
 </div>
-<div created="20191227135258014" modified="20191230130957978" tags="TableOfContents" title="FIRE algorithm">
+<div created="20191227135258014" modified="20200102151719381" tags="TableOfContents" title="FIRE algorithm">
 <pre>We use the fast inertial relaxation engine (FIRE) algorithm ([[Bitzek et al., 2006|https://link.aps.org/doi/10.1103/PhysRevLett.97.170201]], [[Guénolé et al., 2019|http://arxiv.org/abs/1908.02038]]) to minimise the potential energy of an initial configuration of particles.
 
 We [ext[illustrate this algorithm|Movies/fire.mp4]] with $$N=10^3$$ particles, at packing fraction $$\phi = 0.75$$, with uniformly and continously distributed radii between 0.8 and 1.2, interacting via a WCA potential.
 
-&lt;&lt;compuscript path:&quot;fire.hpp&quot;&gt;&gt;</pre>
+&lt;&lt;compuscript path:&quot;fire.hpp&quot;&gt;&gt;
+
+With $$N$$ particles interacting via pairwise forces $$\underline{F}_{ij}$$, we consider the following equation of motion for particle $$i$$,
+$$
+\ddot{\underline{r}}_i = \sum_{j \neq i} \underline{F}_{ij},
+$$
+effectively setting the mass of each individual particle to $$m=1$$.
+
+</pre>
 </div>
 <div created="20191028125750871" modified="20191204150609561" tags="$:/tags/Macro" title="Macros">
 <pre>\define plot(image:&quot;&quot;)
