@@ -19,7 +19,7 @@ with $g$ a free parameter.\\
 
 According to notes by Takahiro, summarised in \href{https://yketa.github.io/DAMTP_2019_Wiki/#ABP%20cloning%20algorithm}{this tiddler}, we should have that
 \begin{equation}
-\left. s \, w_{\text{mod}}(0, \tau) \right|_{s=0} =  \frac{1}{N} - \underbrace{\frac{1}{\tau} \int_0^{\tau} |\underline{\nu}(t)|^2 \, \text{d}t}_{\mathcal{I}_1(0, \tau)} - g^2 \, \alpha \, \text{Pe} \, \underbrace{\frac{1}{N \, \tau} \int_0^{\tau} |\underline{\nu}(t)|^2 \, \sum_{i=1}^N \sin^2(\theta_i(t) - \varphi(t)) \, \text{d}t}_{\mathcal{I}_2(0, \tau)},
+\left. s \, w_{\text{mod}}(0, \tau) \right|_{s=0} =  \frac{g}{N} - g \,\underbrace{\frac{1}{\tau} \int_0^{\tau} |\underline{\nu}(t)|^2 \, \text{d}t}_{\mathcal{I}_1(0, \tau)} - g^2 \, \alpha \, \text{Pe} \, \underbrace{\frac{1}{N \, \tau} \int_0^{\tau} |\underline{\nu}(t)|^2 \, \sum_{i=1}^N \sin^2(\theta_i(t) - \varphi(t)) \, \text{d}t}_{\mathcal{I}_2(0, \tau)},
 \label{swmod}
 \end{equation}
 with
@@ -46,13 +46,13 @@ and we note that
 \end{equation}
 which with equations \ref{swmod} and \ref{I1} should lead to
 \begin{equation}
-\left. \mathcal{I}_2(0, \tau) \right|_{s=0} = \frac{1}{N} \frac{1}{g + g^2 \, \alpha \, \text{Pe}},
+\left. \mathcal{I}_2(0, \tau) \right|_{s=0} = \frac{1}{N} \frac{1}{1 + g \, \alpha \, \text{Pe}},
 \end{equation}
-and in particular, for $g = 1$, to
+and thus
 \begin{equation}
-\left. \mathcal{I}_2(0, \tau) \right|_{s=0, g=1} = \left. \mathcal{I}_1(0, \tau) \right|_{s=0, g=1},
+\left. \mathcal{I}_2(0, \tau) \right|_{s=0} = \left. \mathcal{I}_1(0, \tau) \right|_{s=0},
 \end{equation}
-which we see from figure \ref{testI1} is not satisfied.\\
+irrespective of $g$, which we see from figure \ref{testI1} is not satisfied for $g = 1$.\\
 
 We can see this discrepancy from the fact that
 \begin{equation}
