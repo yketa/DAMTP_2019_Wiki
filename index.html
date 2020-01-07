@@ -9858,7 +9858,7 @@ config.macros.bibliography = {
 <div created="20190725184441855" modified="20190725184747575" title="$:/state/ShowPaletteEditor">
 <pre>yes</pre>
 </div>
-<div created="20180417005127058" modified="20191223232349545" title="$:/state/sidebar">
+<div created="20180417005127058" modified="20200105193709880" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
 <div created="20190727110717182" modified="20190727111019209" title="$:/state/tab--1498284803">
@@ -9972,7 +9972,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="Summaries Macros [[ABP work and order LDP]] [[Cloning algorithm]] [[ABP cloning algorithm]] [[ABP high Pe]] Project" title="$:/StoryList">
+<div list="[[Active Brownian particles]] [[Path action]] Summaries [[ABP work and order LDP]] [[Cloning algorithm]] [[ABP cloning algorithm]] [[ABP high Pe]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -11217,7 +11217,7 @@ $$
 $$
 for low enough negative $$s$$.</pre>
 </div>
-<div created="20191204151816691" modified="20191220144259223" tags="[[ABP work and order LDP]]" title="ABP cloning algorithm">
+<div created="20191204151816691" modified="20200105193841934" tags="[[ABP work and order LDP]]" title="ABP cloning algorithm">
 <pre>We use the cloning algorithm framework detailed in [[Cloning algorithm]].
 
 &lt;&lt;compuscript path:&quot;cloning.py&quot;&gt;&gt;
@@ -11305,7 +11305,15 @@ $$
 \sum_{i=1}^N \frac{\partial^2}{\partial \theta_i^2} |\underline{\nu}(t)|^2 &amp;= - 2 |\underline{\nu}(t)|^2 + \frac{2}{N},
 \end{aligned}
 $$
-where the first line derives from chain rule in Stratonovitch convention, so that we can write
+where the first line derives from chain rule in Stratonovitch convention, and the third to second line can be seen from the definition of the global phase $$\varphi(t)$$, by taking the imaginary part of
+$$
+e^{-\text{i}\theta_i(t)} \times |\underline{\nu}(t)| e^{\text{i}\varphi(t)} = e^{-\text{i}\theta_i(t)} \times \frac{1}{N} \sum_{j=1}^N e^{\text{i}\theta_i(t)},
+$$
+//i.e.//,
+$$
+|\underline{\nu}(t)| \sin(\theta_i(t) - \varphi(t)) = \frac{1}{N} \sum_{j=1}^N \sin(\theta_j(t) - \theta_i(t)),
+$$
+and finally taking its square and summing over $$i$$. We can then write
 $$
 \mathcal{P}_N^{(2)}\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] \, \exp\left(-s N \tau w^{(2)}_{\tau}\right) \propto \mathcal{P}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] \, \exp\left(- s N \tau w_{\tau}\right),
 $$
@@ -12973,13 +12981,9 @@ You are free to copy and redistribute this work in any medium or format, as well
 
 Powered by [[TiddlyWiki|https://tiddlywiki.com/]] [img height=20 [Images/tiddlywiki.svg]]</pre>
 </div>
-<div created="20191113110938525" modified="20200105142209004" tags="TableOfContents" title="Summaries">
+<div created="20191113110938525" modified="20200107131105975" tags="TableOfContents" title="Summaries">
 <pre>&lt;&lt;summary label:&quot;summary_19_11&quot; title:&quot;November 12th 2019&quot; description:&quot;
 Description of the [[model|Active Brownian particles]], [[one-particle quantities|One ABP]], [[active work covariances|ABP work correlations]], and [[order and active work correlations|ABP work correlations]].
-&quot;&gt;&gt;
-
-&lt;&lt;summary label:&quot;testI1&quot; title:&quot;Error in the cloning algorithm&quot; description:&quot;
-We explore a discrepancy between the theoretical predictions and numerical outputs of [[ABP cloning algorithm]].
 &quot;&gt;&gt;</pre>
 </div>
 <div caption="Contents" created="20180416043645812" list-after="$:/core/ui/SideBar/Open" modified="20180417010609928" tags="$:/tags/SideBar" title="TableOfContents">
