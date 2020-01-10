@@ -9974,7 +9974,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="[[ABP averages (feedback) — checks]] [[ABP cloning algorithm]] Project" title="$:/StoryList">
+<div list="[[FIRE algorithm]] [[Active Brownian particles]] [[ABP high Pe]] [[ABP flow spectrum]] [[ABP averages (feedback) — checks]] [[ABP cloning algorithm]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -11045,7 +11045,7 @@ Black dashed lined correspond to the entire trajectory average from unbiased dyn
 
 &lt;&lt;plot image:&quot;convCloningAll_sOrder_tau_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;</pre>
 </div>
-<div created="20191215123336975" modified="20200109115552133" tags="[[ABP work and order LDP]]" title="ABP averages (feedback) — checks">
+<div created="20191215123336975" modified="20200109123226510" tags="[[ABP work and order LDP]]" title="ABP averages (feedback) — checks">
 <pre>We compute here averages of active work and order parameter in the biased ensemble from the [[cloning algorithm|ABP cloning algorithm]] with modification of the translational and rotational equation of motion (EOM), check their consistency and convergence.
 
 &lt;&lt;compuscript path:&quot;cloningserial.hpp&quot;&gt;&gt;
@@ -11069,7 +11069,7 @@ We have that modifying the translational EOM does not qualitatively change the o
 
 On the contrary, modifying the rotational EOM qualitatively increases the curvature of the SCGF. Moreover, with regard to the SCGF, both rotational control methods appear to be equivalent.
 
-!! Work avergae
+!! Work average
 
 &lt;&lt;plot image:&quot;sWork_compare_modified_Nm1000_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;
 
@@ -11208,7 +11208,7 @@ $$
 $$
 for low enough negative $$s$$.</pre>
 </div>
-<div created="20191204151816691" modified="20200109114752695" tags="[[ABP work and order LDP]]" title="ABP cloning algorithm">
+<div created="20191204151816691" modified="20200109165859385" tags="[[ABP work and order LDP]]" title="ABP cloning algorithm">
 <pre>We use the cloning algorithm framework detailed in [[Cloning algorithm]].
 
 &lt;&lt;compuscript path:&quot;cloning.py&quot;&gt;&gt;
@@ -11231,12 +11231,12 @@ $$
 &amp;\times \exp\left(-\frac{1}{4}\frac{l_p}{\sigma}\sum_{i=1}^N \int_0^{\tau} \dot{\theta}_i^2(t) \, \text{d}t\right)\\
 \propto&amp; \, \mathcal{P}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]\\
 &amp;\times\exp\left(\frac{3}{4} \frac{l_p}{\sigma} \sum_{i=1}^N \int_0^{\tau} \left[2 \left(\dot{\underline{r}}_i(t) - \underline{u}_i(t) - \frac{1}{3} \frac{\sigma}{l_p}\tilde{\underline{F}}_{i,ex}\right) \cdot f \underline{u}_i(t) - f^2 \right] \, \text{d}t\right)\\
-\propto&amp; \, \mathcal{P}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] \, \exp\left(\frac{3}{2} \frac{\sigma}{l_p} N \tau f \left[w_{\tau} - \left(1 - \frac{f}{2} + w_{f, \tau}\right)\right]\right),
+\propto&amp; \, \mathcal{P}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right] \, \exp\left(\frac{3}{2} \frac{l_p}{\sigma} N \tau f \left[w_{\tau} - \left(1 + \frac{f}{2} + w_{f, \tau}\right)\right]\right),
 \end{aligned}
 $$
 where $$\mathcal{P}_N\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]$$ denotes the trajectory probability without the modification of the EOM, $$w_{\tau}$$ is the normalised rate of active work for this trajectory and $$w_{f,\tau}$$ its force part (see [[Active Brownian particles]]). A convenient choice of $$f$$ is then
 $$
-f = -\frac{2}{3} \frac{l_p}{\sigma} s,
+f = -\frac{2}{3} \frac{\sigma}{l_p} s,
 $$
 so that we can write
 $$
@@ -12458,18 +12458,12 @@ div.tc-tiddler-frame table.custom-table { border: 2px solid #808080 !important; 
 /* invert colors */
 /*img { filter: invert(100%); }*/</pre>
 </div>
-<div created="20191227135258014" modified="20200102151719381" tags="TableOfContents" title="FIRE algorithm">
+<div created="20191227135258014" modified="20200110180929349" tags="TableOfContents" title="FIRE algorithm">
 <pre>We use the fast inertial relaxation engine (FIRE) algorithm ([[Bitzek et al., 2006|https://link.aps.org/doi/10.1103/PhysRevLett.97.170201]], [[Guénolé et al., 2019|http://arxiv.org/abs/1908.02038]]) to minimise the potential energy of an initial configuration of particles.
 
 We [ext[illustrate this algorithm|Movies/fire.mp4]] with $$N=10^3$$ particles, at packing fraction $$\phi = 0.75$$, with uniformly and continously distributed radii between 0.8 and 1.2, interacting via a WCA potential.
 
 &lt;&lt;compuscript path:&quot;fire.hpp&quot;&gt;&gt;
-
-With $$N$$ particles interacting via pairwise forces $$\underline{F}_{ij}$$, we consider the following equation of motion for particle $$i$$,
-$$
-\ddot{\underline{r}}_i = \sum_{j \neq i} \underline{F}_{ij},
-$$
-effectively setting the mass of each individual particle to $$m=1$$.
 
 </pre>
 </div>
