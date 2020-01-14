@@ -9974,7 +9974,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="[[One ABP]] [[ABP flow characteristics]] [[ABP high Pe]] [[Active Brownian particles]] Project" title="$:/StoryList">
+<div list="[[ABP averages (feedback) — checks]] [[ABP 1P mean squared displacement]] [[One ABP]] [[ABP flow characteristics]] [[ABP high Pe]] [[Active Brownian particles]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -11045,7 +11045,7 @@ Black dashed lined correspond to the entire trajectory average from unbiased dyn
 
 &lt;&lt;plot image:&quot;convCloningAll_sOrder_tau_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;</pre>
 </div>
-<div created="20191215123336975" modified="20200109123226510" tags="[[ABP work and order LDP]]" title="ABP averages (feedback) — checks">
+<div created="20191215123336975" modified="20200114194138595" tags="[[ABP work and order LDP]]" title="ABP averages (feedback) — checks">
 <pre>We compute here averages of active work and order parameter in the biased ensemble from the [[cloning algorithm|ABP cloning algorithm]] with modification of the translational and rotational equation of motion (EOM), check their consistency and convergence.
 
 &lt;&lt;compuscript path:&quot;cloningserial.hpp&quot;&gt;&gt;
@@ -11111,7 +11111,49 @@ It is qualitatively hard to determine which method of controlled rotational dyna
 
 !! Order average
 
-&lt;&lt;plot image:&quot;sOrder_compareNC_modified_M0123_Nm1000_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;</pre>
+&lt;&lt;plot image:&quot;sOrder_compareNC_modified_M0123_Nm1000_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;
+
+! Convergence analysis with varying parameters
+
+We assess the convergence of the cloning algorithm as a function of:
+
+* $$t$$: the total simulation time per clone,
+* $$N_{clones}$$: the total number of clones,
+* $$\tau$$: the simulation time between each cloning step.
+
+Parameters are set by default to $$t=100$$, $$N_{clones}=100$$, $$N_{runs}=50$$, $$t_{init}=15$$, $$\tau=0.5$$.
+
+Blue curves correspond to the //controlled trans. &amp; rot. EOM (1)// method, and red curves to the //controlled trans. &amp; rot. EOM (2)// method.
+
+!! Varying $$t$$
+
+!!! Work average
+
+&lt;&lt;plot image:&quot;convCloningModified_sWork_tmax_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;
+
+!!! Order average
+
+&lt;&lt;plot image:&quot;convCloningModified_sOrder_tmax_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;
+
+!! Varying $$N_{clones}$$
+
+!!! Work average
+
+&lt;&lt;plot image:&quot;convCloningModified_sWork_nc_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;
+
+!!! Order average
+
+&lt;&lt;plot image:&quot;convCloningModified_sOrder_nc_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;
+
+!! Varying $$\tau$$
+
+!!! Work average
+
+&lt;&lt;plot image:&quot;convCloningModified_sWork_tau_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;
+
+!!! Order average
+
+&lt;&lt;plot image:&quot;convCloningModified_sOrder_tau_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;</pre>
 </div>
 <div created="20191125144024165" modified="20191204151728096" tags="[[ABP work and order LDP]]" title="ABP averages (unbiased dynamics)">
 <pre>We compute here averages of active work and order parameter in the biased ensemble from unbiased dynamics measurements in order to have a basis of results to compare with the [[output of cloning algorithms|ABP averages (cloning) — checks]].
