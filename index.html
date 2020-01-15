@@ -11420,7 +11420,7 @@ Given the [[joint rate function|ABP work and order LDP]] $$I_N(\overline{\nu}_{\
 * ''(1)'' We observe $$\overline{\nu}_{\tau}^* &gt; 0$$ for any $$w_{\tau} &gt; \left&lt;w_{\tau}\right&gt;$$, indicating that the rare fluctuations describing the CM state are somewhat already present in the &quot;equilibrium&quot; state,
 * ''(2)'' We have a threshold of symmetric states, //i.e.// $$\overline{\nu}_{\tau}^* &gt; 0$$ for $$w_{\tau} &gt; \tilde{w}_{\tau} &gt; \left&lt;w_{\tau}\right&gt;$$, indicating that the CM state is far from the &quot;equilibrium&quot; state.</pre>
 </div>
-<div created="20200108174244705" modified="20200113174304212" tags="[[Active Brownian particles]]" title="ABP flow characteristics">
+<div created="20200108174244705" modified="20200115163002349" tags="[[Active Brownian particles]]" title="ABP flow characteristics">
 <pre>We define quantities to characterise the flow of systems of ABPs.
 
 &lt;&lt;compuscript path:&quot;flow.py&quot;&gt;&gt;
@@ -11447,11 +11447,25 @@ related to the equal-time two-point velocity correlation function according to t
 $$
 E(k) = \frac{k}{2 \pi} \int \text{d}^2\underline{R} \, e^{-\text{i} \underline{k} \cdot \underline{R}} \, \left&lt;\underline{v}(t, \underline{r}) \cdot \underline{v}(t, \underline{r} + \underline{R})\right&gt;_{t, \underline{r}},
 $$
-where the average over the orientations of $$\underline{k}$$ at fixed norm is implicit. We can then show that up to a normalisation constant we have
+where the average over the orientations of $$\underline{k}$$ at fixed norm is implicit. We note that
 $$
-E(k) \propto k \left&lt;||\underline{v}(t, \underline{k})||^2\right&gt;_t,
+\int \text{d}^2\underline{R} \, e^{-\text{i} \underline{k} \cdot \underline{R}} \, \left&lt;\underline{v}(t, \underline{r}) \cdot \underline{v}(t, \underline{r} + \underline{R})\right&gt;_{t, \underline{r}} \propto \left&lt;\int \text{d}^2\underline{R} \, e^{-\text{i} \underline{k} \cdot \underline{R}} \,  \int \text{d}^2\underline{r} \, \underline{v}(t, \underline{r}) \cdot \underline{v}(t, \underline{r} + \underline{R})\right&gt;_t,
 $$
-where $$\underline{v}(t, \underline{k})$$ is the Fourier transform in space of the velocity.</pre>
+where
+$$
+\begin{aligned}
+&amp;\int \text{d}^2\underline{R} \, e^{-\text{i} \underline{k} \cdot \underline{R}} \,  \int \text{d}^2\underline{r} \, \underline{v}(t, \underline{r}) \cdot \underline{v}(t, \underline{r} + \underline{R})\\
+= &amp;\int \text{d}^2\underline{R} \, e^{-\text{i} \underline{k} \cdot \underline{R}} \,  \int \text{d}^2\underline{r} \, \underline{v}(t, \underline{r})^* \cdot \underline{v}(t, \underline{r} + \underline{R})\\
+= &amp;\frac{1}{2\pi} \int \text{d}^2\underline{R} \, e^{-\text{i} \underline{k} \cdot \underline{R}} \, \int \text{d}^2\underline{r} \, \left(\int \text{d}^2\underline{k}^{\prime} \, e^{\text{i} \underline{k}^{\prime} \cdot \underline{r}} \, \underline{v}(t, \underline{k}^{\prime})\right)^* \cdot \left(\int \text{d}^2\underline{k}^{\prime\prime} \, e^{\text{i} \underline{k}^{\prime\prime} \cdot (\underline{r} + \underline{R})} \, \underline{v}(t, \underline{k}^{\prime\prime})\right)\\
+= &amp;\frac{1}{\sqrt{2\pi}} \int \text{d}^2\underline{R} \, e^{-i \underline{k}\cdot\underline{R}} \int \text{d}^2\underline{k}^{\prime} \int \text{d}^2\underline{k}^{\prime\prime} \, e^{\text{i} \underline{k}^{\prime\prime} \cdot \underline{R}} \, \underline{v}(t, \underline{k}^{\prime})^* \cdot \underline{v}(t, \underline{k}^{\prime\prime}) \, \frac{1}{\sqrt{2\pi}} \int \text{d}^2\underline{r} \, e^{\text{i} (\underline{k}^{\prime\prime} - \underline{k}^{\prime}) \cdot \underline{r}}\\
+= &amp;\int \text{d}^2\underline{k}^{\prime} \, \underline{v}(t, \underline{k}^{\prime})^* \cdot \underline{v}(t, \underline{k}^{\prime}) \, \frac{1}{\sqrt{2\pi}} \int \text{d}^2\underline{R} \, e^{\text{i} (\underline{k}^{\prime} - \underline{k})\cdot\underline{R}}\\
+= &amp;\underline{v}(t, \underline{k})^* \cdot \underline{v}(t, \underline{k})
+\end{aligned}
+$$
+with $$\underline{v}(t, \underline{k})$$ the Fourier transform in space of the velocity, so that
+$$
+E(k) \propto k \left&lt;||\underline{v}(t, \underline{k})||^2\right&gt;_t.
+$$</pre>
 </div>
 <div created="20191030124122157" modified="20191030124745913" tags="[[Multiple ABP]]" title="ABP force correlations">
 <pre>&lt;&lt;plot image:&quot;corForce_Nm2000_Dk6500_Lm2000_Em1000&quot;&gt;&gt;
