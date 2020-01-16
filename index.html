@@ -234,6 +234,8 @@ Error message and password prompt
 
 <li>$:/state/toc/TableOfContents/Active Brownian particles-One ABP--81657105</li>
 
+<li>$:/state/toc/TableOfContents/Active Brownian particles/ABP work and order LDP-ABP cloning algorithm--81657105</li>
+
 <li>$:/state/toc/TableOfContents/Measurements-Collective mean square displacements--81657105</li>
 
 <li>$:/state/toc/TableOfContents/Measurements-Cooperativity--81657105</li>
@@ -488,6 +490,8 @@ Error message and password prompt
 
 <li>ABP order correlations</li>
 
+<li>ABP structure characteristics</li>
+
 <li>ABP work and order LDP</li>
 
 <li>ABP work correlations</li>
@@ -507,6 +511,8 @@ Error message and password prompt
 <li>Macros</li>
 
 <li>Multiple ABP</li>
+
+<li>N-interacting Brownian rotors</li>
 
 <li>One ABP</li>
 
@@ -9944,6 +9950,9 @@ config.macros.bibliography = {
 <div created="20191030185434552" modified="20191030185434552" title="$:/state/toc/TableOfContents/Active Brownian particles-One ABP--81657105">
 <pre>open</pre>
 </div>
+<div created="20200116183033480" modified="20200116183033480" title="$:/state/toc/TableOfContents/Active Brownian particles/ABP work and order LDP-ABP cloning algorithm--81657105">
+<pre>open</pre>
+</div>
 <div created="20180609023859864" modified="20190810090138763" title="$:/state/toc/TableOfContents/Measurements-Collective mean square displacements--81657105">
 <pre>close</pre>
 </div>
@@ -9974,7 +9983,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="[[ABP averages (feedback) — checks]] [[ABP 1P mean squared displacement]] [[One ABP]] [[ABP flow characteristics]] [[ABP high Pe]] [[Active Brownian particles]] Project" title="$:/StoryList">
+<div list="[[N-interacting Brownian rotors]] [[ABP cloning algorithm]] [[ABP work correlations]] [[ABP averages (unbiased dynamics)]] [[ABP averages (control)]] [[ABP averages (cloning) — checks]] [[ABP structure characteristics]] [[ABP flow characteristics]] [[ABP high Pe]] [[Active Brownian particles]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -11250,7 +11259,7 @@ $$
 $$
 for low enough negative $$s$$.</pre>
 </div>
-<div created="20191204151816691" modified="20200109165859385" tags="[[ABP work and order LDP]]" title="ABP cloning algorithm">
+<div created="20191204151816691" modified="20200116184102308" tags="[[ABP work and order LDP]]" title="ABP cloning algorithm">
 <pre>We use the cloning algorithm framework detailed in [[Cloning algorithm]].
 
 &lt;&lt;compuscript path:&quot;cloning.py&quot;&gt;&gt;
@@ -11313,9 +11322,9 @@ its partial derivatives with respect to $$\theta_i$$.
 
 We conserve the previously introduced modification to the translational equation of motion and add an auxiliary force the orientational equation of motion,
 $$
-\dot{\theta}_i = - g N \frac{\partial}{\partial \theta_i} |\underline{\nu}|^2 + \sqrt{2\frac{\sigma}{l_p}} \xi_i = \frac{2 g}{N} \sum_{j \neq i} \sin(\theta_i - \theta_j) + \sqrt{2\frac{\sigma}{l_p}} \xi_i ,
+\dot{\theta}_i = - g N \frac{\partial}{\partial \theta_i} |\underline{\nu}|^2 + \sqrt{2\frac{\sigma}{l_p}} \xi_i = \frac{2 g}{N} \sum_{j \neq i} \sin(\theta_i - \theta_j) + \sqrt{2\frac{\sigma}{l_p}} \xi_i,
 $$
-where $$\underline{\nu}$$ is the instantaneous global order parameter (see [[Active Brownian particles]]), and $$g$$ is a free parameter. Our goal is to promote flockin, //i.e.// to increase $$|\underline{\nu}|^2$$, we must thus choose $$g &lt; 0$$.
+where $$g$$ is a free parameter. Our goal is to promote flockin, //i.e.// to increase $$|\underline{\nu}|^2$$, we must thus choose $$g &lt; 0$$.
 
 With $$\mathcal{P}_N^{(2)}\left[\{\underline{r}_i, \underline{u}_i\}_0^{\tau}\right]$$ the probability of a given trajectory $$\{\underline{r}_i, \underline{u}_i\}_0^{\tau}$$ with modifications to both the translational and rotation EOM, we have
 $$
@@ -11377,7 +11386,7 @@ for further ease of notation. We can draw the same conclusions on the cloning pr
 
 !!! Control from unbiased dynamics
 
-We can show that with the controlled dynamic described above and without bias we have
+We can show that with the controlled dynamic described above and without bias we have (see [[N-interacting Brownian rotors]])
 $$
 \left&lt;|\underline{\nu}(t)|^2\right&gt;_{\text{con}} = \frac{1}{N} \frac{1}{1 + g (l_p/\sigma)},
 $$
@@ -11420,7 +11429,7 @@ Given the [[joint rate function|ABP work and order LDP]] $$I_N(\overline{\nu}_{\
 * ''(1)'' We observe $$\overline{\nu}_{\tau}^* &gt; 0$$ for any $$w_{\tau} &gt; \left&lt;w_{\tau}\right&gt;$$, indicating that the rare fluctuations describing the CM state are somewhat already present in the &quot;equilibrium&quot; state,
 * ''(2)'' We have a threshold of symmetric states, //i.e.// $$\overline{\nu}_{\tau}^* &gt; 0$$ for $$w_{\tau} &gt; \tilde{w}_{\tau} &gt; \left&lt;w_{\tau}\right&gt;$$, indicating that the CM state is far from the &quot;equilibrium&quot; state.</pre>
 </div>
-<div created="20200108174244705" modified="20200115163002349" tags="[[Active Brownian particles]]" title="ABP flow characteristics">
+<div created="20200108174244705" modified="20200116111138876" tags="[[Active Brownian particles]]" title="ABP flow characteristics">
 <pre>We define quantities to characterise the flow of systems of ABPs.
 
 &lt;&lt;compuscript path:&quot;flow.py&quot;&gt;&gt;
@@ -11431,7 +11440,15 @@ We define the mean squared displacement and derive its theoretical expression fo
 
 ! Self-intermediate scattering function
 
-([[Flenner et al., 2016|https://pubs.rsc.org/en/content/articlehtml/2016/sm/c6sm01322h]])
+We will quantify the time scales over which the structural relaxation takes place with the self-intermediate scattering function, or incoherent intermediate scattering function, as ([[Binder and Kob, 2011|https://www.worldscientific.com/worldscibooks/10.1142/7300]], § 2.3, [[Flenner et al., 2016|https://pubs.rsc.org/en/content/articlehtml/2016/sm/c6sm01322h]], [[Berthier et al., 2019|https://aip.scitation.org/doi/full/10.1063/1.5093240]])
+$$
+F_s(\underline{k}, \Delta t) = \frac{1}{N} \sum_{i=1}^N \left&lt;\exp\left(-\text{i} \underline{k} \cdot \left(\underline{r}_i(t + \Delta t) - \underline{r}_i(t)\right)\right)\right&gt;_t,
+$$
+which is the space Fourier transform of
+$$
+G_s(\underline{r}, \Delta t) = \frac{1}{N} \sum_{i=1}^N \left&lt;\delta\left(\underline{r} - \left(\underline{r}_i(t + \Delta t) - \underline{r}(t)\right)\right)\right&gt;_t,
+$$
+the self-part of the van Hove function.
 
 ! Dynamic susceptibility
 
@@ -11439,7 +11456,7 @@ We define the mean squared displacement and derive its theoretical expression fo
 
 ! Kinetic energy spectrum
 
-We denote $$\underline{v}(t, \underline{r})$$ the velocity of a particle at position $$\underline{r}$$ at time $$t$$. We wish to quantify the accumulation of kinetic energy over different length scales with the energy spectrum $$E(k)$$ defined by ([[Wensink et al., 2012|https://www.pnas.org/content/109/36/14308.short]])
+We denote $$\underline{v}(t, \underline{r})$$ the velocity of a particle at position $$\underline{r}$$ at time $$t$$. We will quantify the accumulation of kinetic energy over different length scales with the energy spectrum $$E(k)$$ defined by ([[Wensink et al., 2012|https://www.pnas.org/content/109/36/14308.short]])
 $$
 \frac{1}{2} \left&lt;||\underline{v}||^2\right&gt; = \int_0^{\infty} E(k) \, \text{d}k,
 $$
@@ -11558,6 +11575,13 @@ $$
 &lt;&lt;plot image:&quot;corOrderOrderNorm_Nm2000_Dk6500_Em1000&quot;&gt;&gt;
 
 Our simulation results are in qualitative accordance with these theoretical predictions.</pre>
+</div>
+<div created="20200115181511248" modified="20200115181739472" tags="[[Active Brownian particles]]" title="ABP structure characteristics">
+<pre>We define quantities to characterise the structure of systems of ABPs.
+
+! Bond orientational susceptibility
+
+([[Binder and Kob, 2011|https://www.worldscientific.com/worldscibooks/10.1142/7300]], § 2.2)</pre>
 </div>
 <div created="20191113124812892" modified="20191208142657274" tags="[[Active Brownian particles]]" title="ABP work and order LDP">
 <pre>We redefine the normalised rate of active work
@@ -12703,6 +12727,122 @@ We observe clustering for high densities and large persistence length. We make m
 ! Quantitative observations
 
 &lt;&lt;toc label:&quot;Multiple ABP&quot;&gt;&gt;</pre>
+</div>
+<div created="20200116183011987" modified="20200116205500989" tags="[[ABP cloning algorithm]]" title="N-interacting Brownian rotors">
+<pre>We give details on the $$N$$-interacting Brownian rotors problem implicitly introduced in ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]], appendix C).
+
+We consider $$N$$ rotors described by their orientations $$\{\theta_i\}$$, with following equations of motion (see [[ABP cloning algorithm]]),
+$$
+\begin{aligned}
+\dot{\theta}_i = - g N \frac{\partial}{\partial \theta_i} |\underline{\nu}|^2 + \sqrt{2\frac{\sigma}{l_p}} \xi_i &amp;= \frac{2 g}{N} \sum_{j = 1}^N \sin(\theta_i - \theta_j) + \sqrt{2\frac{\sigma}{l_p}} \xi_i\\
+&amp;= 2 g |\underline{\nu}|\sin(\theta_i - \varphi) + \sqrt{2\frac{\sigma}{l_p}} \xi_i,
+\end{aligned}
+$$
+where $$g$$ is a free parameter, and
+$$
+|\underline{\nu}| = \frac{1}{N} \sqrt{\sum_{i, j = 1}^N \cos(\theta_i - \theta_j)} = \frac{1}{N} \sum_{i=1}^N \cos(\theta_i - \varphi),
+$$
+is the norm of the order parameter, with $$\varphi$$ the global phase (see [[Active Brownian particles]]).
+
+! Order parameter norm
+
+We use Ito's lemma ([[Gardiner, 2009|https://www.springer.com/gp/book/9783540707127]], § 4.3.4) to derive a Langevin equation for the order parameter norm,
+$$
+\begin{aligned}
+\frac{\text{d}}{\text{d}t} |\underline{\nu}| = &amp;\sum_{k=1}^N \left(\frac{2g}{N} \sum_{j=1}^N \sin(\theta_k - \theta_j)\right)\frac{\text{d}}{\text{d}k}\left(\frac{1}{N} \sqrt{\sum_{i,j=1}^N \cos(\theta_i - \theta_j)}\right)\\
+&amp;+ D_r \sum_{k=1}^N \frac{\text{d}^2}{\text{d}\theta_k^2}\left(\frac{1}{N} \sqrt{\sum_{i,j=1}^N \cos(\theta_i - \theta_j)}\right)\\
+&amp;+ \sqrt{2D_r} \sum_{k=1}^N \frac{\text{d}}{\text{d}k} \left(\frac{1}{N} \sqrt{\sum_{i,j=1}^N \cos(\theta_i - \theta_j)}\right)\xi_k,
+\end{aligned}
+$$
+where
+$$
+\begin{aligned}
+\frac{\text{d}}{\text{d}\theta_k} \left(\frac{1}{N} \sqrt{\sum_{i,j=1}^N \cos(\theta_i - \theta_j)}\right) &amp;= \frac{\frac{\text{d}}{\text{d}\theta_k} \sum_{i,j=1}^N \cos(\theta_i - \theta_j)}{2 \sqrt{\sum_{i,j=1}^N \cos(\theta_i - \theta_j)}}\\
+&amp;= \frac{1}{2 N \nu} \left(-2 \sum_{j=1}^N \sin(\theta_k - \theta_j)\right)\\
+&amp;= - \frac{1}{N\nu} \sum_{j=1}^N \sin(\theta_k - \theta_j),
+\end{aligned}
+$$
+and, according to ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]], appendix E),
+$$
+\sum_{k=1}^N \frac{\text{d}^2}{\text{d}\theta_k^2}\left(\frac{1}{N} \sqrt{\sum_{i,j=1}^N \cos(\theta_i - \theta_j)}\right) = \frac{1}{|\underline{\nu}|} - N |\underline{\nu}| - \frac{1}{N^3 |\underline{\nu}|^3} \sum_{k,l,m=1}^N \sin(\theta_k - \theta_l) \sin(\theta_k - \theta_m),
+$$
+such that
+$$
+\begin{aligned}
+\frac{\text{d}}{\text{d}t} |\underline{\nu}| = &amp;-\left(\frac{2g}{N^3 |\underline{\nu}|} + \frac{D_r}{N^4 |\underline{\nu}|^3}\right) \sum_{k,l,m=1}^N \sin(\theta_k - \theta_l) \sin(\theta_k - \theta_m)\\
+&amp;+ \frac{D_r}{N} \left(\frac{1}{|\underline{\nu}|} - N |\underline{\nu}|\right) - \frac{\sqrt{2D_r}}{N^2|\underline{\nu}|} \Lambda,
+\end{aligned}
+$$
+where we have denoted
+$$
+\Lambda = \sum_{i,j=1}^N \sin(\theta_i - \theta_j) \xi_i,
+$$
+the noise term, which correlations are ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]], appendix E)
+$$
+\left&lt;\Lambda(t) \Lambda(0)\right&gt; = \delta(t) \sum_{k,l,m=1}^N \sin(\theta_k - \theta_l) \sin(\theta_k - \theta_m),
+$$
+where
+$$
+N \gg 1,~ |\underline{\nu}| \ll 1,~ \sum_{k,l,m=1}^N \sin(\theta_k - \theta_l) \sin(\theta_k - \theta_m) = \frac{N^3 |\underline{\nu}|^2}{2},
+$$
+so that we finally get
+$$
+\frac{\text{d}}{\text{d}t} |\underline{\nu}| = D_r \left(\frac{1}{2 N |\underline{\nu}|} - \left(1 + \frac{g}{D_r}\right)|\underline{\nu}|\right) + \sqrt{\frac{D_r}{N}} \xi,
+$$
+and introduce the potential,
+$$
+V(|\underline{\nu}|) = -\frac{D_r}{2N} \ln|\underline{\nu}| + \frac{g + D_r}{2}|\underline{\nu}|^2,
+$$
+such that we have
+$$
+P(|\underline{\nu}|) \propto \sqrt{|\underline{\nu}|} \exp\left(-\frac{N}{2}\left(1 + \frac{g}{D_r}\right)|\underline{\nu}|^2\right),
+$$
+the Boltzmann distribution for the order parameter norm.
+
+! Squared order parameter norm
+
+We can now also derive a Langevin equation for the squared order parameter norm,
+$$
+\begin{aligned}
+\frac{\text{d}}{\text{d}t} |\underline{\nu}|^2 = &amp;\, D_r \left(\frac{1}{2 N |\underline{\nu}|} - \left(1 + \frac{g}{D_r}\right)|\underline{\nu}|\right) \frac{\text{d}}{\text{d}|\underline{\nu}|}|\underline{\nu}|^2 + \frac{D_r}{2N}\frac{\text{d}^2}{\text{d}|\underline{\nu}|^2}|\underline{\nu}|^2\\
+&amp;+ \sqrt{\frac{D_r}{N}} \frac{\text{d}}{\text{d}|\underline{\nu}|}|\underline{\nu}|^2 \xi\\
+=&amp;\, 2D_r\left(\frac{1}{N} - \left(1 + \frac{g}{D_r}\right)|\underline{\nu}|^2\right) + \sqrt{\frac{D_r}{N}} 2 |\underline{\nu}| \xi,
+\end{aligned}
+$$
+from which we infer
+$$
+\left&lt;|\underline{\nu}|^2\right&gt; = \frac{1}{N \left(1 + g/D_r\right)},
+$$
+in steady state.
+
+! Mean field theory
+
+!! Boltzmann distribution
+
+Consider the transformation
+$$
+\theta_i - \varphi \rightarrow \theta,
+$$
+then
+$$
+|\underline{\nu}| = \left&lt;\cos\theta\right&gt;,
+$$
+and we will neglect the fluctuations around that mean. We have the following equation of motion for a single rotor,
+$$
+\dot{\theta} = 2 g |\underline{\nu}|\sin\theta + \sqrt{2D_r} \xi = -\frac{\text{d}}{\text{d}\theta}\left(2g|\underline{\nu}|\cos\theta\right) + \sqrt{2D_r}\xi,
+$$
+and thus the following Boltzmann distribution
+$$
+P(\theta) \propto \exp\left(\frac{g|\underline{\nu}|}{D_r}\cos\theta\right).
+$$
+
+!! Critical $$g$$
+
+We have a self-consistent equation for the order parameter norm
+$$
+|\underline{\nu}| = \left&lt;\cos\theta\right&gt; = \frac{\int \text{d}\theta \, \cos\theta \, \exp\left(\frac{g|\underline{\nu}|}{D_r}\cos\theta\right)}{\int \text{d}\theta \, \exp\left(\frac{g|\underline{\nu}|}{D_r}\cos\theta\right)},
+$$
+which solutions we can investigate for different values of $$g$$.</pre>
 </div>
 <div created="20191029223954694" modified="20200113172224659" tags="[[Active Brownian particles]]" title="One ABP">
 <pre>! Free active Brownian particle
