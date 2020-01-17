@@ -9944,11 +9944,11 @@ config.macros.bibliography = {
 <div created="20191125144053249" modified="20191125144053249" title="$:/state/toc/TableOfContents/Active Brownian particles-ABP work and order LDP--81657105">
 <pre>open</pre>
 </div>
-<div created="20191029224616636" modified="20191029224616636" title="$:/state/toc/TableOfContents/Active Brownian particles-Multiple ABP--81657105">
-<pre>open</pre>
+<div created="20191029224616636" modified="20200117203825537" title="$:/state/toc/TableOfContents/Active Brownian particles-Multiple ABP--81657105">
+<pre>close</pre>
 </div>
-<div created="20191030185434552" modified="20191030185434552" title="$:/state/toc/TableOfContents/Active Brownian particles-One ABP--81657105">
-<pre>open</pre>
+<div created="20191030185434552" modified="20200117203826416" title="$:/state/toc/TableOfContents/Active Brownian particles-One ABP--81657105">
+<pre>close</pre>
 </div>
 <div created="20200116183033480" modified="20200116183033480" title="$:/state/toc/TableOfContents/Active Brownian particles/ABP work and order LDP-ABP cloning algorithm--81657105">
 <pre>open</pre>
@@ -9983,7 +9983,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="[[N-interacting Brownian rotors]] [[ABP cloning algorithm]] [[ABP work correlations]] [[ABP averages (unbiased dynamics)]] [[ABP averages (control)]] [[ABP averages (cloning) — checks]] [[ABP structure characteristics]] [[ABP flow characteristics]] [[ABP high Pe]] [[Active Brownian particles]] Project" title="$:/StoryList">
+<div list="[[ABP averages (feedback) — checks]] [[N-interacting Brownian rotors]] [[ABP cloning algorithm]] [[ABP work correlations]] [[ABP averages (unbiased dynamics)]] [[ABP averages (control)]] [[ABP averages (cloning) — checks]] [[ABP structure characteristics]] [[ABP flow characteristics]] [[ABP high Pe]] [[Active Brownian particles]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -11054,7 +11054,7 @@ Black dashed lined correspond to the entire trajectory average from unbiased dyn
 
 &lt;&lt;plot image:&quot;convCloningAll_sOrder_tau_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;</pre>
 </div>
-<div created="20191215123336975" modified="20200114194138595" tags="[[ABP work and order LDP]]" title="ABP averages (feedback) — checks">
+<div created="20191215123336975" modified="20200117203759011" tags="[[ABP work and order LDP]]" title="ABP averages (feedback) — checks">
 <pre>We compute here averages of active work and order parameter in the biased ensemble from the [[cloning algorithm|ABP cloning algorithm]] with modification of the translational and rotational equation of motion (EOM), check their consistency and convergence.
 
 &lt;&lt;compuscript path:&quot;cloningserial.hpp&quot;&gt;&gt;
@@ -11162,7 +11162,11 @@ Blue curves correspond to the //controlled trans. &amp; rot. EOM (1)// method, a
 
 !!! Order average
 
-&lt;&lt;plot image:&quot;convCloningModified_sOrder_tau_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;</pre>
+&lt;&lt;plot image:&quot;convCloningModified_sOrder_tau_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;
+
+! Evolution of the aligning torque parameter $$g$$
+
+&lt;&lt;plot image:&quot;torque_parameter&quot;&gt;&gt;</pre>
 </div>
 <div created="20191125144024165" modified="20191204151728096" tags="[[ABP work and order LDP]]" title="ABP averages (unbiased dynamics)">
 <pre>We compute here averages of active work and order parameter in the biased ensemble from unbiased dynamics measurements in order to have a basis of results to compare with the [[output of cloning algorithms|ABP averages (cloning) — checks]].
@@ -12728,14 +12732,14 @@ We observe clustering for high densities and large persistence length. We make m
 
 &lt;&lt;toc label:&quot;Multiple ABP&quot;&gt;&gt;</pre>
 </div>
-<div created="20200116183011987" modified="20200117002424474" tags="[[ABP cloning algorithm]]" title="N-interacting Brownian rotors">
+<div created="20200116183011987" modified="20200117201438111" tags="[[Active Brownian particles]]" title="N-interacting Brownian rotors">
 <pre>We give details on the $$N$$-interacting Brownian rotors problem implicitly introduced in ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]], appendix C).
 
 We consider $$N$$ rotors described by their orientations $$\{\theta_i\}$$, with following equations of motion (see [[ABP cloning algorithm]]),
 $$
 \begin{aligned}
-\dot{\theta}_i = - g N \frac{\partial}{\partial \theta_i} |\underline{\nu}|^2 + \sqrt{2\frac{\sigma}{l_p}} \xi_i &amp;= \frac{2 g}{N} \sum_{j = 1}^N \sin(\theta_i - \theta_j) + \sqrt{2\frac{\sigma}{l_p}} \xi_i\\
-&amp;= 2 g |\underline{\nu}|\sin(\theta_i - \varphi) + \sqrt{2\frac{\sigma}{l_p}} \xi_i,
+\dot{\theta}_i = - g N \frac{\partial}{\partial \theta_i} |\underline{\nu}|^2 + \sqrt{2D_r} \xi_i &amp;= \frac{2 g}{N} \sum_{j = 1}^N \sin(\theta_i - \theta_j) + \sqrt{2D_r} \xi_i\\
+&amp;= 2 g |\underline{\nu}|\sin(\theta_i - \varphi) + \sqrt{2D_r} \xi_i,
 \end{aligned}
 $$
 where $$g$$ is a free parameter, and
@@ -12749,17 +12753,17 @@ is the norm of the order parameter, with $$\varphi$$ the global phase (see [[Act
 We use Ito's lemma ([[Gardiner, 2009|https://www.springer.com/gp/book/9783540707127]], § 4.3.4) to derive a Langevin equation for the order parameter norm,
 $$
 \begin{aligned}
-\frac{\text{d}}{\text{d}t} |\underline{\nu}| = &amp;\sum_{k=1}^N \left(\frac{2g}{N} \sum_{j=1}^N \sin(\theta_k - \theta_j)\right)\frac{\text{d}}{\text{d}k}\left(\frac{1}{N} \sqrt{\sum_{i,j=1}^N \cos(\theta_i - \theta_j)}\right)\\
+\frac{\text{d}}{\text{d}t} |\underline{\nu}| = &amp;\sum_{k=1}^N \left(\frac{2g}{N} \sum_{j=1}^N \sin(\theta_k - \theta_j)\right)\frac{\text{d}}{\text{d}\theta_k}\left(\frac{1}{N} \sqrt{\sum_{i,j=1}^N \cos(\theta_i - \theta_j)}\right)\\
 &amp;+ D_r \sum_{k=1}^N \frac{\text{d}^2}{\text{d}\theta_k^2}\left(\frac{1}{N} \sqrt{\sum_{i,j=1}^N \cos(\theta_i - \theta_j)}\right)\\
-&amp;+ \sqrt{2D_r} \sum_{k=1}^N \frac{\text{d}}{\text{d}k} \left(\frac{1}{N} \sqrt{\sum_{i,j=1}^N \cos(\theta_i - \theta_j)}\right)\xi_k,
+&amp;+ \sqrt{2D_r} \sum_{k=1}^N \frac{\text{d}}{\text{d}\theta_k} \left(\frac{1}{N} \sqrt{\sum_{i,j=1}^N \cos(\theta_i - \theta_j)}\right)\xi_k,
 \end{aligned}
 $$
 where
 $$
 \begin{aligned}
 \frac{\text{d}}{\text{d}\theta_k} \left(\frac{1}{N} \sqrt{\sum_{i,j=1}^N \cos(\theta_i - \theta_j)}\right) &amp;= \frac{\frac{\text{d}}{\text{d}\theta_k} \sum_{i,j=1}^N \cos(\theta_i - \theta_j)}{2 \sqrt{\sum_{i,j=1}^N \cos(\theta_i - \theta_j)}}\\
-&amp;= \frac{1}{2 N \nu} \left(-2 \sum_{j=1}^N \sin(\theta_k - \theta_j)\right)\\
-&amp;= - \frac{1}{N\nu} \sum_{j=1}^N \sin(\theta_k - \theta_j),
+&amp;= \frac{1}{2 N |\underline{\nu}|} \left(-2 \sum_{j=1}^N \sin(\theta_k - \theta_j)\right)\\
+&amp;= - \frac{1}{N|\underline{\nu}|} \sum_{j=1}^N \sin(\theta_k - \theta_j),
 \end{aligned}
 $$
 and, according to ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]], appendix E),
@@ -12793,27 +12797,35 @@ and introduce the potential,
 $$
 V(|\underline{\nu}|) = -\frac{D_r}{2N} \ln|\underline{\nu}| + \frac{g + D_r}{2}|\underline{\nu}|^2,
 $$
-such that we have
+such that we have the Boltzmann distribution for the order parameter norm
 $$
-P(|\underline{\nu}|) \propto |\underline{\nu}| \exp\left(-N\left(1 + \frac{g}{D_r}\right)|\underline{\nu}|^2\right),
+P(|\underline{\nu}|) = \frac{1}{Z} |\underline{\nu}| \exp\left(-N\left(1 + \frac{g}{D_r}\right)|\underline{\nu}|^2\right),
 $$
-the Boltzmann distribution for the order parameter norm.
-
-! Squared order parameter norm
-
-We can now also derive a Langevin equation for the squared order parameter norm,
+with the partition function
+$$
+\begin{aligned}
+Z &amp;= \int_0^1 \text{d}|\underline{\nu}| \, |\underline{\nu}| \exp\left(-N\left(1 + \frac{g}{D_r}\right)|\underline{\nu}|^2\right)\\
+&amp;= \frac{1}{2N\left(1 + \frac{g}{D_r}\right)}\left(1 - \exp\left(-N\left(1 + \frac{g}{D_r}\right)\right)\right),
+\end{aligned}
+$$
+and can compute the mean squared order parameter norm
+$$
+\begin{aligned}
+\left&lt;|\underline{\nu}|^2\right&gt; &amp;= \frac{1}{Z}\int_0^1 \text{d}|\underline{\nu}| \, |\underline{\nu}|^3 \exp\left(-N\left(1 + \frac{g}{D_r}\right)|\underline{\nu}|^2\right)\\
+&amp;= \frac{1}{Z\left[2N\left(1 + \frac{g}{D_r}\right)\right]}\Bigg(2 \int_0^1 \text{d}|\underline{\nu}| \, |\underline{\nu}| \exp\left(-N\left(1 + \frac{g}{D_r}\right)|\underline{\nu}|^2\right)\\
+&amp;\qquad\qquad\qquad\qquad\qquad- \left[|\underline{\nu}|^2 \exp\left(-N\left(1 + \frac{g}{D_r}\right)|\underline{\nu}|^2\right)\right]_0^1\Bigg)\\
+&amp;= \frac{1}{N\left(1 + \frac{g}{D_r}\right)} - \frac{\exp\left(-N\left(1 + \frac{g}{D_r}\right)\right)}{1 - \exp\left(-N\left(1 + \frac{g}{D_r}\right)\right)}\\
+&amp;= \frac{1}{N\left(1 + \frac{g}{D_r}\right)},~ N \gg 1
+\end{aligned}
+$$
+which can also be derived from the Langevin equation followed by this quantity,
 $$
 \begin{aligned}
 \frac{\text{d}}{\text{d}t} |\underline{\nu}|^2 = &amp;\, D_r \left(\frac{1}{2 N |\underline{\nu}|} - \left(1 + \frac{g}{D_r}\right)|\underline{\nu}|\right) \frac{\text{d}}{\text{d}|\underline{\nu}|}|\underline{\nu}|^2 + \frac{D_r}{2N}\frac{\text{d}^2}{\text{d}|\underline{\nu}|^2}|\underline{\nu}|^2\\
 &amp;+ \sqrt{\frac{D_r}{N}} \frac{\text{d}}{\text{d}|\underline{\nu}|}|\underline{\nu}|^2 \xi\\
-=&amp;\, 2D_r\left(\frac{1}{N} - \left(1 + \frac{g}{D_r}\right)|\underline{\nu}|^2\right) + \sqrt{\frac{D_r}{N}} 2 |\underline{\nu}| \xi,
+=&amp;\, 2D_r\left(\frac{1}{N} - \left(1 + \frac{g}{D_r}\right)|\underline{\nu}|^2\right) + \sqrt{\frac{D_r}{N}} 2 |\underline{\nu}| \xi.
 \end{aligned}
 $$
-from which we infer
-$$
-\left&lt;|\underline{\nu}|^2\right&gt; = \frac{1}{N \left(1 + g/D_r\right)},
-$$
-in steady state.
 
 ! Mean field theory
 
@@ -12823,7 +12835,7 @@ Consider the transformation
 $$
 \theta_i - \varphi \rightarrow \theta,
 $$
-then
+then for $$N \gg 1$$
 $$
 |\underline{\nu}| = \left&lt;\cos\theta\right&gt;,
 $$
@@ -12840,9 +12852,33 @@ $$
 
 We have a self-consistent equation for the order parameter norm
 $$
-|\underline{\nu}| = \left&lt;\cos\theta\right&gt; = \frac{\int \text{d}\theta \, \cos\theta \, \exp\left(-\frac{2g|\underline{\nu}|}{D_r}\cos\theta\right)}{\int \text{d}\theta \, \exp\left(-\frac{2g|\underline{\nu}|}{D_r}\cos\theta\right)},
+|\underline{\nu}| = \left&lt;\cos\theta\right&gt; = \frac{\int_0^{2\pi} \text{d}\theta \, \cos\theta \, \exp\left(-\frac{2g|\underline{\nu}|}{D_r}\cos\theta\right)}{\int_0^{2\pi} \text{d}\theta \, \exp\left(-\frac{2g|\underline{\nu}|}{D_r}\cos\theta\right)},
 $$
-which solutions we can investigate for different values of $$g$$.</pre>
+which solutions we can investigate for different values of $$g$$. We have that
+$$
+\left.\left&lt;\cos\theta\right&gt;\right|_{|\underline{\nu}|=0} = 0,~ \left.\left&lt;\cos\theta\right&gt;\right|_{|\underline{\nu}|=1} \leq 1,
+$$
+then, assuming that $$\left&lt;\cos\theta\right&gt;$$ is a concave function of $$|\underline{\nu}|$$, we have that our self-consistent equation has a non-trivial solution if and only if
+$$
+\left.\frac{\partial}{\partial |\underline{\nu}|}\left&lt;\cos\theta\right&gt;\right|_{|\underline{\nu}|=0} \geq 1,
+$$
+where we can compute
+$$
+\begin{aligned}
+\frac{\partial}{\partial |\underline{\nu}|}\left&lt;\cos\theta\right&gt; &amp;= -\frac{2g}{D_r}\Bigg[\left(\int_0^{2\pi} \text{d}\theta \, \cos^2\theta \, \exp\left(-\frac{2g|\underline{\nu}|}{D_r}\cos\theta\right)\right)\left(\int_0^{2\pi} \text{d}\theta \, \exp\left(-\frac{2g|\underline{\nu}|}{D_r}\cos\theta\right)\right)\\
+&amp;\qquad\qquad- \left(\int_0^{2\pi} \text{d}\theta \, \cos\theta \, \exp\left(-\frac{2g|\underline{\nu}|}{D_r}\cos\theta\right)\right)^2\Bigg]\\
+&amp;\qquad\times\left(\int_0^{2\pi} \text{d}\theta \, \exp\left(-\frac{2g|\underline{\nu}|}{D_r}\cos\theta\right)\right)^{-2},
+\end{aligned}
+$$
+and thus
+$$
+\left.\frac{\partial}{\partial |\underline{\nu}|}\left&lt;\cos\theta\right&gt;\right|_{|\underline{\nu}|=0} = -\frac{2g}{D_r}(\pi \times 2\pi)(2\pi)^{-2} = -\frac{g}{D_r},
+$$
+therefore we have a non-trivial solution if
+$$
+g \leq g_c,~ g_c = -D_r,
+$$
+where $$g_c$$ is the critical value of the torque parameter under which we observe an alignment of the rotors with a spontaneous breakng of symmetry within our mean field model. We have that this result is consistent with the physical picture of the aligning torque having to overcome the random fluctuations of the orientations.</pre>
 </div>
 <div created="20191029223954694" modified="20200113172224659" tags="[[Active Brownian particles]]" title="One ABP">
 <pre>! Free active Brownian particle
