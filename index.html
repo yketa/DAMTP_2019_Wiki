@@ -12728,7 +12728,7 @@ We observe clustering for high densities and large persistence length. We make m
 
 &lt;&lt;toc label:&quot;Multiple ABP&quot;&gt;&gt;</pre>
 </div>
-<div created="20200116183011987" modified="20200116233749235" tags="[[ABP cloning algorithm]]" title="N-interacting Brownian rotors">
+<div created="20200116183011987" modified="20200117002424474" tags="[[ABP cloning algorithm]]" title="N-interacting Brownian rotors">
 <pre>We give details on the $$N$$-interacting Brownian rotors problem implicitly introduced in ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]], appendix C).
 
 We consider $$N$$ rotors described by their orientations $$\{\theta_i\}$$, with following equations of motion (see [[ABP cloning algorithm]]),
@@ -12795,7 +12795,7 @@ V(|\underline{\nu}|) = -\frac{D_r}{2N} \ln|\underline{\nu}| + \frac{g + D_r}{2}|
 $$
 such that we have
 $$
-P(|\underline{\nu}|) \propto \sqrt{|\underline{\nu}|} \exp\left(-\frac{N}{2}\left(1 + \frac{g}{D_r}\right)|\underline{\nu}|^2\right),
+P(|\underline{\nu}|) \propto |\underline{\nu}| \exp\left(-N\left(1 + \frac{g}{D_r}\right)|\underline{\nu}|^2\right),
 $$
 the Boltzmann distribution for the order parameter norm.
 
@@ -12833,14 +12833,14 @@ $$
 $$
 and thus the following Boltzmann distribution
 $$
-P(\theta) \propto \exp\left(-\frac{g|\underline{\nu}|}{D_r}\cos\theta\right).
+P(\theta) \propto \exp\left(-\frac{2g|\underline{\nu}|}{D_r}\cos\theta\right).
 $$
 
 !! Critical $$g$$
 
 We have a self-consistent equation for the order parameter norm
 $$
-|\underline{\nu}| = \left&lt;\cos\theta\right&gt; = \frac{\int \text{d}\theta \, \cos\theta \, \exp\left(-\frac{g|\underline{\nu}|}{D_r}\cos\theta\right)}{\int \text{d}\theta \, \exp\left(-\frac{g|\underline{\nu}|}{D_r}\cos\theta\right)},
+|\underline{\nu}| = \left&lt;\cos\theta\right&gt; = \frac{\int \text{d}\theta \, \cos\theta \, \exp\left(-\frac{2g|\underline{\nu}|}{D_r}\cos\theta\right)}{\int \text{d}\theta \, \exp\left(-\frac{2g|\underline{\nu}|}{D_r}\cos\theta\right)},
 $$
 which solutions we can investigate for different values of $$g$$.</pre>
 </div>
