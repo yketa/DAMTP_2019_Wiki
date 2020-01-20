@@ -9890,7 +9890,7 @@ config.macros.bibliography = {
 <div created="20181009080146960" modified="20190801131626468" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/General</pre>
 </div>
-<div created="20180416015308350" modified="20191229191341301" title="$:/state/tab/sidebar--1835078512">
+<div created="20180416015308350" modified="20200119141527565" title="$:/state/tab/sidebar--1835078512">
 <pre>TableOfContents</pre>
 </div>
 <div created="20180418024406433" modified="20190727110635194" title="$:/state/tabs/controlpanel/toolbars-1345989671">
@@ -9983,7 +9983,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="[[ABP averages (feedback) — checks]] [[N-interacting Brownian rotors]] [[ABP cloning algorithm]] [[ABP work correlations]] [[ABP averages (unbiased dynamics)]] [[ABP averages (control)]] [[ABP averages (cloning) — checks]] [[ABP structure characteristics]] [[ABP flow characteristics]] [[ABP high Pe]] [[Active Brownian particles]] Project" title="$:/StoryList">
+<div list="[[ABP cloning algorithm]] [[N-interacting Brownian rotors]] [[ABP averages (feedback) — checks]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -11054,7 +11054,7 @@ Black dashed lined correspond to the entire trajectory average from unbiased dyn
 
 &lt;&lt;plot image:&quot;convCloningAll_sOrder_tau_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;</pre>
 </div>
-<div created="20191215123336975" modified="20200117203759011" tags="[[ABP work and order LDP]]" title="ABP averages (feedback) — checks">
+<div created="20191215123336975" modified="20200120185000090" tags="[[ABP work and order LDP]]" title="ABP averages (feedback) — checks">
 <pre>We compute here averages of active work and order parameter in the biased ensemble from the [[cloning algorithm|ABP cloning algorithm]] with modification of the translational and rotational equation of motion (EOM), check their consistency and convergence.
 
 &lt;&lt;compuscript path:&quot;cloningserial.hpp&quot;&gt;&gt;
@@ -11150,6 +11150,8 @@ Blue curves correspond to the //controlled trans. &amp; rot. EOM (1)// method, a
 
 &lt;&lt;plot image:&quot;convCloningModified_sWork_nc_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;
 
+We note that some of the discrepancy between the two methods which control the rotational EOM can be explained from the fact that, at large $$N_c$$ but small $$t$$, these methods differ by the boundary term in the potential. This is consistent with the blue and red curves merging for $$t \rightarrow \infty$$ and low $$N_c$$, but staying apart at low $$t$$ even though $$N_c \rightarrow \infty$$.
+
 !!! Order average
 
 &lt;&lt;plot image:&quot;convCloningModified_sOrder_nc_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;
@@ -11166,7 +11168,13 @@ Blue curves correspond to the //controlled trans. &amp; rot. EOM (1)// method, a
 
 ! Evolution of the aligning torque parameter $$g$$
 
-&lt;&lt;plot image:&quot;torque_parameter&quot;&gt;&gt;</pre>
+&lt;&lt;plot image:&quot;torque_parameter&quot;&gt;&gt;
+
+We have with both methods that the aligning torque parameter $$g$$ seems to converge to a steady state value $$g_{\text{ss}}(s)$$ for every $$s$$ for $$t &gt; 10^2$$.
+
+However, we observe for the first method that $$g_{\text{ss}}(s)$$ seems to converge as $$s \rightarrow -\infty$$ to a limiting value $$g_{\text{lim}} &gt; g_c$$ where $$g_c = -0.2$$ is the critical value for the corresponding model of [[interacting Brownian rotors|N-interacting Brownian rotors]], while the second method still shows large variations of $$g_{\text{ss}}(s)$$ down to $$s = -0.5$$.
+
+Moreover, we have that this larger value of $$|g|$$ for the second method can be source of concern since finite-time errors increase with the amplitude of the aligning torque.</pre>
 </div>
 <div created="20191125144024165" modified="20191204151728096" tags="[[ABP work and order LDP]]" title="ABP averages (unbiased dynamics)">
 <pre>We compute here averages of active work and order parameter in the biased ensemble from unbiased dynamics measurements in order to have a basis of results to compare with the [[output of cloning algorithms|ABP averages (cloning) — checks]].
@@ -12732,7 +12740,7 @@ We observe clustering for high densities and large persistence length. We make m
 
 &lt;&lt;toc label:&quot;Multiple ABP&quot;&gt;&gt;</pre>
 </div>
-<div created="20200116183011987" modified="20200117201438111" tags="[[Active Brownian particles]]" title="N-interacting Brownian rotors">
+<div created="20200116183011987" modified="20200120170524741" tags="[[Active Brownian particles]]" title="N-interacting Brownian rotors">
 <pre>We give details on the $$N$$-interacting Brownian rotors problem implicitly introduced in ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]], appendix C).
 
 We consider $$N$$ rotors described by their orientations $$\{\theta_i\}$$, with following equations of motion (see [[ABP cloning algorithm]]),
@@ -12815,7 +12823,7 @@ $$
 &amp;= \frac{1}{Z\left[2N\left(1 + \frac{g}{D_r}\right)\right]}\Bigg(2 \int_0^1 \text{d}|\underline{\nu}| \, |\underline{\nu}| \exp\left(-N\left(1 + \frac{g}{D_r}\right)|\underline{\nu}|^2\right)\\
 &amp;\qquad\qquad\qquad\qquad\qquad- \left[|\underline{\nu}|^2 \exp\left(-N\left(1 + \frac{g}{D_r}\right)|\underline{\nu}|^2\right)\right]_0^1\Bigg)\\
 &amp;= \frac{1}{N\left(1 + \frac{g}{D_r}\right)} - \frac{\exp\left(-N\left(1 + \frac{g}{D_r}\right)\right)}{1 - \exp\left(-N\left(1 + \frac{g}{D_r}\right)\right)}\\
-&amp;= \frac{1}{N\left(1 + \frac{g}{D_r}\right)},~ N \gg 1
+&amp;= \frac{1}{N\left(1 + \frac{g}{D_r}\right)},~ N\left(1 + \frac{g}{D_r}\right) \gg 1,~ g &gt; -D_r,
 \end{aligned}
 $$
 which can also be derived from the Langevin equation followed by this quantity,
@@ -12850,7 +12858,7 @@ $$
 
 !! Critical $$g$$
 
-We have a self-consistent equation for the order parameter norm
+We have a self-consistent equation for the order parameter norm ([[Goldenfeld, 1972|https://www.crcpress.com/Lectures-On-Phase-Transitions-And-The-Renormalization-Group/Goldenfeld/p/book/9780201554090]], § 3.7)
 $$
 |\underline{\nu}| = \left&lt;\cos\theta\right&gt; = \frac{\int_0^{2\pi} \text{d}\theta \, \cos\theta \, \exp\left(-\frac{2g|\underline{\nu}|}{D_r}\cos\theta\right)}{\int_0^{2\pi} \text{d}\theta \, \exp\left(-\frac{2g|\underline{\nu}|}{D_r}\cos\theta\right)},
 $$
