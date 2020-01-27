@@ -9983,7 +9983,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="[[ABP cloning algorithm]] [[N-interacting Brownian rotors]] [[ABP averages (feedback) — checks]] Project" title="$:/StoryList">
+<div list="[[ABP averages (feedback) — checks]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -10693,7 +10693,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div created="20180620032354454" modified="20180620032356781" title="$:/temp/RemoteAssetSearch/$:/config/OfficialPluginLibrary">
 <pre>bibtex</pre>
 </div>
-<div created="20180416033117939" modified="20200105132627783" title="$:/temp/search">
+<div created="20180416033117939" modified="20200121142248879" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20180620031722320" modified="20180620031722320" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.15/index.html" url="https://tiddlywiki.com/library/v5.1.15/index.html">
@@ -11054,7 +11054,7 @@ Black dashed lined correspond to the entire trajectory average from unbiased dyn
 
 &lt;&lt;plot image:&quot;convCloningAll_sOrder_tau_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;</pre>
 </div>
-<div created="20191215123336975" modified="20200120185000090" tags="[[ABP work and order LDP]]" title="ABP averages (feedback) — checks">
+<div created="20191215123336975" modified="20200123140232659" tags="[[ABP work and order LDP]]" title="ABP averages (feedback) — checks">
 <pre>We compute here averages of active work and order parameter in the biased ensemble from the [[cloning algorithm|ABP cloning algorithm]] with modification of the translational and rotational equation of motion (EOM), check their consistency and convergence.
 
 &lt;&lt;compuscript path:&quot;cloningserial.hpp&quot;&gt;&gt;
@@ -11168,13 +11168,26 @@ We note that some of the discrepancy between the two methods which control the r
 
 ! Evolution of the aligning torque parameter $$g$$
 
-&lt;&lt;plot image:&quot;torque_parameter&quot;&gt;&gt;
+&lt;&lt;plot image:&quot;g_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;
 
 We have with both methods that the aligning torque parameter $$g$$ seems to converge to a steady state value $$g_{\text{ss}}(s)$$ for every $$s$$ for $$t &gt; 10^2$$.
 
 However, we observe for the first method that $$g_{\text{ss}}(s)$$ seems to converge as $$s \rightarrow -\infty$$ to a limiting value $$g_{\text{lim}} &gt; g_c$$ where $$g_c = -0.2$$ is the critical value for the corresponding model of [[interacting Brownian rotors|N-interacting Brownian rotors]], while the second method still shows large variations of $$g_{\text{ss}}(s)$$ down to $$s = -0.5$$.
 
-Moreover, we have that this larger value of $$|g|$$ for the second method can be source of concern since finite-time errors increase with the amplitude of the aligning torque.</pre>
+&lt;&lt;plot image:&quot;g_Dk6500_Ll5000_SK5000&quot;&gt;&gt;
+
+Moreover, we have for the first method, at the lowest biasing parameter ($$s=-0.5$$) that $$g$$ seems to converge towards $$g_c$$ as $$N \rightarrow \infty$$. Indeed, we note that $$g$$ is chosen such that
+$$
+g = \frac{\sigma}{l_p}\left(\frac{1}{N&lt;|\underline{\nu}|^2&gt;} - 1\right),
+$$
+therefore, since $$&lt;|\underline{\nu}|^2&gt; \leq 1$$, we have that $$g \geq \frac{\sigma}{l_p}\left(\frac{1}{N} - 1\right) \rightarrow -\frac{\sigma}{l_p},~ N \gg 1$$.
+
+We have that the larger value of $$|g|$$ for the second method can be source of concern since finite-time errors increase with the amplitude of the aligning torque.
+
+&lt;&lt;plot image:&quot;pNu_Nm1000_Rk2000&quot;&gt;&gt;
+&lt;&lt;plot image:&quot;meanNu_Nm1000_Rk2000&quot;&gt;&gt;
+
+We plot here the histogram and mean of the order parameter norm for the corresponding [[interacting Brownian rotors model|N-interacting Brownian rotors]] at different aligning torque parameter $$g$$.</pre>
 </div>
 <div created="20191125144024165" modified="20191204151728096" tags="[[ABP work and order LDP]]" title="ABP averages (unbiased dynamics)">
 <pre>We compute here averages of active work and order parameter in the biased ensemble from unbiased dynamics measurements in order to have a basis of results to compare with the [[output of cloning algorithms|ABP averages (cloning) — checks]].
