@@ -506,6 +506,8 @@ Error message and password prompt
 
 <li>Active Brownian particles</li>
 
+<li>Brownian rotors cloning algorithm</li>
+
 <li>Brownian rotors LDP</li>
 
 <li>Cloning algorithm</li>
@@ -9996,7 +9998,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="[[Tilted generator]] [[Brownian rotors LDP]] Project" title="$:/StoryList">
+<div list="[[Brownian rotors cloning algorithm]] [[ABP cloning algorithm]] [[ABP averages (feedback)]] [[N-interacting Brownian rotors]] [[Brownian rotors LDP]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -10706,7 +10708,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div created="20180620032354454" modified="20180620032356781" title="$:/temp/RemoteAssetSearch/$:/config/OfficialPluginLibrary">
 <pre>bibtex</pre>
 </div>
-<div created="20180416033117939" modified="20200121142248879" title="$:/temp/search">
+<div created="20180416033117939" modified="20200205132906428" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20180620031722320" modified="20180620031722320" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.15/index.html" url="https://tiddlywiki.com/library/v5.1.15/index.html">
@@ -11310,7 +11312,7 @@ $$
 $$
 for low enough negative $$s$$.</pre>
 </div>
-<div created="20191204151816691" modified="20200201201843483" tags="[[ABP work and order LDP]]" title="ABP cloning algorithm">
+<div created="20191204151816691" modified="20200205172521427" tags="[[ABP work and order LDP]]" title="ABP cloning algorithm">
 <pre>We use the cloning algorithm framework detailed in [[Cloning algorithm]].
 
 &lt;&lt;compuscript path:&quot;cloning.py&quot;&gt;&gt;
@@ -11393,8 +11395,8 @@ where we can identify,
 $$
 \begin{aligned}
 \sum_{i=1}^N \dot{\theta}_i(t) \frac{\partial}{\partial \theta_i} |\underline{\nu}(t)|^2 &amp;= \frac{\text{d}}{\text{d}t} |\underline{\nu}(t)|^2,\\
-\sum_{i=1}^N \left(\frac{\partial}{\partial \theta_i} |\underline{\nu}(t)|^2\right)^2 &amp;= \frac{4}{N^4} \sum_{i=1}^N \left(\sum_{j=1}^N \sin(\theta_i(t) - \theta_j(t))\right)^2,\\
-&amp;= \frac{4}{N^2} |\underline{\nu}(t)|^2 \sum_{i=1}^N \sin(\theta_i(t) - \varphi(t))^2\\
+\sum_{i=1}^N \left(\frac{\partial}{\partial \theta_i} |\underline{\nu}(t)|^2\right)^2 &amp;= \frac{4}{N^4} \sum_{i=1}^N \left(\sum_{j=1}^N \sin(\theta_i(t) - \theta_j(t))\right)^2\\
+&amp;= \frac{4}{N^2} |\underline{\nu}(t)|^2 \sum_{i=1}^N \sin(\theta_i(t) - \varphi(t))^2,\\
 \sum_{i=1}^N \frac{\partial^2}{\partial \theta_i^2} |\underline{\nu}(t)|^2 &amp;= - 2 |\underline{\nu}(t)|^2 + \frac{2}{N},
 \end{aligned}
 $$
@@ -12497,6 +12499,62 @@ the correlation between the fluctuations of the order parameter norm at a time $
 !! Rate of active work and structure of the liquid
 
 A relation between the rate of active work, the interparticle potential, and the two- and three-body density correlation functions can be derived for a system of active particles ([[Tociu et al., 2019|https://journals.aps.org/prx/abstract/10.1103/PhysRevX.9.041026]]).</pre>
+</div>
+<div created="20200205165109245" modified="20200205183729738" tags="[[N-interacting Brownian rotors]]" title="Brownian rotors cloning algorithm">
+<pre>We use the cloning algorithm framework detailed in [[Cloning algorithm]] and apply it to $$N$$ //non-interacting// Brownian rotors, evolving according to
+$$
+\dot{\theta_i} = \sqrt{2D_r} \xi_i.
+$$
+
+&lt;&lt;compuscript path:&quot;cloningR.py&quot;&gt;&gt;
+
+! Controlled dynamics
+
+We use controlled dynamics to enhance the convergence of the algorithm.
+
+!! Biasing with squared polarisation
+
+We have that for a system of non-interacting Brownian rotors, the trajectories of high squared polarisation resemble trajectories of [[N-interacting Brownian rotors]], we thus add an aligning torque to the equation of motion
+$$
+\dot{\theta_i} = - g N \frac{\partial}{\partial \theta_i} |\underline{\nu}|^2 + \sqrt{2 D_r} \xi,
+$$
+such that the probability of given trajectory $$\{\theta_i\}_0^{\tau}$$ is now given by (see [[Path action]])
+$$
+\begin{aligned}
+\mathcal{P}^{(\text{mod})}_N[\{\theta_i\}_0^{\tau}] &amp;\propto \exp\left(- \sum_{i=1}^N \int_0^{\tau} \text{d}t \, \left[\frac{1}{4D_r} \left(\dot{\theta}_i^2 + g N \frac{\partial}{\partial \theta_i}|\underline{\nu}|^2\right)^2 - \frac{1}{2} \frac{\partial}{\partial\theta_i}\left(gN\frac{\partial}{\partial \theta_i}|\underline{\nu}|^2\right)\right]\right)\\
+&amp;\propto \mathcal{P}_N[\{\theta_i\}_0^{\tau}]\\
+&amp;\qquad \times \exp\Bigg(- \sum_{i=1}^N \int_0^{\tau} \text{d}t \, \Bigg[\frac{1}{2D_r} g N \dot{\theta}_i \frac{\partial}{\partial \theta_i} |\underline{\nu}|^2 + \frac{1}{4D_r} g^2 N^2 \left(\frac{\partial}{\partial\theta_i} |\underline{\nu}|^2\right)^2\\
+&amp;\qquad\qquad\qquad\qquad\qquad\qquad -\frac{1}{2} g N \frac{\partial^2}{\partial\theta_i^2} |\underline{\nu}|^2\Bigg]\Bigg),
+\end{aligned}
+$$
+where $$\mathcal{P}_N[\{\theta_i\}_0^{\tau}]$$ denotes the trajectory probability for the non-interacting system. We note that (see [[ABP cloning algorithm]])
+$$
+\begin{aligned}
+\sum_{i=1}^N \theta_i \frac{\partial}{\partial \theta_i} |\underline{\nu}|^2 &amp;= \frac{\text{d}}{\text{d}t} |\underline{\nu}|^2,\\
+\sum_{i=1}^N \left(\frac{\partial}{\partial\theta_i}|\underline{\nu}|^2\right)^2 &amp;= \frac{4}{N^2} |\underline{\nu}|^2 \sum_{i=1}^N \sin(\theta_i - \varphi),\\
+\sum_{i=1}^N \frac{\partial^2}{\partial \theta_i^2}|\underline{\nu}|^2 &amp;= -2 |\underline{\nu}|^2 + \frac{2}{N},
+\end{aligned}
+$$
+so that we have
+$$
+\begin{aligned}
+&amp;\mathcal{P}_N[\{\theta_i\}_0^{\tau}] \exp\left(-gN \int_0^{\tau} \text{d}t \, |\underline{\nu}|^2\right)\\
+&amp;\qquad\propto \mathcal{P}^{(\text{mod})}_N[\{\theta_i\}_0^{\tau}] \exp\left(-\int_0^{\tau} \text{d}t \, \left(g - \frac{g^2}{D_r}|\underline{\nu}|^2 \sum_{i=1}^N \sin(\theta_i - \varphi)\right)\right),
+\end{aligned}
+$$
+up to a time non-extensive term in the last exponential. A convenient choice of $$g$$ is then
+$$
+g = \frac{s}{N},
+$$
+such that
+$$
+\mathcal{P}_N[\{\theta_i\}_0^{\tau}] \exp\left(-s \int_0^{\tau} \text{d}t \, |\underline{\nu}|^2\right) \propto \mathcal{P}^{(\text{mod})}_N[\{\theta_i\}_0^{\tau}] \exp\left(-s\int_0^{\tau} \text{d}t \, b^{(\text{mod})}\right)
+$$
+where
+$$
+b^{(\text{mod})} = \frac{1}{N} - \frac{s}{N^2 D_r}|\underline{\nu}|^2 \sum_{i=1}^N \sin(\theta_i - \varphi).
+$$
+We conclude that, starting from the same initial configuration $$\{\theta_i\}_0$$, biasing the trajectories of the uncontrolled dynamics with respect to $$|\underline{\nu}|^2$$ is equivalent to biasing the trajectories of the controlled dynamics with respect to $$b^{(\text{mod})}$$.</pre>
 </div>
 <div created="20200203193215965" modified="20200204144316456" tags="[[N-interacting Brownian rotors]]" title="Brownian rotors LDP" type="">
 <pre>We consider $$N$$ independent Brownian rotors with evolution
