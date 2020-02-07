@@ -9998,7 +9998,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="[[Brownian rotors cloning algorithm]] [[ABP cloning algorithm]] [[ABP averages (feedback)]] [[N-interacting Brownian rotors]] [[Brownian rotors LDP]] Project" title="$:/StoryList">
+<div list="[[Brownian rotors LDP]] [[Tilted generator]] [[Brownian rotors cloning algorithm]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -12500,7 +12500,7 @@ the correlation between the fluctuations of the order parameter norm at a time $
 
 A relation between the rate of active work, the interparticle potential, and the two- and three-body density correlation functions can be derived for a system of active particles ([[Tociu et al., 2019|https://journals.aps.org/prx/abstract/10.1103/PhysRevX.9.041026]]).</pre>
 </div>
-<div created="20200205165109245" modified="20200205183729738" tags="[[N-interacting Brownian rotors]]" title="Brownian rotors cloning algorithm">
+<div created="20200205165109245" modified="20200207164254541" tags="[[N-interacting Brownian rotors]]" title="Brownian rotors cloning algorithm">
 <pre>We use the cloning algorithm framework detailed in [[Cloning algorithm]] and apply it to $$N$$ //non-interacting// Brownian rotors, evolving according to
 $$
 \dot{\theta_i} = \sqrt{2D_r} \xi_i.
@@ -12531,7 +12531,7 @@ where $$\mathcal{P}_N[\{\theta_i\}_0^{\tau}]$$ denotes the trajectory probabilit
 $$
 \begin{aligned}
 \sum_{i=1}^N \theta_i \frac{\partial}{\partial \theta_i} |\underline{\nu}|^2 &amp;= \frac{\text{d}}{\text{d}t} |\underline{\nu}|^2,\\
-\sum_{i=1}^N \left(\frac{\partial}{\partial\theta_i}|\underline{\nu}|^2\right)^2 &amp;= \frac{4}{N^2} |\underline{\nu}|^2 \sum_{i=1}^N \sin(\theta_i - \varphi),\\
+\sum_{i=1}^N \left(\frac{\partial}{\partial\theta_i}|\underline{\nu}|^2\right)^2 &amp;= \frac{4}{N^2} |\underline{\nu}|^2 \sum_{i=1}^N \sin(\theta_i - \varphi)^2,\\
 \sum_{i=1}^N \frac{\partial^2}{\partial \theta_i^2}|\underline{\nu}|^2 &amp;= -2 |\underline{\nu}|^2 + \frac{2}{N},
 \end{aligned}
 $$
@@ -12539,24 +12539,26 @@ so that we have
 $$
 \begin{aligned}
 &amp;\mathcal{P}_N[\{\theta_i\}_0^{\tau}] \exp\left(-gN \int_0^{\tau} \text{d}t \, |\underline{\nu}|^2\right)\\
-&amp;\qquad\propto \mathcal{P}^{(\text{mod})}_N[\{\theta_i\}_0^{\tau}] \exp\left(-\int_0^{\tau} \text{d}t \, \left(g - \frac{g^2}{D_r}|\underline{\nu}|^2 \sum_{i=1}^N \sin(\theta_i - \varphi)\right)\right),
+&amp;\qquad\propto \mathcal{P}^{(\text{mod})}_N[\{\theta_i\}_0^{\tau}] \exp\left(-\int_0^{\tau} \text{d}t \, \left(g - \frac{g^2}{D_r}|\underline{\nu}|^2 \sum_{i=1}^N \sin(\theta_i - \varphi)^2\right)\right),
 \end{aligned}
 $$
 up to a time non-extensive term in the last exponential. A convenient choice of $$g$$ is then
 $$
-g = \frac{s}{N},
+g = s,
 $$
 such that
 $$
-\mathcal{P}_N[\{\theta_i\}_0^{\tau}] \exp\left(-s \int_0^{\tau} \text{d}t \, |\underline{\nu}|^2\right) \propto \mathcal{P}^{(\text{mod})}_N[\{\theta_i\}_0^{\tau}] \exp\left(-s\int_0^{\tau} \text{d}t \, b^{(\text{mod})}\right)
+\mathcal{P}_N[\{\theta_i\}_0^{\tau}] \exp\left(-s N \int_0^{\tau} \text{d}t \, |\underline{\nu}|^2\right) \propto \mathcal{P}^{(\text{mod})}_N[\{\theta_i\}_0^{\tau}] \exp\left(-s\left[\tau - \frac{s}{D_r}\mathcal{I}_{\tau}\right]\right)
 $$
 where
 $$
-b^{(\text{mod})} = \frac{1}{N} - \frac{s}{N^2 D_r}|\underline{\nu}|^2 \sum_{i=1}^N \sin(\theta_i - \varphi).
+\mathcal{I}_{\tau} = \int_0^{\tau} \text{d}t \, |\underline{\nu}|^2 \sum_{i=1}^N \sin(\theta_i - \varphi)^2.
 $$
-We conclude that, starting from the same initial configuration $$\{\theta_i\}_0$$, biasing the trajectories of the uncontrolled dynamics with respect to $$|\underline{\nu}|^2$$ is equivalent to biasing the trajectories of the controlled dynamics with respect to $$b^{(\text{mod})}$$.</pre>
+We conclude that, starting from the same initial configuration $$\{\theta_i\}_0$$, biasing the trajectories of the uncontrolled dynamics with respect to $$N |\underline{\nu}|^2$$ is equivalent to biasing the trajectories of the controlled dynamics with respect to $$\tau - \frac{s}{D_r}\mathcal{I}_{\tau}$$.
+
+We stress that this choice of $$g$$ is only //convenient// but not //optimal//. A better choice of $$g$$ would for example be determined self-consistently with the ansatz for the orientation distribution and the maximised lower bound to the SCGF (see [[Brownian rotors LDP]], and § &quot;Connection of operator and optimal-control approaches&quot; in [[Jack, 2019|https://arxiv.org/abs/1910.09883]]).</pre>
 </div>
-<div created="20200203193215965" modified="20200204144316456" tags="[[N-interacting Brownian rotors]]" title="Brownian rotors LDP" type="">
+<div created="20200203193215965" modified="20200207153736999" tags="[[N-interacting Brownian rotors]]" title="Brownian rotors LDP" type="">
 <pre>We consider $$N$$ independent Brownian rotors with evolution
 $$
 \dot{\theta_i} = \sqrt{2D_r},
@@ -12593,17 +12595,17 @@ and have to determine $$h(s)$$.
 
 ! Biasing with squared polarisation
 
-We wish to bias the trajectories of the system with respect to the mean squared polarisation over a trajectory,
+We wish to bias the trajectories of the system with respect to the normalised mean squared polarisation over a trajectory,
 $$
 \overline{p^2}_{\tau} = \frac{1}{\tau} \int_0^{\tau} \text{d}t \, p^2(t),
 $$
 and thus introduce the tilted generator (see [[Tilted generator]])
 $$
-\mathscr{W}_{s, p^2} = \mathcal{L} - sp^2 = D_r \sum_i \frac{\partial^2}{\partial \theta_i^2} - \frac{s}{N^2} \sum_{i,j} \cos(\theta_i - \theta_j),
+\mathscr{W}_{s, p^2} = \mathcal{L} - s N p^2 = D_r \sum_i \frac{\partial^2}{\partial \theta_i^2} - \frac{s}{N} \sum_{i,j} \cos(\theta_i - \theta_j),
 $$
 which is reminiscent of the Hamiltonian of a quantum mean-field XY model ([[Sachdev, 2011|https://www.cambridge.org/core/books/quantum-phase-transitions/33C1C81500346005E54C1DE4223E5562]], § 6.3). We then have that the scaled cumulant generating function (SCGF)
 $$
-\psi_{p^2}(s) = \lim_{\tau \rightarrow \infty} \frac{1}{\tau} \log\left&lt;\exp\left(- s \int_0^{\tau} \text{d}t \, p^2(t)\right)\right&gt;_0,
+N \psi_{p^2}(s) = \lim_{\tau \rightarrow \infty} \frac{1}{\tau} \log\left&lt;\exp\left(- s N \int_0^{\tau} \text{d}t \, p^2(t)\right)\right&gt;_0,
 $$
 is the largest eigenvalue of the eigenproblem ([[Touchette, 2018|https://www.sciencedirect.com/science/article/pii/S0378437117310567]], [[Jack, 2019|https://arxiv.org/abs/1910.09883]])
 $$
@@ -12611,12 +12613,16 @@ $$
 $$
 and thus satisfies
 $$
-\psi_{p^2}(s) \geq \frac{\int \text{d}^N\{\theta_i\} \, P[\{\theta_i\}] \mathscr{W}_{s, p^2} P[\{\theta_i\}]}{\int \text{d}^N\{\theta_i\} \, P[\{\theta_i\}] P[\{\theta_i\}]}.
+N \psi_{p^2}(s) \geq \frac{\int \text{d}^N\{\theta_i\} \, P[\{\theta_i\}] \mathscr{W}_{s, p^2} P[\{\theta_i\}]}{\int \text{d}^N\{\theta_i\} \, P[\{\theta_i\}] P[\{\theta_i\}]}.
 $$
 
 We choose $$h(s)$$ such that it maximises this lower bound. According to our ansatz
 $$
-\frac{\int \text{d}^N\{\theta_i\} \, P[\{\theta_i\}] \mathscr{W}_{s, p^2} P[\{\theta_i\}]}{\int \text{d}^N\{\theta_i\} \, P[\{\theta_i\}] P[\{\theta_i\}]} = -D_r \frac{2h(s)}{4} \frac{I_1(2h(s))}{I_0(2h(s))} - s \frac{I_1(2h(s))^2}{I_0(2h(s))^2} = B_{s, p^2}(2 h(s)),
+\frac{\int \text{d}^N\{\theta_i\} \, P[\{\theta_i\}] \mathscr{W}_{s, p^2} P[\{\theta_i\}]}{\int \text{d}^N\{\theta_i\} \, P[\{\theta_i\}] P[\{\theta_i\}]} = -D_r N \frac{2h(s)}{4} \frac{I_1(2h(s))}{I_0(2h(s))} - s N \frac{I_1(2h(s))^2}{I_0(2h(s))^2} = N B_{s, p^2}(2 h(s)),
+$$
+and therefore
+$$
+\psi_{p^2}(s) \geq B_{s,p^2}(2h(s)),
 $$
 where 
 $$
@@ -12665,7 +12671,7 @@ We observe a transition from a state of random orientations for $$s &gt; -D_r/2$
 
 We have that the bound to the SCGF also gives a bound to the rate function (see [[Tilted generator]])
 $$
-I(p^2) \leq - \inf_{s \in \mathbb{R}} \left\{s p^2 + \max_x B_{s, p^2}(x)\right\} = - \inf_{s \in \mathbb{R}} \tilde{B}_{s, p^2}.
+I(p^2) \leq - \inf_{s \in \mathbb{R}} \left\{s N p^2 + \max_x N B_{s, p^2}(x)\right\} = - N \inf_{s \in \mathbb{R}} \tilde{B}_{s, p^2}.
 $$
 We start by plotting $$\tilde{B}_{s, p^2}(s)$$.
 
@@ -12683,11 +12689,11 @@ $$
 $$
 and thus introduce the tilted generator (see [[Tilted generator]])
 $$
-\mathscr{W}_{s, p} = \mathcal{L} - sp = D_r \sum_i \frac{\partial^2}{\partial \theta_i^2} - \frac{s}{N} \sum_{i} \cos(\theta_i),
+\mathscr{W}_{s, p} = \mathcal{L} - s N p = D_r \sum_i \frac{\partial^2}{\partial \theta_i^2} - s \sum_{i} \cos(\theta_i),
 $$
 where we have assumed $$\varphi = 0$$. We then have that the scaled cumulant generating function (SCGF)
 $$
-\psi_{p}(s) = \lim_{\tau \rightarrow \infty} \frac{1}{\tau} \log\left&lt;\exp\left(- s \int_0^{\tau} \text{d}t \, p(t)\right)\right&gt;_0,
+N \psi_{p}(s) = \lim_{\tau \rightarrow \infty} \frac{1}{\tau} \log\left&lt;\exp\left(- s N \int_0^{\tau} \text{d}t \, p(t)\right)\right&gt;_0,
 $$
 is the largest eigenvalue of the eigenproblem
 $$
@@ -12695,12 +12701,16 @@ $$
 $$
 and thus satisfies
 $$
-\psi_{p}(s) \geq \frac{\int \text{d}^N\{\theta_i\} \, P[\{\theta_i\}] \mathscr{W}_{s, p} P[\{\theta_i\}]}{\int \text{d}^N\{\theta_i\} \, P[\{\theta_i\}] P[\{\theta_i\}]}.
+N \psi_{p}(s) \geq \frac{\int \text{d}^N\{\theta_i\} \, P[\{\theta_i\}] \mathscr{W}_{s, p} P[\{\theta_i\}]}{\int \text{d}^N\{\theta_i\} \, P[\{\theta_i\}] P[\{\theta_i\}]}.
 $$
 
 We choose $$h(s)$$ such that it maximises this lower bound. According to our ansatz
 $$
-\frac{\int \text{d}^N\{\theta_i\} \, P[\{\theta_i\}] \mathscr{W}_{s, p} P[\{\theta_i\}]}{\int \text{d}^N\{\theta_i\} \, P[\{\theta_i\}] P[\{\theta_i\}]} = -D_r \frac{2h(s)}{4} \frac{I_1(2h(s))}{I_0(2h(s))} - s \frac{I_1(2h(s))}{I_0(2h(s))} = B_{s, p}(2 h(s)).
+\frac{\int \text{d}^N\{\theta_i\} \, P[\{\theta_i\}] \mathscr{W}_{s, p} P[\{\theta_i\}]}{\int \text{d}^N\{\theta_i\} \, P[\{\theta_i\}] P[\{\theta_i\}]} = -D_r N \frac{2h(s)}{4} \frac{I_1(2h(s))}{I_0(2h(s))} - s N \frac{I_1(2h(s))}{I_0(2h(s))} = N B_{s, p}(2 h(s)),
+$$
+and therefore
+$$
+\psi_{p}(s) \geq B_{s,p}(2h(s)).
 $$
 
 We start by ploting $$B_{s, p}$$ for different $$s$$.
@@ -12730,7 +12740,7 @@ We observer a positive polarisation for all $$s &lt; 0$$.
 
 We have that the bound to the SCGF also gives a bound to the rate function (see [[Tilted generator]])
 $$
-I(p) \leq - \inf_{s \in \mathbb{R}} \left\{s p + \max_x B_{s, p}(x)\right\} = - \inf_{s \in \mathbb{R}} \tilde{B}_{s, p}.
+I(p) \leq - \inf_{s \in \mathbb{R}} \left\{s N p + \max_x N B_{s, p}(x)\right\} = - N \inf_{s \in \mathbb{R}} \tilde{B}_{s, p}.
 $$
 We start by plotting $$\tilde{B}_{s, p}(s)$$.
 
