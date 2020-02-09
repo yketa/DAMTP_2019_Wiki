@@ -514,8 +514,6 @@ Error message and password prompt
 
 <li>CustomStylesheet</li>
 
-<li>Draft of 'ABP cloning algorithm'</li>
-
 <li>FIRE algorithm</li>
 
 <li>Macros</li>
@@ -529,6 +527,8 @@ Error message and password prompt
 <li>Path action</li>
 
 <li>Project</li>
+
+<li>Rotors averages — checks</li>
 
 <li>Summaries</li>
 
@@ -9956,13 +9956,13 @@ config.macros.bibliography = {
 <div created="20191125144053249" modified="20191125144053249" title="$:/state/toc/TableOfContents/Active Brownian particles-ABP work and order LDP--81657105">
 <pre>open</pre>
 </div>
-<div created="20191029224616636" modified="20200117203825537" title="$:/state/toc/TableOfContents/Active Brownian particles-Multiple ABP--81657105">
+<div created="20191029224616636" modified="20200209144333548" title="$:/state/toc/TableOfContents/Active Brownian particles-Multiple ABP--81657105">
 <pre>close</pre>
 </div>
 <div created="20200203193244192" modified="20200203193244192" title="$:/state/toc/TableOfContents/Active Brownian particles-N-interacting Brownian rotors--81657105">
 <pre>open</pre>
 </div>
-<div created="20191030185434552" modified="20200117203826416" title="$:/state/toc/TableOfContents/Active Brownian particles-One ABP--81657105">
+<div created="20191030185434552" modified="20200207182111020" title="$:/state/toc/TableOfContents/Active Brownian particles-One ABP--81657105">
 <pre>close</pre>
 </div>
 <div created="20200116183033480" modified="20200116183033480" title="$:/state/toc/TableOfContents/Active Brownian particles/ABP work and order LDP-ABP cloning algorithm--81657105">
@@ -9998,7 +9998,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="[[Brownian rotors LDP]] [[Tilted generator]] [[Brownian rotors cloning algorithm]] Project" title="$:/StoryList">
+<div list="[[Rotors averages — checks]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -10708,8 +10708,8 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div created="20180620032354454" modified="20180620032356781" title="$:/temp/RemoteAssetSearch/$:/config/OfficialPluginLibrary">
 <pre>bibtex</pre>
 </div>
-<div created="20180416033117939" modified="20200205132906428" title="$:/temp/search">
-<pre></pre>
+<div created="20180416033117939" modified="20200209153538386" title="$:/temp/search">
+<pre>draf</pre>
 </div>
 <div created="20180620031722320" modified="20180620031722320" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.15/index.html" url="https://tiddlywiki.com/library/v5.1.15/index.html">
 <pre>loaded</pre>
@@ -10874,10 +10874,10 @@ We have that the theoretical prediction accurately fits the measured mean square
 
 We have that the theoretical prediction accurately fits the correlation measurements.</pre>
 </div>
-<div created="20191201131923848" modified="20191205121804272" tags="[[ABP work and order LDP]]" title="ABP averages (cloning) — checks">
+<div created="20191201131923848" modified="20200209152513313" tags="[[ABP work and order LDP]]" title="ABP averages (cloning) — checks">
 <pre>We compute here averages of active work and order parameter in the biased ensemble from the [[cloning algorithm|ABP cloning algorithm]] without modifying the equations of motion, check their consistency with the results from unbiased dynamics which can be found in [[this tiddler|ABP averages (unbiased dynamics)]], and asses the convergence of the cloning algorithm.
 
-&lt;&lt;compuscript path:&quot;cloning.py&quot;&gt;&gt;
+&lt;&lt;compuscript path:&quot;cloning.cpp&quot;&gt;&gt;
 
 ! Consistency with averages from unbiased dynamics
 
@@ -10980,10 +10980,10 @@ Parameters are set by default to $$t=100$$, $$N_{clones}=100$$, $$N_{runs}=10$$,
 
 &lt;&lt;plot image:&quot;sOrder_modified_Nm1000_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;</pre>
 </div>
-<div created="20191205121159428" modified="20191205185016684" tags="[[ABP work and order LDP]]" title="ABP averages (control) — checks">
+<div created="20191205121159428" modified="20200209152528111" tags="[[ABP work and order LDP]]" title="ABP averages (control) — checks">
 <pre>We compute here averages of active work and order parameter in the biased ensemble from the [[cloning algorithm|ABP cloning algorithm]] with modification of the translational equation of motion (EOM), check their consistency and convergence compared to the cloning without modification of the translational EOM.
 
-&lt;&lt;compuscript path:&quot;cloning.py&quot;&gt;&gt;
+&lt;&lt;compuscript path:&quot;cloning.cpp&quot;&gt;&gt;
 
 ! Consistency with averages from unbiased dynamics and without modification of the EOM
 
@@ -11082,10 +11082,10 @@ Black dashed lined correspond to the entire trajectory average from unbiased dyn
 
 &lt;&lt;plot &quot;sOrder_N_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;</pre>
 </div>
-<div created="20191215123336975" modified="20200123140232659" tags="[[ABP work and order LDP]]" title="ABP averages (feedback) — checks">
+<div created="20191215123336975" modified="20200209152433070" tags="[[ABP work and order LDP]]" title="ABP averages (feedback) — checks">
 <pre>We compute here averages of active work and order parameter in the biased ensemble from the [[cloning algorithm|ABP cloning algorithm]] with modification of the translational and rotational equation of motion (EOM), check their consistency and convergence.
 
-&lt;&lt;compuscript path:&quot;cloningserial.hpp&quot;&gt;&gt;
+&lt;&lt;compuscript path:&quot;cloning.cpp&quot;&gt;&gt;
 
 We recall the different methods used:
 
@@ -12558,7 +12558,7 @@ We conclude that, starting from the same initial configuration $$\{\theta_i\}_0$
 
 We stress that this choice of $$g$$ is only //convenient// but not //optimal//. A better choice of $$g$$ would for example be determined self-consistently with the ansatz for the orientation distribution and the maximised lower bound to the SCGF (see [[Brownian rotors LDP]], and § &quot;Connection of operator and optimal-control approaches&quot; in [[Jack, 2019|https://arxiv.org/abs/1910.09883]]).</pre>
 </div>
-<div created="20200203193215965" modified="20200207153736999" tags="[[N-interacting Brownian rotors]]" title="Brownian rotors LDP" type="">
+<div created="20200203193215965" modified="20200209151743778" tags="[[N-interacting Brownian rotors]]" title="Brownian rotors LDP" type="">
 <pre>We consider $$N$$ independent Brownian rotors with evolution
 $$
 \dot{\theta_i} = \sqrt{2D_r},
@@ -12594,6 +12594,8 @@ $$
 and have to determine $$h(s)$$.
 
 ! Biasing with squared polarisation
+
+!! Theoretical bounds
 
 We wish to bias the trajectories of the system with respect to the normalised mean squared polarisation over a trajectory,
 $$
@@ -12681,6 +12683,26 @@ We will assume that this function is convex for all $$p^2$$ and has a single min
 
 &lt;&lt;plot image:&quot;minBoundRate_Rotors_pSq&quot;&gt;&gt;
 
+!! Comparison with numerics
+
+!!! SCGF
+
+&lt;&lt;plot image:&quot;SCGF_Rotors_pSq&quot;&gt;&gt;
+
+We recall that
+$$
+\left. \frac{\partial}{\partial s} \psi_{p^2, N} \right|_{s=0} = -\left&lt;p^2\right&gt;_0 = -\frac{1}{N},
+$$
+which is consistent with the increase of the slope to 0 at $$s=0$$ with increasing $$N$$.
+
+Moreover, we have that curves consistently get closer to the theoretical bound with increasing $$N$$. However, this bound is far from attained at $$N = 100$$.
+
+!!! Mean squared polarisation
+
+&lt;&lt;plot image:&quot;sOrderSq_Rotors_pSq&quot;&gt;&gt;
+
+We have that the increasing curvature of the SCGF close to $$s = -D_r/2$$ is consistent with a decreasing slope of the mean squared polarisation.
+
 ! Biasing with polarisation
 
 We now wish to bias the trajectories of the system with respect to the mean polarisation over a trajectory,
@@ -12748,7 +12770,13 @@ We start by plotting $$\tilde{B}_{s, p}(s)$$.
 
 We will assume that this function is convex for all $$p^2$$ and has a single minimum for $$s \leq 0$$. We thus plot minus this minimum, which is our higher bound to the rate function.
 
-&lt;&lt;plot image:&quot;minBoundRate_Rotors_p&quot;&gt;&gt;</pre>
+&lt;&lt;plot image:&quot;minBoundRate_Rotors_p&quot;&gt;&gt;
+
+! Consistency
+
+We have that the rate function only reflects the probability of observing a state with a given polarisation $$p$$, we should then have consistent bounds to the rate function whether we are looking at trajectons biased with the polarisation $$p$$ or its square $$p^2$$.
+
+&lt;&lt;plot image:&quot;minBoundRate_Rotors&quot;&gt;&gt;</pre>
 </div>
 <div created="20191126153600341" modified="20191218173923100" tags="TableOfContents" title="Cloning algorithm">
 <pre>We introduce a cloning algorithm described in ([[Brewer et al., 2018|https://iopscience.iop.org/article/10.1088/1742-5468/aab3ef/meta]]) and in ([[Lestang, 2018|https://tel.archives-ouvertes.fr/tel-01974316]], chapter 4).
@@ -12876,9 +12904,6 @@ div.tc-tiddler-frame table.custom-table { border: 2px solid #808080 !important; 
 /* IMAGES */
 /* invert colors */
 /*img { filter: invert(100%); }*/</pre>
-</div>
-<div modified="20200201201843956" title="Draft of 'ABP cloning algorithm'">
-<pre></pre>
 </div>
 <div created="20191227135258014" modified="20200110180929349" tags="TableOfContents" title="FIRE algorithm">
 <pre>We use the fast inertial relaxation engine (FIRE) algorithm ([[Bitzek et al., 2006|https://link.aps.org/doi/10.1103/PhysRevLett.97.170201]], [[Guénolé et al., 2019|http://arxiv.org/abs/1908.02038]]) to minimise the potential energy of an initial configuration of particles.
@@ -13603,6 +13628,21 @@ You are free to copy and redistribute this work in any medium or format, as well
 ---
 
 Powered by [[TiddlyWiki|https://tiddlywiki.com/]] [img height=20 [Images/tiddlywiki.svg]]</pre>
+</div>
+<div created="20200209152247013" modified="20200209152930597" tags="[[N-interacting Brownian rotors]]" title="Rotors averages — checks">
+<pre>We compute here averages of the polarisation in the biased ensemble from the [[cloning algorithm|Brownian rotors cloning algorithm]], check their consistency and convergence.
+
+&lt;&lt;compuscript path:&quot;cloningR.cpp&quot;&gt;&gt;
+
+! SCGF
+
+&lt;&lt;plot image:&quot;SCGF_compareNC_Nm1000_Rk5000_Bl1000&quot;&gt;&gt;
+
+! Squared polarisation
+
+&lt;&lt;plot image:&quot;sOrderSq_compareNC_Nm1000_Rk5000_Bl1000&quot;&gt;&gt;
+
+We have that controlled dynamics give better convergence at very low number of clones, however this discrepancy with uncontrolled dynamics is quickly rectified with increasing number of clones.</pre>
 </div>
 <div created="20191113110938525" modified="20200107131105975" tags="TableOfContents" title="Summaries">
 <pre>&lt;&lt;summary label:&quot;summary_19_11&quot; title:&quot;November 12th 2019&quot; description:&quot;
