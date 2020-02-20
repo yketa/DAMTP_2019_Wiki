@@ -514,6 +514,8 @@ Error message and password prompt
 
 <li>CustomStylesheet</li>
 
+<li>Draft of 'Cloning algorithm'</li>
+
 <li>FIRE algorithm</li>
 
 <li>Macros</li>
@@ -9956,7 +9958,7 @@ config.macros.bibliography = {
 <div created="20191125144053249" modified="20191125144053249" title="$:/state/toc/TableOfContents/Active Brownian particles-ABP work and order LDP--81657105">
 <pre>open</pre>
 </div>
-<div created="20191029224616636" modified="20200212122115715" title="$:/state/toc/TableOfContents/Active Brownian particles-Multiple ABP--81657105">
+<div created="20191029224616636" modified="20200218150659924" title="$:/state/toc/TableOfContents/Active Brownian particles-Multiple ABP--81657105">
 <pre>close</pre>
 </div>
 <div created="20200203193244192" modified="20200203193244192" title="$:/state/toc/TableOfContents/Active Brownian particles-N-interacting Brownian rotors--81657105">
@@ -9998,7 +10000,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="[[Brownian rotors LDP]] [[ABP cloning algorithm]] Project" title="$:/StoryList">
+<div list="Summaries Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -12564,7 +12566,7 @@ We conclude that, starting from the same initial configuration $$\{\theta_i\}_0$
 
 We stress that this choice of $$g$$ is only //convenient// but not //optimal//. A better choice of $$g$$ would for example be determined self-consistently with the ansatz for the orientation distribution and the maximised lower bound to the SCGF (see [[Brownian rotors LDP]], and § &quot;Connection of operator and optimal-control approaches&quot; in [[Jack, 2019|https://arxiv.org/abs/1910.09883]]).</pre>
 </div>
-<div created="20200203193215965" modified="20200212144527914" tags="[[N-interacting Brownian rotors]]" title="Brownian rotors LDP" type="">
+<div created="20200203193215965" modified="20200217184740338" tags="[[N-interacting Brownian rotors]]" title="Brownian rotors LDP" type="">
 <pre>We consider $$N$$ independent Brownian rotors with evolution
 $$
 \dot{\theta_i} = \sqrt{2D_r},
@@ -12591,7 +12593,7 @@ $$
 $$
 p^2 = \frac{1}{N^2} \sum_{i,j} \cos(\theta_i - \theta_j).
 $$
-In the limit $$N \gg 1$$, we have that $$\varphi$$ relaxes way faster than the $$\theta_i$$, we will thus a perform an adiabatic approximation and consider $$\varphi$$ to be a fixed external parameter. We can then substract $$\varphi$$ to all $$\theta_i$$ for convenience.
+In the limit $$N \gg 1$$, we have that the orientations $$\theta_i$$ relax way faster than the polarisation $$\varphi$$, we will thus a perform an adiabatic approximation and consider $$\varphi$$ to be a fixed external parameter. We can then substract $$\varphi$$ to all $$\theta_i$$ for convenience.
 
 We are interested in trajectories with high polarisation. These would resemble systems with aligning interactions between rotors (see [[N-interacting Brownian rotors]]), which our ansatzes have to consider. We will introduce a free parameter $$h(s)$$ which we will determine self-consistently as to better approximate the SCGF.
 
@@ -12732,7 +12734,7 @@ We have for large negative $$s$$ that $$B_{s, p^2}$$ has non trivial local maxim
 
 We have that both these functions are singular at $$s = - D_r/2$$.
 
-We have that if our ansatz for the joint distribution of the orientations is correct, then the biased average of the squared polarisation is
+We have that if our ansatz for the joint distribution of the orientations and the bound are correct, then the biased average of the squared polarisation is
 $$
 \begin{aligned}
 \left&lt;p^2\right&gt;_s &amp;= \int \text{d}^N \{\theta_i\} \, \frac{1}{N^2} \sum_{i,j} \cos(\theta_i - \theta_j) \, P[\{\theta_i\}]\\
@@ -12740,11 +12742,15 @@ $$
 &amp;= \frac{I_1^2(h(s))}{I_0^2(h(s))},
 \end{aligned}
 $$
-which we plot.
+on the one hand, and
+$$
+\left&lt;p^2\right&gt;_s = - \frac{\partial}{\partial s} \max_{h(s)} B_{s, p^2}(2h(s)),
+$$
+on the other hand.
 
 &lt;&lt;plot image:&quot;pSq_Rotors_pSq&quot;&gt;&gt;
 
-We observe a transition from a state of random orientations for $$s &gt; -D_r/2$$ to an aligning state for $$s &lt; -D_r/2$$.
+We observe a transition from a state of random orientations for $$s &gt; -D_r/2$$ to an aligning state for $$s &lt; -D_r/2$$. However, there is a concerning discrepancy between these two estimates of the biased average.
 
 We have that the bound to the SCGF also gives a bound to the rate function (see [[Tilted generator]])
 $$
@@ -12845,7 +12851,7 @@ It is safe to assume that there is an unique local maximum for $$x &gt; 0$$. We 
 
 We do not observe any singularity around $$s = -D_r/2$$ this time.
 
-We have that if our ansatz for the joint distribution of the orientations is correct, then the biased average of the polarisation is
+We have that if our ansatz for the joint distribution of the orientations and our bound are correct, then the biased average of the polarisation is
 $$
 \begin{aligned}
 \left&lt;p\right&gt;_s &amp;= \int \text{d}^N \{\theta_i\} \, \frac{1}{N} \sum_{i} \cos(\theta_i) \, P[\{\theta_i\}]\\
@@ -12853,11 +12859,15 @@ $$
 &amp;= \frac{I_1(h(s))}{I_0(h(s))},
 \end{aligned}
 $$
-which we plot.
+on the one hand, and
+$$
+\left&lt;p\right&gt;_s = - \frac{\partial}{\partial s} \max_{h(s)} B_{s, p}(2h(s)),
+$$
+on the other hand.
 
-&lt;&lt;plot image:&quot;pSq_Rotors_p&quot;&gt;&gt;
+&lt;&lt;plot image:&quot;p_Rotors_p&quot;&gt;&gt;
 
-We observer a positive polarisation for all $$s &lt; 0$$.
+We observer a positive polarisation for all $$s &lt; 0$$. However, there is a concerning discrepancy between these two estimates of the biased average.
 
 We have that the bound to the SCGF also gives a bound to the rate function (see [[Tilted generator]])
 $$
@@ -12877,7 +12887,7 @@ We have that the rate function only reflects the probability of observing a stat
 
 &lt;&lt;plot image:&quot;minBoundRate_Rotors&quot;&gt;&gt;</pre>
 </div>
-<div created="20191126153600341" modified="20191218173923100" tags="TableOfContents" title="Cloning algorithm">
+<div created="20191126153600341" modified="20200216212709688" tags="TableOfContents" title="Cloning algorithm">
 <pre>We introduce a cloning algorithm described in ([[Brewer et al., 2018|https://iopscience.iop.org/article/10.1088/1742-5468/aab3ef/meta]]) and in ([[Lestang, 2018|https://tel.archives-ouvertes.fr/tel-01974316]], chapter 4).
 
 &lt;&lt;compuscript path:&quot;cloningserial.hpp&quot;&gt;&gt;
@@ -12905,7 +12915,7 @@ is the scaled cumulant generating function (SCGF), and $$\left&lt;\right&gt;_0$$
 
 ! Controlled dynamics
 
-Our goal is to compute the SCGF $$\psi(s, \tau)$$ which, as we explained, is dominated by untypical trajectories of the system. With a small number of clones (see cloning procedure below), the scarcity of these fluctuations can be the origin of large systematic errors ([[Nemoto et al., 2016|https://journals.aps.org/pre/pdf/10.1103/PhysRevE.93.062123]]). To improve convergence of the algorithm, a modification (or control) of the dynamics, informed by that the typical behaviour of the system for large fluctuations of the biasing observable, may be need.
+Our goal is to compute the SCGF $$\psi(s, \tau)$$ which, as we explained, is dominated by untypical trajectories of the system. With a small number of clones (see cloning procedure below), the scarcity of these fluctuations can be the origin of large systematic errors ([[Nemoto et al., 2016|https://journals.aps.org/pre/pdf/10.1103/PhysRevE.93.062123]]). To improve convergence of the algorithm, a modification (or control) of the dynamics, informed by that the typical behaviour of the system for large fluctuations of the biasing observable, may be needed.
 
 We modify the dynamics such that the path probability of a given trajectory $$\mathcal{C}$$ is now
 $$
@@ -12939,11 +12949,11 @@ and attribute to each clone $$i$$ the weight
 $$
 w_i^{\beta} = \frac{\Upsilon^s_{\tau}(\mathcal{C}_i^{\beta})}{\Upsilon_{\tau}^{s, \beta}},
 $$
-so that in average it is replaced by $$w_i^{\beta}$$ copies on the next step ([[Lestang, 2018|https://tel.archives-ouvertes.fr/tel-01974316]]). We can then write that after $$M$$ iterations, the probability of observing a trajectory $$\{\mathcal{C}^1, \ldots, \mathcal{C}^M\}$$ is, for $$n_c \rightarrow \infty$$,
+so that in average it is replaced by $$w_i^{\beta}$$ copies on the next step ([[Lestang, 2018|https://tel.archives-ouvertes.fr/tel-01974316]]). We can then write that after $$M$$ iterations, the probability of observing a trajectory $$\{\mathcal{C}^1, \ldots, \mathcal{C}^M\}$$ is
 $$
 P^{\text{clo}}(\{\mathcal{C}^1, \ldots, \mathcal{C}^M\}) = P^{\text{con}}(\{\mathcal{C}^1, \ldots, \mathcal{C}^M\}) \frac{\Upsilon^s_{M\tau}(\{\mathcal{C}^1, \ldots, \mathcal{C}^M\})}{\prod_{\gamma=1}^{\beta} \Upsilon_{\tau}^{s, \beta}},
 $$
-so that we can write
+so that we can write, for $$n_c \rightarrow \infty$$,
 $$
 \left&lt;\Upsilon^s_{M\tau}(\{\mathcal{C}^1, \ldots, \mathcal{C}^M\})\right&gt;_{\text{con}} = \prod_{\gamma=1}^{\beta} \Upsilon_{\tau}^{s, \beta},
 $$
@@ -13003,6 +13013,9 @@ div.tc-tiddler-frame table.custom-table { border: 2px solid #808080 !important; 
 /* IMAGES */
 /* invert colors */
 /*img { filter: invert(100%); }*/</pre>
+</div>
+<div modified="20200216212709985" title="Draft of 'Cloning algorithm'">
+<pre></pre>
 </div>
 <div created="20191227135258014" modified="20200110180929349" tags="TableOfContents" title="FIRE algorithm">
 <pre>We use the fast inertial relaxation engine (FIRE) algorithm ([[Bitzek et al., 2006|https://link.aps.org/doi/10.1103/PhysRevLett.97.170201]], [[Guénolé et al., 2019|http://arxiv.org/abs/1908.02038]]) to minimise the potential energy of an initial configuration of particles.
@@ -13743,9 +13756,13 @@ Powered by [[TiddlyWiki|https://tiddlywiki.com/]] [img height=20 [Images/tiddlyw
 
 We have that controlled dynamics give better convergence at very low number of clones, however this discrepancy with uncontrolled dynamics is quickly rectified with increasing number of clones.</pre>
 </div>
-<div created="20191113110938525" modified="20200107131105975" tags="TableOfContents" title="Summaries">
+<div created="20191113110938525" modified="20200220180856224" tags="TableOfContents" title="Summaries">
 <pre>&lt;&lt;summary label:&quot;summary_19_11&quot; title:&quot;November 12th 2019&quot; description:&quot;
 Description of the [[model|Active Brownian particles]], [[one-particle quantities|One ABP]], [[active work covariances|ABP work correlations]], and [[order and active work correlations|ABP work correlations]].
+&quot;&gt;&gt;
+
+&lt;&lt;summary label:&quot;presentation_20_02_20&quot; title:&quot;Presentation, February 20th 2020&quot; description:&quot;
+Presentation on [[large deviations of active work|ABP work and order LDP]] and [[Brownian rotors|Brownian rotors LDP]].
 &quot;&gt;&gt;</pre>
 </div>
 <div caption="Contents" created="20180416043645812" list-after="$:/core/ui/SideBar/Open" modified="20180417010609928" tags="$:/tags/SideBar" title="TableOfContents">
