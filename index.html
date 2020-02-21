@@ -10000,7 +10000,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="Summaries Project" title="$:/StoryList">
+<div list="[[ABP averages (feedback)]] [[ABP work and order LDP]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -11071,7 +11071,7 @@ Black dashed lined correspond to the entire trajectory average from unbiased dyn
 
 &lt;&lt;plot image:&quot;convCloningAll_sOrder_tau_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;</pre>
 </div>
-<div created="20200202145845741" modified="20200211121657668" tags="[[ABP work and order LDP]]" title="ABP averages (feedback)">
+<div created="20200202145845741" modified="20200221153254433" tags="[[ABP work and order LDP]]" title="ABP averages (feedback)">
 <pre>! SCGF
 
 &lt;&lt;plot &quot;SCGF_N_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;
@@ -11083,6 +11083,12 @@ Black dashed lined correspond to the entire trajectory average from unbiased dyn
 &lt;&lt;plot &quot;sWork_N_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;
 
 &lt;&lt;plot &quot;sWork_N_Dk6500_Tm2000&quot;&gt;&gt;
+
+We have that
+$$
+-\frac{\partial}{\partial s} \left&lt;w\right&gt;_s \sim \text{Var}(w)
+$$
+is maximum close to $$s^* \sim -D_r$$, which is consistent with larger fluctuations at the critical point.
 
 ! Order average
 
@@ -11644,7 +11650,7 @@ Our simulation results are in qualitative accordance with these theoretical pred
 
 ([[Binder and Kob, 2011|https://www.worldscientific.com/worldscibooks/10.1142/7300]], § 2.2)</pre>
 </div>
-<div created="20191113124812892" modified="20200127124127955" tags="[[Active Brownian particles]]" title="ABP work and order LDP">
+<div created="20191113124812892" modified="20200221152229906" tags="[[Active Brownian particles]]" title="ABP work and order LDP">
 <pre>We redefine the normalised rate of active work
 $$
 w_{\tau} = \frac{1}{N \tau} \, (S)\int_0^{\tau} \sum_{i=1}^N \underline{u}(\theta_i(t))\cdot\text{d}\underline{r}_i(t),
@@ -11688,7 +11694,7 @@ $$
 $$
 We note that the SCGF and the rate function are related through Legendre transform,
 $$
-\Psi_N(s) = \sup_{w} \left\{- s w - I_N(w)\right\}.
+I_N(w) = \sup_s \{- s w - \Psi_N(s)\} = -s(w) \, w - \Psi_N(s(w)).
 $$
 
 !! Interpretation in statistichal mechanics
