@@ -10000,7 +10000,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="[[ABP averages (feedback)]] [[ABP work and order LDP]] Project" title="$:/StoryList">
+<div list="[[ABP averages (feedback)]] [[ABP work and order LDP]] [[Active Brownian particles]] [[ABP cloning algorithm]] [[Path action]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -10710,7 +10710,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div created="20180620032354454" modified="20180620032356781" title="$:/temp/RemoteAssetSearch/$:/config/OfficialPluginLibrary">
 <pre>bibtex</pre>
 </div>
-<div created="20180416033117939" modified="20200209153603234" title="$:/temp/search">
+<div created="20180416033117939" modified="20200226150215616" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20180620031722320" modified="20180620031722320" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.15/index.html" url="https://tiddlywiki.com/library/v5.1.15/index.html">
@@ -11071,8 +11071,14 @@ Black dashed lined correspond to the entire trajectory average from unbiased dyn
 
 &lt;&lt;plot image:&quot;convCloningAll_sOrder_tau_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;</pre>
 </div>
-<div created="20200202145845741" modified="20200221153254433" tags="[[ABP work and order LDP]]" title="ABP averages (feedback)">
-<pre>! SCGF
+<div created="20200202145845741" modified="20200226170716224" tags="[[ABP work and order LDP]]" title="ABP averages (feedback)">
+<pre>! Rate function
+
+&lt;&lt;plot &quot;boundRate_Nm1000_Dk6500_Ll5000&gt;&gt;
+
+We compute the rate function from the SCGF and compare to the bound obtained from controlled dynamics with aligning torque between ABPs (see [[ABP work and order LDP]]).
+
+! SCGF
 
 &lt;&lt;plot &quot;SCGF_N_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;
 
@@ -11326,7 +11332,7 @@ $$
 $$
 for low enough negative $$s$$.</pre>
 </div>
-<div created="20191204151816691" modified="20200205172521427" tags="[[ABP work and order LDP]]" title="ABP cloning algorithm">
+<div created="20191204151816691" modified="20200224181123362" tags="[[ABP work and order LDP]]" title="ABP cloning algorithm">
 <pre>We use the cloning algorithm framework detailed in [[Cloning algorithm]].
 
 &lt;&lt;compuscript path:&quot;cloning.py&quot;&gt;&gt;
@@ -11484,7 +11490,44 @@ We can note that for $$s = 0$$, we expect
 $$
 \left&lt;|\underline{\nu}(t)|^2\right&gt;_0 = \frac{1}{N} = \left&lt;\mathcal{I}_{1, \tau}\right&gt;_{clo},
 $$
-which should then lead to $$g = 0$$.</pre>
+which should then lead to $$g = 0$$.
+
+!! ABPs with aligning torque
+
+We may want to consider the large deviations of the active work for a system of ABPs with a fixed alignement torque in the rotational EOM,
+$$
+\dot{\theta_i} = - g_0 N \frac{\partial}{\partial \theta_i} |\underline{\nu}|^2 + \sqrt{2\frac{\sigma}{l_p}} \xi_i,
+$$
+and introduce a controlled dynamics in which the torque parameter $$g_0$$ is set to $$g_0 + g_1$$,
+$$
+\dot{\theta_i} = - (g_0 + g_1) N \frac{\partial}{\partial \theta_i} |\underline{\nu}|^2 + \sqrt{2\frac{\sigma}{l_p}} \xi_i.
+$$
+such that the biasing quantity now becomes,
+$$
+w_{\tau}^{(3)} \simeq w^{(1)}_{\tau} + \frac{g_1}{s}\left(\frac{1}{N} - \mathcal{I}_{1, \tau} - (2 g_0 + g_1) \frac{l_p}{\sigma} \mathcal{I}_{2,\tau}\right).
+$$
+
+!!! Control from unbiased dynamics
+
+Using the previous argument, we would have that the algorihtm would always set
+$$
+g_0 + g_1 &gt; - \frac{\sigma}{l_p},
+$$
+even though we may want to sample trajectories with strong alignment by setting a very large negative $$g_0$$.
+
+We thus do not propose any equivalent of this method to choose $$g_1$$.
+
+!!! Control with feedback
+
+Using the previous argument, we can maximise
+$$
+\left&lt;s w_{\tau}^{(3)}\right&gt;_{\text{clo}} = s\left[1 +  \left&lt;w_{f, \tau}\right&gt;_{\text{clo}} - \frac{1}{3}\frac{\sigma}{l_p}s\right] - g_1^2 \left(\frac{l_p}{\sigma} \left&lt;\mathcal{I}_{2, \tau}\right&gt;_{\text{clo}}\right) - g_1 \left(\left&lt;\mathcal{I}_{1, \tau}\right&gt;_{clo} + 2 g_0 \frac{l_p}{\sigma} \left&lt;\mathcal{I}_{2, \tau}\right&gt; - \frac{1}{N}\right)
+$$
+with respect to $$g_1$$, and choose
+$$
+g_1 = \frac{\frac{1}{N} - \left&lt;\mathcal{I}_{1, \tau}\right&gt;_{clo} - 2 g_0 \frac{l_p}{\sigma} \left&lt;\mathcal{I}_{2, \tau}\right&gt;}{2 \frac{l_p}{\sigma} \left&lt;\mathcal{I}_{2, \tau}\right&gt;_{\text{clo}}},
+$$
+and modify its value at each cloning step of the algorithm.</pre>
 </div>
 <div created="20191113174242793" modified="20191113181148052" tags="[[Active Brownian particles]]" title="ABP CM transition">
 <pre>We are interested in the dynamical phase transition to collective motion (CM) described in ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]).
@@ -11650,7 +11693,7 @@ Our simulation results are in qualitative accordance with these theoretical pred
 
 ([[Binder and Kob, 2011|https://www.worldscientific.com/worldscibooks/10.1142/7300]], § 2.2)</pre>
 </div>
-<div created="20191113124812892" modified="20200221152229906" tags="[[Active Brownian particles]]" title="ABP work and order LDP">
+<div created="20191113124812892" modified="20200226164025639" tags="[[Active Brownian particles]]" title="ABP work and order LDP">
 <pre>We redefine the normalised rate of active work
 $$
 w_{\tau} = \frac{1}{N \tau} \, (S)\int_0^{\tau} \sum_{i=1}^N \underline{u}(\theta_i(t))\cdot\text{d}\underline{r}_i(t),
@@ -11806,6 +11849,36 @@ I_N(-w) &amp;= \sup_s\left\{s\, w - \Psi_N\left(\text{Pe} - s\right)\right\} = \
 &amp;= I_N(w) + \text{Pe} \, w.
 \end{aligned}
 $$
+
+!! Bound to the rate function from torque integrals
+
+An important idea in large deviation theory is that, since probabilities are measured on the exponential scale, the knowledge of the least unlikely mechanism leading to a rare fluctuation is enough to characterise it ([[Touchette, 2009|https://www.sciencedirect.com/science/article/pii/S0370157309001410]], § 3.6, [[Jack, 2019|https://arxiv.org/abs/1910.09883]], § 2.6).
+
+According to ([[Jack, 2019|https://arxiv.org/abs/1910.09883]], § 2.6), and following our scaling with the number of particles, we have that the rate function
+$$
+I_N(w) = \inf \left[\lim_{\tau \rightarrow \infty} \frac{1}{N \tau} \mathcal{D}(P^{\text{con}}_{\tau} || P_{\tau})\right]
+$$
+where
+$$
+\mathcal{D}(P^{\text{con}}_{\tau} || P_{\tau}) = \left&lt;\log \frac{P^{\text{con}}_{\tau}(\mathcal{C})}{P_{\tau}(\mathcal{C})}\right&gt;_{\text{con}}
+$$
+denotes the Kullback-Leibler (KL) divergence, and the minimisation is performed over conrolled processes for which $$\left&lt;w\right&gt;_{\text{con}} = w$$. A simple interpretation of this is thus that the least unlikey mechanism for achieving a rare event can be reproduced by a controlled process which minimises the KL divergence.
+
+Consequently, from the choice of a given control mechanism, we can infer a higher bound to the rate function (see //e.g.//, [[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]], appendix H).
+
+We consider the following modificaton of the orientational equation of motion
+$$
+\dot{\theta}_i = - g N \frac{\partial}{\partial \theta_i} |\underline{\nu}(t)|^2 + \sqrt{2 \frac{\sigma}{l_p}} \xi_i,
+$$
+then we can show, using the calculations detailed in [[ABP cloning algorithm]], that the KL divergence between the probability of trajectories with this controlled dynamics and the probability of trajectories within the original dynamics is
+$$
+\mathcal{D}(P^{\text{con}}_{\tau} || P_{\tau}) \simeq g N \tau \left(\frac{1}{N} - \left&lt;\mathcal{I}_{1,\tau}\right&gt;_{\text{con}} - g \frac{l_p}{\sigma} \left&lt;\mathcal{I}_{2,\tau}\right&gt;_{\text{con}}\right),
+$$
+and thus
+$$
+I_N(w) \leq \left. g \lim_{\tau \rightarrow \infty} \left(\frac{1}{N} - \left&lt;\mathcal{I}_{1,\tau}\right&gt;_{\text{con}} - g \frac{l_p}{\sigma} \left&lt;\mathcal{I}_{2,\tau}\right&gt;_{\text{con}}\right) \right|_{g : \left&lt;w\right&gt;_{\text{con}} = w} = \Lambda_N(g | w).
+$$
+We note that $$\left&lt;w\right&gt;_{\text{con}} = \left&lt;w\right&gt;_0$$ is achieved for g = 0, for which we thus have $$\Lambda_N = 0$$, consistently with $$I_N(\left&lt;w\right&gt;_0) = 0$$.
 
 ! $$(w_{\tau}, \overline{\nu}_{\tau})$$
 
@@ -12051,7 +12124,7 @@ This variance is also computed in [[ABP work correlations]].
 
 &lt;&lt;plot image:&quot;varWorkN_Dk6500_Ln1000_El2000&quot;&gt;&gt;</pre>
 </div>
-<div created="20191010153112162" modified="20200204140336364" tags="TableOfContents" title="Active Brownian particles">
+<div created="20191010153112162" modified="20200225184804488" tags="TableOfContents" title="Active Brownian particles">
 <pre>We define our model of active Brownian particles, based on ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]), some quantities to describe the system, and derive some analytical results.
 
 Some other theoretical developments and simulation results can be found for [[one particle|One ABP]] and [[multiple particles|Multiple ABP]].
@@ -12321,7 +12394,7 @@ $$
 
 !! Definition
 
-We use the definition of active work in ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]), which quantifies how efficiently active forces create motion, and the dissipation in the thermostat ([[Seifert, 2012|https://iopscience.iop.org/article/10.1088/0034-4885/75/12/126001]], [[Sekimoto and Sasa, 1997|https://www.jstage.jst.go.jp/article/jpsj/66/11/66_11_3326/_article/-char/ja/]]).
+We use the definition of active work in ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]), which quantifies how efficiently active forces create motion, and the dissipation in the thermostat ([[Seifert, 2012|https://iopscience.iop.org/article/10.1088/0034-4885/75/12/126001]], [[Sekimoto and Sasa, 1997|https://www.jstage.jst.go.jp/article/jpsj/66/11/66_11_3326/_article/-char/ja/]]) due to its relation with the work of the non-conservative active forces.
 
 We have the dimensionless normalised rate of active work per particle,
 $$
@@ -12495,7 +12568,7 @@ C^{(a)}_{wo}(\tau) &amp;= \frac{\left&lt;\delta w(t_0; \tau) \, \delta |\underli
 &amp;= \left&lt;\delta w(t_0; \tau) \, \delta |\underline{\nu}(t_0)|\right&gt;_{t_0} \sqrt{\frac{4N}{\left&lt;\delta w(t_0; \tau)^2\right&gt;_{t_0}}},
 \end{aligned}
 $$
-the correlation between the fluctuations of the normalised rate of active work on an interval $$[t_0; t_0 + \tau]$$ and the fluctuations of the order parameter norm at the beginning ot his interval.
+the correlation between the flhiuctuations of the normalised rate of active work on an interval $$[t_0; t_0 + \tau]$$ and the fluctuations of the order parameter norm at the beginning ot his interval.
 
 !!! &quot;Instantaneous&quot; active work and order parameter norm
 
@@ -12512,7 +12585,23 @@ the correlation between the fluctuations of the order parameter norm at a time $
 
 !! Rate of active work and structure of the liquid
 
-A relation between the rate of active work, the interparticle potential, and the two- and three-body density correlation functions can be derived for a system of active particles ([[Tociu et al., 2019|https://journals.aps.org/prx/abstract/10.1103/PhysRevX.9.041026]]).</pre>
+A relation between the rate of active work, the interparticle potential, and the two- and three-body density correlation functions can be derived for a system of active particles ([[Tociu et al., 2019|https://journals.aps.org/prx/abstract/10.1103/PhysRevX.9.041026]]).
+
+! Torque integrals
+
+We define the torque parameter $$g$$ and introduce the quantities
+$$
+\begin{aligned}
+\mathcal{I}_{1, \tau} &amp;= \frac{1}{\tau} \int_0^{\tau} |\underline{\nu}(t)|^2 \, \text{d}t,\\
+\mathcal{I}_{2, \tau} &amp;= \frac{1}{N \tau} \int_0^{\tau} \frac{1}{N^2} \sum_{i=1}^N \left(\sum_{j=1}^N \sin(\theta_i(t) - \theta_j(t))\right)^2 \, \text{d}t\\
+&amp;= \frac{1}{N \tau} \int_0^{\tau} |\underline{\nu}(t)|^2 \sum_{i=1}^N \sin^2(\theta_i(t) - \varphi(t)) \, \text{d}t,
+\end{aligned}
+$$
+which we will call first and second //torque integrals// due to their relation with the introduction of the torque
+$$
+\Gamma_i = - g N \frac{\partial}{\partial \theta_i} |\underline{\nu}(t)|^2
+$$
+in the orientational equation of motion, and which are useful in the [[ABP cloning algorithm]] and in the computation of a bound to the rate function of the active work (see [[ABP work and order LDP]]).</pre>
 </div>
 <div created="20200205165109245" modified="20200207164254541" tags="[[N-interacting Brownian rotors]]" title="Brownian rotors cloning algorithm">
 <pre>We use the cloning algorithm framework detailed in [[Cloning algorithm]] and apply it to $$N$$ //non-interacting// Brownian rotors, evolving according to
