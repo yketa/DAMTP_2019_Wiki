@@ -10000,7 +10000,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="[[ABP averages (feedback)]] [[ABP work and order LDP]] [[Active Brownian particles]] [[ABP cloning algorithm]] [[Path action]] Project" title="$:/StoryList">
+<div list="[[ABP cloning algorithm]] [[ABP high Pe]] [[ABP averages (feedback)]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -11071,12 +11071,21 @@ Black dashed lined correspond to the entire trajectory average from unbiased dyn
 
 &lt;&lt;plot image:&quot;convCloningAll_sOrder_tau_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;</pre>
 </div>
-<div created="20200202145845741" modified="20200226170716224" tags="[[ABP work and order LDP]]" title="ABP averages (feedback)">
+<div created="20200202145845741" modified="20200302155347761" tags="[[ABP work and order LDP]]" title="ABP averages (feedback)">
 <pre>! Rate function
 
-&lt;&lt;plot &quot;boundRate_Nm1000_Dk6500_Ll5000&gt;&gt;
+We compute the rate function from the SCGF and compare it to the bounds obtained from (i) controlled dynamics with aligning torque between ABPs and (ii) independent Brownian rotors (see [[ABP work and order LDP]]).
 
-We compute the rate function from the SCGF and compare to the bound obtained from controlled dynamics with aligning torque between ABPs (see [[ABP work and order LDP]]).
+&lt;&lt;plot &quot;boundRate_Nm1000_Dk6500_Ll5000&gt;&gt;
+&lt;&lt;plot &quot;boundRate_Dk6500_Ll5000&gt;&gt;
+
+We have that at this low persistence length, $$l_p/\sigma = 5$$, increasing the number of particles does not seem to make the bounds any better.
+
+&lt;&lt;plot &quot;boundRate_Nm1000_Dk6500_Lm2000&gt;&gt;
+
+&lt;&lt;plot &quot;boundRate_Nm1000_Dk6500_Lm4000&gt;&gt;
+
+On the contrary, increasing the persistence length does seem to make the bounds closer to the rate function.
 
 ! SCGF
 
@@ -11693,7 +11702,7 @@ Our simulation results are in qualitative accordance with these theoretical pred
 
 ([[Binder and Kob, 2011|https://www.worldscientific.com/worldscibooks/10.1142/7300]], § 2.2)</pre>
 </div>
-<div created="20191113124812892" modified="20200226173544895" tags="[[Active Brownian particles]]" title="ABP work and order LDP">
+<div created="20191113124812892" modified="20200227180527706" tags="[[Active Brownian particles]]" title="ABP work and order LDP">
 <pre>We redefine the normalised rate of active work
 $$
 w_{\tau} = \frac{1}{N \tau} \, (S)\int_0^{\tau} \sum_{i=1}^N \underline{u}(\theta_i(t))\cdot\text{d}\underline{r}_i(t),
@@ -11708,7 +11717,43 @@ where $$(S)\int$$ denotes in both cases a Stratonovitch integral.
 
 &lt;&lt;toc label:&quot;ABP work and order LDP&quot;&gt;&gt;
 
-! $$w_{\tau}$$
+! Joint distribution of $$(w_{\tau}, \overline{\nu}_{\tau})$$
+
+!! LDP
+
+We assume that a joint large deviation principle ([[Touchette, 2009|https://www.sciencedirect.com/science/article/pii/S0370157309001410]]) holds,
+$$
+P^{(\text{j})}_N(\overline{\nu}_{\tau}, w_{\tau}) \asymp \exp\left(- \tau I^{(\text{j})}_N(\overline{\nu}_{\tau}, w_{\tau})\right).
+$$
+
+!! Relation to covariances
+
+We assume that $$I_N$$ has a single 0 at $$(\overline{\nu}_{\tau}^*, w_{\tau}^*)$$, such that for $$\overline{\nu}_{\tau} \rightarrow \overline{\nu}_{\tau}^*$$ and $$w_{\tau} \rightarrow w_{\tau}^*$$,
+$$
+\begin{aligned}
+P^{(\text{j})}_N(\overline{\nu}_{\tau}, w_{\tau}) \asymp \exp\Big(- \frac{\tau}{2}\big[&amp;\partial_{\overline{\nu}_{\tau}}^2 I^{(\text{j})}_N(\overline{\nu}_{\tau}^*, w_{\tau}^*)(\overline{\nu}_{\tau} - \overline{\nu}_{\tau}^*)^2\\
++ &amp;\partial_{w_{\tau}}^2 I^{(\text{j})}_N(\overline{\nu}_{\tau}^*, w_{\tau}^*)(w_{\tau} - w_{\tau}^*)^2\\
++ &amp;2\partial_{\overline{\nu}_{\tau}}\partial_{w_{\tau}}I^{(\text{j})}_N(\overline{\nu}_{\tau}^*, w_{\tau}^*)(\overline{\nu}_{\tau} - \overline{\nu}_{\tau}^*)(w_{\tau} - w_{\tau}^*)\big]\Big),
+\end{aligned}
+$$
+//i.e.//, with $$\underline{X} = \begin{pmatrix} \overline{\nu}_{\tau} \\ w_{\tau} \end{pmatrix}$$, we have
+$$
+P^{(\text{j})}_N(\overline{\nu}_{\tau}, w_{\tau}) \asymp \exp\left(-\frac{\tau}{2} (\underline{X} - \underline{X}^*)^T \, \underline{\underline{\Sigma}}^{-1} \, (\underline{X} - \underline{X}^*)\right),
+$$
+with
+$$
+\underline{\underline{\Sigma}} = \begin{pmatrix} \text{cov}(\overline{\nu}_{\tau}, \overline{\nu}_{\tau}) &amp; \text{cov}(\overline{\nu}_{\tau}, w_{\tau}) \\ \text{cov}(\overline{\nu}_{\tau}, w_{\tau}) &amp; \text{cov}(w_{\tau}, w_{\tau}) \end{pmatrix} \equiv \begin{pmatrix} \sigma_{\overline{\nu}_{\tau}}^2 &amp; \rho_{\overline{\nu}_{\tau} w_{\tau}} \sigma_{\overline{\nu}_{\tau}} \sigma_{w_{\tau}} \\ \rho_{\overline{\nu}_{\tau} w_{\tau}} \sigma_{\overline{\nu}_{\tau}} \sigma_{w_{\tau}} &amp; \sigma_{w_{\tau}}^2 \end{pmatrix},
+$$
+where $$\rho_{\overline{\nu}_{\tau} w_{\tau}}$$ is the Pearson correlation coefficient between $$\overline{\nu}_{\tau}$$ and $$w_{\tau}$$. We then identifiy (see [[Wikipedia|https://en.wikipedia.org/wiki/Multivariate_normal_distribution#Non-degenerate_case]])
+$$
+\begin{aligned}
+\partial_{\overline{\nu}_{\tau}}^2 I^{(\text{j})}_N(\overline{\nu}_{\tau}^*, w_{\tau}^*) &amp;= \frac{1}{(1 - \rho_{\overline{\nu}_{\tau} w_{\tau}}^2) \sigma_{\overline{\nu}_{\tau}}^2},\\
+\partial_{w_{\tau}}^2 I^{(\text{j})}_N(\overline{\nu}_{\tau}^*, w_{\tau}^*) &amp;= \frac{1}{(1 - \rho_{\overline{\nu}_{\tau} w_{\tau}}^2) \sigma_{w_{\tau}}^2},\\
+\partial_{\overline{\nu}_{\tau}}\partial_{w_{\tau}}I^{(\text{j})}_N(\overline{\nu}_{\tau}^*, w_{\tau}^*) &amp;= \frac{\rho_{\overline{\nu}_{\tau} w_{\tau}}}{(1 - \rho_{\overline{\nu}_{\tau} w_{\tau}}^2) \sigma_{\overline{\nu}_{\tau}}\sigma_{w_{\tau}}}.
+\end{aligned}
+$$
+
+! Distribution of $$w_{\tau}$$
 
 !! LDP
 
@@ -11742,7 +11787,7 @@ $$
 
 !! Interpretation in statistichal mechanics
 
-We have that the rate function $$I_N$$ and the SCGF $$\Psi_N$$ can be related respectively to the entropy and the free energy in equilibrium statistichal mechanics ([[Touchette, 2009|https://www.sciencedirect.com/science/article/pii/S0370157309001410]], [[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]). Within this analogy, singularities in the large-$$N$$ limit are interpreted as (dynamical) phase transitions.
+We have that the rate function $$I_N$$ and the SCGF $$\Psi_N$$ can be related respectively to the entropy and the free energy in equilibrium statistichal mechanics ([[Touchette, 2009|https://www.sciencedirect.com/science/article/pii/S0370157309001410]], [[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]). Within this analogy, singularities in the large-$$N$$ limit are interpreted as (dynamical) phase transitions, //i.e.// they indicate fundamental qualitative changes in the mechanisms at the origin of the fluctuations ([[Dolezal and Jack, 2019|https://iopscience.iop.org/article/10.1088/1742-5468/ab4801/meta]]).
 
 Moreover, we have that the free energy can alwats be obtained as the Legendre-Fenchel transform of the entropy, and thus the SCGF is always the Legendre-Fenchel transform of the rate function ([[Touchette, 2009|https://www.sciencedirect.com/science/article/pii/S0370157309001410]], § 5.5). On the contrary, the rate function can obtained as the Legendre-Fenchel transform of the SCGF only if the former is convex.
 
@@ -11850,7 +11895,7 @@ I_N(-w) &amp;= \sup_s\left\{s\, w - \Psi_N\left(\text{Pe} - s\right)\right\} = \
 \end{aligned}
 $$
 
-!! Bound to the rate function from torque integrals
+!! Upper bound to the rate function from torque integrals
 
 An important idea in large deviation theory is that, since probabilities are measured on the exponential scale, the knowledge of the least unlikely mechanism leading to a rare fluctuation is enough to characterise it ([[Touchette, 2009|https://www.sciencedirect.com/science/article/pii/S0370157309001410]], § 3.6, [[Jack, 2019|https://arxiv.org/abs/1910.09883]], § II.F).
 
@@ -11864,7 +11909,7 @@ $$
 $$
 denotes the Kullback-Leibler (KL) divergence, and the minimisation is performed over conrolled processes for which $$\left&lt;w\right&gt;_{\text{con}} = w$$. A simple interpretation of this is thus that the least unlikey mechanism for achieving a rare event can be reproduced by a controlled process which minimises the KL divergence.
 
-Consequently, from the choice of a given control mechanism, we can infer a higher bound to the rate function (see //e.g.//, [[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]], appendix H).
+Consequently, from the choice of a given control mechanism, we can infer an upper bound to the rate function (see //e.g.//, [[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]], appendix H).
 
 We consider the following modificaton of the orientational equation of motion
 $$
@@ -11876,45 +11921,39 @@ $$
 $$
 and thus
 $$
-I_N(w) \leq \left. g \lim_{\tau \rightarrow \infty} \left(\frac{1}{N} - \left&lt;\mathcal{I}_{1,\tau}\right&gt;_{\text{con}} - g \frac{l_p}{\sigma} \left&lt;\mathcal{I}_{2,\tau}\right&gt;_{\text{con}}\right) \right|_{g : \left&lt;w\right&gt;_{\text{con}} = w} = \Lambda_N(g | w).
+I_N(w) \leq \left. g \lim_{\tau \rightarrow \infty} \left(\frac{1}{N} - \left&lt;\mathcal{I}_{1,\tau}\right&gt;_{\text{con}} - g \frac{l_p}{\sigma} \left&lt;\mathcal{I}_{2,\tau}\right&gt;_{\text{con}}\right) \right|_{g : \left&lt;w\right&gt;_{\text{con}} = w} = \Lambda_N(g | w),
+$$
+//i.e.//,
+$$
+\Lambda_N(g | w) = g \lim_{\tau \rightarrow \infty} \left&lt;\frac{1}{N} - \frac{1}{\tau} \int_0^{\tau} |\underline{\nu}(t)|^2 \, \text{d}t - g \frac{l_p}{\sigma} \frac{1}{N\tau} \int_0^{\tau} |\underline{\nu}(t)|^2 \sum_{i=1}^N \sin^2(\theta_i(t) - \varphi(t)) \, \text{d}t\right&gt;_{\text{con}}.
 $$
 We note that $$\left&lt;w\right&gt;_{\text{con}} = \left&lt;w\right&gt;_0$$ is achieved for g = 0, for which we thus have $$\Lambda_N = 0$$, consistently with $$I_N(\left&lt;w\right&gt;_0) = 0$$.
 
-! $$(w_{\tau}, \overline{\nu}_{\tau})$$
+!! Lower bound to the rate function from Brownian rotors
 
-!! LDP
+Considering the dynamics of $$N$$ independent Brownian rotors,
+$$
+\dot{\theta}_i = \sqrt{2D_r} \xi_i,
+$$
+where $$D_r^{-1} = l_p/\sigma$$, we can obtain the rate function for the polarisation $$J_N$$ (see [[Brownian rotors LDP]]) which verifies
+$$
+P^{(\text{rotors})}_N(\overline{\nu}_{\tau}) \asymp \exp\left(- \tau N J_N(\overline{\nu}_{\tau})\right),
+$$
+thus, considering that the joint large deviation principle holds, we can note from the contration principle ([[Touchette, 2009|https://www.sciencedirect.com/science/article/pii/S0370157309001410]], § 3.6, [[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]], § III.A) that
+$$
+I_N(w) = \inf_{\overline{\nu}} I^{(\text{j})}_N(w, \overline{\nu}) = I^{(\text{j})}_N(w, \overline{\nu}(s(w))),
+$$
+and further see that
+$$
+J_N(\overline{\nu}(s(w))) = \inf_{w^{\prime}} I^{(\text{j})}_N(w^{\prime}, \overline{\nu}(s(w))) \leq I^{(\text{j})}_N(w, \overline{\nu}(s(w))),
+$$
+therefore
+$$
+I_N(w) \geq J_N(\overline{\nu}(s(w)))
+$$
+should hold.
 
-We assume that a joint large deviation principle holds,
-$$
-P_N(\overline{\nu}_{\tau}, w_{\tau}) \asymp \exp\left(- \tau I_N(\overline{\nu}_{\tau}, w_{\tau})\right).
-$$
-
-!! Relation to covariances
-
-We assume that $$I_N$$ has a single 0 at $$(\overline{\nu}_{\tau}^*, w_{\tau}^*)$$, such that for $$\overline{\nu}_{\tau} \rightarrow \overline{\nu}_{\tau}^*$$ and $$w_{\tau} \rightarrow w_{\tau}^*$$,
-$$
-\begin{aligned}
-P_N(\overline{\nu}_{\tau}, w_{\tau}) \asymp \exp\Big(- \frac{\tau}{2}\big[&amp;\partial_{\overline{\nu}_{\tau}}^2 I(\overline{\nu}_{\tau}^*, w_{\tau}^*)(\overline{\nu}_{\tau} - \overline{\nu}_{\tau}^*)^2\\
-+ &amp;\partial_{w_{\tau}}^2 I(\overline{\nu}_{\tau}^*, w_{\tau}^*)(w_{\tau} - w_{\tau}^*)^2\\
-+ &amp;2\partial_{\overline{\nu}_{\tau}}\partial_{w_{\tau}}I(\overline{\nu}_{\tau}^*, w_{\tau}^*)(\overline{\nu}_{\tau} - \overline{\nu}_{\tau}^*)(w_{\tau} - w_{\tau}^*)\big]\Big),
-\end{aligned}
-$$
-//i.e.//, with $$\underline{X} = \begin{pmatrix} \overline{\nu}_{\tau} \\ w_{\tau} \end{pmatrix}$$, we have
-$$
-P_N(\overline{\nu}_{\tau}, w_{\tau}) \asymp \exp\left(-\frac{\tau}{2} (\underline{X} - \underline{X}^*)^T \, \underline{\underline{\Sigma}}^{-1} \, (\underline{X} - \underline{X}^*)\right),
-$$
-with
-$$
-\underline{\underline{\Sigma}} = \begin{pmatrix} \text{cov}(\overline{\nu}_{\tau}, \overline{\nu}_{\tau}) &amp; \text{cov}(\overline{\nu}_{\tau}, w_{\tau}) \\ \text{cov}(\overline{\nu}_{\tau}, w_{\tau}) &amp; \text{cov}(w_{\tau}, w_{\tau}) \end{pmatrix} \equiv \begin{pmatrix} \sigma_{\overline{\nu}_{\tau}}^2 &amp; \rho_{\overline{\nu}_{\tau} w_{\tau}} \sigma_{\overline{\nu}_{\tau}} \sigma_{w_{\tau}} \\ \rho_{\overline{\nu}_{\tau} w_{\tau}} \sigma_{\overline{\nu}_{\tau}} \sigma_{w_{\tau}} &amp; \sigma_{w_{\tau}}^2 \end{pmatrix},
-$$
-where $$\rho_{\overline{\nu}_{\tau} w_{\tau}}$$ is the Pearson correlation coefficient between $$\overline{\nu}_{\tau}$$ and $$w_{\tau}$$. We then [[identify|https://en.wikipedia.org/wiki/Multivariate_normal_distribution#Non-degenerate_case]]
-$$
-\begin{aligned}
-\partial_{\overline{\nu}_{\tau}}^2 I(\overline{\nu}_{\tau}^*, w_{\tau}^*) &amp;= \frac{1}{(1 - \rho_{\overline{\nu}_{\tau} w_{\tau}}^2) \sigma_{\overline{\nu}_{\tau}}^2},\\
-\partial_{w_{\tau}}^2 I(\overline{\nu}_{\tau}^*, w_{\tau}^*) &amp;= \frac{1}{(1 - \rho_{\overline{\nu}_{\tau} w_{\tau}}^2) \sigma_{w_{\tau}}^2},\\
-\partial_{\overline{\nu}_{\tau}}\partial_{w_{\tau}}I(\overline{\nu}_{\tau}^*, w_{\tau}^*) &amp;= \frac{\rho_{\overline{\nu}_{\tau} w_{\tau}}}{(1 - \rho_{\overline{\nu}_{\tau} w_{\tau}}^2) \sigma_{\overline{\nu}_{\tau}}\sigma_{w_{\tau}}}.
-\end{aligned}
-$$</pre>
+Contrarily to $$I_N(w)$$ and $$\Lambda_N(g | w)$$ which can be plotted parametrically, we will on the one hand approximate $$\overline{\nu}(s(w))$$ obtained from the cloning of ABPs with a polynomial and on the other hand approximate $$J_N(\overline{\nu})$$ obtained from the cloning of rotors with an other polynomial, in order to evaluate $$J_N(\overline{\nu}(s(w)))$$ for different values of $$w$$.</pre>
 </div>
 <div created="20191029154238656" modified="20191113124355314" tags="[[Multiple ABP]]" title="ABP work correlations">
 <pre>We compute correlations of the active work with itself and with the order parameter (see [[Active Brownian particles]]).
@@ -12603,11 +12642,12 @@ $$
 $$
 in the orientational equation of motion, and which are useful in the [[ABP cloning algorithm]] and in the computation of a bound to the rate function of the active work (see [[ABP work and order LDP]]).</pre>
 </div>
-<div created="20200205165109245" modified="20200207164254541" tags="[[N-interacting Brownian rotors]]" title="Brownian rotors cloning algorithm">
+<div created="20200205165109245" modified="20200227125133914" tags="[[N-interacting Brownian rotors]]" title="Brownian rotors cloning algorithm">
 <pre>We use the cloning algorithm framework detailed in [[Cloning algorithm]] and apply it to $$N$$ //non-interacting// Brownian rotors, evolving according to
 $$
-\dot{\theta_i} = \sqrt{2D_r} \xi_i.
+\dot{\theta_i} = \sqrt{2D_r} \xi_i,
 $$
+so that we can //e.g.// compare it to the theoretical developments in [[Brownian rotors LDP]].
 
 &lt;&lt;compuscript path:&quot;cloningR.py&quot;&gt;&gt;
 
@@ -12661,7 +12701,7 @@ We conclude that, starting from the same initial configuration $$\{\theta_i\}_0$
 
 We stress that this choice of $$g$$ is only //convenient// but not //optimal//. A better choice of $$g$$ would for example be determined self-consistently with the ansatz for the orientation distribution and the maximised lower bound to the SCGF (see [[Brownian rotors LDP]], and § &quot;Connection of operator and optimal-control approaches&quot; in [[Jack, 2019|https://arxiv.org/abs/1910.09883]]).</pre>
 </div>
-<div created="20200203193215965" modified="20200217184740338" tags="[[N-interacting Brownian rotors]]" title="Brownian rotors LDP" type="">
+<div created="20200203193215965" modified="20200227125442249" tags="[[N-interacting Brownian rotors]]" title="Brownian rotors LDP" type="">
 <pre>We consider $$N$$ independent Brownian rotors with evolution
 $$
 \dot{\theta_i} = \sqrt{2D_r},
@@ -12880,6 +12920,10 @@ Moreover, we have that curves consistently get closer to the theoretical bound w
 We have that the increasing curvature of the SCGF close to $$s = -D_r/2$$ is consistent with a decreasing slope of the mean squared polarisation.
 
 However, we observe a significative discrepancy at large negative $$s$$. We may suggest that, in addition to the finite size effect, our ansatz is not adequate to describe our system for this large a bias.
+
+!!! Rate function
+
+&lt;&lt;plot image:&quot;rate_Rotors_pSq&quot;&gt;&gt;
 
 ! Biasing with polarisation [First ansatz]
 
