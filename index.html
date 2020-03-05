@@ -10000,7 +10000,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="[[ABP cloning algorithm]] [[ABP high Pe]] [[ABP averages (feedback)]] Project" title="$:/StoryList">
+<div list="[[ABP structure characteristics]] [[ABP work and order LDP]] [[ABP averages (feedback)]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -11071,7 +11071,7 @@ Black dashed lined correspond to the entire trajectory average from unbiased dyn
 
 &lt;&lt;plot image:&quot;convCloningAll_sOrder_tau_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;</pre>
 </div>
-<div created="20200202145845741" modified="20200302155347761" tags="[[ABP work and order LDP]]" title="ABP averages (feedback)">
+<div created="20200202145845741" modified="20200303143808266" tags="[[ABP work and order LDP]]" title="ABP averages (feedback)">
 <pre>! Rate function
 
 We compute the rate function from the SCGF and compare it to the bounds obtained from (i) controlled dynamics with aligning torque between ABPs and (ii) independent Brownian rotors (see [[ABP work and order LDP]]).
@@ -11086,6 +11086,18 @@ We have that at this low persistence length, $$l_p/\sigma = 5$$, increasing the 
 &lt;&lt;plot &quot;boundRate_Nm1000_Dk6500_Lm4000&gt;&gt;
 
 On the contrary, increasing the persistence length does seem to make the bounds closer to the rate function.
+
+&lt;&lt;plot &quot;errorLowerBound_Nm1000_Dk6500&quot;&gt;&gt;
+
+We have that the relative discrepancy between the rate function of the active work in ABPs and the corresponding rate function of polarisation in Brownian rotors,
+$$
+w \mapsto \frac{I_n(w)}{J_N(\nu(s(w)))} - 1,
+$$
+seems to collapsase on a single master curve for different persistence length. Moreover, this master curve tends to 0 as $$w \rightarrow 1$$.
+
+We note that $$\left&lt;w\right&gt;_0$$ is an increasing function of $$l_p/\sigma$$, therefore we have that the relative discrepancy plotted against $$w - \left&lt;w\right&gt;_0$$ is a decreasing function of $$l_p/\sigma$$.
+
+&lt;&lt;plot &quot;errorUpperBound_Nm1000_Dk6500&quot;&gt;&gt;
 
 ! SCGF
 
@@ -11695,14 +11707,50 @@ $$
 
 Our simulation results are in qualitative accordance with these theoretical predictions.</pre>
 </div>
-<div created="20200115181511248" modified="20200115181739472" tags="[[Active Brownian particles]]" title="ABP structure characteristics">
+<div created="20200115181511248" modified="20200305172557764" tags="[[Active Brownian particles]]" title="ABP structure characteristics">
 <pre>We define quantities to characterise the structure of systems of ABPs.
+
+! Pair distribution function and static structure factor
+
+We introduce the local particle density
+$$
+\rho(\underline{r}) = \sum_{i=1}^N \delta(\underline{r} - \underline{r}_i),
+$$
+and its spacial correlation function in a homogeneous system ([[Binder and Kob, 2011|https://www.worldscientific.com/worldscibooks/10.1142/7300]], § 2.1)
+$$
+\begin{aligned}
+G(\underline{r}) &amp;= \left&lt;\left[\rho(\underline{r}^{\prime}) - \rho\right]\left[\rho(\underline{r}^{\prime} + \underline{r}) - \rho\right]\right&gt; = \left&lt;\rho(\underline{r}^{\prime})\rho(\underline{r}^{\prime} + \underline{r})\right&gt; - \rho^2\\
+&amp;= \sum_{i,j = 1}^N \left&lt;\delta(\underline{r}^{\prime} - \underline{r}_i)\delta(\underline{r}^{\prime} + \underline{r} - \underline{r}_j)\right&gt; - \rho^2,
+\end{aligned}
+$$
+with
+$$
+\rho = \frac{N}{V} = \left&lt;\rho(\underline{r})\right&gt;
+$$
+where $$V$$ is the volume of the system. We can then write
+$$
+G(\underline{r}) = \frac{N}{V} \delta(\underline{r}) + \frac{1}{V} \sum_{i=1}^N \sum_{j \neq i} \left&lt;\delta(\underline{r} + \underline{r}_i - \underline{r}_j)\right&gt; - \rho^2 = \rho \delta(\underline{r}) + \rho^2 g(\underline{r}) - \rho^2,
+$$
+where we have introduce the pair distribution function $$g$$.
+
+Considering
+$$
+\rho(\underline{k}) = \int \text{d}\underline{r} \, \exp(-\text{i} \underline{k} \cdot \underline{r}) \rho(\underline{r}) = \sum_{i=1}^N \exp(- \text{i} \underline{k} \cdot \underline{r}_i)
+$$
+the Fourier transform of the local particle density, we define the static structure factor
+$$
+\begin{aligned}
+S(\underline{k}) &amp;= \frac{1}{N} \left&lt;\rho(\underline{k}) \rho^*(\underline{k})\right&gt; = \frac{1}{N} \left&lt;\rho(\underline{k}) \rho(-\underline{k})\right&gt; =  \frac{1}{N} \sum_{i,j=1}^N \left&lt;\exp\left(- \text{i} \underline{k} \cdot (\underline{r}_j - \underline{r}_i\right)\right&gt;\\
+&amp;= 1 + \rho \int \text{d}\underline{R} \, \exp(-\text{i} \underline{k} \cdot \underline{R}) g(\underline{R}),
+\end{aligned}
+$$
+which is related to the pair distribution function $$g$$ via Fourier transform.
 
 ! Bond orientational susceptibility
 
 ([[Binder and Kob, 2011|https://www.worldscientific.com/worldscibooks/10.1142/7300]], § 2.2)</pre>
 </div>
-<div created="20191113124812892" modified="20200227180527706" tags="[[Active Brownian particles]]" title="ABP work and order LDP">
+<div created="20191113124812892" modified="20200303180331591" tags="[[Active Brownian particles]]" title="ABP work and order LDP">
 <pre>We redefine the normalised rate of active work
 $$
 w_{\tau} = \frac{1}{N \tau} \, (S)\int_0^{\tau} \sum_{i=1}^N \underline{u}(\theta_i(t))\cdot\text{d}\underline{r}_i(t),
@@ -11782,7 +11830,11 @@ $$
 $$
 We note that the SCGF and the rate function are related through Legendre transform,
 $$
-I_N(w) = \sup_s \{- s w - \Psi_N(s)\} = -s(w) \, w - \Psi_N(s(w)).
+I_N(w) = \sup_s \{- s w - \Psi_N(s)\} = -s(w) \, w - \Psi_N(s(w)),
+$$
+from which we can for example deduce that
+$$
+\frac{\partial}{\partial w} I_N(w) = - \left.\frac{\partial s}{\partial w} \right|_w \left(w + \Psi^{\prime}_N(s(w))\right) - s(w) = -s(w).
 $$
 
 !! Interpretation in statistichal mechanics
