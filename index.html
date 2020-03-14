@@ -9958,8 +9958,8 @@ config.macros.bibliography = {
 <div created="20191125144053249" modified="20191125144053249" title="$:/state/toc/TableOfContents/Active Brownian particles-ABP work and order LDP--81657105">
 <pre>open</pre>
 </div>
-<div created="20191029224616636" modified="20200313180756049" title="$:/state/toc/TableOfContents/Active Brownian particles-Multiple ABP--81657105">
-<pre>close</pre>
+<div created="20191029224616636" modified="20200314190923641" title="$:/state/toc/TableOfContents/Active Brownian particles-Multiple ABP--81657105">
+<pre>open</pre>
 </div>
 <div created="20200203193244192" modified="20200203193244192" title="$:/state/toc/TableOfContents/Active Brownian particles-N-interacting Brownian rotors--81657105">
 <pre>open</pre>
@@ -10000,7 +10000,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="[[ABP work and order LDP]] [[ABP cloning algorithm]] [[Active Brownian particles]] [[N-interacting Brownian rotors]] [[Brownian rotors LDP]] [[ABP averages (unbiased dynamics)]] [[ABP work correlations]] Project" title="$:/StoryList">
+<div list="[[ABP work and order LDP]] [[ABP work variance]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -11762,7 +11762,7 @@ which is related to the pair distribution function $$g$$ via Fourier transform.
 
 ([[Binder and Kob, 2011|https://www.worldscientific.com/worldscibooks/10.1142/7300]], § 2.2)</pre>
 </div>
-<div created="20191113124812892" modified="20200313182753400" tags="[[Active Brownian particles]]" title="ABP work and order LDP">
+<div created="20191113124812892" modified="20200314200233081" tags="[[Active Brownian particles]]" title="ABP work and order LDP">
 <pre>We redefine the normalised rate of active work
 $$
 w_{\tau} = \frac{1}{N \tau} \, (S)\int_0^{\tau} \sum_{i=1}^N \underline{u}(\theta_i(t))\cdot\text{d}\underline{r}_i(t),
@@ -11861,7 +11861,8 @@ We can show that
 $$
 \begin{aligned}
 \psi_{N}^{\prime\prime}(0, \tau) &amp;= \tau N \, \text{Var}(w_{\tau})_0,\\
-\Psi_{N}^{\prime\prime}(0) &amp;= \lim_{\tau \rightarrow \infty} \tau N \, \text{Var}(w_{\tau})_0,
+\Psi_{N}^{\prime\prime}(0) &amp;= \lim_{\tau \rightarrow \infty} \tau N \, \text{Var}(w_{\tau})_0\\
+&amp;= - \left. \frac{\partial}{\partial s} \left&lt;w_{\tau}\right&gt;_s \right|_{s=0},
 \end{aligned}
 $$
 and, //via// the Legendre transform,
@@ -11874,15 +11875,6 @@ $$
 \left.\frac{\partial}{\partial s} \left&lt;\overline{\nu}_{\tau}\right&gt;_s\right|_{s=0} = - \tau N \, \text{Cov}(\overline{\nu}_{\tau}, w_{\tau})_0,
 $$
 which should not depend on $$\tau$$ as long as the trajectory is long enough.
-
-We note that
-$$
-\psi_N(s, \tau) = \psi(0, \tau) + s \psi^{\prime}_N(0, \tau) + \frac{1}{2} s^2 \psi^{\prime\prime}_N(0, \tau) + \mathcal{O}(s^3),
-$$
-in the limit $$s \rightarrow 0$$, therefore
-$$
-\psi_N(s \rightarrow 0, \tau) \approx - s \left&lt;w_{\tau}\right&gt;_0 + \frac{1}{2} s^2 \tau N \text{Var}(w_{\tau})_0
-$$
 
 !! Fluctuation relation
 
@@ -12173,8 +12165,12 @@ An issue is that the data looks Gaussian only close to the mean. We thus define,
 
 &lt;&lt;plot image:&quot;dist_w_comp_Nm1000_Dk6500&quot;&gt;&gt;</pre>
 </div>
-<div created="20191029190356627" modified="20191107151129626" tags="[[Multiple ABP]]" title="ABP work variance">
-<pre>! As a function of $$\tau$$
+<div created="20191029190356627" modified="20200314192341409" tags="[[Multiple ABP]]" title="ABP work variance">
+<pre>! As a function of $$N$$
+
+&lt;&lt;plot image:varWork_Dk6500_Ll5000&gt;&gt;
+
+! As a function of $$\tau$$ — varying $$l_p$$
 
 !! Initial result
 
@@ -12206,7 +12202,7 @@ This variance is also computed in [[ABP work correlations]].
 
 &lt;&lt;plot image:&quot;varWorkLP_No1000_Dk6500_El2000&quot;&gt;&gt;
 
-! As a function of $$N$$
+! As a function of $$\tau$$  — varying $$N$$
 
 !! Force part of the active work
 
