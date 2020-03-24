@@ -10002,7 +10002,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="[[ABP averages (feedback)]] [[Brownian rotors LDP]] Project" title="$:/StoryList">
+<div list="[[ABP work and order LDP]] [[Brownian rotors LDP]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -11822,7 +11822,7 @@ which is related to the pair distribution function $$g$$ via Fourier transform.
 
 ([[Binder and Kob, 2011|https://www.worldscientific.com/worldscibooks/10.1142/7300]], § 2.2)</pre>
 </div>
-<div created="20191113124812892" modified="20200314200233081" tags="[[Active Brownian particles]]" title="ABP work and order LDP">
+<div created="20191113124812892" modified="20200324123142324" tags="[[Active Brownian particles]]" title="ABP work and order LDP">
 <pre>We redefine the normalised rate of active work
 $$
 w_{\tau} = \frac{1}{N \tau} \, (S)\int_0^{\tau} \sum_{i=1}^N \underline{u}(\theta_i(t))\cdot\text{d}\underline{r}_i(t),
@@ -11927,8 +11927,8 @@ $$
 $$
 and, //via// the Legendre transform,
 $$
-I^{\prime\prime}_N(\left&lt;w_{\tau}\right&gt;_0) = \frac{1}{\Psi^{\prime\prime}(0)} = \lim_{\tau \rightarrow \infty} 
- \frac{1}{\tau N \, \text{Var}(w_{\tau})}_0.
+I^{\prime\prime}_N(\left&lt;w_{\tau}\right&gt;_0) = \frac{1}{\Psi^{\prime\prime}(0)} = 
+ \frac{1}{\lim_{\tau \rightarrow \infty} \tau N \, \text{Var}(w_{\tau})}_0.
 $$
 Moreover, we get
 $$
@@ -12078,7 +12078,89 @@ I_N(w) \geq J_N(\overline{\nu}(s(w)))
 $$
 should hold.
 
-Contrarily to $$I_N(w)$$ and $$\Lambda_N(g | w)$$ which can be plotted parametrically, we will on the one hand approximate $$\overline{\nu}(s(w))$$ obtained from the cloning of ABPs with a polynomial and on the other hand approximate $$J_N(\overline{\nu})$$ obtained from the cloning of rotors with an other polynomial, in order to evaluate $$J_N(\overline{\nu}(s(w)))$$ for different values of $$w$$.</pre>
+Contrarily to $$I_N(w)$$ and $$\Lambda_N(g | w)$$ which can be plotted parametrically, we will on the one hand approximate $$\overline{\nu}(s(w))$$ obtained from the cloning of ABPs with a polynomial and on the other hand approximate $$J_N(\overline{\nu})$$ obtained from the cloning of rotors with an other polynomial, in order to evaluate $$J_N(\overline{\nu}(s(w)))$$ for different values of $$w$$.
+
+! Distribution of $$\overline{\nu}_{\tau}$$
+
+!! LDP
+
+We assume that a large deviation principle ([[Touchette, 2009|https://www.sciencedirect.com/science/article/pii/S0370157309001410]]) holds,
+$$
+P_N(\overline{\nu}_{\tau}) \asymp \exp\left(- \tau N I_N(\overline{\nu}_{\tau})\right),
+$$
+where $$I_N$$ denotes the rate function. We define the scaled cumulant generating function (SCGF),
+$$
+\begin{aligned}
+\psi_N(s, \tau) &amp;= \frac{1}{\tau N} \log \left&lt;e^{- s \tau N \overline{\nu}_{\tau}}\right&gt;_0,\\
+\Psi_N(s) &amp;= \lim_{\tau \rightarrow \infty} \psi_N(s, \tau),
+\end{aligned}
+$$
+where $$\left&lt;\right&gt;_0$$ denotes an average in the unbiased ensemble. We can thus define, from $$P_{\tau}(\mathcal{C})$$ the probability density of a trajectory $$\mathcal{C}$$ in the unbiased ensemble, the probability density in the biased ensemble ([[Jack, 2019|https://arxiv.org/abs/1910.09883]]),
+$$
+P^s_{\tau}(\mathcal{C}) = P_{\tau}(\mathcal{C}) e^{-s \tau N \overline{\nu}_{\tau}} e^{-\tau N \psi_N(s, \tau)},
+$$
+and the average of an observable $$O$$ in the biased ensemble,
+$$
+\left&lt;O\right&gt;_s = \frac{\left&lt;O e^{-s \tau N \overline{\nu}_{\tau}}\right&gt;_0}{\left&lt;e^{-s \tau N \overline{\nu}_{\tau}}\right&gt;_0} = \left&lt;O e^{-s \tau N \overline{\nu}_{\tau}}\right&gt;_0 e^{-\tau N \psi_N(s, \tau)}.
+$$
+
+!! Derivative in parametric plot
+
+We are interested in the parametric curve
+$$
+w(p) = \left&lt;w_{\tau}\right&gt;_{s, \left&lt;\overline{\nu}_{\tau}\right&gt;_s = p},
+$$
+and more particularly in its second derivative
+$$
+\frac{\mathrm{d}^2w}{\mathrm{d}p^2}(s) = \left(\frac{\mathrm{d}\left&lt;\overline{\nu}_{\tau}\right&gt;_s}{\mathrm{d}s} \frac{\mathrm{d}^2 \left&lt;w_{\tau}\right&gt;_s}{\mathrm{d}s^2} - \frac{\mathrm{d}\left&lt;w_{\tau}\right&gt;_s}{\mathrm{d}s} \frac{\mathrm{d}^2\left&lt;\overline{\nu}_{\tau}\right&gt;_s}{\mathrm{d}s^2} \right)\left(\frac{\mathrm{d}\left&lt;\overline{\nu}_{\tau}\right&gt;_s}{\mathrm{d}s}\right)^{-3},
+$$
+as computed from the parameteric equation (see [[parameteric derivative|https://en.wikipedia.org/wiki/Parametric_derivative#Second_derivative]]).
+
+We will use $$w = w_{\tau}$$, $$w(s) = \left&lt;w_{\tau}\right&gt;_s$$, $$p = \overline{\nu}_{\tau}$$, and $$p(s) = \left&lt;\overline{\nu}_{\tau}\right&gt;_s$$, for ease of notation in the following calculations.
+
+We can first note
+$$
+\begin{aligned}
+w^{\prime}(s) &amp;= \frac{\partial}{\partial s}\left(\frac{\left&lt;w e^{-s \tau N p}\right&gt;_0}{\left&lt;e^{-s \tau N p}\right&gt;_0}\right)\\
+&amp;= \frac{\left&lt;- \tau N  p w e^{- s \tau N p}\right&gt;_0\left&lt;e^{- s \tau N p}\right&gt;_0 - \left&lt;w e^{-s \tau N p}\right&gt;_0\left&lt;- \tau N p e^{-s \tau N p}\right&gt;_0}{\left&lt;e^{-s \tau N p}\right&gt;_0^2}\\
+&amp;= -\tau N \left[\frac{\left&lt;p w e^{- s \tau N p}\right&gt;_0}{\left&lt;e^{-s \tau N p}\right&gt;_0} - \frac{\left&lt;p e^{- s \tau N p}\right&gt;_0 \left&lt;w e^{- s \tau N p}\right&gt;_0}{\left&lt;e^{-s \tau N p}\right&gt;_0^2}\right]\\
+&amp;= - \tau N \mathrm{Cov}(p, w)_s,
+\end{aligned}
+$$
+in addition to
+$$
+p^{\prime}(s) = \frac{\partial}{\partial s}\left(\frac{\left&lt;p e^{-s \tau N p}\right&gt;_0}{\left&lt;e^{-s \tau N p}\right&gt;_0}\right) = - \tau N \mathrm{Var}(p)_s,
+$$
+with the same reasoning, and then compute
+$$
+\begin{aligned}
+w^{\prime\prime}(s) &amp;= -\tau N \frac{\partial}{\partial s}\left[\frac{\left&lt;p w e^{- s \tau N p}\right&gt;_0}{\left&lt;e^{-s \tau N p}\right&gt;_0} - \frac{\left&lt;p e^{- s \tau N p}\right&gt;_0 \left&lt;w e^{- s \tau N p}\right&gt;_0}{\left&lt;e^{-s \tau N p}\right&gt;_0^2}\right]\\
+&amp;= -\tau N \Bigg[\frac{\left&lt;-\tau N p^2 w e^{-s \tau N p}\right&gt;_0\left&lt;e^{-s \tau N p}\right&gt;_0 - \left&lt;p w e^{- s \tau N p}\right&gt;_0\left&lt;-\tau N p e^{-s \tau N p}\right&gt;_0}{\left&lt;e^{-s \tau N p}\right&gt;_0^2}\\
+&amp;\qquad\qquad - \frac{\frac{\partial}{\partial s}\left(\left&lt;p e^{- s \tau N p}\right&gt;_0 \left&lt;w e^{- s \tau N p}\right&gt;_0\right)}{\left&lt;e^{-s \tau N p}\right&gt;_0^2} + \frac{\left&lt;p e^{- s \tau N p}\right&gt;_0 \left&lt;w e^{- s \tau N p}\right&gt;_0 \frac{\partial}{\partial s}\left(\left&lt;e^{-s \tau N p}\right&gt;_0^2\right)}{\left&lt;e^{-s \tau N p}\right&gt;_0^4}\Bigg]\\
+&amp;= -\tau N \Bigg[-\tau N \mathrm{Cov}(pw, p)_s\\
+&amp;\qquad\qquad - \frac{\left&lt;-\tau N p^2 e^{- s \tau N p}\right&gt;_0\left&lt;w e^{- s \tau N p}\right&gt;_0 + \left&lt;p e^{- s \tau N p}\right&gt;_0\left&lt;-s \tau N p w e^{- s \tau N p}\right&gt;_0}{\left&lt;e^{-s \tau N p}\right&gt;_0^2}\\
+&amp;\qquad\qquad + \frac{\left&lt;w e^{- s \tau N p}\right&gt;_0\left&lt;p e^{- s \tau N p}\right&gt;_0 2 \left&lt;-\tau N p e^{-s \tau N p}\right&gt;_0\left&lt;e^{-s \tau N p}\right&gt;_0}{\left&lt;e^{-s \tau N p}\right&gt;_0^4}\Bigg]\\
+&amp;= (\tau N)^2 \left[\mathrm{Cov}(pw, p)_s - \left&lt;p^2\right&gt;_s\left&lt;w\right&gt;_s - \left&lt;p\right&gt;_s\left&lt;pw\right&gt;_s + 2 \left&lt;w\right&gt;_s\left&lt;p\right&gt;_s^2\right]\\
+&amp;= (\tau N)^2 \left[\mathrm{Cov}(pw, p)_s - \left&lt;p\right&gt;_s\left(\left&lt;pw\right&gt;_s - \left&lt;p\right&gt;_s\left&lt;w\right&gt;_s\right) - \left&lt;w\right&gt;_s\left(\left&lt;p^2\right&gt;_s - \left&lt;p\right&gt;_s^2\right)\right]\\
+&amp;= (\tau N)^2 \left[\mathrm{Cov}(pw, p)_s - \left&lt;p\right&gt;_s\mathrm{Cov}(p,w)_s - \left&lt;w\right&gt;_s\mathrm{Var}(p)_s\right],
+\end{aligned}
+$$
+and
+$$
+p^{\prime\prime}(s) = (\tau N)^2 \left[\mathrm{Cov}(p^2, p)_s - 2 \left&lt;p\right&gt;_s\mathrm{Var}(p)_s\right],
+$$
+with the same reasoning, so that we can finally write
+$$
+\begin{aligned}
+&amp;\frac{p^{\prime}(s) w^{\prime\prime}(s)- w^{\prime}(s)p^{\prime\prime}(s)}{p^{\prime}(s)^3}\\
+&amp;\qquad= \frac{-\tau N \mathrm{Var}(p)_s\left((\tau N)^2 \left[\mathrm{Cov}(pw, p)_s - \left&lt;p\right&gt;_s\mathrm{Cov}(p,w)_s - \left&lt;w\right&gt;_s\mathrm{Var}(p)_s\right]\right)}{(-\tau N \mathrm{Var}(p)_s)^3}\\
+&amp;\qquad\qquad-\frac{-\tau N \mathrm{Cov}(p, w)_s\left((\tau N)^2 \left[\mathrm{Cov}(p^2, p)_s - 2 \left&lt;p\right&gt;_s\mathrm{Var}(p)_s\right]\right)}{(-\tau N \mathrm{Var}(p)_s)^3},
+\end{aligned}
+$$
+//i.e.//
+$$
+\frac{\mathrm{d}^2w}{\mathrm{d}p^2}(s) = \frac{\left&lt;w\right&gt;_s}{\mathrm{Var}(p)_s} + \frac{\left&lt;p\right&gt;_s \mathrm{Cov}(p,w)_s + \mathrm{Cov}(pw, p)_s}{\mathrm{Var}(p)_s^2} - \frac{\mathrm{Cov}(p,w)_s \mathrm{Cov}(p^2,p)_s}{\mathrm{Var}(p)_s^3}.
+$$</pre>
 </div>
 <div created="20191029154238656" modified="20200318133846728" tags="[[Multiple ABP]]" title="ABP work correlations">
 <pre>We compute correlations of the active work with itself and with the order parameter (see [[Active Brownian particles]]).
@@ -12832,7 +12914,7 @@ We conclude that, starting from the same initial configuration $$\{\theta_i\}_0$
 
 We stress that this choice of $$g$$ is only //convenient// but not //optimal//. A better choice of $$g$$ would for example be determined self-consistently with the ansatz for the orientation distribution and the maximised lower bound to the SCGF (see [[Brownian rotors LDP]], and § &quot;Connection of operator and optimal-control approaches&quot; in [[Jack, 2019|https://arxiv.org/abs/1910.09883]]).</pre>
 </div>
-<div created="20200203193215965" modified="20200322192611658" tags="[[N-interacting Brownian rotors]]" title="Brownian rotors LDP" type="">
+<div created="20200203193215965" modified="20200323171010094" tags="[[N-interacting Brownian rotors]]" title="Brownian rotors LDP" type="">
 <pre>We consider $$N$$ independent Brownian rotors with evolution
 $$
 \dot{\theta_i} = \sqrt{2D_r},
@@ -13187,9 +13269,27 @@ Most notably, we have that for any $$q \in \mathbb{R}$$ there is a countable inf
 $$
 N \psi_{p}(s) = - N \frac{D_r}{4} a_{\mathrm{Mathieu}, 0}\left(\frac{2s}{D_r}\right),
 $$
-and by Legendre transform the rate function
+and by Legendre transform
 $$
-N I_N(p) = \sup_{s \in \mathbb{R}} \{- s N p - N \psi_p(s)\} = \sup_{s \in \mathbb{R}} \left\{- s N p + N \frac{D_r}{4} a_{\mathrm{Mathieu}, 0}\left(\frac{2s}{D_r}\right)\right\}.
+N I(p) = \sup_{s \in \mathbb{R}} \{- s N p - N \psi_p(s)\} = \sup_{s \in \mathbb{R}} \left\{- s N p + N \frac{D_r}{4} a_{\mathrm{Mathieu}, 0}\left(\frac{2s}{D_r}\right)\right\},
+$$
+we obtain the rate function.
+
+We have the following expansion of the SCGF for small $$s$$ ([[Abramowitz and Stegun, 1970|https://asmedigitalcollection.asme.org/appliedmechanics/article/32/1/239/385560/Handbook-of-Mathematical-Functions-With-Formulas]], § 20.3.15),
+$$
+\psi_{p}(s) = D_r s^2 \left(\frac{1}{2D_r^2} - \frac{7}{32 D_r^4} s^2\right) + \mathcal{O}(s^4),~ s \to 0,
+$$
+and thus
+$$
+\psi_{p}^{\prime\prime}(0) = \frac{1}{D_r},
+$$
+moreover with
+$$
+I^{\prime\prime}(p = \left&lt;p\right&gt; = 0) = \frac{1}{\psi_{p}^{\prime\prime}(0)} = D_r,
+$$
+we obtain
+$$
+I(p) = \frac{1}{2} D_r p^2 + \mathcal{O}(p^2),~ p \to 0.
 $$
 
 ! Consistency
