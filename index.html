@@ -494,6 +494,8 @@ Error message and password prompt
 
 <li>ABP high Pe</li>
 
+<li>ABP hydrodynamic theory</li>
+
 <li>ABP order correlations</li>
 
 <li>ABP structure characteristics</li>
@@ -10002,7 +10004,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="[[ABP work and order LDP]] [[Brownian rotors LDP]] Project" title="$:/StoryList">
+<div list="[[ABP hydrodynamic theory]] [[ABP work variance]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -11764,6 +11766,81 @@ $$</pre>
 |~|~|~|~|~|~| displacements | [ext[movie|Movies/d_No1000_Fl1000_Vl1000_Tl0000_Rj1000_Dk7500_El0000.mp4]] |~|
 |~|~|~|~|~|~| none | [ext[movie|Movies/b_No1000_Fl1000_Vl1000_Tl0000_Rj1000_Dk7500_El0000.mp4]] |~|</pre>
 </div>
+<div created="20200401145954846" modified="20200401170237130" tags="[[Active Brownian particles]]" title="ABP hydrodynamic theory">
+<pre>On very large (hydrodynamics) length and time scales, we propose to describe the system with the density and polarisation fields, $$\rho(\underline{r}, t)$$ and $$\underline{P}(\underline{r}, t)$$, with former obeying the following stochastic hydrodynamic equation
+$$
+\begin{aligned}
+\dot{\rho} &amp;= - \nabla \cdot \underline{J},\\
+\underline{J} &amp;= v_0 \rho \underline{P} - D(\rho) \nabla \rho + \sqrt{2 \sigma(\rho)} \underline{\eta},
+\end{aligned}
+$$
+where $$v_0$$ is the self-propulsion velocity, $$D(\rho)$$ and $$\sigma(\rho)$$ are respectively a diffusivity and a mobility, and $$\underline{\eta}$$ is a Gaussian white noise with correlations $$\left&lt;\eta_{\alpha}(\underline{r}, t)\eta_{\beta}(\underline{r}^{\prime}, t^{\prime})\right&gt; = \delta_{\alpha\beta} \delta(\underline{r} - \underline{r}^{\prime})\delta(t - t^{\prime})$$.
+
+We assume that the normalised rate of active work $$w$$ of the system between times $$0$$ and $$t$$ can be written
+$$
+w = \int_0^t \int_{[0,L]^2} \omega(\rho, \underline{P}) \, \mathrm{d}t \, \mathrm{d}^2\underline{r},
+$$
+where $$L$$ is the length of the system.
+
+As in ([[Dolezal and Jack, 2019|https://iopscience.iop.org/article/10.1088/1742-5468/ab4801/meta]], § 5.1 and appendix B) we will consider a perturbation around the homogeneous profile and subsequent biased trajectories of the system.
+
+We consider a perturbation around an homogeneous profile
+$$
+\rho(\underline{r}, t) = \bar{\rho} + \delta\rho(\underline{r}, t),
+$$
+with $$\delta\rho \ll 1$$, and write under this assumption the active work,
+$$
+\begin{aligned}
+w &amp;=  \int_0^t \int_{[0,L]^2} \omega(\rho, \underline{P}) \, \mathrm{d}t \, \mathrm{d}^2\underline{r}\\
+&amp;= \int_0^t \int_{[0,L]^2} \left(\omega(\bar{\rho}, \underline{P}) + \delta\rho \frac{\partial}{\partial\rho} \omega(\bar{\rho}, \underline{P}) +  \frac{1}{2} \delta\rho^2 \frac{\partial^2}{\partial\rho^2}\omega(\bar{\rho}, \underline{P})\right) \, \mathrm{d}t \, \mathrm{d}^2\underline{r}\\
+&amp;= t L^2 \omega(\bar{\rho}, \underline{P}) + \frac{1}{2} \omega^{\prime\prime}(\bar{\rho}, \underline{P}) \int_0^t \int_{[0,L]^2} \delta\rho^2 \, \mathrm{d}t \, \mathrm{d}^2\underline{r},
+\end{aligned}
+$$
+up to terms of order $$\mathcal{O}(\delta\rho^2)$$ and where we have used $$\int \delta\rho \, \mathrm{d}^2\underline{r} = 0$$, and the stochastic equation for the density
+$$
+\dot{\delta\rho} = - v_0 \bar{\rho} \nabla \cdot P - v_0 \nabla \cdot (\delta\rho \underline{P}) - D(\bar{\rho}) \nabla\delta\rho + \sqrt{2\sigma(\bar{\rho})} \nabla\cdot\underline{\eta},
+$$
+up to terms of order $$\mathcal{O}(\delta\rho)$$
+
+We introduce the Fourier modes of the density,
+$$
+\tilde{\rho}_{\underline{q}} = \frac{1}{L}\int_{[0,L]^2} \rho e^{-\mathrm{i}\underline{q}\cdot\underline{r}} \, \mathrm{d}^2\underline{r} \Rightarrow q_x, q_y \neq 0,~ \tilde{\rho}_{\underline{q}} = \frac{1}{L}\int_{[0,L]^2} \delta\rho \, e^{-\mathrm{i}\underline{q}\cdot\underline{r}} \, \mathrm{d}^2\underline{r},
+$$
+to write
+$$
+w = t L^2 \omega(\bar{\rho}, \underline{P}) + 2 \omega^{\prime\prime}(\bar{\rho}, \underline{P}) \sum_{q_x, q_y &gt; 0} \int_0^t \tilde{\rho}_{\underline{q}} \tilde{\rho}_{-\underline{q}} \, \mathrm{d}t.
+$$
+using
+$$
+\int_{[0,L]^2} \delta\rho^2 \, \mathrm{d}^2\underline{r} = \sum_{q_x, q_y \neq 0} \tilde{\rho}_{\underline{q}} \tilde{\rho}_{-\underline{q}} = 4 \sum_{q_x, q_y &gt; 0} \tilde{\rho}_{\underline{q}} \tilde{\rho}_{-\underline{q}},
+$$
+according to Parseval's theorem.
+
+We will now consider an isotropic system, $$\underline{P} = 0$$, and write the stochastic equation satisfied by the Fourier modes
+$$
+\dot{\tilde{\rho}}_{\underline{q}} = - D(\bar{\rho}) \underline{q}^2 \tilde{\rho}_{\underline{q}} - \sqrt{2\sigma(\bar{\rho})} (\mathrm{i}\underline{q})\cdot\tilde{\underline{\eta}}_{\underline{q}} = - D(\bar{\rho}) \underline{q}^2 \tilde{\rho}_{\underline{q}}  + \sqrt{2 \sigma(\bar{\rho}) \underline{q}^2} \tilde{\eta}_{\underline{q}},
+$$
+which trajectories we wish to bias with respect to the active work.
+
+According to the study of this Ornstein-Uhlenbeck process biased with respect to quantities proportionnal to $$\tilde{\rho}_{\underline{q}} \tilde{\rho}_{-\underline{q}}$$ in appendix B of ([[Dolezal and Jack, 2019|https://iopscience.iop.org/article/10.1088/1742-5468/ab4801/meta]]), we can write the SCGF for trajectories biased with respect to the active work $$w$$,
+$$
+\begin{aligned}
+\psi(s) = - s \left&lt;w\right&gt;_0 - \sum_{q_x, q_y &gt; 0} &amp;\Bigg(\sqrt{D(\bar{\rho})^2\underline{q}^4 + 4s \omega^{\prime\prime}(\bar{\rho}, \underline{P} = 0) \sigma(\bar{\rho}) \underline{q}^2}\\
+&amp;\qquad- D(\bar{\rho})\underline{q}^2 - \frac{2 s \omega^{\prime\prime}(\bar{\rho}, \underline{P} = 0) \sigma(\bar{\rho})}{D(\bar{\rho})}\Bigg),
+\end{aligned}
+$$
+and compute
+$$
+- \left.\frac{\partial}{\partial s} \left&lt;w\right&gt;_s\right|_{s=0} = - \frac{1}{N} \left.\frac{\partial^2}{\partial s^2} \psi(s)\right|_{s=0} =  \frac{4 \omega^{\prime\prime}(\bar{\rho}, \underline{P} = 0)^2 \sigma(\bar{\rho})^2}{D(\bar{\rho})^3 N} \sum_{q_x, q_y &gt; 0} \frac{1}{\underline{q}^2}.
+$$
+related to the variance of the active work.
+
+We now argue that the sum in this last expression can be approximated as
+$$
+\sum_{q_x, q_y &gt; 0} \frac{1}{\underline{q}^2} \approx \int_{q_{\mathrm{min}} = Q \frac{2\pi}{L}}^{q_{\mathrm{max}} = \frac{2\pi}{a}} \frac{q \, \mathrm{d}q}{q^2} = \log\left(\frac{2\pi}{a}\right) - \log\left(Q \frac{2\pi}{L}\right) = \log L + \mathrm{cst},
+$$
+hence which we should see that the variance of the active work scales logarithmically with the system size, as a signature of this hydrodynamic behaviour.</pre>
+</div>
 <div created="20191030112133404" modified="20191108142542165" tags="[[Multiple ABP]]" title="ABP order correlations">
 <pre>We have derived in [[Active Brownian particles]],
 $$
@@ -11822,7 +11899,7 @@ which is related to the pair distribution function $$g$$ via Fourier transform.
 
 ([[Binder and Kob, 2011|https://www.worldscientific.com/worldscibooks/10.1142/7300]], § 2.2)</pre>
 </div>
-<div created="20191113124812892" modified="20200324123142324" tags="[[Active Brownian particles]]" title="ABP work and order LDP">
+<div created="20191113124812892" modified="20200325113338453" tags="[[Active Brownian particles]]" title="ABP work and order LDP">
 <pre>We redefine the normalised rate of active work
 $$
 w_{\tau} = \frac{1}{N \tau} \, (S)\int_0^{\tau} \sum_{i=1}^N \underline{u}(\theta_i(t))\cdot\text{d}\underline{r}_i(t),
@@ -12116,7 +12193,7 @@ $$
 $$
 as computed from the parameteric equation (see [[parameteric derivative|https://en.wikipedia.org/wiki/Parametric_derivative#Second_derivative]]).
 
-We will use $$w = w_{\tau}$$, $$w(s) = \left&lt;w_{\tau}\right&gt;_s$$, $$p = \overline{\nu}_{\tau}$$, and $$p(s) = \left&lt;\overline{\nu}_{\tau}\right&gt;_s$$, for ease of notation in the following calculations.
+We will use $$w \equiv w_{\tau}$$, $$w(s) \equiv \left&lt;w_{\tau}\right&gt;_s$$, $$p \equiv \overline{\nu}_{\tau}$$, and $$p(s) \equiv \left&lt;\overline{\nu}_{\tau}\right&gt;_s$$, for ease of notation in the following calculations.
 
 We can first note
 $$
@@ -12137,30 +12214,42 @@ $$
 w^{\prime\prime}(s) &amp;= -\tau N \frac{\partial}{\partial s}\left[\frac{\left&lt;p w e^{- s \tau N p}\right&gt;_0}{\left&lt;e^{-s \tau N p}\right&gt;_0} - \frac{\left&lt;p e^{- s \tau N p}\right&gt;_0 \left&lt;w e^{- s \tau N p}\right&gt;_0}{\left&lt;e^{-s \tau N p}\right&gt;_0^2}\right]\\
 &amp;= -\tau N \Bigg[\frac{\left&lt;-\tau N p^2 w e^{-s \tau N p}\right&gt;_0\left&lt;e^{-s \tau N p}\right&gt;_0 - \left&lt;p w e^{- s \tau N p}\right&gt;_0\left&lt;-\tau N p e^{-s \tau N p}\right&gt;_0}{\left&lt;e^{-s \tau N p}\right&gt;_0^2}\\
 &amp;\qquad\qquad - \frac{\frac{\partial}{\partial s}\left(\left&lt;p e^{- s \tau N p}\right&gt;_0 \left&lt;w e^{- s \tau N p}\right&gt;_0\right)}{\left&lt;e^{-s \tau N p}\right&gt;_0^2} + \frac{\left&lt;p e^{- s \tau N p}\right&gt;_0 \left&lt;w e^{- s \tau N p}\right&gt;_0 \frac{\partial}{\partial s}\left(\left&lt;e^{-s \tau N p}\right&gt;_0^2\right)}{\left&lt;e^{-s \tau N p}\right&gt;_0^4}\Bigg]\\
-&amp;= -\tau N \Bigg[-\tau N \mathrm{Cov}(pw, p)_s\\
-&amp;\qquad\qquad - \frac{\left&lt;-\tau N p^2 e^{- s \tau N p}\right&gt;_0\left&lt;w e^{- s \tau N p}\right&gt;_0 + \left&lt;p e^{- s \tau N p}\right&gt;_0\left&lt;-s \tau N p w e^{- s \tau N p}\right&gt;_0}{\left&lt;e^{-s \tau N p}\right&gt;_0^2}\\
+&amp;= -\tau N \Bigg[\frac{\left&lt;-\tau N p^2 w e^{-s \tau N p}\right&gt;_0}{\left&lt;e^{-s \tau N p}\right&gt;_0} - \frac{\left&lt;p w e^{- s \tau N p}\right&gt;_0\left&lt;-\tau N p e^{-s \tau N p}\right&gt;_0}{\left&lt;e^{-s \tau N p}\right&gt;_0^2}\\
+&amp;\qquad\qquad - \frac{\left&lt;-\tau N p^2 e^{- s \tau N p}\right&gt;_0\left&lt;w e^{- s \tau N p}\right&gt;_0 + \left&lt;p e^{- s \tau N p}\right&gt;_0\left&lt;-\tau N p w e^{- s \tau N p}\right&gt;_0}{\left&lt;e^{-s \tau N p}\right&gt;_0^2}\\
 &amp;\qquad\qquad + \frac{\left&lt;w e^{- s \tau N p}\right&gt;_0\left&lt;p e^{- s \tau N p}\right&gt;_0 2 \left&lt;-\tau N p e^{-s \tau N p}\right&gt;_0\left&lt;e^{-s \tau N p}\right&gt;_0}{\left&lt;e^{-s \tau N p}\right&gt;_0^4}\Bigg]\\
-&amp;= (\tau N)^2 \left[\mathrm{Cov}(pw, p)_s - \left&lt;p^2\right&gt;_s\left&lt;w\right&gt;_s - \left&lt;p\right&gt;_s\left&lt;pw\right&gt;_s + 2 \left&lt;w\right&gt;_s\left&lt;p\right&gt;_s^2\right]\\
-&amp;= (\tau N)^2 \left[\mathrm{Cov}(pw, p)_s - \left&lt;p\right&gt;_s\left(\left&lt;pw\right&gt;_s - \left&lt;p\right&gt;_s\left&lt;w\right&gt;_s\right) - \left&lt;w\right&gt;_s\left(\left&lt;p^2\right&gt;_s - \left&lt;p\right&gt;_s^2\right)\right]\\
-&amp;= (\tau N)^2 \left[\mathrm{Cov}(pw, p)_s - \left&lt;p\right&gt;_s\mathrm{Cov}(p,w)_s - \left&lt;w\right&gt;_s\mathrm{Var}(p)_s\right],
+&amp;= (\tau N)^2 \left[\left&lt;p^2w\right&gt;_s - \left&lt;p^2\right&gt;_s\left&lt;w\right&gt;_s - 2 \left&lt;p\right&gt;_s\left&lt;pw\right&gt;_s + 2 \left&lt;w\right&gt;_s\left&lt;p\right&gt;_s^2\right]\\
+&amp;= (\tau N)^2 \left[\left&lt;p^2w\right&gt;_s - \left&lt;p^2\right&gt;_s\left&lt;w\right&gt;_s + 2 \left&lt;p\right&gt;_s \left(\left&lt;w\right&gt;_s\left&lt;p\right&gt;_s - \left&lt;pw\right&gt;_s\right)\right]\\
+&amp;= \left(\tau N\right)^2 \left[\mathrm{Cov}(p^2, w)_s - 2 \left&lt;p\right&gt;_s \mathrm{Cov}(p, w)\right],
 \end{aligned}
 $$
 and
 $$
-p^{\prime\prime}(s) = (\tau N)^2 \left[\mathrm{Cov}(p^2, p)_s - 2 \left&lt;p\right&gt;_s\mathrm{Var}(p)_s\right],
+p^{\prime\prime}(s) = \left(\tau N\right)^2 \left[\mathrm{Cov}(p^2, p)_s - 2 \left&lt;p\right&gt;_s \mathrm{Var}(p)\right],
 $$
 with the same reasoning, so that we can finally write
 $$
 \begin{aligned}
-&amp;\frac{p^{\prime}(s) w^{\prime\prime}(s)- w^{\prime}(s)p^{\prime\prime}(s)}{p^{\prime}(s)^3}\\
-&amp;\qquad= \frac{-\tau N \mathrm{Var}(p)_s\left((\tau N)^2 \left[\mathrm{Cov}(pw, p)_s - \left&lt;p\right&gt;_s\mathrm{Cov}(p,w)_s - \left&lt;w\right&gt;_s\mathrm{Var}(p)_s\right]\right)}{(-\tau N \mathrm{Var}(p)_s)^3}\\
-&amp;\qquad\qquad-\frac{-\tau N \mathrm{Cov}(p, w)_s\left((\tau N)^2 \left[\mathrm{Cov}(p^2, p)_s - 2 \left&lt;p\right&gt;_s\mathrm{Var}(p)_s\right]\right)}{(-\tau N \mathrm{Var}(p)_s)^3},
+\frac{p^{\prime}(s) w^{\prime\prime}(s)- w^{\prime}(s)p^{\prime\prime}(s)}{p^{\prime}(s)^3} =&amp; \frac{-\tau N \mathrm{Var}(p)_s\left(\left(\tau N\right)^2 \left[\mathrm{Cov}(p^2, w)_s - 2 \left&lt;p\right&gt;_s \mathrm{Cov}(p, w)\right]\right)}{(-\tau N \mathrm{Var}(p)_s)^3}\\
+&amp;-\frac{-\tau N \mathrm{Cov}(p, w)_s\left(\left(\tau N\right)^2 \left[\mathrm{Cov}(p^2, p)_s - 2 \left&lt;p\right&gt;_s \mathrm{Var}(p)\right]\right)}{(-\tau N \mathrm{Var}(p)_s)^3},
 \end{aligned}
 $$
 //i.e.//
 $$
-\frac{\mathrm{d}^2w}{\mathrm{d}p^2}(s) = \frac{\left&lt;w\right&gt;_s}{\mathrm{Var}(p)_s} + \frac{\left&lt;p\right&gt;_s \mathrm{Cov}(p,w)_s + \mathrm{Cov}(pw, p)_s}{\mathrm{Var}(p)_s^2} - \frac{\mathrm{Cov}(p,w)_s \mathrm{Cov}(p^2,p)_s}{\mathrm{Var}(p)_s^3}.
-$$</pre>
+\frac{\mathrm{d}^2w}{\mathrm{d}p^2}(s) = \frac{\mathrm{Cov}(p^2, w)_s - 2 \left&lt;p\right&gt;_s \mathrm{Cov}(p, w)}{\mathrm{Var}(p)_s^2} - \frac{\mathrm{Cov}(p, w)_s\left(\mathrm{Cov}(p^2, p)_s - 2 \left&lt;p\right&gt;_s \mathrm{Var}(p)\right)}{\mathrm{Var}(p)_s^3},
+$$
+where each term can be computed at $$s= 0$$ with unbiased dynamics.
+
+We assume that this same calculation works when replacing $$p$$ with
+$$
+\underline{p} \equiv \frac{1}{\tau}  \int_0^{\tau} \frac{1}{N}\sum_{i=1}^N\underline{u}(\theta_i(t)) \, \mathrm{d}t,
+$$
+we then have, at $$s = 0$$ where $$\left&lt;\underline{p}\right&gt; = 0$$ and $$\mathrm{Cov}(\underline{p}, w) = 0$$ following rotational symmetry,
+$$
+\frac{\mathrm{d}^2w}{\mathrm{d}\underline{p}^2}(s = 0) = \nabla_{\underline{p}}^2 w(s = 0) = \frac{\mathrm{Cov}(\underline{p}^2, w)_0}{\mathrm{Var}(\underline{p})_0^2} = \frac{\mathrm{Cov}(\underline{p}^2, w)_0}{\left&lt;\underline{p}^2\right&gt;_0^2},
+$$
+where we can use $$\left&lt;\underline{p}^2\right&gt;_0 = (N \tau D_r)^{-1}$$ from [[Brownian rotors LDP]] in the $$\tau \to \infty$$ and $$N \to \infty$$ limits. One should however more carefully check this calculation.
+
+We expect positive correlations between squared polarisation and active work (see [[ABP work correlations]]), therefore $$\frac{\mathrm{d}^2w}{\mathrm{d}\underline{p}^2}(s = 0) &gt; 0$$.</pre>
 </div>
 <div created="20191029154238656" modified="20200318133846728" tags="[[Multiple ABP]]" title="ABP work correlations">
 <pre>We compute correlations of the active work with itself and with the order parameter (see [[Active Brownian particles]]).
