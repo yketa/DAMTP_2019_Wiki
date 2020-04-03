@@ -522,6 +522,8 @@ Error message and password prompt
 
 <li>FIRE algorithm</li>
 
+<li>Fourier transform field correlation</li>
+
 <li>Macros</li>
 
 <li>Multiple ABP</li>
@@ -10004,7 +10006,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="[[ABP hydrodynamic theory]] Project" title="$:/StoryList">
+<div list="[[Fourier transform field correlation]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -13525,6 +13527,33 @@ We [ext[illustrate this algorithm|Movies/fire.mp4]] with $$N=10^3$$ particles, a
 &lt;&lt;compuscript path:&quot;fire.hpp&quot;&gt;&gt;
 
 </pre>
+</div>
+<div created="20200403111559849" modified="20200403140633828" tags="TableOfContents" title="Fourier transform field correlation">
+<pre>Consider two fields $$\underline{u}(\underline{r}),\underline{v}(\underline{r}) \in \mathbb{C}^n$$, with $$\underline{r} \in \mathbb{R}^d$$. We want to compute
+$$
+\left&lt;\underline{u}(\underline{r})^*\cdot\underline{v}(\underline{r} + \Delta\underline{r})\right&gt;_{\underline{r}} = \int_{\mathbb{R}^d} \mathrm{d}^d\underline{r} \, \underline{u}(\underline{r})^*\cdot\underline{v}(\underline{r} + \Delta\underline{r}) = \sum_{\alpha=1}^n \int_{\mathbb{R}^d} \mathrm{d}^d\underline{r} \, u_{\alpha}(\underline{r})^*v_{\alpha}(\underline{r} + \Delta\underline{r}),
+$$
+where $$*$$ denotes the complex conjugate, then with the Fourier transform
+$$
+\begin{aligned}
+\mathcal{F} : \bullet \mapsto \int_{\mathbb{R}^d} \mathrm{d}^d\underline{r} \, e^{-\mathrm{i}\underline{k}\cdot\underline{r}} \times \bullet  &amp;\Leftrightarrow \mathcal{F}^{-1} : \bullet \mapsto \int_{\mathbb{R}^d} \mathrm{d}^d\underline{k} \, e^{\mathrm{i}\underline{k}\cdot\underline{r}} \times \bullet,\\
+\tilde{\bullet} = \mathcal{F}\{\bullet\} &amp;\Leftrightarrow \bullet = \mathcal{F}^{-1}\{\tilde{\bullet}\},
+\end{aligned}
+$$
+we have
+$$
+\begin{aligned}
+\int_{\mathbb{R}^d} \mathrm{d}^d\underline{r} \, u_{\alpha}(\underline{r}) v_{\alpha}^*(\underline{r} + \Delta\underline{r}) &amp;= \int_{\mathbb{R}^d} \mathrm{d}^d\underline{r} \, \left(\int_{\mathbb{R}^d} \mathrm{d}^d\underline{k} \, e^{\mathrm{i}\underline{k}\cdot\underline{r}} \, \tilde{u}_{\alpha}(\underline{k}) \right)^* \left(\int_{\mathbb{R}^d} \mathrm{d}^d\underline{k}^{\prime} \, e^{\mathrm{i} \underline{k}^{\prime} \cdot (\underline{r} + \Delta\underline{r})} \, \tilde{v}_{\alpha}(\underline{k}^{\prime})\right)\\
+&amp;= \int_{\mathbb{R}^d} \mathrm{d}^d\underline{k} \, \int_{\mathbb{R}^d} \mathrm{d}^d\underline{k}^{\prime} \, e^{\mathrm{i}\underline{k}^{\prime} \cdot \Delta\underline{r}} \, \tilde{u}_{\alpha}(\underline{k}^{\prime})^* \, \tilde{v}_{\alpha}(\underline{k}^{\prime}) \int_{\mathbb{R}^d} \mathrm{d}^d\underline{r} \, e^{-\mathrm{i}(\underline{k} - \underline{k}^{\prime})\cdot\underline{r}}\\
+&amp;= \int_{\mathbb{R}^d} \mathrm{d}^d\underline{k} \, \int_{\mathbb{R}^d} \mathrm{d}^d\underline{k}^{\prime} \, e^{\mathrm{i}\underline{k}^{\prime} \cdot \Delta\underline{r}} \, \tilde{u}_{\alpha}(\underline{k}^{\prime})^* \, \tilde{v}_{\alpha}(\underline{k}^{\prime}) \, \delta(\underline{k} - \underline{k}^{\prime})\\
+&amp;= \int_{\mathbb{R}^d} \mathrm{d}^d\underline{k} \, e^{\mathrm{i} \underline{k} \cdot \Delta\underline{r}} \, \tilde{u}_{\alpha}(\underline{k})^* \, \tilde{v}_{\alpha}(\underline{k}),
+\end{aligned}
+$$
+and thus
+$$
+\left&lt;\underline{u}(\underline{r})^*\cdot\underline{v}(\underline{r} + \Delta\underline{r})\right&gt;_{\underline{r}} = \sum_{\alpha=1}^n \mathcal{F}^{-1}\{\mathcal{F}\{u_{\alpha}\}^*\mathcal{F}\{v_{\alpha}\}\}(\Delta\underline{r}),
+$$
+which can easily be computed numerically given that discrete fields $$\underline{u}(\underline{r}_i)$$ and $$\underline{v}(\underline{r}_i)$$ are first put on a regular grid and using fast Fourier transform (FFT).</pre>
 </div>
 <div created="20191028125750871" modified="20200105132253725" tags="$:/tags/Macro" title="Macros">
 <pre>\define plot(image:&quot;&quot;)
