@@ -10006,7 +10006,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="[[Fourier transform field correlation]] Project" title="$:/StoryList">
+<div list="[[ABP averages (feedback)]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -11077,12 +11077,13 @@ Black dashed lined correspond to the entire trajectory average from unbiased dyn
 
 &lt;&lt;plot image:&quot;convCloningAll_sOrder_tau_Nm1000_Dk6500_Ll5000&quot;&gt;&gt;</pre>
 </div>
-<div created="20200202145845741" modified="20200323123908182" tags="[[ABP work and order LDP]]" title="ABP averages (feedback)">
-<pre>! Rate function
+<div created="20200202145845741" modified="20200408143402163" tags="[[ABP work and order LDP]]" title="ABP averages (feedback)">
+<pre>! Bounds to the rate function
 
 We compute the rate function from the SCGF and compare it to the bounds obtained from (i) controlled dynamics with aligning torque between ABPs and (ii) independent Brownian rotors (see [[ABP work and order LDP]]).
 
 &lt;&lt;plot &quot;boundRate_Nm1000_Dk6500_Ll5000&gt;&gt;
+
 &lt;&lt;plot &quot;boundRate_Dk6500_Ll5000&gt;&gt;
 
 We have that at this low persistence length, $$l_p/\sigma = 5$$, increasing the number of particles does not seem to make the bounds any better.
@@ -11105,19 +11106,11 @@ We note that $$\left&lt;w\right&gt;_0$$ is an increasing function of $$l_p/\sigm
 
 &lt;&lt;plot &quot;errorUpperBound_Nm1000_Dk6500&quot;&gt;&gt;
 
-! SCGF
-
-&lt;&lt;plot &quot;SCGF_N_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;
-
-&lt;&lt;plot &quot;SCGF_N_Dk6500_Tm2000&quot;&gt;&gt;
-
 ! Work average
 
-&lt;&lt;plot &quot;sWork_N_Dk6500_Ll2000_Tm2000&quot;&gt;&gt;
+!! Synthesis
 
-&lt;&lt;plot &quot;sWork_N_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;
-
-&lt;&lt;plot &quot;sWork_N_Dk6500_Tm2000&quot;&gt;&gt;
+&lt;&lt;plot &quot;sWork_N_Dk6500_Tn1000&quot;&gt;&gt;
 
 We have that
 $$
@@ -11125,11 +11118,63 @@ $$
 $$
 is maximum close to $$s^* \sim -D_r$$, which is consistent with larger fluctuations at the critical point.
 
+!! Individual
+
+&lt;&lt;plot &quot;sWork_N_Dk6500_Ll1000_Tn1000&quot;&gt;&gt;
+
+&lt;&lt;plot &quot;sWork_N_Dk6500_Ll2000_Tn1000&quot;&gt;&gt;
+
+&lt;&lt;plot &quot;sWork_N_Dk6500_Ll5000_Tn1000&quot;&gt;&gt;
+
+&lt;&lt;plot &quot;sWork_N_Dk6500_Lm1000_Tn1000&quot;&gt;&gt;
+
 ! Order average
 
-&lt;&lt;plot &quot;sOrder_N_Dk6500_Ll5000_Tm2000&quot;&gt;&gt;
+!! Synthesis
 
-&lt;&lt;plot &quot;sOrder_N_Dk6500_Tm2000&quot;&gt;&gt;
+&lt;&lt;plot &quot;sOrder_N_Dk6500_Tn1000&quot;&gt;&gt;
+
+!! Individual
+
+&lt;&lt;plot &quot;sOrder_N_Dk6500_Ll1000_Tn1000&quot;&gt;&gt;
+
+&lt;&lt;plot &quot;sOrder_N_Dk6500_Ll2000_Tn1000&quot;&gt;&gt;
+
+&lt;&lt;plot &quot;sOrder_N_Dk6500_Ll5000_Tn1000&quot;&gt;&gt;
+
+&lt;&lt;plot &quot;sOrder_N_Dk6500_Lm1000_Tn1000&quot;&gt;&gt;
+
+! Work average (noise)
+
+!! Synthesis
+
+&lt;&lt;plot &quot;sWorkNoise_N_Dk6500_Tn1000&quot;&gt;&gt;
+
+!! Individual
+
+&lt;&lt;plot &quot;sWorkNoise_N_Dk6500_Ll1000_Tn1000&quot;&gt;&gt;
+
+&lt;&lt;plot &quot;sWorkNoise_N_Dk6500_Ll2000_Tn1000&quot;&gt;&gt;
+
+&lt;&lt;plot &quot;sWorkNoise_N_Dk6500_Ll5000_Tn1000&quot;&gt;&gt;
+
+&lt;&lt;plot &quot;sWorkNoise_N_Dk6500_Lm1000_Tn1000&quot;&gt;&gt;
+
+! Work average (force)
+
+!! Synthesis
+
+&lt;&lt;plot &quot;sWorkForce_N_Dk6500_Tn1000&quot;&gt;&gt;
+
+!! Individual
+
+&lt;&lt;plot &quot;sWorkForce_N_Dk6500_Ll1000_Tn1000&quot;&gt;&gt;
+
+&lt;&lt;plot &quot;sWorkForce_N_Dk6500_Ll2000_Tn1000&quot;&gt;&gt;
+
+&lt;&lt;plot &quot;sWorkForce_N_Dk6500_Ll5000_Tn1000&quot;&gt;&gt;
+
+&lt;&lt;plot &quot;sWorkForce_N_Dk6500_Lm1000_Tn1000&quot;&gt;&gt;
 
 ! Density correlation
 
@@ -11141,7 +11186,44 @@ is maximum close to $$s^* \sim -D_r$$, which is consistent with larger fluctuati
 
 &lt;&lt;plot &quot;S_Nn1000_Dk6500_Ll5000_NCn1000&quot;&gt;&gt;
 
-&lt;&lt;plot &quot;S_closeup_Nn1000_Dk6500_Ll5000_NCn1000&quot;&gt;&gt;</pre>
+&lt;&lt;plot &quot;S_closeup_Nn1000_Dk6500_Ll5000_NCn1000&quot;&gt;&gt;
+
+! Orientation correlation
+
+&lt;&lt;plot &quot;cuu_Nn1000_Dk6500_Ll5000_Rl5000_NCo1000&quot;&gt;&gt;
+
+! SCGF
+
+!! Synthesis
+
+&lt;&lt;plot &quot;SCGF_N_Dk6500_Tn1000&quot;&gt;&gt;
+
+!! Individual
+
+&lt;&lt;plot &quot;SCGF_N_Dk6500_Ll1000_Tn1000&quot;&gt;&gt;
+
+&lt;&lt;plot &quot;SCGF_N_Dk6500_Ll2000_Tn1000&quot;&gt;&gt;
+
+&lt;&lt;plot &quot;SCGF_N_Dk6500_Ll5000_Tn1000&quot;&gt;&gt;
+
+&lt;&lt;plot &quot;SCGF_N_Dk6500_Lm1000_Tn1000&quot;&gt;&gt;
+
+! Rate function
+
+!! Synthesis
+
+&lt;&lt;plot &quot;rate_N_Dk6500_Tn1000&quot;&gt;&gt;
+
+!! Individual
+
+&lt;&lt;plot &quot;rate_N_Dk6500_Ll1000_Tn1000&quot;&gt;&gt;
+
+&lt;&lt;plot &quot;rate_N_Dk6500_Ll2000_Tn1000&quot;&gt;&gt;
+
+&lt;&lt;plot &quot;rate_N_Dk6500_Ll5000_Tn1000&quot;&gt;&gt;
+
+&lt;&lt;plot &quot;rate_N_Dk6500_Lm1000_Tn1000&quot;&gt;&gt;
+</pre>
 </div>
 <div created="20191215123336975" modified="20200209152433070" tags="[[ABP work and order LDP]]" title="ABP averages (feedback) — checks">
 <pre>We compute here averages of active work and order parameter in the biased ensemble from the [[cloning algorithm|ABP cloning algorithm]] with modification of the translational and rotational equation of motion (EOM), check their consistency and convergence.
@@ -13528,12 +13610,12 @@ We [ext[illustrate this algorithm|Movies/fire.mp4]] with $$N=10^3$$ particles, a
 
 </pre>
 </div>
-<div created="20200403111559849" modified="20200403140633828" tags="TableOfContents" title="Fourier transform field correlation">
+<div created="20200403111559849" modified="20200408124812547" tags="TableOfContents" title="Fourier transform field correlation">
 <pre>Consider two fields $$\underline{u}(\underline{r}),\underline{v}(\underline{r}) \in \mathbb{C}^n$$, with $$\underline{r} \in \mathbb{R}^d$$. We want to compute
 $$
-\left&lt;\underline{u}(\underline{r})^*\cdot\underline{v}(\underline{r} + \Delta\underline{r})\right&gt;_{\underline{r}} = \int_{\mathbb{R}^d} \mathrm{d}^d\underline{r} \, \underline{u}(\underline{r})^*\cdot\underline{v}(\underline{r} + \Delta\underline{r}) = \sum_{\alpha=1}^n \int_{\mathbb{R}^d} \mathrm{d}^d\underline{r} \, u_{\alpha}(\underline{r})^*v_{\alpha}(\underline{r} + \Delta\underline{r}),
+\left&lt;\underline{u}(\underline{r})^*\cdot\underline{v}(\underline{r} + \Delta\underline{r})\right&gt;_{\underline{r}} = \mathcal{N}_{uv}^{-1} \int_{\mathbb{R}^d} \mathrm{d}^d\underline{r} \, \underline{u}(\underline{r})^*\cdot\underline{v}(\underline{r} + \Delta\underline{r}) = \mathcal{N}_{uv}^{-1} \sum_{\alpha=1}^n \int_{\mathbb{R}^d} \mathrm{d}^d\underline{r} \, u_{\alpha}(\underline{r})^*v_{\alpha}(\underline{r} + \Delta\underline{r}),
 $$
-where $$*$$ denotes the complex conjugate, then with the Fourier transform
+where $$*$$ denotes the complex conjugate and $$\mathcal{N}_{uv}$$ a normalisation constant related to the fields $$\underline{u}(\underline{r})$$ and $$\underline{v}(\underline{r})$$, then with the Fourier transform
 $$
 \begin{aligned}
 \mathcal{F} : \bullet \mapsto \int_{\mathbb{R}^d} \mathrm{d}^d\underline{r} \, e^{-\mathrm{i}\underline{k}\cdot\underline{r}} \times \bullet  &amp;\Leftrightarrow \mathcal{F}^{-1} : \bullet \mapsto \int_{\mathbb{R}^d} \mathrm{d}^d\underline{k} \, e^{\mathrm{i}\underline{k}\cdot\underline{r}} \times \bullet,\\
@@ -13551,9 +13633,25 @@ $$
 $$
 and thus
 $$
-\left&lt;\underline{u}(\underline{r})^*\cdot\underline{v}(\underline{r} + \Delta\underline{r})\right&gt;_{\underline{r}} = \sum_{\alpha=1}^n \mathcal{F}^{-1}\{\mathcal{F}\{u_{\alpha}\}^*\mathcal{F}\{v_{\alpha}\}\}(\Delta\underline{r}),
+\left&lt;\underline{u}(\underline{r})^*\cdot\underline{v}(\underline{r} + \Delta\underline{r})\right&gt;_{\underline{r}} = \mathcal{N}_{uv}^{-1} \sum_{\alpha=1}^n \mathcal{F}^{-1}\{\mathcal{F}\{u_{\alpha}\}^*\mathcal{F}\{v_{\alpha}\}\}(\Delta\underline{r}),
 $$
-which can easily be computed numerically given that discrete fields $$\underline{u}(\underline{r}_i)$$ and $$\underline{v}(\underline{r}_i)$$ are first put on a regular grid and using fast Fourier transform (FFT).</pre>
+which can easily be computed numerically given that we use a transformation
+$$
+\mathcal{G} : \bullet(\underline{r}) \mapsto \hat{\bullet}_{\beta_1\ldots\beta_d},
+$$
+so that discrete fields $$\underline{u}(\underline{r}_i)$$ and $$\underline{v}(\underline{r}_i)$$ are first put on a regular $$d$$-dimensional grid, and using fast Fourier transform (FFT).
+
+We however stress that if this transformation $$\mathcal{G}$$ introduces a signifcant number of zeroes in the grid — because of the absence of particles at some places —, then the resulting correlation computation may be biased by the structure of the system. We thus introduce
+$$
+\hat{\rho}_{\beta_1\ldots\beta_d} \equiv \mathcal{G}(\text{number of particles in cell } \beta_1\ldots\beta_d),
+$$
+and will assume, on empirical grounds, that for a single field $$\underline{u}(\underline{r})$$,
+$$
+\left&lt;\underline{u}(\underline{r})^*\cdot\underline{u}(\underline{r} + \Delta\underline{r})\right&gt;_{\underline{r}} \approx \frac{\mathcal{N}_{\hat{u}\hat{u}}^{-1} \, \sum_{\alpha=1}^n \mathcal{F}^{-1}\{\mathcal{F}\{\hat{u}_{\alpha}\}^*\mathcal{F}\{\hat{u}_{\alpha}\}\}}{\mathcal{N}_{\hat{\rho}\hat{\rho}}^{-1} \, \mathcal{F}^{-1}\{\mathcal{F}\{\hat{\rho}\}^*\mathcal{F}\{\hat{\rho}\}\}},
+$$
+for low enough proportion of zeroes in the grid.
+
+We use for $$\mathcal{G}$$ the summing function over the particles in the space corresponding to the grid cell.</pre>
 </div>
 <div created="20191028125750871" modified="20200105132253725" tags="$:/tags/Macro" title="Macros">
 <pre>\define plot(image:&quot;&quot;)
