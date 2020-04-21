@@ -10006,7 +10006,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="Project" title="$:/StoryList">
+<div list="[[ABP hydrodynamic theory]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -10716,7 +10716,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div created="20180620032354454" modified="20180620032356781" title="$:/temp/RemoteAssetSearch/$:/config/OfficialPluginLibrary">
 <pre>bibtex</pre>
 </div>
-<div created="20180416033117939" modified="20200416135935116" title="$:/temp/search">
+<div created="20180416033117939" modified="20200420131736196" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20180620031722320" modified="20180620031722320" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.15/index.html" url="https://tiddlywiki.com/library/v5.1.15/index.html">
@@ -11864,7 +11864,7 @@ $$</pre>
 
 Our results at low rotational diffusivity are qualitatively consistent with ([[Fily and Marchetti, 2012|https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.108.235702]]).</pre>
 </div>
-<div created="20200401145954846" modified="20200402103026599" tags="[[Active Brownian particles]]" title="ABP hydrodynamic theory">
+<div created="20200401145954846" modified="20200421101728728" tags="[[Active Brownian particles]]" title="ABP hydrodynamic theory">
 <pre>On very large (hydrodynamics) length and time scales, we propose to describe the system with the density and polarisation fields, $$\rho(\underline{r}, t)$$ and $$\underline{P}(\underline{r}, t)$$, with former obeying the following stochastic hydrodynamic equation
 $$
 \begin{aligned}
@@ -11876,9 +11876,11 @@ where $$v_0$$ is the self-propulsion velocity, $$D(\rho)$$ and $$\sigma(\rho)$$ 
 
 We assume that the normalised rate of active work $$w$$ of the system between times $$0$$ and $$t$$ can be written
 $$
-w = \int_0^t \int_{[0,L]^2} \omega(\rho, \underline{P}) \, \mathrm{d}t \, \mathrm{d}^2\underline{r},
+N \, t \, w_t = \int_0^t \int_{[0,L]^2} \omega(\rho, \underline{P}) \, \mathrm{d}t \, \mathrm{d}^2\underline{r},
 $$
 where $$L$$ is the length of the system.
+
+! Density fluctuations
 
 As in ([[Dolezal and Jack, 2019|https://iopscience.iop.org/article/10.1088/1742-5468/ab4801/meta]], § 5.1 and appendix B) we will consider a perturbation around the homogeneous profile and subsequent biased trajectories of the system.
 
@@ -11889,7 +11891,7 @@ $$
 with $$\delta\rho \ll 1$$, and write under this assumption the active work,
 $$
 \begin{aligned}
-w &amp;=  \int_0^t \int_{[0,L]^2} \omega(\rho, \underline{P}) \, \mathrm{d}t \, \mathrm{d}^2\underline{r}\\
+N \, t \, w_t &amp;=  \int_0^t \int_{[0,L]^2} \omega(\rho, \underline{P}) \, \mathrm{d}t \, \mathrm{d}^2\underline{r}\\
 &amp;= \int_0^t \int_{[0,L]^2} \left(\omega(\bar{\rho}, \underline{P}) + \delta\rho \frac{\partial}{\partial\rho} \omega(\bar{\rho}, \underline{P}) +  \frac{1}{2} \delta\rho^2 \frac{\partial^2}{\partial\rho^2}\omega(\bar{\rho}, \underline{P})\right) \, \mathrm{d}t \, \mathrm{d}^2\underline{r}\\
 &amp;= t L^2 \omega(\bar{\rho}, \underline{P}) + \frac{1}{2} \omega^{\prime\prime}(\bar{\rho}, \underline{P}) \int_0^t \int_{[0,L]^2} \delta\rho^2 \, \mathrm{d}t \, \mathrm{d}^2\underline{r},
 \end{aligned}
@@ -11906,7 +11908,7 @@ $$
 $$
 to write
 $$
-w = t L^2 \omega(\bar{\rho}, \underline{P}) + 2 \omega^{\prime\prime}(\bar{\rho}, \underline{P}) \sum_{q_x, q_y &gt; 0} \int_0^t \tilde{\rho}_{\underline{q}} \tilde{\rho}_{-\underline{q}} \, \mathrm{d}t.
+N \, t \, w_t = t L^2 \omega(\bar{\rho}, \underline{P}) + 2 \omega^{\prime\prime}(\bar{\rho}, \underline{P}) \sum_{q_x, q_y &gt; 0} \int_0^t \tilde{\rho}_{\underline{q}} \tilde{\rho}_{-\underline{q}} \, \mathrm{d}t.
 $$
 using
 $$
@@ -11920,24 +11922,107 @@ $$
 $$
 which trajectories we wish to bias with respect to the active work.
 
-According to the study of this Ornstein-Uhlenbeck process biased with respect to quantities proportionnal to $$\tilde{\rho}_{\underline{q}} \tilde{\rho}_{-\underline{q}}$$ in appendix B of ([[Dolezal and Jack, 2019|https://iopscience.iop.org/article/10.1088/1742-5468/ab4801/meta]]), we can write the SCGF for trajectories biased with respect to the active work $$w$$,
+! Biased ensemble of trajectories
+
+According to the study of this Ornstein-Uhlenbeck process biased with respect to quantities proportionnal to $$\tilde{\rho}_{\underline{q}} \tilde{\rho}_{-\underline{q}}$$ in appendix B of ([[Dolezal and Jack, 2019|https://iopscience.iop.org/article/10.1088/1742-5468/ab4801/meta]]), using drift term (&quot;$$\omega$$&quot; in the notation of the paper)
+$$
+\delta = D(\bar{\rho}) \underline{q}^2,
+$$
+diffusion term
+$$
+\gamma = \sigma(\bar{\rho}) \underline{q}^2,
+$$
+and biasing term
+$$
+\alpha = 2 \, \omega^{\prime\prime}(\bar{\rho}, \underline{P}=0),
+$$
+we can write the SCGF — dynamical free energy density —  for trajectories biased with respect to the active work $$w$$,
 $$
 \begin{aligned}
-\psi(s) = - s \left&lt;w\right&gt;_0 - \sum_{q_x, q_y &gt; 0} &amp;\Bigg(\sqrt{D(\bar{\rho})^2\underline{q}^4 + 4s \omega^{\prime\prime}(\bar{\rho}, \underline{P} = 0) \sigma(\bar{\rho}) \underline{q}^2}\\
-&amp;\qquad- D(\bar{\rho})\underline{q}^2 - \frac{2 s \omega^{\prime\prime}(\bar{\rho}, \underline{P} = 0) \sigma(\bar{\rho})}{D(\bar{\rho})}\Bigg),
+\Psi(s) &amp;= \lim_{\tau \rightarrow \infty} \frac{1}{N \tau} \log \left&lt;e^{- s N \tau w_{\tau}}\right&gt;_0\\
+&amp;= - s \left&lt;w_{\tau}\right&gt;_0 - \frac{1}{N} \sum_{q_x, q_y &gt; 0} \Bigg(\sqrt{D(\bar{\rho})^2\underline{q}^4 + 4s \omega^{\prime\prime}(\bar{\rho}, \underline{P} = 0) \sigma(\bar{\rho}) \underline{q}^2}\\
+&amp;\qquad\qquad\qquad\qquad\qquad\qquad- D(\bar{\rho})\underline{q}^2 - \frac{2 s \omega^{\prime\prime}(\bar{\rho}, \underline{P} = 0) \sigma(\bar{\rho})}{D(\bar{\rho})}\Bigg),
 \end{aligned}
 $$
 and compute
 $$
-- \left.\frac{\partial}{\partial s} \left&lt;w\right&gt;_s\right|_{s=0} = - \frac{1}{N} \left.\frac{\partial^2}{\partial s^2} \psi(s)\right|_{s=0} =  \frac{4 \omega^{\prime\prime}(\bar{\rho}, \underline{P} = 0)^2 \sigma(\bar{\rho})^2}{D(\bar{\rho})^3 N} \sum_{q_x, q_y &gt; 0} \frac{1}{\underline{q}^2}.
+- \left.\frac{\partial}{\partial s} \left&lt;w_{\tau}\right&gt;_s\right|_{s=0} = \left.\frac{\partial^2}{\partial s^2} \psi(s)\right|_{s=0} = \frac{4 \omega^{\prime\prime}(\bar{\rho}, \underline{P} = 0)^2 \sigma(\bar{\rho})^2}{N \, D(\bar{\rho})^3} \sum_{q_x, q_y &gt; 0} \frac{1}{\underline{q}^2}.
 $$
-related to the variance of the active work.
+related to the variance of the active work,
+$$
+N^2 \, \tau \, \mathrm{Var}(w_{\tau})_0 = \frac{4 \omega^{\prime\prime}(\bar{\rho}, \underline{P} = 0)^2 \sigma(\bar{\rho})^2}{D(\bar{\rho})^3} \sum_{q_x, q_y &gt; 0} \frac{1}{\underline{q}^2},
+$$
+from [[ABP work and order LDP]].
 
 We now argue that the sum in this last expression can be approximated as
 $$
 \sum_{q_x, q_y &gt; 0} \frac{1}{\underline{q}^2} \approx \int_{q_{\mathrm{min}} = Q \frac{2\pi}{L}}^{q_{\mathrm{max}} = \frac{2\pi}{a}} \frac{q \, \mathrm{d}q}{q^2} = \log\left(\frac{2\pi}{a}\right) - \log\left(Q \frac{2\pi}{L}\right) = \log L + \mathrm{cst},
 $$
-hence which we should see that the [[variance of the active work|ABP work variance]] scales logarithmically with the system size, as a signature of this hydrodynamic behaviour.</pre>
+hence which we should see that the [[variance of the active work|ABP work variance]] scales logarithmically with the system size, as a signature of this hydrodynamic behaviour.
+
+! Expansion of $$\omega$$
+
+We assume that $$\omega(\bar{\rho}, \underline{P})$$ can be inferred from the ensemble of trajectories biased with respect to the polarisation $$\underline{P}$$,
+$$
+\omega(\bar{\rho}, \underline{P}) = \left.\frac{\left&lt;N \, \tau \, w_{\tau} \, e^{- \underline{s} \cdot \tau N \underline{\nu}_{\tau}}\right&gt;_0}{\left&lt;e^{- \underline{s} \cdot \tau N \underline{\nu}_{\tau}}\right&gt;_0}\right|_{\underline{s},~ \left&lt;\underline{\nu}_{\tau}\right&gt;_{\underline{s}} = \underline{P}},
+$$
+where we have denoted
+$$
+\underline{\nu}_{\tau} = \frac{1}{\tau} \int_0^{\tau} \mathrm{d}t \, \frac{1}{N} \sum_{i=1}^N \underline{u}_i(t),
+$$
+the averaged polarisation.
+
+We have in the limit $$\underline{s} \to 0$$,
+$$
+\begin{aligned}
+\left&lt;N \, \tau \, w_{\tau} \, e^{- \underline{s} \cdot \tau N \underline{\nu}_{\tau}}\right&gt;_0 &amp;= \left&lt;N \, \tau \, w_{\tau}\left(1 - \underline{s} \cdot \tau N \underline{\nu}_{\tau} + \frac{1}{2} \tau^2 N^2 \underline{s}^2 \underline{\nu}_{\tau}^2\right) \right&gt;_0\\
+&amp;= N \, \tau \, \left&lt;w_{\tau}\right&gt;_0 + \frac{1}{2} \tau^3 N^3 \underline{s}^2 \left&lt;w_{\tau} \underline{\nu}_{\tau}^2\right&gt;_0,\\
+\left&lt;e^{- \underline{s} \cdot \tau N \underline{\nu}_{\tau}}\right&gt;_0 &amp;= \left&lt;1 - \underline{s} \cdot \tau N \underline{\nu}_{\tau} + \frac{1}{2} \tau^2 N^2 \underline{s}^2 \underline{\nu}_{\tau}^2\right&gt;_0\\
+&amp;= 1 + \frac{1}{2} \tau^2 N^2 \underline{s}^2 \left&lt;\underline{\nu}_{\tau}^2\right&gt;_0,
+\end{aligned}
+$$
+up to $$\mathcal{O}(\underline{s}^2)$$ terms and where we have discarded linear terms in $$\underline{s}$$ by symmetry, therefore
+$$
+\begin{aligned}
+\omega(\bar{\rho}, \underline{P}) &amp;= \left(N \, \tau \, \left&lt;w_{\tau}\right&gt;_0 + \frac{1}{2} \tau^3 N^3 \underline{s}^2 \left&lt;w_{\tau} \underline{\nu}_{\tau}^2\right&gt;_0\right)\left(1 + \frac{1}{2} \tau^2 N^2 \underline{s}^2 \left&lt;\underline{\nu}_{\tau}^2\right&gt;_0\right)^{-1}\\
+&amp;= \left(N \, \tau \, \left&lt;w_{\tau}\right&gt;_0 + \frac{1}{2} \tau^3 N^3 \underline{s}^2 \left&lt;w_{\tau} \underline{\nu}_{\tau}^2\right&gt;_0\right)\left(1 - \frac{1}{2} \tau^2 N^2 \underline{s}^2 \left&lt;\underline{\nu}_{\tau}^2\right&gt;_0\right)\\
+&amp;= N \tau \left&lt;w_{\tau}\right&gt;_0 + \frac{1}{2} \tau^3 N^3 \underline{s}^2 \, \mathrm{Cov}(w_{\tau}, \underline{\nu}_{\tau}^2)_0,
+\end{aligned}
+$$
+linking $$\omega(\bar{\rho}, \underline{P})$$ and the covariance of the active work and the squared polarisation.
+
+We note that
+$$
+\left&lt;\underline{\nu}_{\tau}\right&gt;_{\underline{s}} = \left&lt;\underline{\nu}_{\tau} \, e^{- \underline{s} \cdot N \tau \underline{\nu}_{\tau}}\right&gt;_0 = \left&lt;\underline{\nu}_{\tau}(1 - \underline{s} \cdot \tau N \underline{\nu}_{\tau})\right&gt;_0 = \left&lt;\underline{\nu}_{\tau}\right&gt;_0 - \tau N \underline{s} \left&lt;\underline{\nu}_{\tau}^2\right&gt;_0 = - \tau N \underline{s} \left&lt;\underline{\nu}_{\tau}^2\right&gt;_0,~ \tau \to \infty,
+$$
+and
+$$
+\begin{aligned}
+\left&lt;\underline{\nu}_{\tau}^2\right&gt;_0 &amp;= \frac{1}{\tau^2} \int_0^{\tau} \mathrm{d}t \, \mathrm{d}t^{\prime} \, \left&lt;\underline{\nu}(t) \cdot \underline{\nu}(t^{\prime})\right&gt;_0\\
+&amp;= \frac{1}{\tau^2 N^2} \int_0^{\tau} \mathrm{d}t \, \mathrm{d}t^{\prime} \, \sum_{i,j=1}^N \left&lt;\underline{u}_i(t) \cdot \underline{u}_j(t^{\prime})\right&gt;_0\\
+&amp;= \frac{1}{\tau^2 N} \int_0^{\tau} \mathrm{d}t \, \mathrm{d}t^{\prime} \, e^{- D_r | t - t^{\prime}|}\\
+&amp;= \frac{2}{D_r \tau N} \left(1 - \frac{1}{D_r \tau}\left(1 - e^{-D_r \tau}\right)\right)\\
+&amp;= \frac{2}{D_r \tau N},~ \tau \to \infty,
+\end{aligned}
+$$
+following the correlations between the orientations of ABPs from [[Active Brownian particles]], therefore with
+$$
+\left&lt;\underline{\nu}_{\tau}\right&gt;_{\underline{s}} = \underline{P},
+$$
+we may write
+$$
+\underline{s} = - \frac{1}{2} D_r \underline{P},
+$$
+linking the biasing parameter and the polarisation.
+
+We then have
+$$
+\omega(\bar{\rho}, \underline{P}) = N \tau \left&lt;w_{\tau}\right&gt;_0 + \frac{1}{8} \, \tau^3 \, N^3 \, D_r^2 \, \underline{P}^2 \, \mathrm{Cov}(w_{\tau}, \underline{\nu}_{\tau}^2)_0,
+$$
+up to $$\mathcal{O}(\underline{P}^2)$$ and therfore we may write
+$$
+\frac{\partial^2}{\partial \underline{P}^2} \omega(\bar{\rho}, \underline{P}) = \frac{1}{4}  \tau^3 \, N^3 \, D_r^2 \, \mathrm{Cov}(w_{\tau}, \underline{\nu}_{\tau}^2)_0.
+$$</pre>
 </div>
 <div created="20191030112133404" modified="20191108142542165" tags="[[Multiple ABP]]" title="ABP order correlations">
 <pre>We have derived in [[Active Brownian particles]],
@@ -14336,12 +14421,12 @@ $$
 
 ([[Cugliandolo and Lecomte, 2017|https://iopscience.iop.org/article/10.1088/1751-8121/aa7dd6]], [[Cugliandolo et al., 2019|http://arxiv.org/abs/1806.09486]])</pre>
 </div>
-<div created="20180619220822377" modified="20200416140032828" tags="TableOfContents" title="Project">
+<div created="20180619220822377" modified="20200418114416420" tags="TableOfContents" title="Project">
 <pre>&lt;div style=&quot;font-size:0.7em;text-align:center;margin-top:3em;margin-bottom:3em;&quot;&gt;
 &lt;a href=&quot;Images/header.svg&quot;&gt;&lt;img style=&quot;width: 100%;&quot; src=&quot;Images/header.svg&quot;/&gt;
 &lt;/a&gt;&lt;/div&gt;
 
-''Author'': Yann-Edwin Keta, //École normale supérieure de Lyon//&lt;br&gt;
+''Author'': Yann-Edwin Keta, //Département de Physique//, //École normale supérieure de Lyon//&lt;br&gt;
 &lt;div style=&quot;margin-left: 20px;&quot;&gt;[[yketa.xyz|https://yketa.xyz]]&amp;nbsp;&amp;bull;&amp;nbsp;[[yann-edwin.keta@ens-lyon.fr|mailto:yann-edwin.keta@ens-lyon.fr]]&lt;/div&gt;&lt;br&gt;
 ''Supervisors'':&lt;br&gt;
 &lt;div style=&quot;margin-left: 20px;&quot;&gt;Robert L. Jack, //Department of Applied Mathematics and Theoretical Physics//, //University of Cambridge//&lt;br&gt;Frédéric van Wijland, //Laboratoire Matière et Systèmes Complexes// (CNRS UMR 7057), //Université de Paris//&lt;/div&gt;
