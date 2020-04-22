@@ -11864,7 +11864,7 @@ $$</pre>
 
 Our results at low rotational diffusivity are qualitatively consistent with ([[Fily and Marchetti, 2012|https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.108.235702]]).</pre>
 </div>
-<div created="20200401145954846" modified="20200421101728728" tags="[[Active Brownian particles]]" title="ABP hydrodynamic theory">
+<div created="20200401145954846" modified="20200422090638369" tags="[[Active Brownian particles]]" title="ABP hydrodynamic theory">
 <pre>On very large (hydrodynamics) length and time scales, we propose to describe the system with the density and polarisation fields, $$\rho(\underline{r}, t)$$ and $$\underline{P}(\underline{r}, t)$$, with former obeying the following stochastic hydrodynamic equation
 $$
 \begin{aligned}
@@ -11874,7 +11874,7 @@ $$
 $$
 where $$v_0$$ is the self-propulsion velocity, $$D(\rho)$$ and $$\sigma(\rho)$$ are respectively a diffusivity and a mobility, and $$\underline{\eta}$$ is a Gaussian white noise with correlations $$\left&lt;\eta_{\alpha}(\underline{r}, t)\eta_{\beta}(\underline{r}^{\prime}, t^{\prime})\right&gt; = \delta_{\alpha\beta} \delta(\underline{r} - \underline{r}^{\prime})\delta(t - t^{\prime})$$.
 
-We assume that the normalised rate of active work $$w$$ of the system between times $$0$$ and $$t$$ can be written
+We assume that the active work $$w$$ of the system between times $$0$$ and $$t$$ can be written
 $$
 N \, t \, w_t = \int_0^t \int_{[0,L]^2} \omega(\rho, \underline{P}) \, \mathrm{d}t \, \mathrm{d}^2\underline{r},
 $$
@@ -11964,9 +11964,9 @@ hence which we should see that the [[variance of the active work|ABP work varian
 
 We assume that $$\omega(\bar{\rho}, \underline{P})$$ can be inferred from the ensemble of trajectories biased with respect to the polarisation $$\underline{P}$$,
 $$
-\omega(\bar{\rho}, \underline{P}) = \left.\frac{\left&lt;N \, \tau \, w_{\tau} \, e^{- \underline{s} \cdot \tau N \underline{\nu}_{\tau}}\right&gt;_0}{\left&lt;e^{- \underline{s} \cdot \tau N \underline{\nu}_{\tau}}\right&gt;_0}\right|_{\underline{s},~ \left&lt;\underline{\nu}_{\tau}\right&gt;_{\underline{s}} = \underline{P}},
+\omega(\bar{\rho}, \underline{P}) \propto \left.\frac{\left&lt;w_{\tau} \, e^{- \underline{s} \cdot \tau N \underline{\nu}_{\tau}}\right&gt;_0}{\left&lt;e^{- \underline{s} \cdot \tau N \underline{\nu}_{\tau}}\right&gt;_0}\right|_{\underline{s},~ \left&lt;\underline{\nu}_{\tau}\right&gt;_{\underline{s}} = \underline{P}},
 $$
-where we have denoted
+with a propartionality factor linked to the number density, where we have denoted
 $$
 \underline{\nu}_{\tau} = \frac{1}{\tau} \int_0^{\tau} \mathrm{d}t \, \frac{1}{N} \sum_{i=1}^N \underline{u}_i(t),
 $$
@@ -11975,8 +11975,8 @@ the averaged polarisation.
 We have in the limit $$\underline{s} \to 0$$,
 $$
 \begin{aligned}
-\left&lt;N \, \tau \, w_{\tau} \, e^{- \underline{s} \cdot \tau N \underline{\nu}_{\tau}}\right&gt;_0 &amp;= \left&lt;N \, \tau \, w_{\tau}\left(1 - \underline{s} \cdot \tau N \underline{\nu}_{\tau} + \frac{1}{2} \tau^2 N^2 \underline{s}^2 \underline{\nu}_{\tau}^2\right) \right&gt;_0\\
-&amp;= N \, \tau \, \left&lt;w_{\tau}\right&gt;_0 + \frac{1}{2} \tau^3 N^3 \underline{s}^2 \left&lt;w_{\tau} \underline{\nu}_{\tau}^2\right&gt;_0,\\
+\left&lt;w_{\tau} \, e^{- \underline{s} \cdot \tau N \underline{\nu}_{\tau}}\right&gt;_0 &amp;= \left&lt;w_{\tau}\left(1 - \underline{s} \cdot \tau N \underline{\nu}_{\tau} + \frac{1}{2} \tau^2 N^2 \underline{s}^2 \underline{\nu}_{\tau}^2\right) \right&gt;_0\\
+&amp;= \left&lt;w_{\tau}\right&gt;_0 + \frac{1}{2} \tau^2 N^2 \underline{s}^2 \left&lt;w_{\tau} \underline{\nu}_{\tau}^2\right&gt;_0,\\
 \left&lt;e^{- \underline{s} \cdot \tau N \underline{\nu}_{\tau}}\right&gt;_0 &amp;= \left&lt;1 - \underline{s} \cdot \tau N \underline{\nu}_{\tau} + \frac{1}{2} \tau^2 N^2 \underline{s}^2 \underline{\nu}_{\tau}^2\right&gt;_0\\
 &amp;= 1 + \frac{1}{2} \tau^2 N^2 \underline{s}^2 \left&lt;\underline{\nu}_{\tau}^2\right&gt;_0,
 \end{aligned}
@@ -11984,9 +11984,9 @@ $$
 up to $$\mathcal{O}(\underline{s}^2)$$ terms and where we have discarded linear terms in $$\underline{s}$$ by symmetry, therefore
 $$
 \begin{aligned}
-\omega(\bar{\rho}, \underline{P}) &amp;= \left(N \, \tau \, \left&lt;w_{\tau}\right&gt;_0 + \frac{1}{2} \tau^3 N^3 \underline{s}^2 \left&lt;w_{\tau} \underline{\nu}_{\tau}^2\right&gt;_0\right)\left(1 + \frac{1}{2} \tau^2 N^2 \underline{s}^2 \left&lt;\underline{\nu}_{\tau}^2\right&gt;_0\right)^{-1}\\
-&amp;= \left(N \, \tau \, \left&lt;w_{\tau}\right&gt;_0 + \frac{1}{2} \tau^3 N^3 \underline{s}^2 \left&lt;w_{\tau} \underline{\nu}_{\tau}^2\right&gt;_0\right)\left(1 - \frac{1}{2} \tau^2 N^2 \underline{s}^2 \left&lt;\underline{\nu}_{\tau}^2\right&gt;_0\right)\\
-&amp;= N \tau \left&lt;w_{\tau}\right&gt;_0 + \frac{1}{2} \tau^3 N^3 \underline{s}^2 \, \mathrm{Cov}(w_{\tau}, \underline{\nu}_{\tau}^2)_0,
+\omega(\bar{\rho}, \underline{P}) &amp;= \left(\left&lt;w_{\tau}\right&gt;_0 + \frac{1}{2} \tau^2 N^2 \underline{s}^2 \left&lt;w_{\tau} \underline{\nu}_{\tau}^2\right&gt;_0\right)\left(1 + \frac{1}{2} \tau^2 N^2 \underline{s}^2 \left&lt;\underline{\nu}_{\tau}^2\right&gt;_0\right)^{-1}\\
+&amp;= \left(\left&lt;w_{\tau}\right&gt;_0 + \frac{1}{2} \tau^2 N^2 \underline{s}^2 \left&lt;w_{\tau} \underline{\nu}_{\tau}^2\right&gt;_0\right)\left(1 - \frac{1}{2} \tau^2 N^2 \underline{s}^2 \left&lt;\underline{\nu}_{\tau}^2\right&gt;_0\right)\\
+&amp;= \left&lt;w_{\tau}\right&gt;_0 + \frac{1}{2} \tau^2 N^2 \underline{s}^2 \, \mathrm{Cov}(w_{\tau}, \underline{\nu}_{\tau}^2)_0,
 \end{aligned}
 $$
 linking $$\omega(\bar{\rho}, \underline{P})$$ and the covariance of the active work and the squared polarisation.
@@ -12017,11 +12017,11 @@ linking the biasing parameter and the polarisation.
 
 We then have
 $$
-\omega(\bar{\rho}, \underline{P}) = N \tau \left&lt;w_{\tau}\right&gt;_0 + \frac{1}{8} \, \tau^3 \, N^3 \, D_r^2 \, \underline{P}^2 \, \mathrm{Cov}(w_{\tau}, \underline{\nu}_{\tau}^2)_0,
+\omega(\bar{\rho}, \underline{P}) = \left&lt;w_{\tau}\right&gt;_0 + \frac{1}{8} \, \tau^2 \, N^2 \, D_r^2 \, \underline{P}^2 \, \mathrm{Cov}(w_{\tau}, \underline{\nu}_{\tau}^2)_0,
 $$
 up to $$\mathcal{O}(\underline{P}^2)$$ and therfore we may write
 $$
-\frac{\partial^2}{\partial \underline{P}^2} \omega(\bar{\rho}, \underline{P}) = \frac{1}{4}  \tau^3 \, N^3 \, D_r^2 \, \mathrm{Cov}(w_{\tau}, \underline{\nu}_{\tau}^2)_0.
+\frac{\partial^2}{\partial \underline{P}^2} \omega(\bar{\rho}, \underline{P}) = \frac{1}{4}  \tau^2 \, N^2 \, D_r^2 \, \mathrm{Cov}(w_{\tau}, \underline{\nu}_{\tau}^2)_0.
 $$</pre>
 </div>
 <div created="20191030112133404" modified="20191108142542165" tags="[[Multiple ABP]]" title="ABP order correlations">
