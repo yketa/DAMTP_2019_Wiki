@@ -6,13 +6,13 @@ all: main.pdf
 	-@biber $* || bibtex $*
 	@pdflatex $*
 	@pdflatex $*
-	@mv `ls $*.* | grep -v '.tex\|.pdf'` aux
+	@mv `ls $*.* | grep -v '\.tex\|\.pdf'` aux
 
 dir:
 	@mkdir -p aux
 
 clean:
-	@rm -f `ls main.* | grep -v '.tex\|.pdf'`
+	@rm -f `ls main.* | grep -v '\.tex\|\.pdf'`
 	@rm -rf aux
 
 mrproper: clean
