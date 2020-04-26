@@ -10006,7 +10006,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="Summaries [[Brownian rotors LDP]] [[ABP hydrodynamic theory]] Project" title="$:/StoryList">
+<div list="[[Brownian rotors LDP]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -13186,7 +13186,7 @@ We conclude that, starting from the same initial configuration $$\{\theta_i\}_0$
 
 We stress that this choice of $$g$$ is only //convenient// but not //optimal//. A better choice of $$g$$ would for example be determined self-consistently with the ansatz for the orientation distribution and the maximised lower bound to the SCGF (see [[Brownian rotors LDP]], and § &quot;Connection of operator and optimal-control approaches&quot; in [[Jack, 2019|https://arxiv.org/abs/1910.09883]]).</pre>
 </div>
-<div created="20200203193215965" modified="20200323171010094" tags="[[N-interacting Brownian rotors]]" title="Brownian rotors LDP" type="">
+<div created="20200203193215965" modified="20200426143134686" tags="[[N-interacting Brownian rotors]]" title="Brownian rotors LDP" type="">
 <pre>We consider $$N$$ independent Brownian rotors with evolution
 $$
 \dot{\theta_i} = \sqrt{2D_r},
@@ -13507,62 +13507,117 @@ We will assume that this function is convex for all $$p^2$$ and has a single min
 
 ! Biasing with vectorial polarisation — analytic solution
 
-We now wish to bias the trajectories of the system with respect to the mean vectorial polarisation over a trajectory,
+We wish to bias the trajectories of the system with respect to the mean vectorial polarisation over a trajectory,
 $$
-\overline{\underline{p}}_{\tau} = \frac{1}{\tau} \int_0^{\tau} \text{d}t \, \underline{p}(t) = \frac{1}{N \tau} \int_0^{\tau} \text{d}t \, \sum_i \underline{u}(\theta_i(t)),
+\underline{p}_{\tau} = \frac{1}{\tau} \int_0^{\tau} \text{d}t \, \underline{p}(t) = \frac{1}{N \tau} \int_0^{\tau} \text{d}t \, \sum_i \underline{u}(\theta_i(t)),
 $$
-and thus introduce the tilted generator (see [[Tilted generator]])
+and therefore need to compute the scaled cumulant generating function (SCGF)
 $$
-\mathscr{W}_{\underline{s}, \underline{p}} = \mathcal{L} - \underline{s} \cdot N \underline{p} = D_r \sum_i \frac{\partial^2}{\partial \theta_i^2} - \underline{s} \cdot \sum_i \underline{u}(\theta_i),
+\begin{aligned}
+N \psi_{\underline{p}}(\underline{s}) &amp;= \lim_{\tau \rightarrow \infty} \frac{1}{\tau} \log\left&lt;\exp\left(- \underline{s} \cdot N \int_0^{\tau} \text{d}t \, \underline{p}(t)\right)\right&gt;_0\\
+&amp;= \lim_{\tau \rightarrow \infty} \frac{1}{\tau} \log\left&lt;\exp\left(- s_x N \int_0^{\tau} \text{d}t \, p_x(t)\right)\exp\left(- s_y N \int_0^{\tau} \text{d}t \, p_y(t)\right)\right&gt;_0\\
+&amp;= \lim_{\tau \rightarrow \infty} \frac{1}{\tau} \log\left&lt;\exp\left(- s_x N \int_0^{\tau} \text{d}t \, p_x(t)\right)\right&gt;_0\left&lt;\exp\left(- s_y N \int_0^{\tau} \text{d}t \, p_y(t)\right)\right&gt;_0\\
+&amp;= N \psi_p(s_x) + N \psi_p(s_y),
+\end{aligned}
 $$
-such that the scaled cumulant generating function (SCGF)
+where the second to third line derives from the independence of $$p_x$$ and $$p_y$$ in unbiased dynamics, and the third to fourth line derives from isotropy. We then have that $$N \psi_s(p)$$ is the largest eigenvalue of the eigenproblem
 $$
-N \psi_{\underline{p}}(\underline{s}) = \lim_{\tau \rightarrow \infty} \frac{1}{\tau} \log\left&lt;\exp\left(- \underline{s} \cdot N \int_0^{\tau} \text{d}t \, \underline{p}(t)\right)\right&gt;_0,
+N \psi_{p}(s) P[\{\theta_i\}] = \mathscr{W}_{s, p} P[\{\theta_i\}],
 $$
-is the largest eigenvalue of the eigenproblem
+where we introduced the tilted generator (see [[Tilted generator]])
 $$
-N \psi_{\underline{p}}(\underline{s}) P[\{\theta_i\}] = \mathscr{W}_{\underline{s}, \underline{p}} P[\{\theta_i\},
+\mathscr{W}_{s, p} = \mathcal{L} - s N p = D_r \sum_i \frac{\partial^2}{\partial \theta_i^2} - s \sum_i \cos\theta_i,
 $$
-//i.e.//
+using here $$s \equiv s_x$$ and $$p \equiv p_x$$, so that
 $$
-\sum_i \left(\prod_{j \neq i} P(\theta_j)\right) \left[\psi_{\underline{p}}(\underline{s}) P(\theta_i) - \left(D_r \frac{\partial^2}{\partial \theta_i^2} P(\theta_i) - \underline{s} \cdot \underline{u}(\theta_i) P(\theta_i)\right)\right] = 0,
+\sum_i \left(\prod_{j \neq i} P(\theta_j)\right) \left[\psi_{p}(s) P(\theta_i) - \left(D_r \frac{\partial^2}{\partial \theta_i^2} P(\theta_i) - s \cos(\theta_i) P(\theta_i)\right)\right] = 0,
 $$
-where, //without loss of generality//, we take $$\underline{s}$$ along the $$x$$-axis, then we can solve the $$1$$-particle eigenproblem,
+is equivalent to the $$1$$-particle eigenproblem,
 $$
-\psi_{\underline{p}}(\underline{s}) P(\theta) - \left(D_r \frac{\partial^2}{\partial \theta^2} P(\theta) - s \cos\theta) P(\theta)\right) = 0 \Leftrightarrow \frac{\partial^2}{\partial \theta^2} P(\theta) + (a - 2 q \cos 2 \theta) P(\theta) = 0,
+\psi_{p}(s) P(\theta) - \left(D_r \frac{\partial^2}{\partial \theta^2} P(\theta) - s \cos\theta P(\theta)\right) = 0 \Leftrightarrow \frac{\partial^2}{\partial \theta^2} \tilde{P}(\theta^{\prime}) + (a - 2 q \cos 2 \theta^{\prime}) \tilde{P}(\theta^{\prime}) = 0,
 $$
-with
+with $$2 \theta^{\prime} = \theta$$, $$\tilde{P}(\theta/2) = P(\theta)$$, and
 $$
-a = - \frac{4 \psi_{\underline{p}}(\underline{s})}{D_r},~ q = \frac{2 s}{D_r},
+a = - \frac{4 \psi_{p}(s)}{D_r},~ q = \frac{2 s}{D_r},
 $$
-which solutions are known as the [[Mathieu functions|https://en.wikipedia.org/wiki/Mathieu_function]].
+and which solutions are known as the [[Mathieu functions|https://en.wikipedia.org/wiki/Mathieu_function]].
 
-Most notably, we have that for any $$q \in \mathbb{R}$$ there is a countable infinity of $$a$$. Inspired by ([[GrandPre and Limmer, 2018|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.98.060601]]) we will choose $$a_{\mathrm{Mathieu}, 0}(q)$$ the $$0$$-th Mathieu function which is $$\pi$$-periodic and even. We thus have the SCGF
+Most notably, we have that for any $$q \in \mathbb{R}$$ there is a countable infinity of $$a$$. Inspired by ([[GrandPre and Limmer, 2018|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.98.060601]]) we will choose $$a_{\mathrm{Mathieu}, 0}(q)$$ the characteristic value of the $$0$$-th Mathieu function which is $$\pi$$-periodic and even. We thus have the SCGF
 $$
-N \psi_{p}(s) = - N \frac{D_r}{4} a_{\mathrm{Mathieu}, 0}\left(\frac{2s}{D_r}\right),
+N \psi_{\underline{p}}(\underline{s}) = N \left(\psi_{p}(s_x) + \psi_{p}(s_y)\right) = - N \frac{D_r}{4} \left(a_{\mathrm{Mathieu}, 0}\left(\frac{2s_x}{D_r}\right) + a_{\mathrm{Mathieu}, 0}\left(\frac{2s_y}{D_r}\right)\right),
 $$
 and by Legendre transform
 $$
-N I(p) = \sup_{s \in \mathbb{R}} \{- s N p - N \psi_p(s)\} = \sup_{s \in \mathbb{R}} \left\{- s N p + N \frac{D_r}{4} a_{\mathrm{Mathieu}, 0}\left(\frac{2s}{D_r}\right)\right\},
+\begin{aligned}
+N I(\underline{p}) &amp;= \sup_{\underline{s} \in \mathbb{R}^2} \{- \underline{s} \cdot N \underline{p} - N \psi_{\underline{p}}(s)\}\\
+&amp;= \sup_{\underline{s} \in \mathbb{R}^2} \left\{- \underline{s} \cdot N \underline{p} + N \frac{D_r}{4} \left(a_{\mathrm{Mathieu}, 0}\left(\frac{2s_x}{D_r}\right) + a_{\mathrm{Mathieu}, 0}\left(\frac{2s_y}{D_r}\right)\right)\right\},
+\end{aligned}
 $$
-we obtain the rate function.
+we obtain the rate function. We note that both $$\psi_{\underline{p}}(\underline{s})$$ and $$I(\underline{p})$$ are cylindrically symmetric.
 
 We have the following expansion of the SCGF for small $$s$$ ([[Abramowitz and Stegun, 1970|https://asmedigitalcollection.asme.org/appliedmechanics/article/32/1/239/385560/Handbook-of-Mathematical-Functions-With-Formulas]], § 20.3.15),
 $$
-\psi_{p}(s) = D_r s^2 \left(\frac{1}{2D_r^2} - \frac{7}{32 D_r^4} s^2\right) + \mathcal{O}(s^4),~ s \to 0,
+\begin{aligned}
+\psi_{\underline{p}}(\underline{s}) &amp;= - \frac{D_r}{4} \left(-\frac{1}{2} \left(\frac{2 s_x}{D_r}\right)^2 -\frac{1}{2} \left(\frac{2 s_y}{D_r}\right)^2 + \mathcal{O}(s_x^4) + \mathcal{O}(s_y^4)\right),~ s \to 0\\
+&amp;= \frac{1}{2} (s_x^2 + s_y^2) \frac{1}{D_r} + \mathcal{O}(s_x^4) + \mathcal{O}(s_y^4) ,~ s \to 0,
+\end{aligned}
+$$
+and thus with
+$$
+\begin{aligned}
+\left(\frac{\partial^2}{\partial s_x^2} + \frac{\partial^2}{\partial s_y^2}\right) \psi_{\underline{p}}(\underline{s}) &amp;= N \tau \left(\left&lt;p_{x,\tau}^2 + p_{y,\tau}^2\right&gt;_{\underline{s}} - \left&lt;p_{x,\tau}\right&gt;^2_{\underline{s}} - \left&lt;p_{y,\tau}\right&gt;^2_{\underline{s}}\right) = N \tau \left(\left&lt;\underline{p}_{\tau}^2\right&gt;_{\underline{s}} - \left&lt;\underline{p}_{\tau}\right&gt;^2_{\underline{s}}\right)\\
+&amp;= N \tau \mathrm{Var}(\underline{p}_{\tau})_{\underline{s}},
+\end{aligned}
+$$
+we get
+$$
+\mathrm{Var}(\underline{p}_{\tau})_0 = \frac{2}{N \tau D_r},
 $$
 and thus
 $$
-\psi_{p}^{\prime\prime}(0) = \frac{1}{D_r},
+\begin{aligned}
+I(\underline{p}) &amp;= \frac{1}{2} \underline{p} \cdot \begin{pmatrix} \left. \frac{\partial^2 I}{\partial p_x^2} \right|_0 &amp; \left. \frac{\partial^2 I}{\partial p_x \partial p_y}  \right|_0 \\ \left. \frac{\partial^2 I}{\partial p_x \partial p_y}  \right|_0 &amp; \left. \frac{\partial^2 I}{\partial p_y^2} \right|_0 \end{pmatrix} \underline{p} + \mathcal{O}(\underline{p}^4)\\
+&amp;= \frac{1}{2} D_r \underline{p}^2 + \mathcal{O}(\underline{p}^4),
+\end{aligned}
 $$
-moreover with
+the rate function, considering $$I(0) = 0$$ and $$I(\underline{p}) = I(-\underline{p})$$.
+
+&lt;&lt;plot 'mathieu_rate'&gt;&gt;
+
+We have that the tilted generator is self-adjoint (hermitian), so that the left and right eigenfunctions are identical. We thus have the eigenfunction
 $$
-I^{\prime\prime}(p = \left&lt;p\right&gt; = 0) = \frac{1}{\psi_{p}^{\prime\prime}(0)} = D_r,
+\mathcal{F}_s(\theta) \propto y_{Mathieu, 0}\left(\frac{\theta}{2}, \frac{2s}{D_r}\right)
 $$
-we obtain
+with $$y_{Mathieu, 0}$$ the $$0$$-th Mathieu function, even and $$\pi$$-periodic, so that $$\mathcal{F}_s(\theta)$$ is $$2\pi$$-periodic, associated to the eigenvalue $$\psi_{p}(s)$$. We can thus compute the optimal control potential ([[Jack, 2019|https://arxiv.org/abs/1910.09883]], § 2.F)
 $$
-I(p) = \frac{1}{2} D_r p^2 + \mathcal{O}(p^2),~ p \to 0.
+\phi_s(\theta) = - 2 \log \mathcal{F}_s(\theta)
 $$
+to achieve the fluctuations characteristic to the biased trajectories. We can compute the curvature of this potential at $$\theta = 0$$,
+$$
+\left. \frac{\partial^2}{\partial \theta^2} \phi_s(\theta) \right|_{s=0} = 2 \left(\mathcal{F}(\theta = 0)^{-2} \left(\frac{\partial}{\partial \theta} \mathcal{F}(\theta = 0)\right)^2 - \mathcal{F}(\theta = 0)^{-1}\frac{\partial^2}{\partial\theta^2} \mathcal{F}(\theta = 0)\right),
+$$
+where
+$$
+\frac{\partial}{\partial \theta} \mathcal{F}(\theta = 0) = 0,
+$$
+by parity of $$y_{Mathieu, 0}$$, and
+$$
+\begin{aligned}
+- \mathcal{F}(\theta = 0)^{-1}\frac{\partial^2}{\partial\theta^2} \mathcal{F}(\theta = 0) &amp;= \left. - y_{Mathieu, 0}\left(\frac{\theta}{2}, \frac{2s}{D_r}\right)^{-1}\frac{\partial^2}{\partial\theta^2} y_{Mathieu, 0}\left(\frac{\theta}{2}, \frac{2s}{D_r}\right) \right|_{\theta=0}\\
+&amp;= \frac{1}{4} \left(a_{\mathrm{Mathieu}, 0}\left(\frac{2s}{D_r}\right) - 2 \frac{2s}{D_r}\right)
+\end{aligned}
+$$
+from the differential equation defining $$y_{Mathieu, 0}$$, therefore
+$$
+\left. \frac{\partial^2}{\partial \theta^2} \phi_s(\theta) \right|_{s=0} = \frac{1}{2} \left(a_{\mathrm{Mathieu}, 0}\left(\frac{2s}{D_r}\right) - 2 \frac{2s}{D_r}\right),
+$$
+so we can compare this optimal potential to a potential $$\phi^{(g)}_s \propto g (1 - \cos\theta)$$,
+$$
+\phi^{(g)}_s(\theta) = \frac{1}{2} \left(a_{\mathrm{Mathieu}, 0}\left(\frac{2s}{D_r}\right) - 2 \frac{2s}{D_r}\right) (1 - \cos\theta),
+$$
+of identical curvature at $$\theta = 0$$.
+
+&lt;&lt;plot 'mathieu_potential'&gt;&gt;
 
 ! Consistency
 
