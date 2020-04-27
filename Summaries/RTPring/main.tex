@@ -220,11 +220,13 @@ B(r) = l(1 + \tau \psi/2)^{-1} A^{\prime}(r) = kl (1 + \tau\psi/2)^{-1} (A_- e^{
 \end{equation}
 from which we infer
 \begin{eqnarray}
+\label{epsilon}
 \begin{aligned}
 \varepsilon(r) &= \frac{1}{2} (A(r) + B(r))\\
 &= \frac{1}{2}\left(1 - k l (1 + \psi \tau/2)^{-1}\right) A_+ e^{- k r} + \frac{1}{2}\left(1 + k l (1 + \psi \tau/2)^{-1}\right) A_- e^{- k (L - r)}
 \end{aligned}
 \mbox{}\\
+\label{theta}
 \begin{aligned}
 \theta(r) &= \frac{1}{2} (A(r) - B(r))\\
 &= \frac{1}{2}\left(1 + k l (1 + \psi \tau/2)^{-1}\right) A_+ e^{- k r} + \frac{1}{2}\left(1 - k l (1 + \psi \tau/2)^{-1}\right) A_- e^{- k (L - r)}
@@ -236,6 +238,7 @@ where we note that the symmetry condition of Eq. (\ref{oddsymmetry}) implies tha
 \beta(r) &= (\tau\psi + 2)^{-1}(\varepsilon(r) + \theta(r)) = (\tau \psi + 2)^{-1} A(r)\\
 &= \frac{1}{2}(1 + \tau\psi/2)^{-1}(A_+ e^{-k r} + A_- e^{-k (L - r)})
 \end{aligned}
+\label{beta}
 \end{equation}
 where we need to determine $A_+ = A_-$.\\
 
@@ -322,30 +325,41 @@ so that for $s = \mathcal{O}(L^{-1})$ we have $\psi(s) = \mathcal{O}(L^{-2})$ an
 
 We give an expression of Eqs. (\ref{S2}, \ref{S3}) at the lowest order of $L^{-1}$ and using $A_+ = A_-$
 \begin{eqnarray}
-2 \gamma - (1 + e^{-kL}) A_+ = 0\\
+\label{SC1}
+2 \gamma - l(1 + e^{-kL}) A_+ = 0\\
+\label{SC2}
 6 \gamma + \frac{6}{2k} (1 - e^{-kL}) A_+ = 1
 \end{eqnarray}
 from which we infer
 \begin{equation}
+\label{SCgamma}
 \gamma = \frac{1}{6} k l \frac{1 + e^{-kL}}{1 - e^{-kL}}
 \end{equation}
 and an expression of Eq. (\ref{gammaPsi}) at the lowest order of $L^{-1}$
 \begin{equation}
 \gamma = \frac{\psi}{4 s v_0^2}
 \end{equation}
-so that with Eq.(\ref{kPsi}) linking $k$ and $\psi$ we get
+which with Eq.(\ref{kPsi}) linking $k$ and $\psi$, also at the lowest order of $L^{-1}$,
+\begin{equation}
+\label{SCkl}
+k^2 l^2 = \tau \psi \Rightarrow k = \begin{cases} \frac{1}{l} \sqrt{\tau\psi} &\text{ if } s > 0, \\ 0 &\text{ if } s = 0, \\ \mathrm{i} \, \frac{1}{l} \sqrt{- \tau\psi} &\text{ if } s < 0, \end{cases}
+\end{equation}
+give
 \begin{eqnarray}
 \frac{3}{s L v_0} = \frac{\coth\left(\sqrt{\frac{\psi L^2}{4 l v_0}}\right)}{\sqrt{\frac{\psi L^2}{4 l v_0}}} \Leftrightarrow \frac{1}{\Lambda} = \frac{\coth\left(\sqrt{\Phi}\right)}{\sqrt{\Phi}} &\qquad\qquad s > 0, \psi > 0\\
 - \frac{3}{s L v_0} = \frac{\cot\left(\sqrt{\frac{|\psi| L^2}{4 l v_0}}\right)}{\sqrt{\frac{|\psi| L^2}{4 l v_0}}} \Leftrightarrow - \frac{1}{\Lambda} = \frac{\cot\left(\sqrt{|\Phi|}\right)}{\sqrt{|\Phi|}} &\qquad\qquad s < 0, \psi < 0
 \end{eqnarray}
 where we have set
 \begin{eqnarray}
+\label{Lambda}
 \Lambda = \frac{s L v_0}{3}\\
+\label{Phi}
 \Phi = \frac{\psi L^2}{4 l v_0} = \frac{\Psi}{4 l v_0}
 \end{eqnarray}
 for convenience, and introduce
 \begin{equation}
 \Gamma = \frac{\Phi}{\Lambda} = \frac{\psi}{4 s v_0^2} \frac{3 L}{l} = \gamma \frac{3 L}{l}
+\label{eqGamma}
 \end{equation}
 which we plot in Fig. \ref{Gamma}.
 
@@ -354,6 +368,27 @@ which we plot in Fig. \ref{Gamma}.
 \includegraphics[width=0.5\textwidth]{gamma.eps}
 \caption{Rescaled sticking term $\Gamma = (3L/l) \, \gamma$ as a function of rescaled biasing parameter $\Lambda = (L v_0/3) \, s$.}
 \label{Gamma}
+\end{figure}
+
+At the lowest order in $L^{-1}$ we have from Eqs. (\ref{epsilon}, \ref{theta}, \ref{beta})
+\begin{equation}
+\varepsilon(r) = \theta(r) = \beta(r) = \frac{1}{2} A_+ (e^{-kr} + e^{-k(L-r)})
+\end{equation}
+and from Eqs. (\ref{SC1}, \ref{SC2}, \ref{SCgamma})
+\begin{equation}
+A_+ = \frac{2\gamma}{l} \frac{1}{1 + e^{-kL}} = \frac{k}{3(1 - e^{-kL})}
+\end{equation}
+so we can write with Eqs. (\ref{SCkl}, \ref{Lambda}, \ref{Phi}, \ref{eqGamma})
+\begin{equation}
+L \varepsilon(r) = \frac{2}{3} \Gamma \begin{cases} \frac{\cosh\left(\sqrt{\Phi(1 - 2r/L)}\right)}{\cosh\left(\sqrt{\Phi}\right)} &\text{ if } s > 0, \\ 1 &\text{ if } s = 0, \\ \frac{\cos\left(\sqrt{|\Phi|(1 - 2r/L)}\right)}{\cos\left(\sqrt{|\Phi|}\right)} &\text{ if } s > 0, \end{cases}
+\end{equation}
+which we plot in Fig. \ref{fig:epsilon}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{epsilon.eps}
+\caption{Rescaled regular part $L \varepsilon(r)$ as a function of rescaled distance $r/L$ for different values of the rescaled biasing parameter $\Lambda = (L v_0/3) \, s$.}
+\label{fig:epsilon}
 \end{figure}
 
 %%%%%%%%%%%%%%
