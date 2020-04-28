@@ -13186,7 +13186,7 @@ We conclude that, starting from the same initial configuration $$\{\theta_i\}_0$
 
 We stress that this choice of $$g$$ is only //convenient// but not //optimal//. A better choice of $$g$$ would for example be determined self-consistently with the ansatz for the orientation distribution and the maximised lower bound to the SCGF (see [[Brownian rotors LDP]], and § &quot;Connection of operator and optimal-control approaches&quot; in [[Jack, 2019|https://arxiv.org/abs/1910.09883]]).</pre>
 </div>
-<div created="20200203193215965" modified="20200426143134686" tags="[[N-interacting Brownian rotors]]" title="Brownian rotors LDP" type="">
+<div created="20200203193215965" modified="20200428154205291" tags="[[N-interacting Brownian rotors]]" title="Brownian rotors LDP" type="">
 <pre>We consider $$N$$ independent Brownian rotors with evolution
 $$
 \dot{\theta_i} = \sqrt{2D_r},
@@ -13507,20 +13507,27 @@ We will assume that this function is convex for all $$p^2$$ and has a single min
 
 ! Biasing with vectorial polarisation — analytic solution
 
+See .pdf version in [[Summaries]].
+
+!! SCGF and rate function
+
 We wish to bias the trajectories of the system with respect to the mean vectorial polarisation over a trajectory,
 $$
 \underline{p}_{\tau} = \frac{1}{\tau} \int_0^{\tau} \text{d}t \, \underline{p}(t) = \frac{1}{N \tau} \int_0^{\tau} \text{d}t \, \sum_i \underline{u}(\theta_i(t)),
 $$
 and therefore need to compute the scaled cumulant generating function (SCGF)
 $$
-\begin{aligned}
-N \psi_{\underline{p}}(\underline{s}) &amp;= \lim_{\tau \rightarrow \infty} \frac{1}{\tau} \log\left&lt;\exp\left(- \underline{s} \cdot N \int_0^{\tau} \text{d}t \, \underline{p}(t)\right)\right&gt;_0\\
-&amp;= \lim_{\tau \rightarrow \infty} \frac{1}{\tau} \log\left&lt;\exp\left(- s_x N \int_0^{\tau} \text{d}t \, p_x(t)\right)\exp\left(- s_y N \int_0^{\tau} \text{d}t \, p_y(t)\right)\right&gt;_0\\
-&amp;= \lim_{\tau \rightarrow \infty} \frac{1}{\tau} \log\left&lt;\exp\left(- s_x N \int_0^{\tau} \text{d}t \, p_x(t)\right)\right&gt;_0\left&lt;\exp\left(- s_y N \int_0^{\tau} \text{d}t \, p_y(t)\right)\right&gt;_0\\
-&amp;= N \psi_p(s_x) + N \psi_p(s_y),
-\end{aligned}
+N \psi_{\underline{p}}(\underline{s}) = \lim_{\tau \rightarrow \infty} \frac{1}{\tau} \log\left&lt;\exp\left(- \underline{s} \cdot N \int_0^{\tau} \text{d}t \, \underline{p}(t)\right)\right&gt;_0
 $$
-where the second to third line derives from the independence of $$p_x$$ and $$p_y$$ in unbiased dynamics, and the third to fourth line derives from isotropy. We then have that $$N \psi_s(p)$$ is the largest eigenvalue of the eigenproblem
+where we will assume that $$\underline{s}$$ is along the $$x$$-axis, and compute
+$$
+\psi_{p}(s) = \lim_{\tau \rightarrow \infty} \frac{1}{\tau} \log\left&lt;\exp\left(- s N \int_0^{\tau} \text{d}t \, p_x(t)\right)\right&gt;_0,
+$$
+from which we can recover
+$$
+\psi_{\underline{p}}(\underline{s}) = \psi_{p}\left(\sqrt{s_x^2 + s_y^2}\right)
+$$
+from the fact that $$\psi_{\underline{p}}(\underline{s})$$ has to be cylindrically symmetric. We then have that $$N \psi_s(p)$$ is the largest eigenvalue of the eigenproblem
 $$
 N \psi_{p}(s) P[\{\theta_i\}] = \mathscr{W}_{s, p} P[\{\theta_i\}],
 $$
@@ -13544,13 +13551,13 @@ and which solutions are known as the [[Mathieu functions|https://en.wikipedia.or
 
 Most notably, we have that for any $$q \in \mathbb{R}$$ there is a countable infinity of $$a$$. Inspired by ([[GrandPre and Limmer, 2018|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.98.060601]]) we will choose $$a_{\mathrm{Mathieu}, 0}(q)$$ the characteristic value of the $$0$$-th Mathieu function which is $$\pi$$-periodic and even. We thus have the SCGF
 $$
-N \psi_{\underline{p}}(\underline{s}) = N \left(\psi_{p}(s_x) + \psi_{p}(s_y)\right) = - N \frac{D_r}{4} \left(a_{\mathrm{Mathieu}, 0}\left(\frac{2s_x}{D_r}\right) + a_{\mathrm{Mathieu}, 0}\left(\frac{2s_y}{D_r}\right)\right),
+N \psi_{\underline{p}}(\underline{s}) = N \psi_{p}\left(\sqrt{s_x^2 + s_y^2}\right) = - N \frac{D_r}{4} a_{\mathrm{Mathieu}, 0}\left(\frac{2}{D_r} \sqrt{s_x^2 + s_y^2}\right),
 $$
 and by Legendre transform
 $$
 \begin{aligned}
 N I(\underline{p}) &amp;= \sup_{\underline{s} \in \mathbb{R}^2} \{- \underline{s} \cdot N \underline{p} - N \psi_{\underline{p}}(s)\}\\
-&amp;= \sup_{\underline{s} \in \mathbb{R}^2} \left\{- \underline{s} \cdot N \underline{p} + N \frac{D_r}{4} \left(a_{\mathrm{Mathieu}, 0}\left(\frac{2s_x}{D_r}\right) + a_{\mathrm{Mathieu}, 0}\left(\frac{2s_y}{D_r}\right)\right)\right\},
+&amp;= \sup_{\underline{s} \in \mathbb{R}^2} \left\{- \underline{s} \cdot N \underline{p} + N \frac{D_r}{4} a_{\mathrm{Mathieu}, 0}\left(\frac{2}{D_r} \sqrt{s_x^2 + s_y^2}\right)\right\},
 \end{aligned}
 $$
 we obtain the rate function. We note that both $$\psi_{\underline{p}}(\underline{s})$$ and $$I(\underline{p})$$ are cylindrically symmetric.
@@ -13558,8 +13565,8 @@ we obtain the rate function. We note that both $$\psi_{\underline{p}}(\underline
 We have the following expansion of the SCGF for small $$s$$ ([[Abramowitz and Stegun, 1970|https://asmedigitalcollection.asme.org/appliedmechanics/article/32/1/239/385560/Handbook-of-Mathematical-Functions-With-Formulas]], § 20.3.15),
 $$
 \begin{aligned}
-\psi_{\underline{p}}(\underline{s}) &amp;= - \frac{D_r}{4} \left(-\frac{1}{2} \left(\frac{2 s_x}{D_r}\right)^2 -\frac{1}{2} \left(\frac{2 s_y}{D_r}\right)^2 + \mathcal{O}(s_x^4) + \mathcal{O}(s_y^4)\right),~ s \to 0\\
-&amp;= \frac{1}{2} (s_x^2 + s_y^2) \frac{1}{D_r} + \mathcal{O}(s_x^4) + \mathcal{O}(s_y^4) ,~ s \to 0,
+\psi_{\underline{p}}(\underline{s}) &amp;= - \frac{D_r}{4} \left(-\frac{1}{2} \left(\frac{2}{D_r} \sqrt{s_x^2 + s_y^2}\right)^2 + \mathcal{O}(|\underline{s}|^4)\right),~ s \to 0\\
+&amp;= \frac{1}{2} (s_x^2 + s_y^2) \frac{1}{D_r} + \mathcal{O}(|\underline{s}|^4) ,~ s \to 0,
 \end{aligned}
 $$
 and thus with
@@ -13583,8 +13590,11 @@ $$
 the rate function, considering $$I(0) = 0$$ and $$I(\underline{p}) = I(-\underline{p})$$.
 
 &lt;&lt;plot 'mathieu_rate'&gt;&gt;
+&lt;&lt;plot 'rate_cloning'&gt;&gt;
 
-We have that the tilted generator is self-adjoint (hermitian), so that the left and right eigenfunctions are identical. We thus have the eigenfunction
+!! Optimal control potential
+
+We have that the tilted generator is self-adjoint (hermitian), so that the left and right eigenfunctions are identical. We thus have the eigenfunction for the $$\underline{s} \parallel \underline{e}_x$$ problem,
 $$
 \mathcal{F}_s(\theta) \propto y_{Mathieu, 0}\left(\frac{\theta}{2}, \frac{2s}{D_r}\right)
 $$
@@ -14541,7 +14551,7 @@ Powered by [[TiddlyWiki|https://tiddlywiki.com/]] [img height=20 [Images/tiddlyw
 
 We have that controlled dynamics give better convergence at very low number of clones, however this discrepancy with uncontrolled dynamics is quickly rectified with increasing number of clones.</pre>
 </div>
-<div created="20191113110938525" modified="20200423163615118" tags="TableOfContents" title="Summaries">
+<div created="20191113110938525" modified="20200428154117254" tags="TableOfContents" title="Summaries">
 <pre>&lt;&lt;summary label:&quot;summary_19_11&quot; title:&quot;November 12th 2019&quot; description:&quot;
 Description of the [[model|Active Brownian particles]], [[one-particle quantities|One ABP]], [[active work covariances|ABP work correlations]], and [[order and active work correlations|ABP work correlations]].
 &quot;&gt;&gt;
@@ -14552,6 +14562,10 @@ Presentation on [[large deviations of active work|ABP work and order LDP]] and [
 
 &lt;&lt;summary label:&quot;RTPring&quot; title:&quot;2 RTPs on a ring&quot; description:&quot;
 Study of the distribution of position of the biased steady state of 2 RTPs on a ring (see [ext[SageMath notebook|Summaries/RTPring/RTPring.ipynb]]).
+&quot;&gt;&gt;
+
+&lt;&lt;summary label:&quot;Mathieu&quot; title:&quot;Polarisation-biased trajectories of independent Brownian rotors&quot; description:&quot;
+Analytic development contained in [[Brownian rotors LDP]].
 &quot;&gt;&gt;</pre>
 </div>
 <div caption="Contents" created="20180416043645812" list-after="$:/core/ui/SideBar/Open" modified="20180417010609928" tags="$:/tags/SideBar" title="TableOfContents">
