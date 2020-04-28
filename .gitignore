@@ -3,3 +3,4 @@ Figures/tikz/**/aux
 Summaries/**/aux
 *-eps-converted-to.pdf
 **/__*
+**/.ipynb_checkpoints
