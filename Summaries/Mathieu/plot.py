@@ -12,6 +12,9 @@ import matplotlib.pyplot as plt
 plt.style.use('paper')
 from matplotlib.lines import Line2D
 
+from scipy.optimize import root_scalar
+from scipy.misc import derivative
+
 Dr = 0.5
 mathieu = Mathieu(Dr)
 
@@ -89,19 +92,18 @@ figV.subplots_adjust(bottom=0.20, left=0.21)
 
 x, s = var('x'), var('s')
 
+# polarisation squared
 def bound_pSq(s):
 	"""
 	Returns lower bound B_{s, p^2} as a function of 2h(s).
 	"""
 	return (-Dr*x/4*bessel_I(1.0, x)/bessel_I(0.0, x)
 		- s*(bessel_I(1.0, x)**2)/(bessel_I(0.0, x)**2))
-
 def maxBs_pSq(s):
 	"""
 	Returns maximised lower bound.
 	"""
 	return find_local_maximum(bound_pSq(s), 0, 10)[0]
-
 def bound_I_pSq(pSq):
 	"""
 	Returns bound \\tilde{B}_{s, p^2} as a function of s.
@@ -109,12 +111,35 @@ def bound_I_pSq(pSq):
 	def evalf_func(self, x, parent=None, algorithm=None): return maxBs_pSq(x)
 	f = function('f', nargs=1, evalf_func=evalf_func)
 	return s*pSq + f(s)
-
 def minInfTildeBs_pSq(pSq):
 	"""
 	Returns maximised upper bound.
 	"""
 	return -find_local_minimum(bound_I_pSq(pSq), -10, 0)[0]
+
+# polarisation
+def bound_p(s):
+	"""
+	Returns lower bound B_{s, p} as a function of 2h(s).
+	"""
+	return (-Dr*x/4*bessel_I(1.0, x)/bessel_I(0.0, x)
+		- s*(bessel_I(1.0, x))/(bessel_I(0.0, x)))
+def maxBs_p(s):
+	"""
+	Returns maximised lower bound.
+	"""
+	if s > 0: return maxBs_p(-s)
+	return find_local_maximum(bound_p(s), 0, 10)[0]
+def inv_der_maxBs_p(p):
+	"""
+	Returns inverse of derivative of maxBs_p.
+	"""
+	return root_scalar(lambda _: -derivative(maxBs_p, _, dx=1e-6) - p, x0=-5*coR.Dr, x1=1).root
+def h_p(s):
+	"""
+	Returns distribution coefficient.
+	"""
+	return find_local_maximum(bound_p(s), 0, 100)[1]/2
 
 # numerics
 
@@ -152,15 +177,78 @@ plt.sca(axIN)
 axIN.add_artist(plt.legend(loc=2,
 	handles=[
 		*[Line2D([0], [0], color=colors[N],
-			label=r'$N=%i$' % N)
+			label=r'$%s%i$' % ('N=' if N==100 else '', N))
 		for N in co],
 		Line2D([0], [0], color=rateINa.get_color(), linestyle=rateINa.get_linestyle(),
 			label=rateINa.get_label())]))
 axIN.add_artist(plt.legend(loc=4,
 	handles=[
+		Line2D([0], [0], lw=0,
+			label=r'$D_r=%.1f$' % Dr),
 		Line2D([0], [0], color=rateINsa.get_color(), linestyle=rateINsa.get_linestyle(),
 			label=rateINsa.get_label())]))
 figIN.subplots_adjust(left=0.25, bottom=0.20)
+axIN.add_artist(plt.legend(loc=9,
+	handles=[
+		Line2D([0], [0], lw=0,
+			label=r'$t_{\mathrm{max}}=10^2$'),
+		Line2D([0], [0], lw=0,
+			label=r'$N_{\mathrm{clones}}=10^3$')]))
+
+# biased polarisation
+
+figP, axP = plt.subplots()
+axP.set_xlabel(r'$s$')
+axP.set_ylabel(r'$\left<p_x\right>_s$')
+axP.set_xlim([-4, 0])
+axP.set_xticks([-4.0, -3.5, -3.0, -2.5, -2.0, -1.5, -1.0, -0.5, 0.0])
+axP.set_xticklabels([r'$-4.0$', '', r'$-3.0$', '', r'$-2.0$', '', r'$-1.0$', '', r'$0.0$'])
+
+s = np.linspace(-8.*Dr, 0, 100)
+dx = 1e-3
+
+pSA, = axP.plot(s, list(map(lambda _: -derivative(maxBs_p, _, dx=dx), s)),
+	label=r'$- \partial_s \max_x B_{s, p}(x)$')
+pA, = axP.plot(s, list(map(lambda _: -derivative(lambda __: mathieu.SCGFX(__)[0], _, dx=dx), s)),
+	label=r'$- \partial_s \psi_p(s)$')
+
+plt.sca(axP)
+axP.add_artist(plt.legend(loc=3,
+	handles=[
+		Line2D([0], [0], color=line.get_color(),
+			label=line.get_label())
+		for line in (pSA, pA)]))
+axP.add_artist(plt.legend(loc=6,
+	handles=[
+		Line2D([0], [0], lw=0,
+			label=r'$D_r=%.1f$' % Dr)]))
+figP.subplots_adjust(bottom=0.20)
+
+# distribution coefficient
+
+figG, axG = plt.subplots()
+axG.set_xlabel(r'$s$')
+axG.set_ylabel(r'$g(s)$')
+axG.set_xlim([-4, 0])
+axG.set_xticks([-4.0, -3.5, -3.0, -2.5, -2.0, -1.5, -1.0, -0.5, 0.0])
+axG.set_xticklabels([r'$-4.0$', '', r'$-3.0$', '', r'$-2.0$', '', r'$-1.0$', '', r'$0.0$'])
+
+gSA, = axG.plot(s, list(map(h_p, s)),
+	label=r'$h_p(s)$')
+gA, = axG.plot(s, np.array(list(map(mathieu.optimal_potential_curvature, s))),
+	label=r'$\partial^2_{\theta} \phi_s(\theta=0)$')
+
+plt.sca(axG)
+axG.add_artist(plt.legend(loc=1,
+	handles=[
+		Line2D([0], [0], color=line.get_color(),
+			label=line.get_label())
+		for line in (gSA, gA)]))
+axG.add_artist(plt.legend(loc=3,
+	handles=[
+		Line2D([0], [0], lw=0,
+			label=r'$D_r=%.1f$' % Dr)]))
+figV.subplots_adjust(bottom=0.20)
 
 # SAVE AND SHOW
 
@@ -178,6 +266,12 @@ if get_env('SAVE', default=False, vartype=bool):
 
 	# rate functions from cloning
 	save(figIN, 'rate_cloning')
+
+	# biased polarisation
+	save(figP, 'polarisation_x')
+
+	# distribution coefficient
+	save(figG, 'distribution_g')
 
 if get_env('SHOW', default=True, vartype=bool): plt.show()
 

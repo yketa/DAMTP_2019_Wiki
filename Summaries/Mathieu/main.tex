@@ -92,13 +92,14 @@ I(\bm{p}) &= \frac{1}{2} \bm{p} \cdot \begin{pmatrix} \left. \frac{\partial^2 I}
 \end{equation}
 the rate function (see Fig. \ref{mathieu_rate_fig} \textbf{(left)}), considering $I(0) = 0$ and $I(\bm{p}) = I(-\bm{p})$.\\
 
-We can compare the rate function to numerical results from the cloning simulations of Brownian rotors biased with respect to their squared polarisation, and the semi-analytical upper bound $-\inf_s \tilde{B}_{s,p^2}$ obtained in this case \cite{brownian_rotors_ldp} (see Fig. \ref{mathieu_rate_fig} \textbf{(right)}).
+We can compare the rate function to numerical results from the cloning simulations of Brownian rotors biased with respect to their squared polarisation, and the semi-analytical upper bound $-\inf_s \tilde{B}_{s,p^2}$ obtained in this case \cite{brownian_rotors_ldp} (see Fig. \ref{mathieu_rate_fig} \textbf{(centre)}).
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.40\textwidth]{mathieu_rate.eps}
-\includegraphics[width=0.40\textwidth]{rate_cloning.eps}
-\caption{\textbf{(left)} Rate function. -- Using \textsc{Mathieu} in \href{https://github.com/yketa/active_work/blob/master/rotors.py}{\faGithub~ yketa/active\_work/rotors.py}. \textbf{(right)} Comparison to numerics -- $N_{\mathrm{clones}} = 10^3$, $t_{\mathrm{max}} = 10^2$.}
+\includegraphics[width=0.32\textwidth]{mathieu_rate.eps}
+\includegraphics[width=0.32\textwidth]{rate_cloning.eps}
+\includegraphics[width=0.32\textwidth]{polarisation_x.eps}
+\caption{\textbf{(left)} Rate function. -- Using \textsc{Mathieu} in \href{https://github.com/yketa/active_work/blob/master/rotors.py}{\faGithub~ yketa/active\_work/rotors.py}. \textbf{(centre)} Comparison to numerics -- $N_{\mathrm{clones}} = 10^3$, $t_{\mathrm{max}} = 10^2$. \textbf{(right)} Biased average of the polarisation along the x-axis.}
 \label{mathieu_rate_fig}
 \end{figure}
 
@@ -135,12 +136,13 @@ so we can compare this optimal potential to a potential $\phi^{(g)}_s \propto g 
 \begin{equation}
 \phi^{(g)}_s(\theta) = \frac{1}{2} \left(a_{\mathrm{Mathieu}, 0}\left(\frac{2s}{D_r}\right) - 2 \frac{2s}{D_r}\right) (1 - \cos\theta),
 \end{equation}
-of identical curvature at $\theta = 0$ (see Fig. \ref{mathieu_potential_fig}).
+of identical curvature at $\theta = 0$ (see Fig. \ref{mathieu_potential_fig} \textbf{(left)}).
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.40\textwidth]{mathieu_potential.eps}
-\caption{Optimal control potential. -- Using \textsc{Mathieu} in \href{https://github.com/yketa/active_work/blob/master/rotors.py}{\faGithub~ yketa/active\_work/rotors.py}.}
+\includegraphics[width=0.32\textwidth]{mathieu_potential.eps}
+\includegraphics[width=0.32\textwidth]{distribution_g.eps}
+\caption{\textbf{(left)} Optimal control potential. \textbf{(Right)} Torque parameter. -- Using \textsc{Mathieu} in \href{https://github.com/yketa/active_work/blob/master/rotors.py}{\faGithub~ yketa/active\_work/rotors.py}.}
 \label{mathieu_potential_fig}
 \end{figure}
 
