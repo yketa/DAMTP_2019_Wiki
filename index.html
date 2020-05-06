@@ -10006,7 +10006,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="[[N-interacting Brownian rotors]] [[Active Brownian particles]] [[Brownian rotors LDP]] Project" title="$:/StoryList">
+<div list="[[Brownian rotors LDP]] [[N-interacting Brownian rotors]] [[ABP hydrodynamic theory]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -11864,7 +11864,7 @@ $$</pre>
 
 Our results at low rotational diffusivity are qualitatively consistent with ([[Fily and Marchetti, 2012|https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.108.235702]]).</pre>
 </div>
-<div created="20200401145954846" modified="20200422090638369" tags="[[Active Brownian particles]]" title="ABP hydrodynamic theory">
+<div created="20200401145954846" modified="20200506125714733" tags="[[Active Brownian particles]]" title="ABP hydrodynamic theory">
 <pre>On very large (hydrodynamics) length and time scales, we propose to describe the system with the density and polarisation fields, $$\rho(\underline{r}, t)$$ and $$\underline{P}(\underline{r}, t)$$, with former obeying the following stochastic hydrodynamic equation
 $$
 \begin{aligned}
@@ -11993,7 +11993,16 @@ linking $$\omega(\bar{\rho}, \underline{P})$$ and the covariance of the active w
 
 We note that
 $$
-\left&lt;\underline{\nu}_{\tau}\right&gt;_{\underline{s}} = \left&lt;\underline{\nu}_{\tau} \, e^{- \underline{s} \cdot N \tau \underline{\nu}_{\tau}}\right&gt;_0 = \left&lt;\underline{\nu}_{\tau}(1 - \underline{s} \cdot \tau N \underline{\nu}_{\tau})\right&gt;_0 = \left&lt;\underline{\nu}_{\tau}\right&gt;_0 - \tau N \underline{s} \left&lt;\underline{\nu}_{\tau}^2\right&gt;_0 = - \tau N \underline{s} \left&lt;\underline{\nu}_{\tau}^2\right&gt;_0,~ \tau \to \infty,
+\begin{aligned}
+\left&lt;\underline{\nu}_{\tau}\right&gt;_{\underline{s}} &amp;= \frac{\left&lt;\underline{\nu}_{\tau} \, e^{- \underline{s} \cdot N \tau \underline{\nu}_{\tau}}\right&gt;_0}{\left&lt;e^{- \underline{s} \cdot N \tau \underline{\nu}_{\tau}}\right&gt;_0} = \frac{\left&lt;\underline{\nu}_{\tau}(1 - \underline{s} \cdot \tau N \underline{\nu}_{\tau})\right&gt;_0}{\left&lt;1 - \underline{s} \cdot \tau N \underline{\nu}_{\tau}\right&gt;_0}\\
+&amp;= \left(\left&lt;\underline{\nu}_{\tau}\right&gt;_0 - \tau N \underline{s} \left&lt;\underline{\nu}_{\tau}^2\right&gt;_0\right)\left(1 + \underline{s} \cdot \tau N \left&lt;\underline{\nu}_{\tau}\right&gt;_0\right)\\
+&amp;= \left&lt;\underline{\nu}_{\tau}\right&gt;_0 - \tau N \underline{s} \left(\left&lt;\underline{\nu}_{\tau}^2\right&gt;_0 - \left&lt;\underline{\nu}_{\tau}\right&gt;_0^2\right)\\
+&amp;= \left&lt;\underline{\nu}_{\tau}\right&gt;_0 - \tau N \underline{s} \, \mathrm{Var}(\underline{\nu}_{\tau})_0
+\end{aligned}
+$$
+where
+$$
+\left&lt;\underline{\nu}_{\tau}\right&gt;_0 = 0, \tau \to \infty,
 $$
 and
 $$
@@ -13186,7 +13195,7 @@ We conclude that, starting from the same initial configuration $$\{\theta_i\}_0$
 
 We stress that this choice of $$g$$ is only //convenient// but not //optimal//. A better choice of $$g$$ would for example be determined self-consistently with the ansatz for the orientation distribution and the maximised lower bound to the SCGF (see [[Brownian rotors LDP]], and § &quot;Connection of operator and optimal-control approaches&quot; in [[Jack, 2019|https://arxiv.org/abs/1910.09883]]).</pre>
 </div>
-<div created="20200203193215965" modified="20200429140010415" tags="[[N-interacting Brownian rotors]]" title="Brownian rotors LDP" type="">
+<div created="20200203193215965" modified="20200430115245842" tags="[[N-interacting Brownian rotors]]" title="Brownian rotors LDP" type="">
 <pre>We consider $$N$$ independent Brownian rotors with evolution
 $$
 \dot{\theta_i} = \sqrt{2D_r},
@@ -13624,7 +13633,7 @@ $$
 $$
 so we can compare this optimal potential to a potential $$\phi^{(g)}_s \propto g (1 - \cos\theta)$$,
 $$
-\phi^{(g)}_s(\theta) = \frac{1}{2} \left(a_{\mathrm{Mathieu}, 0}\left(\frac{2s}{D_r}\right) - 2 \frac{2s}{D_r}\right) (1 - \cos\theta),
+\phi^{(g)}_s(\theta) = \left. \frac{\partial^2}{\partial \theta^2} \phi_s(\theta) \right|_{s=0} (1 - \cos\theta) = \frac{1}{2} \left(a_{\mathrm{Mathieu}, 0}\left(\frac{2s}{D_r}\right) - 2 \frac{2s}{D_r}\right) (1 - \cos\theta),
 $$
 of identical curvature at $$\theta = 0$$.
 
