@@ -112,8 +112,9 @@ We have that the tilted generator is self-adjoint (hermitian), so that the left 
 with $y_{Mathieu, 0}$ the $0$-th Mathieu function, even and $\pi$-periodic, so that $\mathcal{F}_s(\theta)$ is $2\pi$-periodic, associated to the eigenvalue $\psi_{p}(s)$. We can thus compute the optimal control potential \cite{jack2019ergodicity}
 \begin{equation}
 \phi_s(\theta) = - 2 \log \mathcal{F}_s(\theta)
+\label{control_potential}
 \end{equation}
-to achieve the fluctuations characteristic to the biased trajectories. We can compute the curvature of this potential at $$\theta = 0$$,
+to achieve the fluctuations characteristic to the biased trajectories. We can compute the curvature of this potential at $\theta = 0$,
 \begin{equation}
 \left. \frac{\partial^2}{\partial \theta^2} \phi_s(\theta) \right|_{s=0} = 2 \left(\mathcal{F}(\theta = 0)^{-2} \left(\frac{\partial}{\partial \theta} \mathcal{F}(\theta = 0)\right)^2 - \mathcal{F}(\theta = 0)^{-1}\frac{\partial^2}{\partial\theta^2} \mathcal{F}(\theta = 0)\right),
 \end{equation}
@@ -134,7 +135,7 @@ from the differential equation defining $y_{Mathieu, 0}$ (Eq. (\ref{1P_eigenprob
 \end{equation}
 so we can compare this optimal potential to a potential $\phi^{(g)}_s \propto g (1 - \cos\theta)$,
 \begin{equation}
-\phi^{(g)}_s(\theta) = \frac{1}{2} \left(a_{\mathrm{Mathieu}, 0}\left(\frac{2s}{D_r}\right) - 2 \frac{2s}{D_r}\right) (1 - \cos\theta),
+\phi^{(g)}_s(\theta) = \left. \frac{\partial^2}{\partial \theta^2} \phi_s(\theta) \right|_{s=0} (1 - \cos\theta) = \frac{1}{2} \left(a_{\mathrm{Mathieu}, 0}\left(\frac{2s}{D_r}\right) - 2 \frac{2s}{D_r}\right) (1 - \cos\theta),
 \end{equation}
 of identical curvature at $\theta = 0$ (see Fig. \ref{mathieu_potential_fig} \textbf{(left)}).
 
@@ -142,7 +143,7 @@ of identical curvature at $\theta = 0$ (see Fig. \ref{mathieu_potential_fig} \te
 \centering
 \includegraphics[width=0.32\textwidth]{mathieu_potential.eps}
 \includegraphics[width=0.32\textwidth]{distribution_g.eps}
-\caption{\textbf{(left)} Optimal control potential. \textbf{(Right)} Torque parameter. -- Using \textsc{Mathieu} in \href{https://github.com/yketa/active_work/blob/master/rotors.py}{\faGithub~ yketa/active\_work/rotors.py}.}
+\caption{\textbf{(left)} Optimal control potential. \textbf{(Right)} Torque parameter, where the factor $1/2$ stems from Eq. (\ref{control_potential}). -- Using \textsc{Mathieu} in \href{https://github.com/yketa/active_work/blob/master/rotors.py}{\faGithub~ yketa/active\_work/rotors.py}.}
 \label{mathieu_potential_fig}
 \end{figure}
 

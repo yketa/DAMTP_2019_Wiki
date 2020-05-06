@@ -1,4 +1,6 @@
 from active_work.rotors import Mathieu
+from active_work.rotors import VariationalPolarisationSquared as VPS
+from active_work.rotors import VariationalPolarisation as VP
 from active_work.cloningR import CloningOutput as CO
 from active_work.cloningR import filename
 from active_work.plot import list_colormap
@@ -11,12 +13,15 @@ from sage.all import var, bessel_I, find_local_maximum, find_local_minimum, func
 import matplotlib.pyplot as plt
 plt.style.use('paper')
 from matplotlib.lines import Line2D
+from mpl_toolkits.axes_grid1.inset_locator import inset_axes
 
 from scipy.optimize import root_scalar
 from scipy.misc import derivative
 
 Dr = 0.5
 mathieu = Mathieu(Dr)
+vp = VP(Dr)
+vps = VPS(Dr)
 
 px = np.linspace(0, 0.5, 100)
 theta = np.linspace(-np.pi/2, np.pi/2, 100)
@@ -71,13 +76,16 @@ phig, = axV.plot(theta, mathieu.optimal_potential_curvature(s)*(1 - np.cos(theta
 phisq, = axV.plot(theta, 0.5*(theta**2)*mathieu.optimal_potential_curvature(s),
 	label=r'$\frac{1}{2} \, \theta^2 \, \partial^2_{\theta} \phi_s(\theta = 0)$',
 	zorder=0)
+phivp, = axV.plot(theta, 2*vp.h(s)[0]*(1 - np.cos(theta)),
+#	label=r'$2 \, h_p(s) \, (1 - \cos\theta)$')
+	label=r'$\phi_p(\theta)$')
 
 plt.sca(axV)
 axV.add_artist(plt.legend(loc=9,
 	handles=[
 		Line2D([0], [0], color=line.get_color(),
 			label=line.get_label())
-		for line in (phi, phig, phisq)]))
+		for line in (phi, phig, phisq, phivp)]))
 axV.add_artist(plt.legend(loc=4, fontsize=19,
 	handles=[
 		Line2D([0], [0], lw=0,
@@ -87,61 +95,6 @@ axV.add_artist(plt.legend(loc=4, fontsize=19,
 figV.subplots_adjust(bottom=0.20, left=0.21)
 
 # NUMERICS
-
-# semi-analytic
-
-x, s = var('x'), var('s')
-
-# polarisation squared
-def bound_pSq(s):
-	"""
-	Returns lower bound B_{s, p^2} as a function of 2h(s).
-	"""
-	return (-Dr*x/4*bessel_I(1.0, x)/bessel_I(0.0, x)
-		- s*(bessel_I(1.0, x)**2)/(bessel_I(0.0, x)**2))
-def maxBs_pSq(s):
-	"""
-	Returns maximised lower bound.
-	"""
-	return find_local_maximum(bound_pSq(s), 0, 10)[0]
-def bound_I_pSq(pSq):
-	"""
-	Returns bound \\tilde{B}_{s, p^2} as a function of s.
-	"""
-	def evalf_func(self, x, parent=None, algorithm=None): return maxBs_pSq(x)
-	f = function('f', nargs=1, evalf_func=evalf_func)
-	return s*pSq + f(s)
-def minInfTildeBs_pSq(pSq):
-	"""
-	Returns maximised upper bound.
-	"""
-	return -find_local_minimum(bound_I_pSq(pSq), -10, 0)[0]
-
-# polarisation
-def bound_p(s):
-	"""
-	Returns lower bound B_{s, p} as a function of 2h(s).
-	"""
-	return (-Dr*x/4*bessel_I(1.0, x)/bessel_I(0.0, x)
-		- s*(bessel_I(1.0, x))/(bessel_I(0.0, x)))
-def maxBs_p(s):
-	"""
-	Returns maximised lower bound.
-	"""
-	if s > 0: return maxBs_p(-s)
-	return find_local_maximum(bound_p(s), 0, 10)[0]
-def inv_der_maxBs_p(p):
-	"""
-	Returns inverse of derivative of maxBs_p.
-	"""
-	return root_scalar(lambda _: -derivative(maxBs_p, _, dx=1e-6) - p, x0=-5*coR.Dr, x1=1).root
-def h_p(s):
-	"""
-	Returns distribution coefficient.
-	"""
-	return find_local_maximum(bound_p(s), 0, 100)[1]/2
-
-# numerics
 
 _N = [10, 20, 50, 100]
 nc = 1000
@@ -167,7 +120,7 @@ for N in sorted(co):
 	axIN.errorbar(rate[N][:, 0], rate[N][:, 2], xerr=rate[N][:, 1], yerr=rate[N][:, 3],
 		label=r'$N=%i$' % N, color=colors[N])
 rateINsa, = axIN.plot(
-	rate[_N[-1]][:, 0], list(map(minInfTildeBs_pSq, rate[_N[-1]][:, 0])),
+	rate[_N[-1]][:, 0], vps.rate(*rate[_N[-1]][:, 0]),
 	label=r'$-\inf_s \tilde{B}_{s, p^2}$', color='black', linestyle='--')
 rateINa, = axIN.plot(
 	rate[_N[-1]][:, 0], list(map(lambda _: mathieu.rate((np.sqrt(_), 0)), rate[_N[-1]][:, 0])),
@@ -202,14 +155,14 @@ axP.set_xlabel(r'$s$')
 axP.set_ylabel(r'$\left<p_x\right>_s$')
 axP.set_xlim([-4, 0])
 axP.set_xticks([-4.0, -3.5, -3.0, -2.5, -2.0, -1.5, -1.0, -0.5, 0.0])
-axP.set_xticklabels([r'$-4.0$', '', r'$-3.0$', '', r'$-2.0$', '', r'$-1.0$', '', r'$0.0$'])
+axP.set_xticklabels([r'$-4$', '', r'$-3$', '', r'$-2$', '', r'$-1$', '', r'$0$'])
 
-s = np.linspace(-8.*Dr, 0, 100)
+s = np.linspace(-4, 0, 100)
 dx = 1e-3
 
-pSA, = axP.plot(s, list(map(lambda _: -derivative(maxBs_p, _, dx=dx), s)),
+pSA, = axP.plot(s, vp.p(*s),
 	label=r'$- \partial_s \max_x B_{s, p}(x)$')
-pA, = axP.plot(s, list(map(lambda _: -derivative(lambda __: mathieu.SCGFX(__)[0], _, dx=dx), s)),
+pA, = axP.plot(s, mathieu.pX(*s),
 	label=r'$- \partial_s \psi_p(s)$')
 
 plt.sca(axP)
@@ -228,24 +181,38 @@ figP.subplots_adjust(bottom=0.20)
 
 figG, axG = plt.subplots()
 axG.set_xlabel(r'$s$')
-axG.set_ylabel(r'$g(s)$')
+axG.set_ylabel(r'$h(s)$')
 axG.set_xlim([-4, 0])
 axG.set_xticks([-4.0, -3.5, -3.0, -2.5, -2.0, -1.5, -1.0, -0.5, 0.0])
-axG.set_xticklabels([r'$-4.0$', '', r'$-3.0$', '', r'$-2.0$', '', r'$-1.0$', '', r'$0.0$'])
+axG.set_xticklabels([r'$-4$', '', r'$-3$', '', r'$-2$', '', r'$-1$', '', r'$0$'])
 
-gSA, = axG.plot(s, list(map(h_p, s)),
+gSA, = axG.plot(s, vp.h(*s),
 	label=r'$h_p(s)$')
-gA, = axG.plot(s, np.array(list(map(mathieu.optimal_potential_curvature, s))),
-	label=r'$\partial^2_{\theta} \phi_s(\theta=0)$')
+gA, = axG.plot(s, np.array(list(map(mathieu.optimal_potential_curvature, s)))/2,
+	label=r'$\frac{1}{2} \, \partial^2_{\theta} \phi_s(\theta=0)$')
+
+inset_axG = inset_axes(axG, loc=3, width='37.5%', height='37.5%', borderpad=1)
+inset_axG.tick_params(axis='x', labelbottom=False, labeltop=True, labelsize=20)
+inset_axG.tick_params(axis='y', labelleft=False, labelright=True, labelsize=20)
+inset_axG.set_xlabel(r'$s$')
+inset_axG.xaxis.set_label_position('top')
+inset_axG.set_ylabel(r'$\mathrm{ratio}$')
+inset_axG.yaxis.set_label_position('right')
+inset_axG.set_xlim([-4, 0])
+inset_axG.set_xticks([-4.0, -3.5, -3.0, -2.5, -2.0, -1.5, -1.0, -0.5, 0.0])
+inset_axG.set_xticklabels([r'$-4$', '', '', '', '', '', '', '', r'$0$'])
+inset_axG.set_ylim([1, 1.25])
+inset_axG.set_yticks([1, 1.05, 1.10, 1.15, 1.20, 1.25])
+inset_axG.set_yticklabels([r'$1$', '', '', '', '', r'$1.25$'])
+
+inset_axG.plot(s, gSA.get_ydata()/gA.get_ydata())
 
 plt.sca(axG)
 axG.add_artist(plt.legend(loc=1,
 	handles=[
-		Line2D([0], [0], color=line.get_color(),
+		*[Line2D([0], [0], color=line.get_color(),
 			label=line.get_label())
-		for line in (gSA, gA)]))
-axG.add_artist(plt.legend(loc=3,
-	handles=[
+		for line in (gSA, gA)],
 		Line2D([0], [0], lw=0,
 			label=r'$D_r=%.1f$' % Dr)]))
 figV.subplots_adjust(bottom=0.20)
