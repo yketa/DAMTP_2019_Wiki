@@ -10006,7 +10006,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="[[Brownian rotors LDP]] [[N-interacting Brownian rotors]] [[ABP hydrodynamic theory]] Project" title="$:/StoryList">
+<div list="[[ABP hydrodynamic theory]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -11864,7 +11864,7 @@ $$</pre>
 
 Our results at low rotational diffusivity are qualitatively consistent with ([[Fily and Marchetti, 2012|https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.108.235702]]).</pre>
 </div>
-<div created="20200401145954846" modified="20200506125714733" tags="[[Active Brownian particles]]" title="ABP hydrodynamic theory">
+<div created="20200401145954846" modified="20200507105935682" tags="[[Active Brownian particles]]" title="ABP hydrodynamic theory">
 <pre>On very large (hydrodynamics) length and time scales, we propose to describe the system with the density and polarisation fields, $$\rho(\underline{r}, t)$$ and $$\underline{P}(\underline{r}, t)$$, with former obeying the following stochastic hydrodynamic equation
 $$
 \begin{aligned}
@@ -11946,19 +11946,27 @@ $$
 $$
 and compute
 $$
-- \left.\frac{\partial}{\partial s} \left&lt;w_{\tau}\right&gt;_s\right|_{s=0} = \left.\frac{\partial^2}{\partial s^2} \psi(s)\right|_{s=0} = \frac{4 \omega^{\prime\prime}(\bar{\rho}, \underline{P} = 0)^2 \sigma(\bar{\rho})^2}{N \, D(\bar{\rho})^3} \sum_{q_x, q_y &gt; 0} \frac{1}{\underline{q}^2}.
+- \left.\frac{\partial}{\partial s} \left&lt;w_{\tau}\right&gt;_s\right|_{s=0} = \left.\frac{\partial^2}{\partial s^2} \psi(s)\right|_{s=0} = \frac{4 \omega^{\prime\prime}(\bar{\rho}, \underline{P} = 0)^2 \sigma(\bar{\rho})^2}{D(\bar{\rho})^3} \frac{1}{N} \sum_{q_x, q_y &gt; 0} \frac{1}{\underline{q}^2}.
 $$
 related to the variance of the active work,
 $$
-N^2 \, \tau \, \mathrm{Var}(w_{\tau})_0 = \frac{4 \omega^{\prime\prime}(\bar{\rho}, \underline{P} = 0)^2 \sigma(\bar{\rho})^2}{D(\bar{\rho})^3} \sum_{q_x, q_y &gt; 0} \frac{1}{\underline{q}^2},
+N \, \tau \, \mathrm{Var}(w_{\tau})_0 = \frac{4 \omega^{\prime\prime}(\bar{\rho}, \underline{P} = 0)^2 \sigma(\bar{\rho})^2}{D(\bar{\rho})^3} \frac{1}{N} \sum_{q_x, q_y &gt; 0} \frac{1}{\underline{q}^2},
 $$
 from [[ABP work and order LDP]].
 
 We now argue that the sum in this last expression can be approximated as
 $$
-\sum_{q_x, q_y &gt; 0} \frac{1}{\underline{q}^2} \approx \int_{q_{\mathrm{min}} = Q \frac{2\pi}{L}}^{q_{\mathrm{max}} = \frac{2\pi}{a}} \frac{q \, \mathrm{d}q}{q^2} = \log\left(\frac{2\pi}{a}\right) - \log\left(Q \frac{2\pi}{L}\right) = \log L + \mathrm{cst},
+\begin{aligned}
+\sum_{q_x, q_y &gt; 0} \frac{1}{\underline{q}^2} &amp;\sim L^2 \int_{q_{\mathrm{min}} = Q \frac{2\pi}{L}}^{q_{\mathrm{max}} =  \frac{2\pi}{a}} \frac{q \, \mathrm{d}q}{q^2}\\
+&amp;= L^2 \left(\log\left(\frac{2\pi}{a}\right) - \log\left(Q \frac{2\pi}{L}\right)\right)\\
+&amp;= L^2 \log L + o(L^2 \log L),
+\end{aligned}
 $$
-hence which we should see that the [[variance of the active work|ABP work variance]] scales logarithmically with the system size, as a signature of this hydrodynamic behaviour.
+therefore we should see, noting $$N \sim L^2$$, that the [[variance of the active work|ABP work variance]] scales logarithmically with the system size at leading order in $$L$$,
+$$
+N \, \tau \, \mathrm{Var}(w_{\tau})_0 \sim \log L,
+$$
+as a signature of this hydrodynamic behaviour.
 
 ! Expansion of $$\omega$$
 
@@ -12002,7 +12010,7 @@ $$
 $$
 where
 $$
-\left&lt;\underline{\nu}_{\tau}\right&gt;_0 = 0, \tau \to \infty,
+\left&lt;\underline{\nu}_{\tau}\right&gt;_0 = 0 \Rightarrow \mathrm{Var}(\underline{\nu}_{\tau})_0 = \left&lt;\underline{\nu}_{\tau}^2\right&gt;_0,
 $$
 and
 $$
@@ -12020,17 +12028,20 @@ $$
 $$
 we may write
 $$
-\underline{s} = - \frac{1}{2} D_r \underline{P},
+\underline{s} = - \frac{1}{\tau N \mathrm{Var}(\underline{\nu}_{\tau})_0} \underline{P} = - \frac{1}{2} D_r \underline{P},
 $$
 linking the biasing parameter and the polarisation.
 
 We then have
 $$
-\omega(\bar{\rho}, \underline{P}) = \left&lt;w_{\tau}\right&gt;_0 + \frac{1}{8} \, \tau^2 \, N^2 \, D_r^2 \, \underline{P}^2 \, \mathrm{Cov}(w_{\tau}, \underline{\nu}_{\tau}^2)_0,
+\begin{aligned}
+\omega(\bar{\rho}, \underline{P}) &amp;=  \left&lt;w_{\tau}\right&gt;_0 + \frac{1}{2} \underline{P}^2 \left[\frac{1}{\mathrm{Var}(\underline{\nu}_{\tau}^2)_0} \mathrm{Cov}(w_{\tau}, \underline{\nu}_{\tau}^2)_0\right]\\
+&amp;=  \left&lt;w_{\tau}\right&gt;_0 + \frac{1}{2} \underline{P}^2 \left[\frac{1}{4} \tau^2 \, N^2 \, D_r^2 \, \mathrm{Cov}(w_{\tau}, \underline{\nu}_{\tau}^2)_0\right],
+\end{aligned}
 $$
 up to $$\mathcal{O}(\underline{P}^2)$$ and therfore we may write
 $$
-\frac{\partial^2}{\partial \underline{P}^2} \omega(\bar{\rho}, \underline{P}) = \frac{1}{4}  \tau^2 \, N^2 \, D_r^2 \, \mathrm{Cov}(w_{\tau}, \underline{\nu}_{\tau}^2)_0.
+\frac{\partial^2}{\partial \underline{P}^2} \omega(\bar{\rho}, \underline{P} = 0) = \frac{1}{\mathrm{Var}(\underline{\nu}_{\tau}^2)_0} \mathrm{Cov}(w_{\tau}, \underline{\nu}_{\tau}^2)_0 = \frac{1}{4}  \tau^2 \, N^2 \, D_r^2 \, \mathrm{Cov}(w_{\tau}, \underline{\nu}_{\tau}^2)_0.
 $$</pre>
 </div>
 <div created="20191030112133404" modified="20191108142542165" tags="[[Multiple ABP]]" title="ABP order correlations">
