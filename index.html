@@ -10006,7 +10006,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="[[ABP hydrodynamic theory]] Project" title="$:/StoryList">
+<div list="[[ABP work correlations]] [[ABP work variance]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -12601,7 +12601,7 @@ An issue is that the data looks Gaussian only close to the mean. We thus define,
 
 &lt;&lt;plot image:&quot;dist_w_comp_Nm1000_Dk6500&quot;&gt;&gt;</pre>
 </div>
-<div created="20191029190356627" modified="20200317173958494" tags="[[Multiple ABP]]" title="ABP work variance">
+<div created="20191029190356627" modified="20200522131044579" tags="[[Multiple ABP]]" title="ABP work variance">
 <pre>! As a function of $$N$$
 
 &lt;&lt;plot image:varWork_Dk6500_Ll5000&gt;&gt;
@@ -12666,7 +12666,40 @@ This variance is also computed in [[ABP work correlations]].
 
 &lt;&lt;plot image:&quot;varWorkN_Dk6500_Lm5000_El2000&quot;&gt;&gt;
 
-&lt;&lt;plot image:&quot;varWorkN_Dk6500_Ln1000_El2000&quot;&gt;&gt;</pre>
+&lt;&lt;plot image:&quot;varWorkN_Dk6500_Ln1000_El2000&quot;&gt;&gt;
+
+! Fitting the variance of the force part of the active work
+
+Numerical observations indicate that
+$$
+F_N(D_r \tau) = N \sqrt{D_r} \tau \left&lt;\delta w_{f}(t_0; D_r \tau)^2\right&gt;
+$$
+collapses data for different number of particles $$N$$ and persistence times $$D_r^{-1}$$. We then propose the following scaling for the correlation function of the force part of the active work
+$$
+\left&lt;\delta w_{f}(t_0; t) \delta w_{f}(t_0; t^{\prime})\right&gt; = \frac{\sqrt{D_r}}{N} A \exp\left(- \gamma D_r |t - t^{\prime}|\right)
+$$
+such that
+$$
+\begin{aligned}
+F_N(D_r \tau) &amp;= D_r \tau A \int_0^{\tau} \int_0^{\tau} \mathrm{d}t \, \mathrm{d}t^{\prime} \, \exp\left(- \gamma D_r |t - t^{\prime}|\right)\\
+&amp;= \frac{2 A}{\gamma} \left(1 - \frac{1}{\gamma D_r \tau}\left(1 - e^{-\gamma D_r \tau}\right)\right)
+\end{aligned}
+$$
+which with we can fit the numerical data.
+
+We can compute the derivatives of $$F_N$$ with respect to parameters $$A$$ and $$\gamma$$,
+$$
+\begin{aligned}
+\frac{\partial}{\partial A} F_N(D_r \tau) &amp;= \frac{2}{\gamma} \left(1 - \frac{1}{\gamma D_r \tau}\left(1 - e^{-\gamma D_r \tau}\right)\right),\\
+\frac{\partial}{\partial \gamma} F_N(D_r \tau) &amp;= - \frac{2 A}{\gamma}\left(1 + e^{-\gamma D_r \tau}\right) + \frac{4A}{\gamma^3 D_r \tau} \left(1 - e^{-\gamma D_r \tau}\right),
+\end{aligned}
+$$
+with which we can compute the standard deviation from the covariance matrix of $$A$$ and $$\gamma$$ through[[propagation of uncertainty|https://en.wikipedia.org/wiki/Propagation_of_uncertainty]]
+$$
+\sigma_{F_N}(D_r \tau)^2 = \begin{pmatrix} \partial_A F_N(D_r \tau) \\ \partial_{\gamma} F_N(D_r \tau) \end{pmatrix}^T \begin{pmatrix} \sigma_{AA} &amp; \sigma_{A \gamma} \\ \sigma_{\gamma A} &amp; \sigma_{\gamma\gamma} \end{pmatrix} \begin{pmatrix} \partial_A F_N(D_r \tau) \\ \partial_{\gamma} F_N(D_r \tau) \end{pmatrix}.
+$$
+
+&lt;&lt;plot varWorkForce_fit_Nn1000_Dk6500&gt;&gt;</pre>
 </div>
 <div created="20191010153112162" modified="20200225184804488" tags="TableOfContents" title="Active Brownian particles">
 <pre>We define our model of active Brownian particles, based on ([[Nemoto et al., 2019|https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.022605]]), some quantities to describe the system, and derive some analytical results.
