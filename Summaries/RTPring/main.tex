@@ -272,7 +272,8 @@ from which we get
 \end{eqnarray}
 and the normalisation condition (Eq. (\ref{normalisation}))
 \begin{equation}
-2((\tau\psi + 2) + 1) \gamma + \frac{1}{k} \left(1 - e^{-kL}\right)\left(1 + (\tau\psi + 2)^{-1}\right) A_+ + \frac{1}{k} \left(1 - e^{-kL}\right)\left(1 + (\tau\psi + 2)^{-1}\right) A_- = 1
+(2 \tau \psi + 8) \gamma + \frac{1}{k} (1 - e^{-kL})(1 + (1 + \tau\psi/2)^{-1})(A_+ + A_-) = 1
+% 2((\tau\psi + 2) + 1) \gamma + \frac{1}{k} \left(1 - e^{-kL}\right)\left(1 + (\tau\psi + 2)^{-1}\right) A_+ + \frac{1}{k} \left(1 - e^{-kL}\right)\left(1 + (\tau\psi + 2)^{-1}\right) A_- = 1
 \label{S3}
 \end{equation}
 so we can solve the system of Eqs. (\ref{S1}, \ref{S2}, \ref{S3}) with respect to $\gamma$, $A_+$, $A_-$, or equivalently with $A_+ = A_-$
@@ -280,7 +281,8 @@ so we can solve the system of Eqs. (\ref{S1}, \ref{S2}, \ref{S3}) with respect t
 \label{S01}
 \left[(\tau\psi + 2)(\tau\psi + 2 - 2 s l v_0) - 2\right] \gamma - l \left[\left(1 - kl  (1 + \tau\psi/2)^{-1}\right) + \left(1 + kl(1 + \tau\psi/2)^{-1}\right) e^{-kL}\right] A_- = 0\\
 \label{S02}
-2((\tau\psi + 2) + 1) \gamma + \frac{2}{k} \left(1 - e^{-kL}\right)\left(1 + (\tau\psi + 2)^{-1}\right) A_+ = 1
+% 2((\tau\psi + 2) + 1) \gamma + \frac{2}{k} \left(1 - e^{-kL}\right)\left(1 + (\tau\psi + 2)^{-1}\right) A_+ = 1
+(2 \tau \psi + 8) \gamma + \frac{2}{k} (1 - e^{-kL})(1 + (1 + \tau\psi/2)^{-1}) A_+ = 1
 \end{eqnarray}
 with respect to $A_+$ and $\gamma$.\\
 
@@ -298,10 +300,10 @@ s = var('s')
 # system [gamma, A]
 system = Matrix([
 
-    [(tau*psi + 2)*(tau*psi + 2 - 2 *s*l*v0) - 2,
+    [(tau*psi + 2)*(tau*psi + 2 - 2*s*l*v0) - 2,
     -l*((1 - k*l/(1 + (tau*psi)/2)) + (1 + k*l/(1 + (tau*psi)/2))*exp(-k*L))],
 
-    [2*((tau*psi + 2) + 1),
+    [2*tau*psi + 8,
     (2/k)*(1 - exp(-k*L))*(1 + 1/(tau*psi + 2))]
 
 ])
@@ -311,8 +313,8 @@ system = Matrix([
 \end{lstlisting}
 and get
 \begin{eqnarray}
-\gamma = \frac{{\left({\left(\frac{2 \, k l}{\psi \tau + 2} + 1\right)} e^{\left(-L k\right)} - \frac{2 \, k l}{\psi \tau + 2} + 1\right)} l}{2 \, {\left({\left(2 \, l s v_{0} - \psi \tau - 2\right)} {\left(\psi \tau + 2\right)} + 2\right)} {\left(\frac{{\left(\psi \tau + 3\right)} {\left({\left(\frac{2 \, k l}{\psi \tau + 2} + 1\right)} e^{\left(-L k\right)} - \frac{2 \, k l}{\psi \tau + 2} + 1\right)} l}{{\left(2 \, l s v_{0} - \psi \tau - 2\right)} {\left(\psi \tau + 2\right)} + 2} + \frac{{\left(\frac{1}{\psi \tau + 2} + 1\right)} {\left(e^{\left(-L k\right)} - 1\right)}}{k}\right)}}\\
-A_+ = A_- = -\frac{1}{2 \, {\left(\frac{{\left(\psi \tau + 3\right)} {\left({\left(\frac{2 \, k l}{\psi \tau + 2} + 1\right)} e^{\left(-L k\right)} - \frac{2 \, k l}{\psi \tau + 2} + 1\right)} l}{{\left(2 \, l s v_{0} - \psi \tau - 2\right)} {\left(\psi \tau + 2\right)} + 2} + \frac{{\left(\frac{1}{\psi \tau + 2} + 1\right)} {\left(e^{\left(-L k\right)} - 1\right)}}{k}\right)}}.
+\gamma = -\frac{1}{2 \, {\left(\frac{{\left(\psi \tau + 4\right)} {\left({\left(\frac{2 \, k l}{\psi \tau + 2} + 1\right)} e^{\left(-L k\right)} - \frac{2 \, k l}{\psi \tau + 2} + 1\right)} l}{{\left(2 \, l s v_{0} - \psi \tau - 2\right)} {\left(\psi \tau + 2\right)} + 2} + \frac{{\left(\frac{1}{\psi \tau + 2} + 1\right)} {\left(e^{\left(-L k\right)} - 1\right)}}{k}\right)}}\\
+A_+ = A_- = \frac{{\left({\left(\frac{2 \, k l}{\psi \tau + 2} + 1\right)} e^{\left(-L k\right)} - \frac{2 \, k l}{\psi \tau + 2} + 1\right)} l}{2 \, {\left({\left(2 \, l s v_{0} - \psi \tau - 2\right)} {\left(\psi \tau + 2\right)} + 2\right)} {\left(\frac{{\left(\psi \tau + 4\right)} {\left({\left(\frac{2 \, k l}{\psi \tau + 2} + 1\right)} e^{\left(-L k\right)} - \frac{2 \, k l}{\psi \tau + 2} + 1\right)} l}{{\left(2 \, l s v_{0} - \psi \tau - 2\right)} {\left(\psi \tau + 2\right)} + 2} + \frac{{\left(\frac{1}{\psi \tau + 2} + 1\right)} {\left(e^{\left(-L k\right)} - 1\right)}}{k}\right)}}.
 \end{eqnarray}
 
 \subsection{Scaling regime}
@@ -328,12 +330,12 @@ We give an expression of Eqs. (\ref{S2}, \ref{S3}) at the lowest order of $L^{-1
 \label{SC1}
 2 \gamma - l(1 + e^{-kL}) A_+ = 0\\
 \label{SC2}
-6 \gamma + \frac{6}{2k} (1 - e^{-kL}) A_+ = 1
+8 \gamma + \frac{4}{k} (1 - e^{-kL}) A_+ = 1
 \end{eqnarray}
 from which we infer
 \begin{equation}
 \label{SCgamma}
-\gamma = \frac{1}{6} k l \frac{1 + e^{-kL}}{1 - e^{-kL}}
+\gamma = \frac{1}{8} k l \frac{1 + e^{-kL}}{1 - e^{-kL}}
 \end{equation}
 and an expression of Eq. (\ref{gammaPsi}) at the lowest order of $L^{-1}$
 \begin{equation}
@@ -346,19 +348,19 @@ k^2 l^2 = \tau \psi \Rightarrow k = \begin{cases} \frac{1}{l} \sqrt{\tau\psi} &\
 \end{equation}
 give
 \begin{eqnarray}
-\frac{3}{s L v_0} = \frac{\coth\left(\sqrt{\frac{\psi L^2}{4 l v_0}}\right)}{\sqrt{\frac{\psi L^2}{4 l v_0}}} \Leftrightarrow \frac{1}{\Lambda} = \frac{\coth\left(\sqrt{\Phi}\right)}{\sqrt{\Phi}} &\qquad\qquad s > 0, \psi > 0\\
-- \frac{3}{s L v_0} = \frac{\cot\left(\sqrt{\frac{|\psi| L^2}{4 l v_0}}\right)}{\sqrt{\frac{|\psi| L^2}{4 l v_0}}} \Leftrightarrow - \frac{1}{\Lambda} = \frac{\cot\left(\sqrt{|\Phi|}\right)}{\sqrt{|\Phi|}} &\qquad\qquad s < 0, \psi < 0
+\frac{4}{s L v_0} = \frac{\coth\left(\sqrt{\frac{\psi L^2}{4 l v_0}}\right)}{\sqrt{\frac{\psi L^2}{4 l v_0}}} \Leftrightarrow \frac{1}{\Lambda} = \frac{\coth\left(\sqrt{\Phi}\right)}{\sqrt{\Phi}} &\qquad\qquad s > 0, \psi > 0\\
+- \frac{4}{s L v_0} = \frac{\cot\left(\sqrt{\frac{|\psi| L^2}{4 l v_0}}\right)}{\sqrt{\frac{|\psi| L^2}{4 l v_0}}} \Leftrightarrow - \frac{1}{\Lambda} = \frac{\cot\left(\sqrt{|\Phi|}\right)}{\sqrt{|\Phi|}} &\qquad\qquad s < 0, \psi < 0
 \end{eqnarray}
 where we have set
 \begin{eqnarray}
 \label{Lambda}
-\Lambda = \frac{s L v_0}{3}\\
+\Lambda = \frac{s L v_0}{4}\\
 \label{Phi}
 \Phi = \frac{\psi L^2}{4 l v_0} = \frac{\Psi}{4 l v_0}
 \end{eqnarray}
 for convenience, and introduce
 \begin{equation}
-\Gamma = \frac{\Phi}{\Lambda} = \frac{\psi}{4 s v_0^2} \frac{3 L}{l} = \gamma \frac{3 L}{l}
+\Gamma = \frac{\Phi}{\Lambda} = \frac{\psi}{4 s v_0^2} \frac{4 L}{l} = \gamma \frac{4 L}{l}
 \label{eqGamma}
 \end{equation}
 which we plot in Fig. \ref{Gamma}.
@@ -366,7 +368,7 @@ which we plot in Fig. \ref{Gamma}.
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.5\textwidth]{gamma.eps}
-\caption{Rescaled sticking term $\Gamma = (3L/l) \, \gamma$ as a function of rescaled biasing parameter $\Lambda = (L v_0/3) \, s$.}
+\caption{Rescaled sticking term $\Gamma = (4L/l) \, \gamma$ as a function of rescaled biasing parameter $\Lambda = (L v_0/4) \, s$.}
 \label{Gamma}
 \end{figure}
 
@@ -376,18 +378,18 @@ At the lowest order in $L^{-1}$ we have from Eqs. (\ref{epsilon}, \ref{theta}, \
 \end{equation}
 and from Eqs. (\ref{SC1}, \ref{SC2}, \ref{SCgamma})
 \begin{equation}
-A_+ = \frac{2\gamma}{l} \frac{1}{1 + e^{-kL}} = \frac{k}{3(1 - e^{-kL})}
+A_+ = \frac{2\gamma}{l} \frac{1}{1 + e^{-kL}} = \frac{k}{4(1 - e^{-kL})}
 \end{equation}
 so we can write with Eqs. (\ref{SCkl}, \ref{Lambda}, \ref{Phi}, \ref{eqGamma})
 \begin{equation}
-L \varepsilon(r) = \frac{2}{3} \Gamma \begin{cases} \frac{\cosh\left(\sqrt{\Phi(1 - 2r/L)}\right)}{\cosh\left(\sqrt{\Phi}\right)} &\text{ if } s > 0, \\ 1 &\text{ if } s = 0, \\ \frac{\cos\left(\sqrt{|\Phi|(1 - 2r/L)}\right)}{\cos\left(\sqrt{|\Phi|}\right)} &\text{ if } s < 0, \end{cases}
+L \varepsilon(r) = \frac{1}{4} \Gamma \begin{cases} \frac{\cosh\left(\sqrt{\Phi(1 - 2r/L)}\right)}{\cosh\left(\sqrt{\Phi}\right)} &\text{ if } s > 0, \\ 1 &\text{ if } s = 0, \\ \frac{\cos\left(\sqrt{|\Phi|(1 - 2r/L)}\right)}{\cos\left(\sqrt{|\Phi|}\right)} &\text{ if } s < 0, \end{cases}
 \end{equation}
 which we plot in Fig. \ref{fig:epsilon}.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.5\textwidth]{epsilon.eps}
-\caption{Rescaled regular part $L \varepsilon(r)$ as a function of rescaled distance $r/L$ for different values of the rescaled biasing parameter $\Lambda = (L v_0/3) \, s$.}
+\caption{Rescaled regular part $L \varepsilon(r)$ as a function of rescaled distance $r/L$ for different values of the rescaled biasing parameter $\Lambda = (L v_0/4) \, s$.}
 \label{fig:epsilon}
 \end{figure}
 
