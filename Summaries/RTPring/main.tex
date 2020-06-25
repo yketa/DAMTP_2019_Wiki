@@ -40,7 +40,7 @@ and the Fokker-Planck equations for the joint distribution of positions
 \end{equation}
 with $\mathcal{L}^{\dagger}_{\alpha_1\alpha_2}$ the Fokker-Planck operator.\\
 
-We introduce $r \equiv r_2 - r_1 > 0$, such that $\partial_{r_1} \equiv - \partial_r$ and $\partial_{r_2} = \partial_r$, with which we can define the symmetries
+We introduce $r \equiv r_2 - r_1 \geq 0$, such that $\partial_{r_1} \equiv - \partial_r$ and $\partial_{r_2} = \partial_r$, with which we can define the symmetries
 \begin{eqnarray}
 \label{evensymmetry}
 P_{++}(r) = P_{--}(r),\\
@@ -82,7 +82,7 @@ and the right boundary equations
 
 We define our biasing quantity
 \begin{equation}
-\dot{Z} = \sum_{i=1}^2 - \partial_r V(r) \alpha_i v_0 = v_0 (\alpha_1 - \alpha_2) \partial_r V(r)
+\dot{Z} = \sum_{i=1}^2 - \partial_{r_i} V(r) \alpha_i v_0 = v_0 (\alpha_1 - \alpha_2) \partial_r V(r)
 \end{equation}
 which is non-zero only at contact, and the tilted generator
 \begin{equation}
@@ -173,9 +173,9 @@ We write the eigenvalue equations (Eq. (\ref{eigenproblem}))
 \label{FP3}
 \psi P_{-+}(r) = - 2 v_0 \partial_r P_{-+}(r) + 2 \partial_r(P_{-+}(r) \partial_r V(r)) + \tau^{-1}(2 P_{\alpha\alpha}(r) - 2 P_{-+}(r)) + 2 s v_0 \partial_r V(r) P_{-+}(r)
 \end{eqnarray}
-and integrate Eq. (\ref{FP3}) between $0^-$ and $L^+$ to get
+and integrate from Eqs. (\ref{FP1}, \ref{FP2}, \ref{FP3}) the sum of $\psi(2 P_{\alpha\alpha} + P_{+-} + P_{-+})$ between $0^-$ and $L^+$ to get
 \begin{equation}
-\psi = 2 s v_0 \partial_r V(L) \zeta = 2 s v_0^2 \zeta
+\psi = 4 s v_0 \partial_r V(L) \zeta = 4 s v_0^2 \zeta
 \label{psiZeta}
 \end{equation}
 linking the dynamical free energy $\psi$ and the sticking term $\zeta$.\\
@@ -195,7 +195,7 @@ such that Eq. (\ref{bulk:biased1}) gives
 \end{equation}
 and the difference and sum of Eqs. (\ref{bulk:biased2}, \ref{bulk:biased3}) give
 \begin{eqnarray}
-2 l (\varepsilon(r) + \theta(r))^{\prime} = (2 \tau + \psi)(\varepsilon(r) - \theta(r))\\
+2 l (\varepsilon(r) + \theta(r))^{\prime} = (2 + \tau \psi)(\varepsilon(r) - \theta(r))\\
 \begin{aligned}
 2 l (\varepsilon(r) - \theta(r))^{\prime} &= -4 \beta(r) + (\tau\psi + 2)(\varepsilon(r) + \theta(r))\\
 &= \left((\tau\psi + 2) - \frac{4}{\tau\psi + 2}\right)(\varepsilon(r) + \theta(r))
@@ -207,7 +207,7 @@ A^{\prime\prime}(r) - k^2 A(r) = 0
 \end{equation}
 where
 \begin{equation}
-k^2 l^2 = \frac{\tau \psi}{2}\left(\frac{\tau \psi}{2} + 2\right)
+k^2 l^2 = \tau \psi \left(\frac{\tau \psi}{2} + 2\right)
 \label{kPsi}
 \end{equation}
 and which general solution is
@@ -253,7 +253,7 @@ such that
 \end{equation}
 which with Eq. (\ref{psiZeta}) gives
 \begin{equation}
-\psi = 2 s v_0^2 (\tau \psi + 2) \gamma
+\psi = 4 s v_0^2 (\tau \psi + 2) \gamma
 \label{gammaPsi}
 \end{equation}
 where we need to determine $\gamma$.\\
@@ -339,28 +339,28 @@ from which we infer
 \end{equation}
 and an expression of Eq. (\ref{gammaPsi}) at the lowest order of $L^{-1}$
 \begin{equation}
-\gamma = \frac{\psi}{4 s v_0^2}
+\gamma = \frac{\psi}{8 s v_0^2}
 \end{equation}
 which with Eq.(\ref{kPsi}) linking $k$ and $\psi$, also at the lowest order of $L^{-1}$,
 \begin{equation}
 \label{SCkl}
-k^2 l^2 = \tau \psi \Rightarrow k = \begin{cases} \frac{1}{l} \sqrt{\tau\psi} &\text{ if } s > 0, \\ 0 &\text{ if } s = 0, \\ \mathrm{i} \, \frac{1}{l} \sqrt{- \tau\psi} &\text{ if } s < 0, \end{cases}
+k^2 l^2 = 2 \tau \psi \Rightarrow k = \begin{cases} \frac{1}{l} \sqrt{2\tau\psi} &\text{ if } s > 0, \\ 0 &\text{ if } s = 0, \\ \mathrm{i} \, \frac{1}{l} \sqrt{- 2\tau\psi} &\text{ if } s < 0, \end{cases}
 \end{equation}
 give
 \begin{eqnarray}
-\frac{4}{s L v_0} = \frac{\coth\left(\sqrt{\frac{\psi L^2}{4 l v_0}}\right)}{\sqrt{\frac{\psi L^2}{4 l v_0}}} \Leftrightarrow \frac{1}{\Lambda} = \frac{\coth\left(\sqrt{\Phi}\right)}{\sqrt{\Phi}} &\qquad\qquad s > 0, \psi > 0\\
-- \frac{4}{s L v_0} = \frac{\cot\left(\sqrt{\frac{|\psi| L^2}{4 l v_0}}\right)}{\sqrt{\frac{|\psi| L^2}{4 l v_0}}} \Leftrightarrow - \frac{1}{\Lambda} = \frac{\cot\left(\sqrt{|\Phi|}\right)}{\sqrt{|\Phi|}} &\qquad\qquad s < 0, \psi < 0
+\frac{1}{s L v_0} = \frac{\coth\left(\sqrt{\frac{\psi L^2}{2 l v_0}}\right)}{\sqrt{\frac{\psi L^2}{2 l v_0}}} \Leftrightarrow \frac{1}{\Lambda} = \frac{\coth\left(\sqrt{\Phi}\right)}{\sqrt{\Phi}} &\qquad\qquad s > 0, \psi > 0\\
+- \frac{1}{s L v_0} = \frac{\cot\left(\sqrt{\frac{|\psi| L^2}{2 l v_0}}\right)}{\sqrt{\frac{|\psi| L^2}{2 l v_0}}} \Leftrightarrow - \frac{1}{\Lambda} = \frac{\cot\left(\sqrt{|\Phi|}\right)}{\sqrt{|\Phi|}} &\qquad\qquad s < 0, \psi < 0
 \end{eqnarray}
 where we have set
 \begin{eqnarray}
 \label{Lambda}
-\Lambda = \frac{s L v_0}{4}\\
+\Lambda = s L v_0\\
 \label{Phi}
-\Phi = \frac{\psi L^2}{4 l v_0} = \frac{\Psi}{4 l v_0}
+\Phi = \frac{\psi L^2}{2 l v_0} = \frac{\Psi}{2 l v_0}
 \end{eqnarray}
 for convenience, and introduce
 \begin{equation}
-\Gamma = \frac{\Phi}{\Lambda} = \frac{\psi}{4 s v_0^2} \frac{4 L}{l} = \gamma \frac{4 L}{l}
+\Gamma = \frac{\Phi}{\Lambda} = \frac{\psi}{8 s v_0^2} \frac{4 L}{l} = \gamma \frac{4 L}{l}
 \label{eqGamma}
 \end{equation}
 which we plot in Fig. \ref{Gamma}.
@@ -368,7 +368,7 @@ which we plot in Fig. \ref{Gamma}.
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.5\textwidth]{gamma.eps}
-\caption{Rescaled sticking term $\Gamma = (4L/l) \, \gamma$ as a function of rescaled biasing parameter $\Lambda = (L v_0/4) \, s$.}
+\caption{Rescaled sticking term $\Gamma = (4L/l) \, \gamma$ as a function of rescaled biasing parameter $\Lambda = s L v_0$.}
 \label{Gamma}
 \end{figure}
 
@@ -382,14 +382,14 @@ A_+ = \frac{2\gamma}{l} \frac{1}{1 + e^{-kL}} = \frac{k}{4(1 - e^{-kL})}
 \end{equation}
 so we can write with Eqs. (\ref{SCkl}, \ref{Lambda}, \ref{Phi}, \ref{eqGamma})
 \begin{equation}
-L \varepsilon(r) = \frac{1}{4} \Gamma \begin{cases} \frac{\cosh\left(\sqrt{\Phi(1 - 2r/L)}\right)}{\cosh\left(\sqrt{\Phi}\right)} &\text{ if } s > 0, \\ 1 &\text{ if } s = 0, \\ \frac{\cos\left(\sqrt{|\Phi|(1 - 2r/L)}\right)}{\cos\left(\sqrt{|\Phi|}\right)} &\text{ if } s < 0, \end{cases}
+L \varepsilon(r) = \frac{1}{4} \Gamma \begin{cases} \frac{\cosh\left(\sqrt{\Phi}(1 - 2r/L)\right)}{\cosh\left(\sqrt{\Phi}\right)} &\text{ if } s > 0, \\ 1 &\text{ if } s = 0, \\ \frac{\cos\left(\sqrt{|\Phi|}(1 - 2r/L)\right)}{\cos\left(\sqrt{|\Phi|}\right)} &\text{ if } s < 0, \end{cases}
 \end{equation}
 which we plot in Fig. \ref{fig:epsilon}.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.5\textwidth]{epsilon.eps}
-\caption{Rescaled regular part $L \varepsilon(r)$ as a function of rescaled distance $r/L$ for different values of the rescaled biasing parameter $\Lambda = (L v_0/4) \, s$.}
+\caption{Rescaled regular part $L \varepsilon(r)$ as a function of rescaled distance $r/L$ for different values of the rescaled biasing parameter $\Lambda = s L v_0$.}
 \label{fig:epsilon}
 \end{figure}
 
