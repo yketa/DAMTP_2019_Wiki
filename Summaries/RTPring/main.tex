@@ -321,7 +321,7 @@ A_+ = A_- = \frac{{\left({\left(\frac{2 \, k l}{\psi \tau + 2} + 1\right)} e^{\l
 
 We assume there exists a scaling form
 \begin{equation}
-\psi(s) = L^{-2} \Psi(s L)
+\psi(s) = L^{-2} \varphi(s L)
 \end{equation}
 so that for $s = \mathcal{O}(L^{-1})$ we have $\psi(s) = \mathcal{O}(L^{-2})$ and $k = \mathcal{O}(L^{-1})$ from Eq. (\ref{kPsi}).\\
 
@@ -348,19 +348,19 @@ k^2 l^2 = 2 \tau \psi \Rightarrow k = \begin{cases} \frac{1}{l} \sqrt{2\tau\psi}
 \end{equation}
 give
 \begin{eqnarray}
-\frac{1}{s L v_0} = \frac{\coth\left(\sqrt{\frac{\psi L^2}{2 l v_0}}\right)}{\sqrt{\frac{\psi L^2}{2 l v_0}}} \Leftrightarrow \frac{1}{\Lambda} = \frac{\coth\left(\sqrt{\Phi}\right)}{\sqrt{\Phi}} &\qquad\qquad s > 0, \psi > 0\\
-- \frac{1}{s L v_0} = \frac{\cot\left(\sqrt{\frac{|\psi| L^2}{2 l v_0}}\right)}{\sqrt{\frac{|\psi| L^2}{2 l v_0}}} \Leftrightarrow - \frac{1}{\Lambda} = \frac{\cot\left(\sqrt{|\Phi|}\right)}{\sqrt{|\Phi|}} &\qquad\qquad s < 0, \psi < 0
+\frac{1}{s L v_0} = \frac{\coth\left(\sqrt{\frac{\psi L^2}{2 l v_0}}\right)}{\sqrt{\frac{\psi L^2}{2 l v_0}}} \Leftrightarrow \frac{1}{\Lambda} = \frac{\coth\left(\sqrt{\Psi}\right)}{\sqrt{\Psi}} &\qquad\qquad s > 0, \psi > 0\\
+- \frac{1}{s L v_0} = \frac{\cot\left(\sqrt{\frac{|\psi| L^2}{2 l v_0}}\right)}{\sqrt{\frac{|\psi| L^2}{2 l v_0}}} \Leftrightarrow - \frac{1}{\Lambda} = \frac{\cot\left(\sqrt{|\Psi|}\right)}{\sqrt{|\Psi|}} &\qquad\qquad s < 0, \psi < 0
 \end{eqnarray}
 where we have set
 \begin{eqnarray}
 \label{Lambda}
 \Lambda = s L v_0\\
 \label{Phi}
-\Phi = \frac{\psi L^2}{2 l v_0} = \frac{\Psi}{2 l v_0}
+\Psi = \frac{\psi L^2}{2 l v_0} = \frac{\varphi}{2 l v_0}
 \end{eqnarray}
 for convenience, and introduce
 \begin{equation}
-\Gamma = \frac{\Phi}{\Lambda} = \frac{\psi}{8 s v_0^2} \frac{4 L}{l} = \gamma \frac{4 L}{l}
+\Gamma = \frac{\Psi}{\Lambda} = \frac{\psi}{8 s v_0^2} \frac{4 L}{l} = \gamma \frac{4 L}{l}
 \label{eqGamma}
 \end{equation}
 which we plot in Fig. \ref{Gamma}.
@@ -382,7 +382,7 @@ A_+ = \frac{2\gamma}{l} \frac{1}{1 + e^{-kL}} = \frac{k}{4(1 - e^{-kL})}
 \end{equation}
 so we can write with Eqs. (\ref{SCkl}, \ref{Lambda}, \ref{Phi}, \ref{eqGamma})
 \begin{equation}
-L \varepsilon(r) = \frac{1}{4} \Gamma \begin{cases} \frac{\cosh\left(\sqrt{\Phi}(1 - 2r/L)\right)}{\cosh\left(\sqrt{\Phi}\right)} &\text{ if } s > 0, \\ 1 &\text{ if } s = 0, \\ \frac{\cos\left(\sqrt{|\Phi|}(1 - 2r/L)\right)}{\cos\left(\sqrt{|\Phi|}\right)} &\text{ if } s < 0, \end{cases}
+L \varepsilon(r) = \frac{1}{4} \Gamma \begin{cases} \frac{\cosh\left(\sqrt{\Psi}(1 - 2r/L)\right)}{\cosh\left(\sqrt{\Psi}\right)} &\text{ if } s > 0, \\ 1 &\text{ if } s = 0, \\ \frac{\cos\left(\sqrt{|\Psi|}(1 - 2r/L)\right)}{\cos\left(\sqrt{|\Psi|}\right)} &\text{ if } s < 0, \end{cases}
 \end{equation}
 which we plot in Fig. \ref{fig:epsilon}.
 
