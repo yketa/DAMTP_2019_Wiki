@@ -55,7 +55,7 @@ axn.set_xlabel(r'$\tilde{\lambda} \tilde{L}$')
 axn.set_xlim([-10, 10])
 axn.set_xticks([-10, -8, -6, -4, -2, 0, 2, 4, 6, 8, 10])
 axn.set_xticklabels(['', r'$-8$', '', r'$-4$', '', r'$0$', '', r'$4$', '', r'$8$', ''])
-axn.set_ylabel(r'$\nu(\tilde{\lambda})$')
+axn.set_ylabel(r'$\nu^{\rm RTP}(\tilde{\lambda})$')
 
 linen = {}
 for L in _L:
