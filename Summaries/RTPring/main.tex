@@ -405,9 +405,11 @@ We assume that the normalisation condition
 \label{normalisation_pave}
 \end{equation}
 as well as the general form
-\begin{equation}
-Y_{\alpha_1\alpha_2}(r) = \varepsilon_{\alpha_1\alpha_2}^Y(r) + \gamma_{\alpha_1\alpha_2,l}^Y \delta (r) + \gamma_{\alpha_1\alpha_2,r}^Y \delta (L - r)
-\end{equation}
+\begin{eqnarray}
+Y_{\alpha\alpha}(r) = \hat{\varepsilon}_{\alpha\alpha}(r) + \hat{\gamma}_{\alpha\alpha} \delta (r) +  \hat{\gamma}_{\alpha\alpha} \delta (L - r)\\
+Y_{+-}(r) = \hat{\varepsilon}_{+-}(r) + \hat{\gamma}_{\alpha\overline{\alpha}} \delta (r)\\
+Y_{-+}(r) = \hat{\varepsilon}_{-+}(r) + \hat{\gamma}_{\alpha\overline{\alpha}} \delta (L - r)
+\end{eqnarray}
 also hold for $Y_{\alpha_1\alpha_2}$.\\
 
 We write the hermitian adjoints of Eqs.~\ref{FP1}, \ref{FP2}, \ref{FP3} for the right eigenvectors
@@ -421,7 +423,9 @@ following the symmetries we have introduced.\\
 
 We notice that the bulk equations for Eqs.~\ref{FPr1}, \ref{FPr2} are the bulk equations \eqref{bulk:biased1}, \eqref{bulk:biased2}, \eqref{bulk:biased3} under the transformation $\alpha \to \overline{\alpha}$ so we get on $]0;L[$
 \begin{eqnarray}
+\label{qaa}
 Q_{\alpha\alpha}(r) = A^{\prime} (\tau \psi + 2)^{-1} (e^{-k r} + e^{-k (L - r)})\\
+\label{qaoa}
 Q_{\alpha\overline{\alpha}}(r) = \left(1 + \frac{\alpha 2 k l}{\tau \psi + 2}\right) A^{\prime} e^{- k r} + \left(1 - \frac{\alpha 2 k l}{\tau \psi + 2}\right) A^{\prime} e^{- k (L - r)}
 \end{eqnarray}
 where $k$ is defined by Eq.~\ref{kPsi} and $A^{\prime}$ is a new constant.\\
@@ -429,9 +433,14 @@ where $k$ is defined by Eq.~\ref{kPsi} and $A^{\prime}$ is a new constant.\\
 We write for $Y_{\alpha_1\alpha_2}$ the equations
 \begin{eqnarray}
 \label{FPrY1}
-\psi Y_{\alpha\alpha}(r) = - 2 \partial_r V(r) P_{\alpha\alpha}(r) \partial_r Q_{\alpha\alpha(r)} + \tau^{-1} \left(Y_{\alpha\overline{\alpha}}(r) \frac{P_{\alpha\alpha(r)}}{P_{\alpha\overline{\alpha}}(r)} + Y_{\overline{\alpha}\alpha}(r) \frac{P_{\alpha\alpha(r)}}{P_{\overline{\alpha}\alpha}(r)} - 2 Y_{\alpha\alpha}(r)\right)\\
-\label{FPrY2}
-\psi Y_{\alpha\alpha}(r) = 2 Q_{\alpha\alpha}(r) \partial_r (P_{\alpha\alpha}(r) \partial_r V(r)) + \tau^{-1} \left(Y_{\alpha\alpha}(r) \frac{P_{\alpha\overline{\alpha}}(r)}{P_{\alpha\alpha}(r)} + Y_{\alpha\alpha}(r) \frac{P_{\overline{\alpha}\alpha}(r)}{P_{\alpha\alpha}(r)} - 2 Y_{\alpha\alpha}(r)\right)\\
+\begin{aligned}
+\psi Y_{\alpha\overline{\alpha}}(r) \frac{P_{\alpha\alpha}(r)}{P_{\alpha\overline{\alpha}}(r)} = &\left[- \alpha 2 v_0 \partial_r Q_{\alpha\overline{\alpha}}(r) - 2 \partial_r V(r) \partial_r Q_{\alpha\overline{\alpha}}(r)\right] P_{\alpha\alpha}(r)\\
+&+ \tau^{-1} \left(2 Y_{\alpha\alpha}(r) - 2 Y_{\alpha\overline{\alpha}}(r) \frac{P_{\alpha\alpha}(r)}{P_{\alpha\overline{\alpha}}(r)}\right) - \alpha 2 s v_0 \partial_r V(r) Y_{\alpha\overline{\alpha}}(r) \frac{P_{\alpha\alpha}(r)}{P_{\alpha\overline{\alpha}}(r)}
+\end{aligned}\\
+% \label{FPrY1}
+% \psi Y_{\alpha\alpha}(r) = - 2 \partial_r V(r) P_{\alpha\alpha}(r) \partial_r Q_{\alpha\alpha}(r) + \tau^{-1} \left(Y_{\alpha\overline{\alpha}}(r) \frac{P_{\alpha\alpha(r)}}{P_{\alpha\overline{\alpha}}(r)} + Y_{\overline{\alpha}\alpha}(r) \frac{P_{\alpha\alpha(r)}}{P_{\overline{\alpha}\alpha}(r)} - 2 Y_{\alpha\alpha}(r)\right)\\
+% \label{FPrY2}
+% \psi Y_{\alpha\alpha}(r) = 2 Q_{\alpha\alpha}(r) \partial_r (P_{\alpha\alpha}(r) \partial_r V(r)) + \tau^{-1} \left(Y_{\alpha\alpha}(r) \frac{P_{\alpha\overline{\alpha}}(r)}{P_{\alpha\alpha}(r)} + Y_{\alpha\alpha}(r) \frac{P_{\overline{\alpha}\alpha}(r)}{P_{\alpha\alpha}(r)} - 2 Y_{\alpha\alpha}(r)\right)\\
 \label{FPrY3}
 \begin{aligned}
 \psi Y_{\alpha\overline{\alpha}}(r) = &- \alpha 2 v_0 P_{\alpha\overline{\alpha}}(r) \partial_r Q_{\alpha\overline{\alpha}}(r) - 2 \partial_r V(r) P_{\alpha\overline{\alpha}}(r) \partial_r Q_{\alpha\overline{\alpha}}(r) + \tau^{-1} \left(2 Y_{\alpha\alpha}(r) \frac{P_{\alpha\overline{\alpha}}(r)}{P_{\alpha\alpha}(r)} - 2 Y_{\alpha\overline{\alpha}}(r)\right)\\
@@ -443,17 +452,61 @@ We write for $Y_{\alpha_1\alpha_2}$ the equations
 &- \alpha 2 s v_0 \partial_r V(r) Y_{\alpha\overline{\alpha}}(r)
 \end{aligned}
 \end{eqnarray}
-where \eqref{FPrY1} is derived from the multiplication of \eqref{FPr1} by $P_{\alpha\alpha}(r)$, \eqref{FPrY2} is derived from the multiplication of \eqref{FP1} by $Q_{\alpha\alpha}(r)$, \eqref{FPrY3} is derived from the multiplication of \eqref{FPr2} by $P_{\alpha\overline{\alpha}}(r)$, \eqref{FPrY4} is derived from the multiplication of (\ref{FP2}, \ref{FP3}) by $Q_{\alpha\overline{\alpha}}(r)$.\\
-
-We substract Eqs.~\ref{FPrY1},~\ref{FPrY2}
-\begin{equation}
-0 = - 2 \partial_r (\partial_r V(r) Y_{\alpha\alpha}(r)) + \tau^{-1} \left(Y_{\alpha\overline{\alpha}}(r) \frac{P_{\alpha\alpha(r)}}{P_{\alpha\overline{\alpha}}(r)} + Y_{\overline{\alpha}\alpha}(r) \frac{P_{\alpha\alpha(r)}}{P_{\overline{\alpha}\alpha}(r)} - Y_{\alpha\alpha}(r) \frac{P_{\alpha\overline{\alpha}}(r)}{P_{\alpha\alpha}(r)} - Y_{\alpha\alpha}(r) \frac{P_{\overline{\alpha}\alpha}(r)}{P_{\alpha\alpha}(r)}\right)
-\end{equation}
-and also Eqs.~\ref{FPrY3},~\ref{FPrY4}
+where \eqref{FPrY1} is derived from the multiplication of \eqref{FPr2} by $P_{\alpha\alpha}(r)$,
+% where \eqref{FPrY1} is derived from the multiplication of \eqref{FPr1} by $P_{\alpha\alpha}(r)$, \eqref{FPrY2} is derived from the multiplication of \eqref{FP1} by $Q_{\alpha\alpha}(r)$,
+\eqref{FPrY3} is derived from the multiplication of \eqref{FPr2} by $P_{\alpha\overline{\alpha}}(r)$, \eqref{FPrY4} is derived from the multiplication of (\ref{FP2}, \ref{FP3}) by $Q_{\alpha\overline{\alpha}}(r)$
+, and finally substract
+%
+% We substract Eqs.~\ref{FPrY1},~\ref{FPrY2}
+% \begin{equation}
+% 0 = - 2 \partial_r (\partial_r V(r) Y_{\alpha\alpha}(r)) + \tau^{-1} \left(Y_{\alpha\overline{\alpha}}(r) \frac{P_{\alpha\alpha(r)}}{P_{\alpha\overline{\alpha}}(r)} + Y_{\overline{\alpha}\alpha}(r) \frac{P_{\alpha\alpha(r)}}{P_{\overline{\alpha}\alpha}(r)} - Y_{\alpha\alpha}(r) \frac{P_{\alpha\overline{\alpha}}(r)}{P_{\alpha\alpha}(r)} - Y_{\alpha\alpha}(r) \frac{P_{\overline{\alpha}\alpha}(r)}{P_{\alpha\alpha}(r)}\right)
+% \end{equation}
+% and also
+Eqs.~\ref{FPrY3},~\ref{FPrY4}
 \begin{equation}
 0 = - \alpha 2 v_0 \partial_r Y_{\alpha\overline{\alpha}}(r) - 2 \partial_r (Y_{\alpha\overline{\alpha}}(r) \partial_r V(r)) + \tau^{-1} \left(2 Y_{\alpha\alpha}(r) \frac{P_{\alpha\overline{\alpha}}(r)}{P_{\alpha\alpha}(r)} - 2 Y_{\alpha\overline{\alpha}}(r) \frac{P_{\alpha\alpha}(r)}{P_{\alpha\overline{\alpha}}(r)}\right)
 \end{equation}
-to get equations where derivatives should cancel when taking intergrals over boundaries.
+to get equations where derivatives should have nice integrals.\\
+
+We integrate Eqs.~\ref{FPrY1},~\ref{FPrY4} between $0^-$ and $0^+$
+\begin{eqnarray}
+\label{BCr1}
+\psi \hat{\gamma}_{\alpha\overline{\alpha}} \frac{\gamma_{\alpha\alpha}}{\gamma_{\alpha\overline{\alpha}}} = \tau^{-1} \left(2 \hat{\gamma}_{\alpha\alpha} - 2 \hat{\gamma}_{\alpha\overline{\alpha}} \frac{\gamma_{\alpha\alpha}}{\gamma_{\alpha\overline{\alpha}}}\right) + 2 s v_0^2 \hat{\gamma}_{\alpha\overline{\alpha}} \frac{\gamma_{\alpha\alpha}}{\gamma_{\alpha\overline{\alpha}}}\\
+\label{BCr2}
+0 = - v_0 \hat{\varepsilon}_{+-}(0^+) + \tau^{-1} \left(\hat{\gamma}_{\alpha\alpha} \frac{\gamma_{\alpha\overline{\alpha}}}{\gamma_{\alpha\alpha}} - \hat{\gamma}_{\alpha\overline{\alpha}} \frac{\gamma_{\alpha\alpha}}{\gamma_{\alpha\overline{\alpha}}}\right)
+\end{eqnarray}
+where we have discarded in \eqref{BCr1} the integral of the first term of the right hand side of \eqref{FPrY1} since $\partial_r V(0) = -v_0$, and where
+\begin{eqnarray}
+\label{he+-}
+\begin{aligned}
+\hat{\varepsilon}_{+-}(r) &= Q_{+-}(r) P_{+-}(r) \qquad (r \in ]0; L[)\\
+&= A A^{\prime} \left[1 - \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right](e^{-2 k r} + e^{-2 k (L - r)}) + \left[\left(1 + \frac{2 k l}{\tau \psi + 2}\right)^2 + \left(1 - \frac{2 k l}{\tau \psi + 2}\right)^2\right] e^{-k L}
+\end{aligned}\\
+\label{he+-lim}
+\begin{aligned}
+\hat{\varepsilon}_{+-}(0^+) = \lim_{r \to 0^+} \hat{\varepsilon}_{+-}(r) = A A^{\prime} \left[1 - \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right](1 + e^{-2 k L}) + \left[\left(1 + \frac{2 k l}{\tau \psi + 2}\right)^2 + \left(1 - \frac{2 k l}{\tau \psi + 2}\right)^2\right] e^{-k L}
+\end{aligned}
+\end{eqnarray}
+from Eqs.~\ref{epsilon},~\ref{qaoa}. We solve Eqs.~\ref{BCr1},~\ref{BCr2} for $\hat{\gamma}_{\alpha\alpha}$ and $\hat{\gamma}_{\alpha\overline{\alpha}}$
+\begin{eqnarray}
+\label{hgaa}
+\hat{\gamma}_{\alpha\alpha} = \frac{l \left(\frac{1}{2}(\tau \psi + 2) - s l v_0 \frac{\gamma_{\alpha\alpha}}{\gamma_{\alpha\overline{\alpha}}}\right)\hat{\varepsilon}_{+-}(0^+)}{\frac{1}{2}(\tau \psi + 2) - (1 + s l v_0) \frac{\gamma_{\alpha\alpha}}{\gamma_{\alpha\overline{\alpha}}}}\\
+\label{hgaoa}
+\hat{\gamma}_{\alpha\overline{\alpha}} = \frac{l \hat{\varepsilon}_{+-}(0^+)}{\frac{1}{2}(\tau \psi + 2) - (1 + s l v_0) \frac{\gamma_{\alpha\alpha}}{\gamma_{\alpha\overline{\alpha}}}}
+\end{eqnarray}
+as a function of $\hat{\varepsilon}_{+-}(0^+)$.\\
+
+We can finally write the normalisation condition \eqref{normalisation_pave}
+\begin{equation}
+1 = 4 \hat{\gamma}_{\alpha\alpha} + 2 \hat{\gamma}_{\alpha\overline{\alpha}} + 2 \int_0^L \hat{\varepsilon}_{\alpha\alpha}(r) \, \mathrm{d}r + 2 \int_0^L \hat{\varepsilon}_{\alpha\overline{\alpha}}(r) \, \mathrm{d}r
+\label{normalisation_pave_full}
+\end{equation}
+where we have
+\begin{equation}
+\hat{\varepsilon}_{\alpha\alpha}(r) = P_{\alpha\alpha}(r \in ]0; L[) Q_{\alpha\alpha}(r \in ]0; L[) = \frac{A A^{\prime}}{(\tau \psi + 2)^2} \left(e^{-2 k r} + e^{-2 k (L - r)} + 2 e^{-k L}\right)
+\label{heaa}
+\end{equation}
+according to Eqs.~\ref{beta},~\ref{qaa}. We can then finally determine $A^{\prime}$ from (\ref{he+-}, \ref{he+-lim}, \ref{hgaa}, \ref{hgaoa}, \ref{normalisation_pave_full}, \ref{heaa}) and thus know $Y_{\alpha_1\alpha_2}$ completely.
 
 %%%%%%%%%%%%%%
 % REFERENCES %
