@@ -141,14 +141,19 @@ and the symmetries (Eqs. (\ref{evensymmetry}, \ref{oddsymmetry})).\\
 
 We get
 \begin{eqnarray}
+\label{s0++}
 P_{++}(r) = a + l a \delta(r) + l a \delta(L - r)\\
+\label{s0--}
 P_{--}(r) = a + l a \delta(r) + l a \delta(L - r)\\
+\label{s0+-}
 P_{+-}(r) = a + 2 l a \delta(r)\\
+\label{s0-+}
 P_{-+}(r) = a + 2 l a \delta(L - r)
 \end{eqnarray}
 with
 \begin{equation}
 a = \frac{1}{4(L + 2l)}
+\label{smooth_unbiased}
 \end{equation}
 and the persistence length $l = v_0 \tau$.
 
@@ -396,6 +401,8 @@ which we plot in Fig. \ref{fig:epsilon}.
 
 \section{Solution to the adjoint eigenproblem}
 
+\subsection{General solution}
+
 We have computed the left eigenvectors $P_{\alpha_1\alpha_2}$ of Eq.~\ref{eigenproblem} corresponding to the SCGF $\psi(\lambda)$ in Sec.~\ref{sec:biased-distribution}, and will now compute the right eigenvectors $Q_{\alpha_1\alpha_2}$.
 We introduce $Y_{\alpha_1\alpha_2}(r) = P_{\alpha_1\alpha_2}(r) Q_{\alpha_1\alpha_2}(r)$ which has the same symmetries as $P_{\alpha_1\alpha_2}(r)$, so that $Q_{\alpha_1\alpha_2}(r)$ also has these properties.\\
 
@@ -426,7 +433,7 @@ We notice that the bulk equations for Eqs.~\ref{FPr1}, \ref{FPr2} are the bulk e
 \label{qaa}
 Q_{\alpha\alpha}(r) = A^{\prime} (\tau \psi + 2)^{-1} (e^{-k r} + e^{-k (L - r)})\\
 \label{qaoa}
-Q_{\alpha\overline{\alpha}}(r) = \left(1 + \frac{\alpha 2 k l}{\tau \psi + 2}\right) A^{\prime} e^{- k r} + \left(1 - \frac{\alpha 2 k l}{\tau \psi + 2}\right) A^{\prime} e^{- k (L - r)}
+2 Q_{\alpha\overline{\alpha}}(r) = \left(1 + \frac{\alpha 2 k l}{\tau \psi + 2}\right) A^{\prime} e^{- k r} + \left(1 - \frac{\alpha 2 k l}{\tau \psi + 2}\right) A^{\prime} e^{- k (L - r)}
 \end{eqnarray}
 where $k$ is defined by Eq.~\ref{kPsi} and $A^{\prime}$ is a new constant.\\
 
@@ -480,19 +487,19 @@ where we have discarded in \eqref{BCr1} the integral of the first term of the ri
 \label{he+-}
 \begin{aligned}
 \hat{\varepsilon}_{+-}(r) &= Q_{+-}(r) P_{+-}(r) \qquad (r \in ]0; L[)\\
-&= A A^{\prime} \left[1 - \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right](e^{-2 k r} + e^{-2 k (L - r)}) + \left[\left(1 + \frac{2 k l}{\tau \psi + 2}\right)^2 + \left(1 - \frac{2 k l}{\tau \psi + 2}\right)^2\right] e^{-k L}
+&= \frac{A A^{\prime}}{4} \left[1 - \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right](e^{-2 k r} + e^{-2 k (L - r)}) + \frac{A A^{\prime}}{4} \left[\left(1 + \frac{2 k l}{\tau \psi + 2}\right)^2 + \left(1 - \frac{2 k l}{\tau \psi + 2}\right)^2\right] e^{-k L}
 \end{aligned}\\
 \label{he+-lim}
 \begin{aligned}
-\hat{\varepsilon}_{+-}(0^+) = \lim_{r \to 0^+} \hat{\varepsilon}_{+-}(r) = A A^{\prime} \left[1 - \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right](1 + e^{-2 k L}) + \left[\left(1 + \frac{2 k l}{\tau \psi + 2}\right)^2 + \left(1 - \frac{2 k l}{\tau \psi + 2}\right)^2\right] e^{-k L}
+\hat{\varepsilon}_{+-}(0^+) = \lim_{r \to 0^+} \hat{\varepsilon}_{+-}(r) = \frac{A A^{\prime}}{4} \left[1 - \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right](1 + e^{-2 k L}) + \frac{A A^{\prime}}{4} \left[\left(1 + \frac{2 k l}{\tau \psi + 2}\right)^2 + \left(1 - \frac{2 k l}{\tau \psi + 2}\right)^2\right] e^{-k L}
 \end{aligned}
 \end{eqnarray}
-from Eqs.~\ref{epsilon},~\ref{qaoa}. We solve Eqs.~\ref{BCr1},~\ref{BCr2} for $\hat{\gamma}_{\alpha\alpha}$ and $\hat{\gamma}_{\alpha\overline{\alpha}}$
+from Eqs.~\ref{epsilon},~\ref{qaoa}, with $A = A_{\pm}$ which appear in Eqs.~\ref{epsilon}, \ref{theta}, \ref{beta}. We solve Eqs.~\ref{BCr1},~\ref{BCr2} for $\hat{\gamma}_{\alpha\alpha}$ and $\hat{\gamma}_{\alpha\overline{\alpha}}$
 \begin{eqnarray}
 \label{hgaa}
-\hat{\gamma}_{\alpha\alpha} = \frac{l \left(\frac{1}{2}(\tau \psi + 2) - s l v_0 \frac{\gamma_{\alpha\alpha}}{\gamma_{\alpha\overline{\alpha}}}\right)\hat{\varepsilon}_{+-}(0^+)}{\frac{1}{2}(\tau \psi + 2) - (1 + s l v_0) \frac{\gamma_{\alpha\alpha}}{\gamma_{\alpha\overline{\alpha}}}}\\
+\hat{\gamma}_{\alpha\alpha} = \frac{\left[\frac{1}{2} (\tau \psi + 2) - s l v_0\right] \frac{\gamma_{\alpha\alpha}}{\gamma_{\alpha\overline{\alpha}}} l \hat{\varepsilon}_{+-}(0^+)}{\frac{1}{2}(\tau\psi + 2) - s l v_0 - \frac{\gamma_{\alpha\alpha}}{\gamma_{\alpha\overline{\alpha}}}}\\
 \label{hgaoa}
-\hat{\gamma}_{\alpha\overline{\alpha}} = \frac{l \hat{\varepsilon}_{+-}(0^+)}{\frac{1}{2}(\tau \psi + 2) - (1 + s l v_0) \frac{\gamma_{\alpha\alpha}}{\gamma_{\alpha\overline{\alpha}}}}
+\hat{\gamma}_{\alpha\overline{\alpha}} = \frac{l \hat{\varepsilon}_{+-}(0^+)}{\frac{1}{2}(\tau\psi + 2) - s l v_0 - \frac{\gamma_{\alpha\alpha}}{\gamma_{\alpha\overline{\alpha}}}}
 \end{eqnarray}
 as a function of $\hat{\varepsilon}_{+-}(0^+)$.\\
 
@@ -507,6 +514,35 @@ where we have
 \label{heaa}
 \end{equation}
 according to Eqs.~\ref{beta},~\ref{qaa}. We can then finally determine $A^{\prime}$ from (\ref{he+-}, \ref{he+-lim}, \ref{hgaa}, \ref{hgaoa}, \ref{normalisation_pave_full}, \ref{heaa}) and thus know $Y_{\alpha_1\alpha_2}$ completely.
+
+\subsection{Unbiased ensemble check}
+
+We have in the unbiased ensemble $\psi(s = 0) = 0$, therefore $k = 0$ according to \eqref{kPsi}. It follows that
+\begin{equation}
+\hat{\varepsilon}_{\alpha\alpha}(r, s=0) = \hat{\varepsilon}_{\alpha\overline{\alpha}}(r, s=0) = A A^{\prime}
+\end{equation}
+from Eqs.~\ref{he+-},~\ref{heaa}. We know from Eqs.~\ref{s0++}, \ref{s0--}, \ref{s0+-}, \ref{s0-+} that
+\begin{equation}
+\left. \frac{\gamma_{\alpha\alpha}}{\gamma_{\alpha\overline{\alpha}}} \right|_{s=0} = \frac{1}{2}
+\end{equation}
+therefore we get
+\begin{eqnarray}
+\hat{\gamma}_{\alpha\alpha}(s=0) = l A A^{\prime}\\
+\hat{\gamma}_{\alpha\overline{\alpha}}(s=0) = 2 l A A^{\prime}
+\end{eqnarray}
+from Eqs.~\ref{hgaa},~\ref{hgaoa}. We can then write the normalisation condition \eqref{normalisation_pave_full}
+\begin{equation}
+1 = 4 l A A^{\prime} + 4 l A A^{\prime} + 2 A A^{\prime} L + 2 A A^{\prime} L
+\end{equation}
+such that
+\begin{equation}
+A^{\prime} = \frac{1}{A( 8 l + 4 L)} = 1
+\end{equation}
+where the second equality derives from Eq.~\ref{smooth_unbiased}, and which consequence is that
+\begin{equation}
+Q_{\alpha\alpha}(r, s=0) = Q_{\alpha\overline{\alpha}}(r, s=0) = 1
+\end{equation}
+according to Eqs.~\ref{qaa},~\ref{qaoa}.
 
 %%%%%%%%%%%%%%
 % REFERENCES %
