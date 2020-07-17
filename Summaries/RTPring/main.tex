@@ -256,6 +256,7 @@ We have the left and right boundary equations (Eqs. (\ref{leftboundary:biased}, 
 such that
 \begin{equation}
 \gamma = \gamma_- = \gamma_+ = (\tau \psi + 2)^{-1} \zeta
+\label{ratio_gamma}
 \end{equation}
 which with Eq. (\ref{psiZeta}) gives
 \begin{equation}
@@ -487,11 +488,14 @@ where we have discarded in \eqref{BCr1} the integral of the first term of the ri
 \label{he+-}
 \begin{aligned}
 \hat{\varepsilon}_{+-}(r) &= Q_{+-}(r) P_{+-}(r) \qquad (r \in ]0; L[)\\
-&= \frac{A A^{\prime}}{4} \left[1 - \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right](e^{-2 k r} + e^{-2 k (L - r)}) + \frac{A A^{\prime}}{4} \left[\left(1 + \frac{2 k l}{\tau \psi + 2}\right)^2 + \left(1 - \frac{2 k l}{\tau \psi + 2}\right)^2\right] e^{-k L}
+&= \frac{A A^{\prime}}{4} \left[1 - \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right](e^{-2 k r} + e^{-2 k (L - r)})\\
+&\quad+ \frac{A A^{\prime}}{4} \left[\left(1 + \frac{2 k l}{\tau \psi + 2}\right)^2 + \left(1 - \frac{2 k l}{\tau \psi + 2}\right)^2\right] e^{-k L}\\
+&= \frac{A A^{\prime}}{4} \left[1 - \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right](e^{-2 k r} + e^{-2 k (L - r)}) + \frac{A A^{\prime}}{2} \left[1 + \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right] e^{-k L}
 \end{aligned}\\
 \label{he+-lim}
 \begin{aligned}
-\hat{\varepsilon}_{+-}(0^+) = \lim_{r \to 0^+} \hat{\varepsilon}_{+-}(r) = \frac{A A^{\prime}}{4} \left[1 - \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right](1 + e^{-2 k L}) + \frac{A A^{\prime}}{4} \left[\left(1 + \frac{2 k l}{\tau \psi + 2}\right)^2 + \left(1 - \frac{2 k l}{\tau \psi + 2}\right)^2\right] e^{-k L}
+\hat{\varepsilon}_{+-}(0^+) = \lim_{r \to 0^+} \hat{\varepsilon}_{+-}(r) &= \frac{A A^{\prime}}{4} \left[1 - \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right](1 + e^{-2 k L}) + \frac{A A^{\prime}}{2} \left[1 + \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right] e^{-k L}\\
+&= \frac{A A^{\prime}}{2} e^{-k L}\left[\left(1 - \left(\frac{2 k l}{\tau\psi + 2}\right)^2\right) \cosh(k L) + \left(1 + \left(\frac{2 k l}{\tau\psi + 2}\right)^2\right)\right]
 \end{aligned}
 \end{eqnarray}
 from Eqs.~\ref{epsilon},~\ref{qaoa}, with $A = A_{\pm}$ which appear in Eqs.~\ref{epsilon}, \ref{theta}, \ref{beta}. We solve Eqs.~\ref{BCr1},~\ref{BCr2} for $\hat{\gamma}_{\alpha\alpha}$ and $\hat{\gamma}_{\alpha\overline{\alpha}}$
@@ -513,7 +517,37 @@ where we have
 \hat{\varepsilon}_{\alpha\alpha}(r) = P_{\alpha\alpha}(r \in ]0; L[) Q_{\alpha\alpha}(r \in ]0; L[) = \frac{A A^{\prime}}{(\tau \psi + 2)^2} \left(e^{-2 k r} + e^{-2 k (L - r)} + 2 e^{-k L}\right)
 \label{heaa}
 \end{equation}
-according to Eqs.~\ref{beta},~\ref{qaa}. We can then finally determine $A^{\prime}$ from (\ref{he+-}, \ref{he+-lim}, \ref{hgaa}, \ref{hgaoa}, \ref{normalisation_pave_full}, \ref{heaa}) and thus know $Y_{\alpha_1\alpha_2}$ completely.
+according to Eqs.~\ref{beta},~\ref{qaa}. We compute from \eqref{heaa}
+\begin{equation}
+\int_0^L \hat{\varepsilon}_{\alpha\alpha}(r) \, \mathrm{d}r = \frac{2 A A^{\prime}}{(\tau \psi + 2)^2} e^{-k L} \left[\frac{1}{k} \sinh(k L) + L\right]
+\end{equation}
+and from \eqref{he+-}
+\begin{equation}
+\int_0^L \hat{\varepsilon}_{\alpha\overline{\alpha}}(r) \, \mathrm{d}r = \frac{A A^{\prime}}{2} e^{-k L} \left[\left(1 - \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right) \frac{1}{k} \sinh(k L) + \left(1 + \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right) L\right]
+\end{equation}
+on the hand, and use on the other hand \eqref{he+-lim} to re-write \eqref{normalisation_pave_full}
+\begin{equation}
+\begin{aligned}
+1 = &\left[4 \frac{\left(\frac{1}{2}(\tau \psi + 2) - s l v_0\right) \frac{\gamma_{\alpha\alpha}}{\gamma_{\alpha\overline{\alpha}}} l}{\frac{1}{2}(\tau \psi + 2) - s l v_0 - \frac{\gamma_{\alpha\alpha}}{\gamma_{\alpha\overline{\alpha}}}} + 2 \frac{l}{\frac{1}{2}(\tau \psi + 2) - s l v_0 - \frac{\gamma_{\alpha\alpha}}{\gamma_{\alpha\overline{\alpha}}}}\right]\\
+&\qquad \times \frac{A A^{\prime}}{2} e^{-k L} \left[\left(1 - \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right) \cosh(k L) + \left(1 + \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right)\right]\\
+&+ \frac{4 A A^{\prime}}{(\tau \psi + 2)^2} e^{-k L} \left[\frac{1}{k}\sinh(kL) + L\right]\\
+&+ A A^{\prime} e^{-k L} \left[\left(1 - \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right) \frac{1}{k} \sinh(k L) + \left(1 + \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right) L\right]\\
+= & A A^{\prime} e^{-k L}\\
+&\times\Bigg[\frac{l}{\frac{1}{2}(\tau \psi + 2) - s l v_0 - \frac{\gamma_{\alpha\alpha}}{\gamma_{\alpha\overline{\alpha}}}} \left(2 \left(\frac{1}{2} (\tau \psi + 2) - s l v_0\right) \frac{\gamma_{\alpha\alpha}}{\gamma_{\alpha\overline{\alpha}}} + 1\right)\\
+&\qquad\qquad \times \left(\left(1 - \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right) \cosh(k L) + \left(1 + \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right)\right)\\
+&\qquad + \frac{4}{(\tau \psi + 2)^2} \left(\frac{1}{k}\sinh(kL) + L\right) + \left(1 - \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right) \frac{1}{k} \sinh(k L) + \left(1 + \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right) L\Bigg]
+\end{aligned}
+\end{equation}
+and conclude
+\begin{equation}
+\begin{aligned}
+A^{\prime} =& \frac{e^{k L}}{A}\\
+&\times\Bigg[\frac{l}{\frac{1}{2}(\tau \psi + 2)^2 - s l v_0 (\tau \psi + 2) - 1} \left(2 (\tau \psi + 2) - 2 s l v_0\right)\\
+&\qquad\qquad \times \left(\left(1 - \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right) \cosh(k L) + \left(1 + \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right)\right)\\
+&\qquad + \frac{4}{(\tau \psi + 2)^2} \left(\frac{1}{k}\sinh(kL) + L\right) + \left(1 - \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right) \frac{1}{k} \sinh(k L) + \left(1 + \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right) L\Bigg]^{-1}
+\end{aligned}
+\end{equation}
+where we have used $\gamma_{\alpha\overline{\alpha}}/\gamma_{\alpha\alpha} = \tau \psi + 2$ \eqref{ratio_gamma} so we finally know $Y_{\alpha_1\alpha_2}$ completely.
 
 \subsection{Unbiased ensemble check}
 
