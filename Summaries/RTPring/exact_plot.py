@@ -14,7 +14,8 @@ _L = [.5, 1, 2, 5, 10]
 
 x = {L: np.array(np.linspace(-1./L, 0, 500).tolist() + np.linspace(0, 2, 500).tolist()) for L in _L}
 s = {L: np.array(list(map(lambda _: r.s(L, _), x[L])))*L for L in _L}
-nu = {L: np.array(list(map(lambda _: r.nu(L, _), x[L]))) for L in _L}
+nu = {L: np.array(list(map(lambda _: r.nu(_), x[L]))) for L in _L}
+nuAve = {L: np.array(list(map(lambda _: r.nuAve(L, _), x[L]))) for L in _L}
 
 smin = -10
 xmax = 0.5
@@ -56,18 +57,27 @@ axn.set_xlim([-10, 10])
 axn.set_xticks([-10, -8, -6, -4, -2, 0, 2, 4, 6, 8, 10])
 axn.set_xticklabels(['', r'$-8$', '', r'$-4$', '', r'$0$', '', r'$4$', '', r'$8$', ''])
 axn.set_ylabel(r'$\nu^{\rm RTP}(\tilde{\lambda})$')
+axn.set_ylim([-0.4, 0.6])
 
 linen = {}
 for L in _L:
 #	linen[L], = axn.plot(s[L][(x[L] < xmax)*(s[L] > smin)], nu[L][(x[L] < xmax)*(s[L] > smin)],
 	linen[L], = axn.plot(s[L][(s[L] > smin)], nu[L][(s[L] > smin)],
-		color=colors[L], label=r'$\tilde{L} = %s$' % L) 
+		color=colors[L], linestyle='-', label=r'$\tilde{L} = %s$' % L) 
+	linen[L], = axn.plot(s[L][(s[L] > smin)], nuAve[L][(s[L] > smin)],
+		color=colors[L], linestyle='--', label=r'$\tilde{L} = %s$' % L)
 
 plt.sca(axn)
 axn.add_artist(plt.legend(loc='upper right', ncol=1, borderpad=0.2,
 	handles=[
 		*[Line2D([0], [0], color=linen[L].get_color(), label=r'$\tilde{L}=%s$' % L)
 			for L in _L]]))
+axn.add_artist(plt.legend(loc='lower left', ncol=1, borderpad=0.2,
+	handles=[
+		Line2D([0], [0], color='black', linestyle='-',
+			label=r'$\nu^{\rm RTP}_{\rm end}$'),
+		Line2D([0], [0], color='black', linestyle='--',
+			label=r'$\nu^{\rm RTP}_{\rm ave}$')]))
 fign.subplots_adjust(**adjust)
 
 # show and save
