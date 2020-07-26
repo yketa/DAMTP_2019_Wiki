@@ -242,7 +242,7 @@ where we note that the symmetry condition of Eq. (\ref{oddsymmetry}) implies tha
 \begin{equation}
 \begin{aligned}
 \beta(r) &= (\tau\psi + 2)^{-1}(\varepsilon(r) + \theta(r)) = (\tau \psi + 2)^{-1} A(r)\\
-&= \frac{1}{2}(1 + \tau\psi/2)^{-1}(A_+ e^{-k r} + A_- e^{-k (L - r)})
+&= (1 + \tau\psi/2)^{-1}(A_+ e^{-k r} + A_- e^{-k (L - r)})
 \end{aligned}
 \label{beta}
 \end{equation}
@@ -490,7 +490,7 @@ We integrate Eqs.~\ref{FPrY1},~\ref{FPrY4} between $0^-$ and $0^+$
 \label{BCr2}
 0 = - v_0 \hat{\varepsilon}_{+-}(0^+) + \tau^{-1} \left(\hat{\gamma}_{\alpha\alpha} \frac{\gamma_{\alpha\overline{\alpha}}}{\gamma_{\alpha\alpha}} - \hat{\gamma}_{\alpha\overline{\alpha}} \frac{\gamma_{\alpha\alpha}}{\gamma_{\alpha\overline{\alpha}}}\right)
 \end{eqnarray}
-where we have discarded in \eqref{BCr1} the integral of the first term of the right hand side of \eqref{FPrY1} since $\partial_r V(0) = -v_0$, and where
+where we have discarded in \eqref{BCr1} the integral of the first term of the right hand side of \eqref{FPrY1} since $\partial_r V(0) = -v_0$, and with
 \begin{eqnarray}
 \label{he+-}
 \begin{aligned}
@@ -499,25 +499,39 @@ where we have discarded in \eqref{BCr1} the integral of the first term of the ri
 &\quad+ \frac{A A^{\prime}}{4} \left[\left(1 + \frac{2 k l}{\tau \psi + 2}\right)^2 + \left(1 - \frac{2 k l}{\tau \psi + 2}\right)^2\right] e^{-k L}\\
 &= \frac{A A^{\prime}}{4} \left[1 - \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right](e^{-2 k r} + e^{-2 k (L - r)}) + \frac{A A^{\prime}}{2} \left[1 + \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right] e^{-k L}
 \end{aligned}\\
+\end{eqnarray}
+where we will introduce
+\begin{equation}
+\Omega = \frac{2 k l}{\tau \psi + 2}
+\label{Omega}
+\end{equation}
+to get
+\begin{eqnarray}
 \label{he+-lim}
 \begin{aligned}
-\hat{\varepsilon}_{+-}(0^+) = \lim_{r \to 0^+} \hat{\varepsilon}_{+-}(r) &= \frac{A A^{\prime}}{4} \left[1 - \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right](1 + e^{-2 k L}) + \frac{A A^{\prime}}{2} \left[1 + \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right] e^{-k L}\\
-&= \frac{A A^{\prime}}{2} e^{-k L}\left[\left(1 - \left(\frac{2 k l}{\tau\psi + 2}\right)^2\right) \cosh(k L) + \left(1 + \left(\frac{2 k l}{\tau\psi + 2}\right)^2\right)\right]
+\hat{\varepsilon}_{+-}(0^+) = \lim_{r \to 0^+} \hat{\varepsilon}_{+-}(r) &= \frac{A A^{\prime}}{4} \left[1 - \Omega^2\right](1 + e^{-2 k L}) + \frac{A A^{\prime}}{2} \left[1 + \Omega^2\right] e^{-k L}\\
+&= A A^{\prime} e^{-k L} \left[\left(\frac{e^{kL} + e^{-k L}}{2}\right)^2 - \Omega^2 \left(\frac{e^{kL} - e^{-k L}}{2}\right)^2\right]
+% &= \frac{A A^{\prime}}{2} e^{-k L}\left[\left(1 - \left(\frac{2 k l}{\tau\psi + 2}\right)^2\right) \cosh(k L) + \left(1 + \left(\frac{2 k l}{\tau\psi + 2}\right)^2\right)\right]
 \end{aligned}
 \end{eqnarray}
 from Eqs.~\ref{epsilon},~\ref{qaoa}, with $A = A_{\pm}$ which appear in Eqs.~\ref{epsilon}, \ref{theta}, \ref{beta}. We solve Eqs.~\ref{BCr1},~\ref{BCr2} for $\hat{\gamma}_{\alpha\alpha}$ and $\hat{\gamma}_{\alpha\overline{\alpha}}$
 \begin{eqnarray}
 \label{hgaa}
-\hat{\gamma}_{\alpha\alpha} = \frac{\left[\frac{1}{2} (\tau \psi + 2) - s l v_0\right] \frac{\gamma_{\alpha\alpha}}{\gamma_{\alpha\overline{\alpha}}} l \hat{\varepsilon}_{+-}(0^+)}{\frac{1}{2}(\tau\psi + 2) - s l v_0 - \frac{\gamma_{\alpha\alpha}}{\gamma_{\alpha\overline{\alpha}}}}\\
+\hat{\gamma}_{\alpha\alpha} = \frac{[(\tau\psi + 2) - 2 s l v_0] l \hat{\varepsilon}_{+-}(0^+)}{(\tau \psi + 2) [(\tau\psi + 2) - 2 s l v_0] - 2}\\
+% \hat{\gamma}_{\alpha\alpha} = \frac{\left[\frac{1}{2} (\tau \psi + 2) - s l v_0\right] \frac{\gamma_{\alpha\alpha}}{\gamma_{\alpha\overline{\alpha}}} l \hat{\varepsilon}_{+-}(0^+)}{\frac{1}{2}(\tau\psi + 2) - s l v_0 - \frac{\gamma_{\alpha\alpha}}{\gamma_{\alpha\overline{\alpha}}}}\\
 \label{hgaoa}
-\hat{\gamma}_{\alpha\overline{\alpha}} = \frac{l \hat{\varepsilon}_{+-}(0^+)}{\frac{1}{2}(\tau\psi + 2) - s l v_0 - \frac{\gamma_{\alpha\alpha}}{\gamma_{\alpha\overline{\alpha}}}}
+\hat{\gamma}_{\alpha\overline{\alpha}} = \frac{2 (\tau\psi + 2) l \hat{\varepsilon}_{+-}(0^+)}{(\tau \psi + 2) [(\tau\psi + 2) - 2 s l v_0] - 2}
+% \hat{\gamma}_{\alpha\overline{\alpha}} = \frac{l \hat{\varepsilon}_{+-}(0^+)}{\frac{1}{2}(\tau\psi + 2) - s l v_0 - \frac{\gamma_{\alpha\alpha}}{\gamma_{\alpha\overline{\alpha}}}}
 \end{eqnarray}
-as a function of $\hat{\varepsilon}_{+-}(0^+)$.\\
+as a function of $\hat{\varepsilon}_{+-}(0^+)$ and where we have used $\gamma_{\alpha\alpha}/\gamma_{\alpha\overline{\alpha}} = (\tau \psi + 2)^{-1}$ \eqref{ratio_gamma}.\\
 
 We can finally write the normalisation condition \eqref{normalisation_pave}
 \begin{equation}
-1 = 4 \hat{\gamma}_{\alpha\alpha} + 2 \hat{\gamma}_{\alpha\overline{\alpha}} + 2 \int_0^L \hat{\varepsilon}_{\alpha\alpha}(r) \, \mathrm{d}r + 2 \int_0^L \hat{\varepsilon}_{\alpha\overline{\alpha}}(r) \, \mathrm{d}r
+\begin{aligned}
+1 &= 4 \hat{\gamma}_{\alpha\alpha} + 2 \hat{\gamma}_{\alpha\overline{\alpha}} + 2 \int_0^L \hat{\varepsilon}_{\alpha\alpha}(r) \, \mathrm{d}r + 2 \int_0^L \hat{\varepsilon}_{\alpha\overline{\alpha}}(r) \, \mathrm{d}r\\
+&= 4 \hat{\gamma}_{\alpha\alpha} \left(1 + \frac{1}{2} \frac{\hat{\gamma}_{\alpha\overline{\alpha}}}{\hat{\gamma}_{\alpha\alpha}}\right) + 2 \int_0^L \hat{\varepsilon}_{\alpha\alpha}(r) \, \mathrm{d}r + 2 \int_0^L \hat{\varepsilon}_{\alpha\overline{\alpha}}(r) \, \mathrm{d}r
 \label{normalisation_pave_full}
+\end{aligned}
 \end{equation}
 where we have
 \begin{equation}
@@ -526,35 +540,80 @@ where we have
 \end{equation}
 according to Eqs.~\ref{beta},~\ref{qaa}. We compute from \eqref{heaa}
 \begin{equation}
-\int_0^L \hat{\varepsilon}_{\alpha\alpha}(r) \, \mathrm{d}r = \frac{2 A A^{\prime}}{(\tau \psi + 2)^2} e^{-k L} \left[\frac{1}{k} \sinh(k L) + L\right]
+\int_0^L \hat{\varepsilon}_{\alpha\alpha}(r) \, \mathrm{d}r = A A^{\prime} e^{-k L} \frac{2}{(\tau \psi + 2)^2} \left[\frac{1}{k} \left(\frac{e^{k L} - e^{-k L}}{2}\right) + L\right]
+\label{int_heaa}
 \end{equation}
 and from \eqref{he+-}
 \begin{equation}
-\int_0^L \hat{\varepsilon}_{\alpha\overline{\alpha}}(r) \, \mathrm{d}r = \frac{A A^{\prime}}{2} e^{-k L} \left[\left(1 - \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right) \frac{1}{k} \sinh(k L) + \left(1 + \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right) L\right]
+\int_0^L \hat{\varepsilon}_{\alpha\overline{\alpha}}(r) \, \mathrm{d}r = A A^{\prime} e^{-k L} \frac{1}{2} \left[\left(1 -\Omega^2\right) \frac{1}{k} \left(\frac{e^{k L} - e^{-k L}}{2}\right) + \left(1 + \Omega^2\right) L\right]
 \end{equation}
 on the hand, and use on the other hand \eqref{he+-lim} to re-write \eqref{normalisation_pave_full}
 \begin{equation}
 \begin{aligned}
-1 = &\left[4 \frac{\left(\frac{1}{2}(\tau \psi + 2) - s l v_0\right) \frac{\gamma_{\alpha\alpha}}{\gamma_{\alpha\overline{\alpha}}} l}{\frac{1}{2}(\tau \psi + 2) - s l v_0 - \frac{\gamma_{\alpha\alpha}}{\gamma_{\alpha\overline{\alpha}}}} + 2 \frac{l}{\frac{1}{2}(\tau \psi + 2) - s l v_0 - \frac{\gamma_{\alpha\alpha}}{\gamma_{\alpha\overline{\alpha}}}}\right]\\
-&\qquad \times \frac{A A^{\prime}}{2} e^{-k L} \left[\left(1 - \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right) \cosh(k L) + \left(1 + \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right)\right]\\
-&+ \frac{4 A A^{\prime}}{(\tau \psi + 2)^2} e^{-k L} \left[\frac{1}{k}\sinh(kL) + L\right]\\
-&+ A A^{\prime} e^{-k L} \left[\left(1 - \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right) \frac{1}{k} \sinh(k L) + \left(1 + \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right) L\right]\\
-= & A A^{\prime} e^{-k L}\\
-&\times\Bigg[\frac{l}{\frac{1}{2}(\tau \psi + 2) - s l v_0 - \frac{\gamma_{\alpha\alpha}}{\gamma_{\alpha\overline{\alpha}}}} \left(2 \left(\frac{1}{2} (\tau \psi + 2) - s l v_0\right) \frac{\gamma_{\alpha\alpha}}{\gamma_{\alpha\overline{\alpha}}} + 1\right)\\
-&\qquad\qquad \times \left(\left(1 - \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right) \cosh(k L) + \left(1 + \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right)\right)\\
-&\qquad + \frac{4}{(\tau \psi + 2)^2} \left(\frac{1}{k}\sinh(kL) + L\right) + \left(1 - \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right) \frac{1}{k} \sinh(k L) + \left(1 + \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right) L\Bigg]
+\tilde{\mathcal{N}}^{-1} =~& (A A^{\prime} e^{-k L} l)^{-1}\\
+=~& \frac{4 [(\tilde{\psi} + 2) - 2 \tilde{s}]}{(\tilde{\psi} + 2)[(\tilde{\psi} + 2) - 2 \tilde{s}] - 2} \left[1 + \frac{\tilde{\psi} + 2}{(\tilde{\psi} + 2) - 2 \tilde{s}}\right] \left[\left(\frac{e^{\tilde{k} \tilde{L}} + e^{-\tilde{k} \tilde{L}}}{2}\right)^2 - \Omega^2 \left(\frac{e^{\tilde{k} \tilde{L}} - e^{-\tilde{k} \tilde{L}}}{2}\right)^2\right]\\
+&+ \left[\frac{4}{(\tilde{\psi} + 2)^2} + (1 - \Omega^2)\right] \frac{1}{\tilde{k}} \left(\frac{e^{\tilde{k} \tilde{L}} - e^{-\tilde{k} \tilde{L}}}{2}\right) + \left[\frac{4}{(\tilde{\psi} + 2)^2} + (1 + \Omega^2)\right] \tilde{L}
 \end{aligned}
+\label{normalisation_factor_pave}
 \end{equation}
-and conclude
-\begin{equation}
-\begin{aligned}
-A^{\prime} =& \frac{e^{k L}}{A}\\
-&\times\Bigg[\frac{l}{\frac{1}{2}(\tau \psi + 2)^2 - s l v_0 (\tau \psi + 2) - 1} \left(2 (\tau \psi + 2) - 2 s l v_0\right)\\
-&\qquad\qquad \times \left(\left(1 - \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right) \cosh(k L) + \left(1 + \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right)\right)\\
-&\qquad + \frac{4}{(\tau \psi + 2)^2} \left(\frac{1}{k}\sinh(kL) + L\right) + \left(1 - \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right) \frac{1}{k} \sinh(k L) + \left(1 + \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right) L\Bigg]^{-1}
-\end{aligned}
-\end{equation}
-where we have used $\gamma_{\alpha\overline{\alpha}}/\gamma_{\alpha\alpha} = \tau \psi + 2$ \eqref{ratio_gamma} so we finally know $Y_{\alpha_1\alpha_2}$ completely.
+% \begin{equation}
+% \begin{aligned}
+% 1 = &\left[4 \frac{\left(\frac{1}{2}(\tau \psi + 2) - s l v_0\right) \frac{\gamma_{\alpha\alpha}}{\gamma_{\alpha\overline{\alpha}}} l}{\frac{1}{2}(\tau \psi + 2) - s l v_0 - \frac{\gamma_{\alpha\alpha}}{\gamma_{\alpha\overline{\alpha}}}} + 2 \frac{l}{\frac{1}{2}(\tau \psi + 2) - s l v_0 - \frac{\gamma_{\alpha\alpha}}{\gamma_{\alpha\overline{\alpha}}}}\right]\\
+% &\qquad \times \frac{A A^{\prime}}{2} e^{-k L} \left[\left(1 - \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right) \cosh(k L) + \left(1 + \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right)\right]\\
+% &+ \frac{4 A A^{\prime}}{(\tau \psi + 2)^2} e^{-k L} \left[\frac{1}{k}\sinh(kL) + L\right]\\
+% &+ A A^{\prime} e^{-k L} \left[\left(1 - \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right) \frac{1}{k} \sinh(k L) + \left(1 + \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right) L\right]\\
+% = & A A^{\prime} e^{-k L}\\
+% &\times\Bigg[\frac{l}{\frac{1}{2}(\tau \psi + 2) - s l v_0 - \frac{\gamma_{\alpha\alpha}}{\gamma_{\alpha\overline{\alpha}}}} \left(2 \left(\frac{1}{2} (\tau \psi + 2) - s l v_0\right) \frac{\gamma_{\alpha\alpha}}{\gamma_{\alpha\overline{\alpha}}} + 1\right)\\
+% &\qquad\qquad \times \left(\left(1 - \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right) \cosh(k L) + \left(1 + \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right)\right)\\
+% &\qquad + \frac{4}{(\tau \psi + 2)^2} \left(\frac{1}{k}\sinh(kL) + L\right) + \left(1 - \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right) \frac{1}{k} \sinh(k L) + \left(1 + \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right) L\Bigg]
+% \end{aligned}
+% \end{equation}
+% and conclude
+% \begin{equation}
+% \begin{aligned}
+% A^{\prime} =& \frac{e^{k L}}{A}\\
+% &\times\Bigg[\frac{l}{\frac{1}{2}(\tau \psi + 2)^2 - s l v_0 (\tau \psi + 2) - 1} \left(2 (\tau \psi + 2) - 2 s l v_0\right)\\
+% &\qquad\qquad \times \left(\left(1 - \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right) \cosh(k L) + \left(1 + \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right)\right)\\
+% &\qquad + \frac{4}{(\tau \psi + 2)^2} \left(\frac{1}{k}\sinh(kL) + L\right) + \left(1 - \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right) \frac{1}{k} \sinh(k L) + \left(1 + \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right) L\Bigg]^{-1}
+% \end{aligned}
+% \end{equation}
+where we have denoted the dimensionless quantities $\tilde{\psi} = \tau \psi$, $\tilde{k} = k l$, $\tilde{L} = L/l$, $\tilde{s} = s l v_0$, $\tilde{\mathcal{N}} = \mathcal{N} l$.
+% We can easily check that $\lim_{s \to 0} \tilde{\mathcal{N}^{-1}} = 8 + 4 \tilde{L}$, and
+% \begin{eqnarray}
+% \label{normalisation_factor_pave_sneg}
+% \begin{aligned}
+% \tilde{\mathcal{N}}^{-1}(s < 0) =~& \frac{4 [(\tilde{\psi} + 2) - 2 \tilde{s}]}{(\tilde{\psi} + 2)[(\tilde{\psi} + 2) - 2 \tilde{s}] - 2} \left[1 + \frac{\tilde{\psi} + 2}{(\tilde{\psi} + 2) - 2 \tilde{s}}\right]\left(\cos(|\tilde{k}| \tilde{L})^2 - |\Omega|^2 \sin(|\tilde{k}| \tilde{L})^2\right)\\
+% &+ \left[\frac{4}{(\tilde{\psi} + 2)^2} + (1 + |\Omega|^2)\right] \frac{1}{|\tilde{k}|} \sin(|\tilde{k}| \tilde{L}) + \left[\frac{4}{(\tilde{\psi} + 2)^2} + (1 - |\Omega|^2)\right] \tilde{L}
+% \end{aligned}\\
+% \label{normalisation_factor_pave_spos}
+% \begin{aligned}
+% \tilde{\mathcal{N}}^{-1}(s > 0) =~& \frac{4 [(\tilde{\psi} + 2) - 2 \tilde{s}]}{(\tilde{\psi} + 2)[(\tilde{\psi} + 2) - 2 \tilde{s}] - 2} \left[1 + \frac{\tilde{\psi} + 2}{(\tilde{\psi} + 2) - 2 \tilde{s}}\right]\left(\cosh(\tilde{k} \tilde{L})^2 - \Omega^2 \sinh(\tilde{k} \tilde{L})^2\right)\\
+% &+ \left[\frac{4}{(\tilde{\psi} + 2)^2} + (1 - \Omega^2)\right] \frac{1}{\tilde{k}} \sinh(\tilde{k} \tilde{L}) + \left[\frac{4}{(\tilde{\psi} + 2)^2} + (1 + \Omega^2)\right] \tilde{L}
+% \end{aligned}
+% \end{eqnarray}
+% depending on the sign of $s$.\\
+%
+% We define the polarisation
+% \begin{equation}
+% \nu = 4 \hat{\gamma}_{\alpha\alpha} + 2 \int_0^L \hat{\varepsilon}_{\alpha\alpha}(r) \, \mathrm{d}r
+% \label{polarisation_def}
+% \end{equation}
+% which we can compute with (\ref{hgaa}, \ref{int_heaa}, \ref{normalisation_factor_pave})
+% \begin{equation}
+% \begin{aligned}
+% \nu =~& \tilde{\mathcal{N}} \frac{4 [(\tilde{\psi} + 2) - 2 \tilde{s}]}{(\tilde{\psi} + 2) [(\tilde{\psi} + 2) - 2 \tilde{s}] - 2} \left[\left(\frac{e^{\tilde{k} \tilde{L}} + e^{-\tilde{k} \tilde{L}}}{2}\right)^2 - \Omega^2 \left(\frac{e^{\tilde{k} \tilde{L}} - e^{-\tilde{k} \tilde{L}}}{2}\right)^2\right]\\
+% &+ \tilde{\mathcal{N}} \frac{4}{(\tilde{\psi} + 2)^2} \left[\frac{1}{\tilde{k}} \left(\frac{e^{\tilde{k} \tilde{L}} - e^{-\tilde{k} \tilde{L}}}{2}\right) + \tilde{L}\right]
+% \end{aligned}
+% \label{polarisation_value}
+% \end{equation}
+% where we can check that $\lim_{s \to 0} \nu = 1/2$ and write depending on the sign of $s$
+% \begin{eqnarray}
+% \label{polarisation_sneg}
+% \nu(s < 0) = \tilde{\mathcal{N}} \frac{4 [(\tilde{\psi} + 2) - 2 \tilde{s}]}{(\tilde{\psi} + 2) [(\tilde{\psi} + 2) - 2 \tilde{s}] - 2} \left(\cos(|\tilde{k}| \tilde{L})^2 - |\Omega|^2 \sin(|\tilde{k}| \tilde{L})^2\right) + \tilde{\mathcal{N}} \frac{4}{(\tilde{\psi} + 2)^2} \left[\frac{1}{|\tilde{k}|} \sin(|\tilde{k}| \tilde{L}) + \tilde{L}\right]\\
+% \label{polarisation_spos}
+% \nu(s > 0) = \tilde{\mathcal{N}} \frac{4 [(\tilde{\psi} + 2) - 2 \tilde{s}]}{(\tilde{\psi} + 2) [(\tilde{\psi} + 2) - 2 \tilde{s}] - 2} \left(\cosh(\tilde{k} \tilde{L})^2 - |\Omega|^2 \sinh(\tilde{k} \tilde{L})^2\right) + \tilde{\mathcal{N}} \frac{4}{(\tilde{\psi} + 2)^2} \left[\frac{1}{\tilde{k}} \sinh(\tilde{k} \tilde{L}) + \tilde{L}\right]
+% \end{eqnarray}
+% with (\ref{normalisation_factor_pave_sneg}, \ref{normalisation_factor_pave_spos}).
 
 \subsubsection{Polarisation-oriented method}
 
@@ -562,75 +621,73 @@ We have that the form of Eqs.~\ref{FPr1}, \ref{FPr2} indicates that there cannot
 \begin{eqnarray}
 \hat{\varepsilon}_{\alpha\alpha}(r) = \frac{A^{\prime}}{A} \varepsilon_{\alpha\alpha}(r)^2\\
 \hat{\varepsilon}_{\alpha\overline{\alpha}}(r) = \frac{A^{\prime}}{A} \varepsilon_{\alpha\overline{\alpha}}(r) \varepsilon_{\overline{\alpha}\alpha}(r)\\
-\hat{\gamma}_{\alpha\alpha} = \gamma_{\alpha\alpha} \varepsilon_{\alpha\alpha}(0^+)\\
-\hat{\gamma}_{\alpha\overline{\alpha}} = \gamma_{\alpha\overline{\alpha}} \varepsilon_{+-}(L^-)
+\hat{\gamma}_{\alpha\alpha} = \gamma_{\alpha\alpha} \frac{A^{\prime}}{A} \varepsilon_{\alpha\alpha}(0^+)\\
+\hat{\gamma}_{\alpha\overline{\alpha}} = \gamma_{\alpha\overline{\alpha}} \frac{A^{\prime}}{A} \varepsilon_{+-}(L^-)
 \end{eqnarray}
 with the notations of Eqs.~\ref{gfY1}, \ref{gfY2}, \ref{gfY3}.\\
 
 We want to compute the average polarisation
 \begin{equation}
-\nu = 4 \hat{\gamma}_{\alpha\alpha} - 2 \hat{\gamma}_{\alpha\overline{\alpha}} + 2 \int_0^L \hat{\varepsilon}_{\alpha\alpha}(r) \, \mathrm{d}r - 2 \int_0^L \hat{\varepsilon}_{\alpha\overline{\alpha}}(r) \, \mathrm{d}r
+\nu = 4 \hat{\gamma}_{\alpha\alpha} + 2 \int_0^L \hat{\varepsilon}_{\alpha\alpha}(r) \, \mathrm{d}r
 \label{nu_pave}
 \end{equation}
 corresponding to the propensity of particles to be aligned, and use the normalisation condition \eqref{normalisation_pave_full} to re-write it
 \begin{equation}
 \begin{aligned}
-\nu &= \frac{4 \hat{\gamma}_{\alpha\alpha} - 2 \hat{\gamma}_{\alpha\overline{\alpha}} + 2 \int_0^L \hat{\varepsilon}_{\alpha\alpha}(r) \, \mathrm{d}r - 2 \int_0^L \hat{\varepsilon}_{\alpha\overline{\alpha}}(r) \, \mathrm{d}r}{4 \hat{\gamma}_{\alpha\alpha} + 2 \hat{\gamma}_{\alpha\overline{\alpha}} + 2 \int_0^L \hat{\varepsilon}_{\alpha\alpha}(r) \, \mathrm{d}r + 2 \int_0^L \hat{\varepsilon}_{\alpha\overline{\alpha}}(r) \, \mathrm{d}r}\\
-&= \frac{\frac{\gamma_{\alpha\alpha}}{A} \left[4 \frac{\varepsilon_{\alpha\alpha}(0^+)}{A} - 2 (\tau \psi + 2) \frac{\varepsilon_{+-}(L^-)}{A}\right] + 2 \int_0^L \frac{\varepsilon_{\alpha\alpha}(r)^2}{A^2} \, \mathrm{d}r - 2 \int_0^L \frac{\varepsilon_{\alpha\overline{\alpha}}(r)\varepsilon_{\overline{\alpha}\alpha}(r)}{A^2} \, \mathrm{d}r}{\frac{\gamma_{\alpha\alpha}}{A} \left[4 \frac{\varepsilon_{\alpha\alpha}(0^+)}{A} + 2 (\tau \psi + 2) \frac{\varepsilon_{+-}(L^-)}{A}\right] + 2 \int_0^L \frac{\varepsilon_{\alpha\alpha}(r)^2}{A^2} \, \mathrm{d}r + 2 \int_0^L \frac{\varepsilon_{\alpha\overline{\alpha}}(r)\varepsilon_{\overline{\alpha}\alpha}(r)}{A^2} \, \mathrm{d}r}
+\nu &= \frac{4 \hat{\gamma}_{\alpha\alpha} + 2 \int_0^L \hat{\varepsilon}_{\alpha\alpha}(r) \, \mathrm{d}r}{4 \hat{\gamma}_{\alpha\alpha} + 2 \hat{\gamma}_{\alpha\overline{\alpha}} + 2 \int_0^L \hat{\varepsilon}_{\alpha\alpha}(r) \, \mathrm{d}r + 2 \int_0^L \hat{\varepsilon}_{\alpha\overline{\alpha}}(r) \, \mathrm{d}r}\\
+&= \frac{4 e^{k L} \frac{\gamma_{\alpha\alpha}}{A} \frac{\varepsilon_{\alpha\alpha}(0^+)}{A} + 2 e^{k L} \int_0^L \frac{\varepsilon_{\alpha\alpha}(r)^2}{A^2} \, \mathrm{d}r}{4 e^{k L} \frac{\gamma_{\alpha\alpha}}{A} \frac{\varepsilon_{\alpha\alpha}(0^+)}{A} + 2 e^{k L} \frac{\gamma_{\alpha\alpha}}{A} (\tau \psi + 2) \frac{\varepsilon_{+-}(L^-)}{A} + 2 e^{k L} \int_0^L \frac{\varepsilon_{\alpha\alpha}(r)^2}{A^2} \, \mathrm{d}r + 2 e^{k L} \int_0^L \frac{\varepsilon_{\alpha\overline{\alpha}}(r)\varepsilon_{\overline{\alpha}\alpha}(r)}{A^2} \, \mathrm{d}r}
 \end{aligned}
+\label{nu_pave_full}
 \end{equation}
 where we have used $\gamma_{\alpha\overline{\alpha}} = (\tau \psi + 2) \gamma_{\alpha\alpha}$ \eqref{ratio_gamma} from the first to the second line.\\
 
 We can compute from Eqs.~\ref{epsilon}, \ref{LBe2}
 \begin{equation}
-\frac{\gamma_{\alpha\alpha}}{A} = \frac{1}{2} l (1 + e^{-k L}) + l \frac{kl}{\tau\psi + 2} (1 - e^{-kL})
+\frac{\gamma_{\alpha\alpha}}{A} = l \frac{\varepsilon_{+-}(L^-)}{A} = \frac{l}{2} \left[(1 + e^{-k L}) + \Omega (1 - e^{-k L})\right]
 \end{equation}
 from Eqs.~\ref{epsilon}, \ref{theta}
 \begin{eqnarray}
 \frac{\varepsilon_{\alpha\alpha}(0^+)}{A} = \frac{1}{\tau\psi + 2}(1 + e^{-k L})\\
 \begin{aligned}
-\frac{\varepsilon_{+-}(L^-)}{A} &= \frac{1}{2} \left(1 - \frac{2 k l}{\tau \psi + 2}\right)e^{-k L} + \frac{1}{2} \left(1 + \frac{2 k l}{\tau \psi + 2}\right)\\
-&= \frac{1}{2} (1 + e^{-k L}) + \frac{k l}{\tau \psi + 2} (1 - e^{- k L})
+\frac{\varepsilon_{+-}(L^-)}{A} &= \frac{1}{2} \left[(1 + e^{-k L}) + \Omega (1 - e^{-k L})\right]
 \end{aligned}
 \end{eqnarray}
 and from Eqs.~\ref{heaa}, \ref{he+-}
 \begin{eqnarray}
-\int_0^L \frac{\varepsilon_{\alpha\alpha}(r)^2}{A^2} \, \mathrm{d}r = \frac{2}{(\tau \psi + 2)^2} \left[\frac{1}{2k}(1 - e^{- 2 k L}) + L e^{-k L}\right]\\
-\int_0^L \frac{\varepsilon_{\alpha\overline{\alpha}}(r)\varepsilon_{\overline{\alpha}\alpha}(r)}{A^2} \, \mathrm{d}r = \left(1 - \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right) \frac{1}{4 k} (1 - e^{-2 k L}) + \frac{1}{2} \left(1 + \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right) L e^{-k L}
+\int_0^L \frac{\varepsilon_{\alpha\alpha}(r)^2}{A^2} \, \mathrm{d}r = e^{-k L} \frac{2}{(\tau \psi + 2)^2} \left[\frac{1}{k} \left(\frac{e^{k L} - e^{- k L}}{2}\right) + L\right]\\
+\int_0^L \frac{\varepsilon_{\alpha\overline{\alpha}}(r)\varepsilon_{\overline{\alpha}\alpha}(r)}{A^2} \, \mathrm{d}r = e^{-k L} \frac{1}{2} \left[(1 - \Omega^2) \frac{1}{k} \left(\frac{e^{k L} - e^{-k L}}{2}\right) + (1 + \Omega^2) L\right]
 \end{eqnarray}
 so that we can write
 \begin{eqnarray}
-\frac{1}{(1 + e^{_k L})^2} \frac{\gamma_{\alpha\alpha}}{A} \frac{\varepsilon_{\alpha\alpha}(0^+)}{A} = \frac{1}{4 k} \Omega + \frac{1}{4 k} \Omega^2 \frac{1 - e^{-k L}}{1 + e^{-k L}}\\
-\frac{1}{(1 + e^{-k L})^2} \frac{\gamma_{\alpha\alpha}}{A} \frac{\varepsilon_{+-}(L^-)}{A} = \frac{1}{4} l + \frac{1}{2} l \Omega \frac{1 - e^{-k L}}{1 + e^{-k L}} + \frac{1}{4} l \Omega^2 \left(\frac{1 - e^{-k L}}{1 + e^{-k L}}\right)^2\\
-\frac{1}{(1 + e^{-k L})^2} \int_0^L \frac{\varepsilon_{\alpha\alpha}(r)^2}{A^2} \, \mathrm{d}r = \frac{1}{4 k^3 l^2} \Omega^2 \frac{\frac{1}{2}(e^{k L} - e^{-k L})}{1 + \frac{1}{2} (e^{k L} + e^{-k L})} + \frac{L}{2 k^2 l^2} \Omega^2 \frac{1}{2\left(1 + \frac{1}{2}(e^{k L} + e^{-k L})\right)}\\
-\frac{1}{(1 + e^{-k L})^2} \int_0^L \frac{\varepsilon_{\alpha\overline{\alpha}}(r)\varepsilon_{\overline{\alpha}\alpha}(r)}{A^2} \, \mathrm{d}r = \frac{1}{4 k}(1 - \Omega^2) \frac{\frac{1}{2}(e^{k L} - e^{-k L})}{1 + \frac{1}{2}(e^{k L} + e^{-k L})} + \frac{1}{2} L (1 + \Omega^2) \frac{1}{2\left(1 + \frac{1}{2}(e^{k L} + e^{-k L})\right)}
+e^{k L} \frac{\gamma_{\alpha\alpha}}{A} \frac{\varepsilon_{\alpha\alpha}(0^+)}{A} = \frac{1}{4} \left[2 \frac{\Omega}{k} \left(1 + \left(\frac{e^{k L} + e^{-k L}}{2}\right)\right) + 2 \frac{\Omega^2}{k} \left(\frac{e^{k L} - e^{-k L}}{2}\right)\right]\\
+\begin{aligned}
+e^{k L} \frac{\gamma_{\alpha\alpha}}{A} (\tau \psi + 2) \frac{\varepsilon_{+-}(L^-)}{A} = \frac{1}{2} \Bigg[l(\tau \psi + 2)(1 - \Omega^2) + l(\tau\psi + 2)(1 + \Omega^2)\left(\frac{e^{k L} + e^{-k L}}{2}\right)\\
++ (\tau \psi + 2)^2 \frac{\Omega^2}{k} \left(\frac{e^{k L} - e^{-k L}}{2}\right)\Bigg]
+\end{aligned}\\
+e^{k L} \int_0^L \frac{\varepsilon_{\alpha\alpha}(r)^2}{A^2} \, \mathrm{d}r = \frac{1}{2} \left[\frac{4}{(\tau\psi + 2)^2} \left(\frac{1}{k}\left(\frac{e^{k L} - e^{- k L}}{2}\right) + L\right)\right]\\
+e^{k L} \int_0^L \frac{\varepsilon_{\alpha\overline{\alpha}}(r)\varepsilon_{\overline{\alpha}\alpha}(r)}{A^2} \, \mathrm{d}r = \frac{1}{2} \left[(1 - \Omega^2) \frac{1}{k}\left(\frac{e^{k L} - e^{-k L}}{2}\right) + (1 + \Omega^2) L\right]
 \end{eqnarray}
-where we have introduced
-\begin{equation}
-\Omega = \frac{2 k l}{\tau \psi + 2}
-\end{equation}
-to ease the notations.\\
+where we have used the quantity $\Omega$ \eqref{Omega}.\\
 
 We can first check
 \begin{eqnarray}
-\lim_{s \to 0} \frac{1}{(1 + e^{_k L})^2} \frac{\gamma_{\alpha\alpha}}{A} \frac{\varepsilon_{\alpha\alpha}(0^+)}{A} = \frac{l}{4}\\
-\lim_{s \to 0} \frac{1}{(1 + e^{-k L})^2} \frac{\gamma_{\alpha\alpha}}{A} \frac{\varepsilon_{+-}(L^-)}{A} = \frac{l}{4}\\
-\lim_{s \to 0} \frac{1}{(1 + e^{-k L})^2} \int_0^L \frac{\varepsilon_{\alpha\alpha}(r)^2}{A^2} \, \mathrm{d}r = \frac{L}{8}\\
-\lim_{s \to 0} \frac{1}{(1 + e^{-k L})^2} \int_0^L \frac{\varepsilon_{\alpha\overline{\alpha}}(r)\varepsilon_{\overline{\alpha}\alpha}(r)}{A^2} \, \mathrm{d}r = \frac{L}{8}
+\lim_{s \to 0} 4 e^{k L} \frac{\gamma_{\alpha\alpha}}{A} \frac{\varepsilon_{\alpha\alpha}(0^+)}{A} = 4 l\\
+\lim_{s \to 0} 2 e^{k L} \frac{\gamma_{\alpha\alpha}}{A} (\tau \psi + 2) \frac{\varepsilon_{+-}(L^-)}{A} = 4 l\\
+\lim_{s \to 0} 2 e^{k L} \int_0^L \frac{\varepsilon_{\alpha\alpha}(r)^2}{A^2} \, \mathrm{d}r = 2 L\\
+\lim_{s \to 0} 2 e^{k L} \int_0^L \frac{\varepsilon_{\alpha\overline{\alpha}}(r)\varepsilon_{\overline{\alpha}\alpha}(r)}{A^2} \, \mathrm{d}r = 2 L
 \end{eqnarray}
-so that, replacing in \eqref{nu_pave}, we get $\lim_{s \to 0} \nu = 0$ as expected.\\
+so that, replacing in \eqref{nu_pave_full}, we get $\lim_{s \to 0} \nu = 1/2$ as expected.\\
 
 We finally give the full expressions for $s < 0$
 \begin{equation}
 \nu(s < 0) = \frac{
 \begin{aligned}
-&\frac{|\Omega|}{|\tilde{k}|} - \frac{1}{2}(\tilde{\psi} + 2) + \left[\frac{|\Omega|}{|\tilde{k}|} - (\tilde{\psi} + 2)\right] |\Omega| \tan\left(\frac{|\tilde{k}| \tilde{L}}{2}\right) - \frac{1}{2} (\tilde{\psi} + 2)|\Omega|^2 \tan\left(\frac{|\tilde{k}| \tilde{L}}{2}\right)^2\\
-&\quad+ \left[\frac{1}{2 |\tilde{k}|^3} |\Omega|^2 - \frac{1}{2|\tilde{k}|}(1 + |\Omega|^2)\right] \frac{\sin(|\tilde{k}|\tilde{L})}{1 + \cos(|\tilde{k}| \tilde{L})} + \left[\frac{\tilde{L}}{|\tilde{k}|^2}|\Omega|^2 - \tilde{L}(1 - |\Omega|^2)\right]\frac{1}{2(1 + \cos(|\tilde{k}| \tilde{L}))}
+2 \frac{|\Omega|}{|\tilde{k}|} \left(1 + \cos(|\tilde{k}| \tilde{L})\right) - 2 \frac{|\Omega|^2}{|\tilde{k}|} \sin(|\tilde{k}| \tilde{L}) + \frac{4}{(\tilde{\psi} + 2)^2} \left(\frac{1}{|\tilde{k}|} \sin(|\tilde{k}| \tilde{L}) + \tilde{L}\right)
 \end{aligned}
 }{
 \begin{aligned}
-&\frac{|\Omega|}{|\tilde{k}|} + \frac{1}{2}(\tilde{\psi} + 2) + \left[\frac{|\Omega|}{|\tilde{k}|} + (\tilde{\psi} + 2)\right] |\Omega| \tan\left(\frac{|\tilde{k}| \tilde{L}}{2}\right) + \frac{1}{2} (\tilde{\psi} + 2)|\Omega|^2 \tan\left(\frac{|\tilde{k}| \tilde{L}}{2}\right)^2\\
-&\quad+ \left[\frac{1}{2 |\tilde{k}|^3} |\Omega|^2 + \frac{1}{2|\tilde{k}|}(1 + |\Omega|^2)\right] \frac{\sin(|\tilde{k}|\tilde{L})}{1 + \cos(|\tilde{k}| \tilde{L})} + \left[\frac{\tilde{L}}{|\tilde{k}|^2}|\Omega|^2 + \tilde{L}(1 - |\Omega|^2)\right]\frac{1}{2(1 + \cos(|\tilde{k}| \tilde{L}))}
+2 \frac{|\Omega|}{|\tilde{k}|} \left(1 + \cos(|\tilde{k}| \tilde{L})\right) - (2 + (\tilde{\psi} + 2)^2) \frac{|\Omega|^2}{|\tilde{k}|} \sin(|\tilde{k}| \tilde{L}) + (\tilde{\psi} + 2)(1 + |\Omega|^2) + (\tilde{\psi} + 2)(1 - |\Omega|^2) \cos(|\tilde{k}| \tilde{L})\\
++ \left[\frac{4}{(\tilde{\psi} + 2)^2} + (1 + |\Omega|^2)\right] \frac{1}{|\tilde{k}|} \sin(|\tilde{k}|\tilde{L}) + \left[\frac{4}{(\tilde{\psi} + 2)^2} + (1 - |\Omega|^2)\right] \tilde{L}
 \end{aligned}
 }
 \end{equation}
@@ -638,13 +695,12 @@ and for $s > 0$
 \begin{equation}
 \nu(s > 0) = \frac{
 \begin{aligned}
-&\frac{\Omega}{\tilde{k}} - \frac{1}{2}(\tilde{\psi} + 2) + \left[\frac{\Omega}{\tilde{k}} - (\tilde{\psi} + 2)\right] \Omega \tanh\left(\frac{\tilde{k} \tilde{L}}{2}\right) - \frac{1}{2} (\tilde{\psi} + 2)\Omega^2 \tanh\left(\frac{\tilde{k} \tilde{L}}{2}\right)^2\\
-&\quad+ \left[\frac{1}{2 \tilde{k}^3} \Omega^2 - \frac{1}{2\tilde{k}}(1 - \Omega^2)\right] \frac{\sinh(\tilde{k}\tilde{L})}{1 + \cosh(\tilde{k} \tilde{L})} + \left[\frac{\tilde{L}}{\tilde{k}^2}\Omega^2 - \tilde{L}(1 + \Omega^2)\right]\frac{1}{2(1 + \cosh(\tilde{k} \tilde{L}))}
+2 \frac{\Omega}{\tilde{k}} \left(1 + \cosh(\tilde{k} \tilde{L})\right) + 2 \frac{\Omega^2}{\tilde{k}} \sinh(\tilde{k} \tilde{L}) + \frac{4}{(\tilde{\psi} + 2)^2} \left(\frac{1}{\tilde{k}} \sinh(\tilde{k} \tilde{L}) + \tilde{L}\right)
 \end{aligned}
 }{
 \begin{aligned}
-&\frac{\Omega}{\tilde{k}} + \frac{1}{2}(\tilde{\psi} + 2) + \left[\frac{\Omega}{\tilde{k}} + (\tilde{\psi} + 2)\right] \Omega \tanh\left(\frac{\tilde{k} \tilde{L}}{2}\right) + \frac{1}{2} (\tilde{\psi} + 2)\Omega^2 \tanh\left(\frac{\tilde{k} \tilde{L}}{2}\right)^2\\
-&\quad+ \left[\frac{1}{2 \tilde{k}^3} \Omega^2 + \frac{1}{2\tilde{k}}(1 - \Omega^2)\right] \frac{\sinh(\tilde{k}\tilde{L})}{1 + \cosh(\tilde{k} \tilde{L})} + \left[\frac{\tilde{L}}{\tilde{k}^2}\Omega^2 + \tilde{L}(1 + \Omega^2)\right]\frac{1}{2(1 + \cosh(\tilde{k} \tilde{L}))}
+2 \frac{\Omega}{\tilde{k}} \left(1 + \cosh(\tilde{k} \tilde{L})\right) + (2 + (\tilde{\psi} + 2)^2) \frac{\Omega^2}{\tilde{k}} \sinh(\tilde{k} \tilde{L}) + (\tilde{\psi} + 2)(1 - \Omega^2) + (\tilde{\psi} + 2)(1 + \Omega^2) \cosh(\tilde{k} \tilde{L})\\
++ \left[\frac{4}{(\tilde{\psi} + 2)^2} + (1 - \Omega^2)\right] \frac{1}{\tilde{k}} \sinh(\tilde{k}\tilde{L}) + \left[\frac{4}{(\tilde{\psi} + 2)^2} + (1 + \Omega^2)\right] \tilde{L}
 \end{aligned}
 }
 \end{equation}
