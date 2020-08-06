@@ -10006,7 +10006,7 @@ config.macros.bibliography = {
 <div created="20180606020526389" modified="20180606020526389" title="$:/state/toc/TableOfContents/Measurements/Strain and vorticity fields-Strain correlations--81657105">
 <pre>open</pre>
 </div>
-<div list="[[Active Brownian particles]] [[ABP averages (feedback) — checks]] [[Brownian rotors LDP]] Project" title="$:/StoryList">
+<div list="[[ABP work and order LDP]] [[Brownian rotors LDP]] [[ABP hydrodynamic theory]] Project" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20190725184303281" modified="20190727111023175" title="$:/temp/advancedsearch">
@@ -11864,7 +11864,7 @@ $$</pre>
 
 Our results at low rotational diffusivity are qualitatively consistent with ([[Fily and Marchetti, 2012|https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.108.235702]]).</pre>
 </div>
-<div created="20200401145954846" modified="20200601183820998" tags="[[Active Brownian particles]]" title="ABP hydrodynamic theory">
+<div created="20200401145954846" modified="20200806123710887" tags="[[Active Brownian particles]]" title="ABP hydrodynamic theory">
 <pre>On very large (hydrodynamics) length and time scales, we propose to describe the system with the density and polarisation fields, $$\rho(\underline{r}, t)$$ and $$\underline{P}(\underline{r}, t)$$, with former obeying the following stochastic hydrodynamic equation
 $$
 \begin{aligned}
@@ -11882,7 +11882,7 @@ where $$L$$ is the length of the system.
 
 ! Density fluctuations
 
-As in ([[Dolezal and Jack, 2019|https://iopscience.iop.org/article/10.1088/1742-5468/ab4801/meta]], § 5.1 and appendix B) we will consider a perturbation around the homogeneous profile and subsequent biased trajectories of the system.
+As in ([[Dolezal and Jack, 2019|https://iopscience.iop.org/article/10.1088/1742-5468/ab4801/meta]], § 5.1 and appendix B) we will consider a perturbation around the homogeneous profile and subsequent biased trajectories of the system, and will focus on isotropic systems $$\underline{P} = 0$$.
 
 We consider a perturbation around an homogeneous profile
 $$
@@ -11891,9 +11891,9 @@ $$
 with $$\delta\rho \ll 1$$, and write under this assumption the active work,
 $$
 \begin{aligned}
-N \, t \, w_t &amp;=  \int_0^t \int_{[0,L]^2} \omega(\rho, \underline{P}) \, \mathrm{d}t \, \mathrm{d}^2\underline{r}\\
-&amp;= \int_0^t \int_{[0,L]^2} \left(\omega(\bar{\rho}, \underline{P}) + \delta\rho \frac{\partial}{\partial\rho} \omega(\bar{\rho}, \underline{P}) +  \frac{1}{2} \delta\rho^2 \frac{\partial^2}{\partial\rho^2}\omega(\bar{\rho}, \underline{P})\right) \, \mathrm{d}t \, \mathrm{d}^2\underline{r}\\
-&amp;= t L^2 \omega(\bar{\rho}, \underline{P}) + \frac{1}{2} \omega^{\prime\prime}(\bar{\rho}, \underline{P}) \int_0^t \int_{[0,L]^2} \delta\rho^2 \, \mathrm{d}t \, \mathrm{d}^2\underline{r},
+N \, t \, w_t &amp;=  \int_0^t \int_{[0,L]^2} \omega(\rho, \underline{P} = 0) \, \mathrm{d}t \, \mathrm{d}^2\underline{r}\\
+&amp;= \int_0^t \int_{[0,L]^2} \left(\omega(\bar{\rho}, \underline{P} = 0) + \delta\rho \frac{\partial}{\partial\rho} \omega(\bar{\rho}, \underline{P} = 0) +  \frac{1}{2} \delta\rho^2 \frac{\partial^2}{\partial\rho^2}\omega(\bar{\rho}, \underline{P} = 0)\right) \, \mathrm{d}t \, \mathrm{d}^2\underline{r}\\
+&amp;= t L^2 \omega(\bar{\rho}, \underline{P} = 0) + \frac{1}{2} \omega^{\prime\prime}(\bar{\rho}, \underline{P} = 0) \int_0^t \int_{[0,L]^2} \delta\rho^2 \, \mathrm{d}t \, \mathrm{d}^2\underline{r},
 \end{aligned}
 $$
 up to terms of order $$\mathcal{O}(\delta\rho^2)$$ and where we have used $$\int \delta\rho \, \mathrm{d}^2\underline{r} = 0$$, and the stochastic equation for the density
@@ -11908,11 +11908,11 @@ $$
 $$
 to write
 $$
-N \, t \, w_t = t L^2 \omega(\bar{\rho}, \underline{P}) + 2 \omega^{\prime\prime}(\bar{\rho}, \underline{P}) \sum_{q_x, q_y &gt; 0} \int_0^t \tilde{\rho}_{\underline{q}} \tilde{\rho}_{-\underline{q}} \, \mathrm{d}t.
+N \, t \, w_t = t L^2 \omega(\bar{\rho}, \underline{P} = 0) + \omega^{\prime\prime}(\bar{\rho}, \underline{P} = 0) \sum_{q_x \geq 0, q_y / \underline{q} \neq (0, 0)} \int_0^t \tilde{\rho}_{\underline{q}} \tilde{\rho}_{-\underline{q}} \, \mathrm{d}t.
 $$
 using
 $$
-\int_{[0,L]^2} \delta\rho^2 \, \mathrm{d}^2\underline{r} = \sum_{q_x, q_y \neq 0} \tilde{\rho}_{\underline{q}} \tilde{\rho}_{-\underline{q}} = 4 \sum_{q_x, q_y &gt; 0} \tilde{\rho}_{\underline{q}} \tilde{\rho}_{-\underline{q}},
+\int_{[0,L]^2} \delta\rho^2 \, \mathrm{d}^2\underline{r} = \sum_{q_x, q_y \neq 0} \tilde{\rho}_{\underline{q}} \tilde{\rho}_{-\underline{q}} = 2 \sum_{q_x \geq 0, q_y / \underline{q} \neq (0, 0)} \tilde{\rho}_{\underline{q}} \tilde{\rho}_{-\underline{q}},
 $$
 according to Parseval's theorem.
 
@@ -11934,30 +11934,30 @@ $$
 $$
 and biasing term
 $$
-\alpha = 2 \, \omega^{\prime\prime}(\bar{\rho}, \underline{P}=0),
+\alpha = \omega^{\prime\prime}(\bar{\rho}, \underline{P}=0),
 $$
 we can write the SCGF — dynamical free energy density —  for trajectories biased with respect to the active work $$w$$,
 $$
 \begin{aligned}
 \Psi(s) &amp;= \lim_{\tau \rightarrow \infty} \frac{1}{N \tau} \log \left&lt;e^{- s N \tau w_{\tau}}\right&gt;_0\\
-&amp;= - s \left&lt;w_{\tau}\right&gt;_0 - \frac{1}{N} \sum_{q_x, q_y &gt; 0} \Bigg(\sqrt{D(\bar{\rho})^2\underline{q}^4 + 4s \omega^{\prime\prime}(\bar{\rho}, \underline{P} = 0) \sigma(\bar{\rho}) \underline{q}^2}\\
-&amp;\qquad\qquad\qquad\qquad\qquad\qquad- D(\bar{\rho})\underline{q}^2 - \frac{2 s \omega^{\prime\prime}(\bar{\rho}, \underline{P} = 0) \sigma(\bar{\rho})}{D(\bar{\rho})}\Bigg),
+&amp;= - s \left&lt;w_{\tau}\right&gt;_0 - \frac{1}{N} \sum_{q_x \geq 0, q_y / \underline{q} \neq (0, 0)} \Bigg(\sqrt{D(\bar{\rho})^2\underline{q}^4 + 2s \omega^{\prime\prime}(\bar{\rho}, \underline{P} = 0) \sigma(\bar{\rho}) \underline{q}^2}\\
+&amp;\qquad\qquad\qquad\qquad\qquad\qquad- D(\bar{\rho})\underline{q}^2 - \frac{s \omega^{\prime\prime}(\bar{\rho}, \underline{P} = 0) \sigma(\bar{\rho})}{D(\bar{\rho})}\Bigg),
 \end{aligned}
 $$
 and compute
 $$
-- \left.\frac{\partial}{\partial s} \left&lt;w_{\tau}\right&gt;_s\right|_{s=0} = \left.\frac{\partial^2}{\partial s^2} \psi(s)\right|_{s=0} = \frac{4 \omega^{\prime\prime}(\bar{\rho}, \underline{P} = 0)^2 \sigma(\bar{\rho})^2}{D(\bar{\rho})^3} \frac{1}{N} \sum_{q_x, q_y &gt; 0} \frac{1}{\underline{q}^2}.
+- \left.\frac{\partial}{\partial s} \left&lt;w_{\tau}\right&gt;_s\right|_{s=0} = \left.\frac{\partial^2}{\partial s^2} \psi(s)\right|_{s=0} = \frac{\omega^{\prime\prime}(\bar{\rho}, \underline{P} = 0)^2 \sigma(\bar{\rho})^2}{D(\bar{\rho})^3} \frac{1}{N} \sum_{q_x \geq 0, q_y / \underline{q} \neq (0, 0)} \frac{1}{\underline{q}^2}.
 $$
 related to the variance of the active work,
 $$
-N \, \tau \, \mathrm{Var}(w_{\tau})_0 = \frac{4 \omega^{\prime\prime}(\bar{\rho}, \underline{P} = 0)^2 \sigma(\bar{\rho})^2}{D(\bar{\rho})^3} \frac{1}{N} \sum_{q_x, q_y &gt; 0} \frac{1}{\underline{q}^2},
+N \, \tau \, \mathrm{Var}(w_{\tau})_0 = \frac{\omega^{\prime\prime}(\bar{\rho}, \underline{P} = 0)^2 \sigma(\bar{\rho})^2}{D(\bar{\rho})^3} \frac{1}{N} \sum_{q_x \geq 0, q_y / \underline{q} \neq (0, 0)} \frac{1}{\underline{q}^2},
 $$
 from [[ABP work and order LDP]].
 
 We now argue that the sum in this last expression can be approximated as
 $$
 \begin{aligned}
-\sum_{q_x, q_y &gt; 0} \frac{1}{\underline{q}^2} &amp;\sim L^2 \int_{q_{\mathrm{min}} = Q \frac{2\pi}{L}}^{q_{\mathrm{max}} =  \frac{2\pi}{a}} \frac{q \, \mathrm{d}q}{q^2}\\
+\sum_{q_x \geq 0, q_y / \underline{q} \neq (0, 0)} \frac{1}{\underline{q}^2} &amp;\sim L^2 \int_{q_{\mathrm{min}} = Q \frac{2\pi}{L}}^{q_{\mathrm{max}} =  \frac{2\pi}{a}} \frac{q \, \mathrm{d}q}{q^2}\\
 &amp;= L^2 \left(\log\left(\frac{2\pi}{a}\right) - \log\left(Q \frac{2\pi}{L}\right)\right)\\
 &amp;= L^2 \log L + o(L^2 \log L),
 \end{aligned}
@@ -11980,32 +11980,40 @@ $$
 $$
 the averaged polarisation.
 
-We have in the limit $$\underline{s} \to 0$$,
+We first note that, in the hypothsesis that $$\underline{\nu}$$ is isotropically distributed ($$\underline{s}=0$$),
+$$
+\left&lt;(\underline{s} \cdot \underline{\nu})^2\right&gt;_0 = s_x^2 \left&lt;\nu_x^2\right&gt;_0 + s_y^2 \left&lt;\nu_y^2\right&gt;_0 + 2 s_x s_y \left&lt;s_x s_y\right&gt;_0 = \frac{1}{2} \underline{s}^2  \left&lt;\underline{\nu}^2\right&gt;_0
+$$
+where we have used $$\left&lt;\nu_x^2\right&gt;_0 = \left&lt;\nu_y^2\right&gt;_0 = \frac{1}{2} \left&lt;\underline{\nu}^2\right&gt;_0$$ and $$\left&lt;\nu_x \nu_y\right&gt;_0 = 0$$ due to isotropy.
+
+We then have in the limit $$\underline{s} \to 0$$,
 $$
 \begin{aligned}
-\left&lt;w_{\tau} \, e^{- \underline{s} \cdot \tau N \underline{\nu}_{\tau}}\right&gt;_0 &amp;= \left&lt;w_{\tau}\left(1 - \underline{s} \cdot \tau N \underline{\nu}_{\tau} + \frac{1}{2} \tau^2 N^2 \underline{s}^2 \underline{\nu}_{\tau}^2\right) \right&gt;_0\\
-&amp;= \left&lt;w_{\tau}\right&gt;_0 + \frac{1}{2} \tau^2 N^2 \underline{s}^2 \left&lt;w_{\tau} \underline{\nu}_{\tau}^2\right&gt;_0,\\
-\left&lt;e^{- \underline{s} \cdot \tau N \underline{\nu}_{\tau}}\right&gt;_0 &amp;= \left&lt;1 - \underline{s} \cdot \tau N \underline{\nu}_{\tau} + \frac{1}{2} \tau^2 N^2 \underline{s}^2 \underline{\nu}_{\tau}^2\right&gt;_0\\
-&amp;= 1 + \frac{1}{2} \tau^2 N^2 \underline{s}^2 \left&lt;\underline{\nu}_{\tau}^2\right&gt;_0,
+\left&lt;w_{\tau} \, e^{- \underline{s} \cdot \tau N \underline{\nu}_{\tau}}\right&gt;_0 &amp;= \left&lt;w_{\tau}\left(1 - \underline{s} \cdot \tau N \underline{\nu}_{\tau} + \frac{1}{2} \tau^2 N^2 (\underline{s} \cdot \underline{\nu}_{\tau})^2\right) \right&gt;_0\\
+&amp;= \left&lt;w_{\tau}\right&gt;_0 + \frac{1}{4} \tau^2 N^2 \underline{s}^2 \left&lt;w_{\tau} \underline{\nu}_{\tau}^2\right&gt;_0,\\
+\left&lt;e^{- \underline{s} \cdot \tau N \underline{\nu}_{\tau}}\right&gt;_0 &amp;= \left&lt;1 - \underline{s} \cdot \tau N \underline{\nu}_{\tau} + \frac{1}{2} \tau^2 N^2 (\underline{s} \cdot \underline{\nu}_{\tau})^2\right&gt;_0\\
+&amp;= 1 + \frac{1}{4} \tau^2 N^2 \underline{s}^2 \left&lt;\underline{\nu}_{\tau}^2\right&gt;_0,
 \end{aligned}
 $$
 up to $$\mathcal{O}(\underline{s}^2)$$ terms and where we have discarded linear terms in $$\underline{s}$$ by symmetry, therefore
 $$
 \begin{aligned}
-\omega(\bar{\rho}, \underline{P}) &amp;= \left(\left&lt;w_{\tau}\right&gt;_0 + \frac{1}{2} \tau^2 N^2 \underline{s}^2 \left&lt;w_{\tau} \underline{\nu}_{\tau}^2\right&gt;_0\right)\left(1 + \frac{1}{2} \tau^2 N^2 \underline{s}^2 \left&lt;\underline{\nu}_{\tau}^2\right&gt;_0\right)^{-1}\\
-&amp;= \left(\left&lt;w_{\tau}\right&gt;_0 + \frac{1}{2} \tau^2 N^2 \underline{s}^2 \left&lt;w_{\tau} \underline{\nu}_{\tau}^2\right&gt;_0\right)\left(1 - \frac{1}{2} \tau^2 N^2 \underline{s}^2 \left&lt;\underline{\nu}_{\tau}^2\right&gt;_0\right)\\
-&amp;= \left&lt;w_{\tau}\right&gt;_0 + \frac{1}{2} \tau^2 N^2 \underline{s}^2 \, \mathrm{Cov}(w_{\tau}, \underline{\nu}_{\tau}^2)_0,
+\omega(\bar{\rho}, \underline{P}) &amp;= \left(\left&lt;w_{\tau}\right&gt;_0 + \frac{1}{4} \tau^2 N^2 \underline{s}^2 \left&lt;w_{\tau} \underline{\nu}_{\tau}^2\right&gt;_0\right)\left(1 + \frac{1}{4} \tau^2 N^2 \underline{s}^2 \left&lt;\underline{\nu}_{\tau}^2\right&gt;_0\right)^{-1}\\
+&amp;= \left(\left&lt;w_{\tau}\right&gt;_0 + \frac{1}{4} \tau^2 N^2 \underline{s}^2 \left&lt;w_{\tau} \underline{\nu}_{\tau}^2\right&gt;_0\right)\left(1 - \frac{1}{4} \tau^2 N^2 \underline{s}^2 \left&lt;\underline{\nu}_{\tau}^2\right&gt;_0\right)\\
+&amp;= \left&lt;w_{\tau}\right&gt;_0 + \frac{1}{4} \tau^2 N^2 \underline{s}^2 \, \mathrm{Cov}(w_{\tau}, \underline{\nu}_{\tau}^2)_0,
 \end{aligned}
 $$
 linking $$\omega(\bar{\rho}, \underline{P})$$ and the covariance of the active work and the squared polarisation.
 
-We note that
+Moreover, still within the hypothesis of isotropy ($$\underline{s} = 0$$), with
+$$
+\left&lt;\underline{\nu} (\underline{s} \cdot \underline{\nu})\right&gt;_0 = \begin{pmatrix} s_x \left&lt;\nu_x^2\right&gt;_0 + s_y \left&lt;\nu_x \nu_y\right&gt;_0 \\ s_x \left&lt;\nu_x\nu_y\right&gt;_0 + s_y \left&lt;\nu_y^2\right&gt;_0\end{pmatrix} = \frac{1}{2} \underline{s} \left&lt;\underline{\nu}^2\right&gt;_0
+$$
+we note that
 $$
 \begin{aligned}
 \left&lt;\underline{\nu}_{\tau}\right&gt;_{\underline{s}} &amp;= \frac{\left&lt;\underline{\nu}_{\tau} \, e^{- \underline{s} \cdot N \tau \underline{\nu}_{\tau}}\right&gt;_0}{\left&lt;e^{- \underline{s} \cdot N \tau \underline{\nu}_{\tau}}\right&gt;_0} = \frac{\left&lt;\underline{\nu}_{\tau}(1 - \underline{s} \cdot \tau N \underline{\nu}_{\tau})\right&gt;_0}{\left&lt;1 - \underline{s} \cdot \tau N \underline{\nu}_{\tau}\right&gt;_0}\\
-&amp;= \left(\left&lt;\underline{\nu}_{\tau}\right&gt;_0 - \tau N \underline{s} \left&lt;\underline{\nu}_{\tau}^2\right&gt;_0\right)\left(1 + \underline{s} \cdot \tau N \left&lt;\underline{\nu}_{\tau}\right&gt;_0\right)\\
-&amp;= \left&lt;\underline{\nu}_{\tau}\right&gt;_0 - \tau N \underline{s} \left(\left&lt;\underline{\nu}_{\tau}^2\right&gt;_0 - \left&lt;\underline{\nu}_{\tau}\right&gt;_0^2\right)\\
-&amp;= \left&lt;\underline{\nu}_{\tau}\right&gt;_0 - \tau N \underline{s} \, \mathrm{Var}(\underline{\nu}_{\tau})_0
+&amp;= \left(\left&lt;\underline{\nu}_{\tau}\right&gt;_0 - \frac{1}{2} \tau N \underline{s} \left&lt;\underline{\nu}_{\tau}^2\right&gt;_0\right)\left(1 + \underline{s} \cdot \tau N \left&lt;\underline{\nu}_{\tau}\right&gt;_0\right)
 \end{aligned}
 $$
 where
@@ -12028,20 +12036,20 @@ $$
 $$
 we may write
 $$
-\underline{s} = - \frac{1}{\tau N \mathrm{Var}(\underline{\nu}_{\tau})_0} \underline{P} = - \frac{1}{2} D_r \underline{P},
+\underline{s} = - \frac{2}{\tau N \mathrm{Var}(\underline{\nu}_{\tau})_0} \underline{P} = - D_r \underline{P},
 $$
 linking the biasing parameter and the polarisation.
 
 We then have
 $$
 \begin{aligned}
-\omega(\bar{\rho}, \underline{P}) &amp;=  \left&lt;w_{\tau}\right&gt;_0 + \frac{1}{2} \underline{P}^2 \left[\frac{1}{\mathrm{Var}(\underline{\nu}_{\tau})^2_0} \mathrm{Cov}(w_{\tau}, \underline{\nu}_{\tau}^2)_0\right]\\
-&amp;=  \left&lt;w_{\tau}\right&gt;_0 + \frac{1}{2} \underline{P}^2 \left[\frac{1}{4} \tau^2 \, N^2 \, D_r^2 \, \mathrm{Cov}(w_{\tau}, \underline{\nu}_{\tau}^2)_0\right],
+\omega(\bar{\rho}, \underline{P}) &amp;=  \left&lt;w_{\tau}\right&gt;_0 + \underline{P}^2 \left[\frac{1}{\mathrm{Var}(\underline{\nu}_{\tau})^2_0} \mathrm{Cov}(w_{\tau}, \underline{\nu}_{\tau}^2)_0\right]\\
+&amp;=  \left&lt;w_{\tau}\right&gt;_0 + \underline{P}^2 \left[\frac{1}{4} \tau^2 \, N^2 \, D_r^2 \, \mathrm{Cov}(w_{\tau}, \underline{\nu}_{\tau}^2)_0\right],
 \end{aligned}
 $$
 up to $$\mathcal{O}(\underline{P}^2)$$ and therfore we may write
 $$
-\frac{\partial^2}{\partial \underline{P}^2} \omega(\bar{\rho}, \underline{P} = 0) = \frac{1}{\mathrm{Var}(\underline{\nu}_{\tau})^2_0} \mathrm{Cov}(w_{\tau}, \underline{\nu}_{\tau}^2)_0 = \frac{1}{4}  \tau^2 \, N^2 \, D_r^2 \, \mathrm{Cov}(w_{\tau}, \underline{\nu}_{\tau}^2)_0.
+\left(\frac{\partial^2}{\partial P_x^2} + \frac{\partial^2}{\partial P_y^2}\right) \omega(\bar{\rho}, \underline{P} = 0) = \frac{4}{\mathrm{Var}(\underline{\nu}_{\tau})^2_0} \mathrm{Cov}(w_{\tau}, \underline{\nu}_{\tau}^2)_0 = \tau^2 \, N^2 \, D_r^2 \, \mathrm{Cov}(w_{\tau}, \underline{\nu}_{\tau}^2)_0.
 $$</pre>
 </div>
 <div created="20191030112133404" modified="20191108142542165" tags="[[Multiple ABP]]" title="ABP order correlations">
@@ -12102,7 +12110,7 @@ which is related to the pair distribution function $$g$$ via Fourier transform.
 
 ([[Binder and Kob, 2011|https://www.worldscientific.com/worldscibooks/10.1142/7300]], § 2.2)</pre>
 </div>
-<div created="20191113124812892" modified="20200325113338453" tags="[[Active Brownian particles]]" title="ABP work and order LDP">
+<div created="20191113124812892" modified="20200806123544795" tags="[[Active Brownian particles]]" title="ABP work and order LDP">
 <pre>We redefine the normalised rate of active work
 $$
 w_{\tau} = \frac{1}{N \tau} \, (S)\int_0^{\tau} \sum_{i=1}^N \underline{u}(\theta_i(t))\cdot\text{d}\underline{r}_i(t),
@@ -12450,7 +12458,7 @@ we then have, at $$s = 0$$ where $$\left&lt;\underline{p}\right&gt; = 0$$ and $$
 $$
 \frac{\mathrm{d}^2w}{\mathrm{d}\underline{p}^2}(s = 0) = \nabla_{\underline{p}}^2 w(s = 0) = \frac{\mathrm{Cov}(\underline{p}^2, w)_0}{\mathrm{Var}(\underline{p})_0^2} = \frac{\mathrm{Cov}(\underline{p}^2, w)_0}{\left&lt;\underline{p}^2\right&gt;_0^2},
 $$
-where we can use $$\left&lt;\underline{p}^2\right&gt;_0 = (N \tau D_r)^{-1}$$ from [[Brownian rotors LDP]] in the $$\tau \to \infty$$ and $$N \to \infty$$ limits. One should however more carefully check this calculation.
+where we can use $$\left&lt;\underline{p}^2\right&gt;_0 = 2 (N \tau D_r)^{-1}$$ from [[Brownian rotors LDP]] in the $$\tau \to \infty$$ and $$N \to \infty$$ limits. One should however more carefully check this calculation.
 
 We expect positive correlations between squared polarisation and active work (see [[ABP work correlations]]), therefore $$\frac{\mathrm{d}^2w}{\mathrm{d}\underline{p}^2}(s = 0) &gt; 0$$.</pre>
 </div>
