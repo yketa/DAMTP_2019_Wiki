@@ -64,7 +64,7 @@ plt.sca(axe)
 plt.legend(loc='upper center', ncol=3)
 
 fige.set_size_inches(11.25, 5)
-fige.subplots_adjust(left=0.11, top=0.93, right=0.97)
+fige.subplots_adjust(left=0.12, top=0.98, right=0.97, bottom=0.21)
 
 # show/save
 
