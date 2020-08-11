@@ -32,7 +32,7 @@ ax.set_xlabel(r'$\lambda L v_0$')
 ax.set_xlim([-10, 10])
 ax.set_xticks([-10, -8, -6, -4, -2, 0, 2, 4, 6, 8, 10])
 ax.set_xticklabels(['', r'$-8$', '', r'$-4$', '', r'$0$', '', r'$4$', '', r'$8$', ''])
-ax.set_ylabel(r'$\tau \psi^{\rm RTP}(\lambda)$')
+ax.set_ylabel(r'$\tau_{\rm p} \psi^{\rm RTP}(\lambda)$')
 
 line = {}
 for L in _L:
