@@ -1,0 +1,56 @@
+%%%%%% Pink beamer colour theme
+%% https://www.r-bloggers.com/create-your-own-beamer-template/
+
+%%%% COLOURS
+
+\definecolor{CaPink}{RGB}{232, 94, 138} % default pink
+\definecolor{CaDarkUnsatPink}{RGB}{249, 26, 97} % dark unsaturated pink
+\definecolor{CaLightPink}{RGB}{253, 175, 200} % light pink
+\definecolor{CaRed}{RGB}{223, 47, 81} % red
+
+%%%% THEME
+
+%% header color
+% https://tex.stackexchange.com/questions/321097/how-to-change-color-of-shadow-around-frametitle-latex-beamer
+\pgfdeclarehorizontalshading[frametitle.bg,frametitle right.bg]{beamer@frametitleshade}{\paperheight}{
+    color(0pt)=(CaPink);
+    color(\paperwidth)=(CaRed)}
+
+\setbeamercolor{normal text}{fg = black}
+
+\setbeamercolor{frametitle}{fg = white, bg = CaPink}
+\setbeamercolor{title}{fg = white, bg = CaPink}
+
+\setbeamercolor{author in head/foot}{fg = white, bg = CaPink}
+\setbeamercolor{title in head/foot}{fg = white, bg = CaRed}
+\setbeamercolor{date in head/foot}{fg = white, bg = CaPink}
+
+\setbeamercolor{section in toc}{fg = CaDarkUnsatPink}
+\setbeamercolor{section in toc shaded}{fg = CaDarkUnsatPink}
+
+\setbeamercolor{item}{fg = CaRed}
+\setbeamercolor{subitem}{fg = CaPink}
+\setbeamercolor{subsubitem}{fg = CaLightPink}
+\setbeamercolor{description item}{fg = CaPink}
+
+\setbeamercolor{bibliography entry author}{fg = CaPink}
+\setbeamercolor{bibliography entry title}{fg = black}
+\setbeamercolor{bibliography entry note}{fg = CaRed}
+
+\setbeamercolor{footnote mark}{fg = CaRed}
+
+\setbeamercolor{caption}{fg = white}
+\setbeamercolor{caption name}{fg = CaPink}
+\setbeamercolor{caption source}{fg = CaLightPink}
+
+% % Standard block
+% \setbeamercolor{block title}{fg = white, bg = green!20!blue}
+% \setbeamercolor{block body}{bg = blue!1!white}
+%
+% % Alert block
+% \setbeamercolor{block title alerted}{fg = white, bg = red}
+% \setbeamercolor{block body alerted}{bg = red!1!white}
+%
+% % Example block
+% \setbeamercolor{block title example}{fg = white, bg = green!80!blue}
+% \setbeamercolor{block body example}{bg = green!1!white}

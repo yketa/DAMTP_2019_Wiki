@@ -1,0 +1,233 @@
+\usetheme{Warsaw}
+
+%%%%% PACKAGES
+
+\usepackage{graphicx} % figures
+\usepackage{multimedia} % videos
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\everymath{\displaystyle}
+\usepackage{epstopdf} % conversion from .eps to .pdf
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{upgreek}
+\usepackage{nameref}
+\usepackage{url}
+\usepackage{pgf, tikz}
+\usepackage{float}
+\usepackage[english]{babel}
+\usepackage[justification=justified]{caption}
+\usepackage{subcaption}
+\usepackage{xcolor,colortbl}
+\usepackage{fontawesome}
+\usepackage{tabularx}
+
+\usepackage{biblatex}
+\addbibresource{ref.bib}
+
+%%%%% BEAMER TEMPLATE
+
+\input{beamer-pink} % color theme
+
+\setbeamerfont{frametitle}{size=\small}
+\setbeamerfont{footnote}{size=\tiny}
+\setbeamertemplate{headline}{} % clear header
+\setbeamertemplate{navigation symbols}{} % remove buttons
+
+\setbeamerfont{block title}{size=\tiny}
+\setbeamerfont{block title example}{size=\tiny}
+\setbeamerfont{block title alerted}{size=\tiny}
+
+\setbeamersize{text margin left=3mm,text margin right=3mm}
+
+\captionsetup{font=scriptsize,labelfont={scriptsize, color=CaPink, bf}}
+
+% decrease space around math align environment
+\newcommand{\zerodisplayskips}{%
+  \setlength{\abovedisplayskip}{5pt}%
+  \setlength{\belowdisplayskip}{5pt}%
+  \setlength{\abovedisplayshortskip}{0pt}%
+  \setlength{\belowdisplayshortskip}{0pt}}
+\appto{\normalsize}{\zerodisplayskips}
+\appto{\small}{\zerodisplayskips}
+\appto{\footnotesize}{\zerodisplayskips}
+
+% \AtBeginSubsection[]
+% {
+%  \begin{frame}<beamer>{}
+%    \tableofcontents[currentsection,currentsubsection]
+%  \end{frame}
+% }
+\AtBeginSection[]
+{
+{
+\footerwithoutframenumber
+  \begin{frame}<beamer>[noframenumbering]{Contents}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+}
+
+\defbeamertemplate*{footline}{footer-framenumber}%
+{  \begin{beamercolorbox}[ht=2.5ex]{bordure}
+\begin{beamercolorbox}[wd=0.2\paperwidth,ht=2.5ex,dp=1ex,center]{author in head/foot}%
+\usebeamerfont{author in head}\insertshortauthor
+\end{beamercolorbox}%
+\begin{beamercolorbox}[wd=0.57\paperwidth,ht=2.5ex,dp=1ex,center]{title in head/foot}%
+\usebeamerfont{title in head/foot}\insertshorttitle
+\end{beamercolorbox}%
+\begin{beamercolorbox}[wd=0.12\paperwidth,ht=2.5ex,dp=1ex,center]{title in head/foot}%
+\usebeamerfont{title in head/foot}\insertdate
+\end{beamercolorbox}%
+\begin{beamercolorbox}[wd=0.11\paperwidth,ht=2.5ex,dp=1ex,center]{date in head/foot}%
+\usebeamerfont{date in head/foot}\insertframenumber /\inserttotalframenumber{}\hspace{2ex}
+\end{beamercolorbox}%
+
+  \end{beamercolorbox}
+}
+
+\providecommand{\footerwithoutframenumber}[0]{
+\setbeamertemplate{footline}%
+{  \begin{beamercolorbox}[ht=2.5ex]{bordure}
+\begin{beamercolorbox}[wd=0.2\paperwidth,ht=2.5ex,dp=1ex,center]{author in head/foot}%
+\usebeamerfont{author in head}\insertshortauthor
+\end{beamercolorbox}%
+\begin{beamercolorbox}[wd=0.57\paperwidth,ht=2.5ex,dp=1ex,center]{title in head/foot}%
+\usebeamerfont{title in head/foot}\insertshorttitle
+\end{beamercolorbox}%
+\begin{beamercolorbox}[wd=0.12\paperwidth,ht=2.5ex,dp=1ex,center]{title in head/foot}%
+\usebeamerfont{title in head/foot}\insertdate
+\end{beamercolorbox}%
+\begin{beamercolorbox}[wd=0.11\paperwidth,ht=2.5ex,dp=1ex,center]{date in head/foot}%
+\usebeamerfont{date in head/foot} % \RomanNumeralCaps{\insertsectionnumber}
+\end{beamercolorbox}%
+
+  \end{beamercolorbox}
+}
+}
+
+% \defbeamertemplate*{headline}{mytheme}%
+% {  \begin{beamercolorbox}[ht=2.5ex]{bordure}
+% \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=2ex]{author in head/foot}%
+% \usebeamerfont{author in head}\vskip6pt\insertsectionnumber.~\insertsection \hfill \insertsubsection
+% \end{beamercolorbox}%
+%
+%   \end{beamercolorbox}
+% }
+
+\makeatletter
+\let\insertsupervisor\relax
+\newcommand\supervisortitle{supervised by}
+\mode<all>
+{
+  \newcommand\supervisor[1]{\def\insertsupervisor{#1}}
+  \titlegraphic{}
+}
+\let\insertlocation\relax
+\mode<all>
+{
+  \newcommand\location[1]{\def\insertlocation{#1}}
+  \titlegraphic{}
+}
+\let\insertshorttitle\relax
+\mode<all>
+{
+  \newcommand\shorttitle[1]{\def\insertshorttitle{#1}}
+  \titlegraphic{}
+}
+\defbeamertemplate*{title page}{supdefault}[1][]
+{
+  \vbox{}
+  \vfill
+  \begingroup
+    \centering
+    \hfill
+    \begin{beamercolorbox}[wd=0.80\paperwidth,sep=8pt,center,#1]{title}
+      \usebeamerfont{title}\inserttitle\par%
+      \ifx\insertsubtitle\@empty\relax%
+      \else%
+        \vskip0.25em%
+        {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+      \fi%
+    \end{beamercolorbox}%
+    \hfill\hfill
+    \vskip1em\par
+    \vspace{-10pt}
+    \begin{beamercolorbox}[sep=8pt,center,#1]{author}
+      \usebeamerfont{author}\textbf{\insertauthor}
+    \end{beamercolorbox}
+    \ifx\insertlocation\relax\relax\else
+    \vspace{-10pt}
+    \begin{beamercolorbox}[sep=8pt,center,#1]{author}
+      \usebeamerfont{author}{\footnotesize \supervisortitle}~{\small\insertsupervisor}
+    \end{beamercolorbox}\fi
+    \vspace{-5pt}
+    \ifx\insertlocation\relax\relax\else
+    \begin{beamercolorbox}[sep=8pt,center,#1]{author}
+      \usebeamerfont{author}{\small\insertlocation}
+    \end{beamercolorbox}\fi
+    \vspace{-10pt}
+    \begin{beamercolorbox}[sep=8pt,center,#1]{date}
+      \usebeamerfont{date}{\footnotesize \insertdate}
+    \end{beamercolorbox}\vskip0.5em
+    {\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic\par}
+  \endgroup
+  \vfill
+}
+\setbeamertemplate{title page}[supdefault][colsep=-4bp,rounded=true,shadow=\beamer@themerounded@shadow]\makeatother
+
+\makeatletter
+\newlength\beamerleftmargin
+\setlength\beamerleftmargin{\Gm@lmargin}
+\makeatother
+
+%%%%% MACROS
+
+\providecommand{\insertmovie}[4]{
+\begin{figure}[h!]
+  \centering
+  \Movie{#1}{#2}{#3}
+  \ifblank{#4}{}{\caption{\textit{(Movie)} #4}}
+\end{figure}
+}
+
+\providecommand{\Movie}[3]{
+  \movie[width=#1\linewidth]{\includegraphics[width=#1\linewidth]{#2}}{#3}
+}
+
+\providecommand{\inserttikz}[2]{
+\begin{figure}[h!]
+  \centering
+  \includestandalone{figures/tikz/#1}
+  \ifblank{#2}{}{\caption{#2}}
+\end{figure}
+}
+
+\providecommand{\RomanNumeralCaps}[1]
+    {\MakeUppercase{\romannumeral #1}}
+
+\providecommand{\return}[0]{\mbox{}\\}
+
+\providecommand{\FigureFrom}[2]{
+  [{\usebeamercolor[fg]{caption source} from:} \fullcite{#1}\ifblank{#2}{}{ (fig. #2)}]
+}
+
+\newrobustcmd*{\footfullcitenomark}{%
+  \AtNextCite{%
+    \let\thefootnote\relax
+    \let\mkbibfootnote\mkbibfootnotetext}%
+  \footfullcite}
+
+\providecommand\footnotenomark[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+% \makeatletter
+% \providecommand{\xRightarrow}[2][]{\ext@arrow 0359\Rightarrowfill@{#1}{#2}}
+% \makeatother

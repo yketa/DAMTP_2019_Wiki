@@ -547,10 +547,10 @@ and from \eqref{he+-}
 \begin{equation}
 \int_0^L \hat{\varepsilon}_{\alpha\overline{\alpha}}(r) \, \mathrm{d}r = A A^{\prime} e^{-k L} \frac{1}{2} \left[\left(1 -\Omega^2\right) \frac{1}{k} \left(\frac{e^{k L} - e^{-k L}}{2}\right) + \left(1 + \Omega^2\right) L\right]
 \end{equation}
-on the hand, and use on the other hand \eqref{he+-lim} to re-write \eqref{normalisation_pave_full}
+on the one hand, and use on the other hand \eqref{he+-lim} to re-write \eqref{normalisation_pave_full}
 \begin{equation}
 \begin{aligned}
-\tilde{\mathcal{N}}^{-1} =~& (A A^{\prime} e^{-k L} l)^{-1}\\
+\tilde{\mathcal{N}} =~& (A A^{\prime} e^{-k L} l)^{-1}\\
 =~& \frac{4 [(\tilde{\psi} + 2) - 2 \tilde{s}]}{(\tilde{\psi} + 2)[(\tilde{\psi} + 2) - 2 \tilde{s}] - 2} \left[1 + \frac{\tilde{\psi} + 2}{(\tilde{\psi} + 2) - 2 \tilde{s}}\right] \left[\left(\frac{e^{\tilde{k} \tilde{L}} + e^{-\tilde{k} \tilde{L}}}{2}\right)^2 - \Omega^2 \left(\frac{e^{\tilde{k} \tilde{L}} - e^{-\tilde{k} \tilde{L}}}{2}\right)^2\right]\\
 &+ \left[\frac{4}{(\tilde{\psi} + 2)^2} + (1 - \Omega^2)\right] \frac{1}{\tilde{k}} \left(\frac{e^{\tilde{k} \tilde{L}} - e^{-\tilde{k} \tilde{L}}}{2}\right) + \left[\frac{4}{(\tilde{\psi} + 2)^2} + (1 + \Omega^2)\right] \tilde{L}
 \end{aligned}
@@ -577,7 +577,7 @@ on the hand, and use on the other hand \eqref{he+-lim} to re-write \eqref{normal
 % &\qquad + \frac{4}{(\tau \psi + 2)^2} \left(\frac{1}{k}\sinh(kL) + L\right) + \left(1 - \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right) \frac{1}{k} \sinh(k L) + \left(1 + \left(\frac{2 k l}{\tau \psi + 2}\right)^2\right) L\Bigg]^{-1}
 % \end{aligned}
 % \end{equation}
-where we have denoted the dimensionless quantities $\tilde{\psi} = \tau \psi$, $\tilde{k} = k l$, $\tilde{L} = L/l$, $\tilde{s} = s l v_0$, $\tilde{\mathcal{N}} = \mathcal{N} l$.
+where we have denoted the dimensionless quantities $\tilde{\psi} = \tau \psi$, $\tilde{k} = k l$, $\tilde{L} = L/l$, $\tilde{s} = s l v_0$, $\tilde{\mathcal{N}} = \mathcal{N}/l$.
 % We can easily check that $\lim_{s \to 0} \tilde{\mathcal{N}^{-1}} = 8 + 4 \tilde{L}$, and
 % \begin{eqnarray}
 % \label{normalisation_factor_pave_sneg}
@@ -659,7 +659,9 @@ and from Eqs.~\ref{heaa}, \ref{he+-}
 \end{eqnarray}
 so that we can write
 \begin{eqnarray}
+\label{gaa-full}
 e^{k L} \frac{\gamma_{\alpha\alpha}}{A} \frac{\varepsilon_{\alpha\alpha}(0^+)}{A} = \frac{1}{4} \left[2 \frac{\Omega}{k} \left(1 + \left(\frac{e^{k L} + e^{-k L}}{2}\right)\right) + 2 \frac{\Omega^2}{k} \left(\frac{e^{k L} - e^{-k L}}{2}\right)\right]\\
+\label{gaba-full}
 \begin{aligned}
 e^{k L} \frac{\gamma_{\alpha\alpha}}{A} (\tau \psi + 2) \frac{\varepsilon_{+-}(L^-)}{A} = \frac{1}{2} \Bigg[l(\tau \psi + 2)(1 - \Omega^2) + l(\tau\psi + 2)(1 + \Omega^2)\left(\frac{e^{k L} + e^{-k L}}{2}\right)\\
 + (\tau \psi + 2)^2 \frac{\Omega^2}{k} \left(\frac{e^{k L} - e^{-k L}}{2}\right)\Bigg]
@@ -705,6 +707,34 @@ and for $s > 0$
 }
 \end{equation}
 where we have introduced the dimensionless quantities $\tilde{\psi} = \tau \psi$, $\tilde{k} = k l$ and $\tilde{L} = L/l$.
+
+\subsubsection{Full expressions}
+
+We summarise here our expressions for the full-time distributions.
+
+We have the normalisation factor (Eq.~\ref{normalisation_factor_pave})
+\begin{equation}
+\begin{aligned}
+\tilde{\mathcal{N}} =~&\left(A A^{\prime} e^{-\tilde{k}\tilde{L}} l\right)^{-1}\\
+=~&2 \frac{\Omega}{\tilde{k}} \left(1 + \left(\frac{e^{\tilde{k} \tilde{L}} + e^{-\tilde{k} \tilde{L}}}{2}\right)\right) + (2 + (\tilde{\psi} + 2)^2) \frac{\Omega^2}{\tilde{k}} \left(\frac{e^{\tilde{k} \tilde{L}} - e^{-\tilde{k} \tilde{L}}}{2}\right)\\
+&+ (\tilde{\psi} + 2)(1 - \Omega^2) + (\tilde{\psi} + 2)(1 + \Omega^2) \left(\frac{e^{\tilde{k} \tilde{L}} + e^{-\tilde{k} \tilde{L}}}{2}\right)\\
+&+ \left[\frac{4}{(\tilde{\psi} + 2)^2} + (1 - \Omega^2)\right] \frac{1}{\tilde{k}} \left(\frac{e^{\tilde{k} \tilde{L}} - e^{-\tilde{k} \tilde{L}}}{2}\right) + \left[\frac{4}{(\tilde{\psi} + 2)^2} + (1 + \Omega^2)\right] \tilde{L}
+\end{aligned}
+\end{equation}
+and write from Eqs.~\ref{Omega}, \ref{he+-}, \ref{heaa}, the regular part of the full-time distribution functions
+\begin{align}
+\tilde{\mathcal{N}} l \hat{\varepsilon}_{\alpha\alpha}(r) &= \frac{4}{(\tilde{\psi} + 2)^2} \left(\frac{e^{\tilde{k} \tilde{L} \left(1/2 - \tilde{r}/\tilde{L}\right)} + e^{-\tilde{k} \tilde{L} \left(1/2 - \tilde{r}/\tilde{L}\right)}}{2}\right)^2\\
+\tilde{\mathcal{N}} l \hat{\varepsilon}_{\alpha\overline{\alpha}}(r) &= \frac{1}{2}\left(1 - \Omega^2\right) \left(\frac{e^{2 \tilde{k}\tilde{L}\left(1/2 - \tilde{r}/\tilde{L}\right)} + e^{-2 \tilde{k}\tilde{L}\left(1/2 - \tilde{r}/\tilde{L}\right)}}{2}\right) + \frac{1}{2}\left(1 + \Omega^2\right)
+\end{align}
+where $\tilde{r} = r/l$, such that we can check $\tilde{\mathcal{N}} \hat{\varepsilon}_{\alpha\alpha}(r) = \tilde{\mathcal{N}} \hat{\varepsilon}_{\alpha\overline{\alpha}}(r) = 1$ for $s = 0$, and from Eqs.~\ref{gaa-full}, \ref{gaba-full} the sticking terms
+\begin{eqnarray}
+\tilde{\mathcal{N}} \hat{\gamma}_{\alpha\alpha} = \frac{1}{2} \left[\frac{\Omega}{\tilde{k}} \left(1 + \left(\frac{e^{\tilde{k} \tilde{L}} + e^{-\tilde{k} \tilde{L}}}{2}\right)\right) + \frac{\Omega^2}{\tilde{k}} \left(\frac{e^{\tilde{k} \tilde{L}} - e^{-\tilde{k} \tilde{L}}}{2}\right)\right]\\
+\begin{aligned}
+\tilde{\mathcal{N}} \hat{\gamma}_{\alpha\overline{\alpha}} =~& \frac{1}{2} \Bigg[(\tilde{\psi} + 2)(1 - \Omega^2) + (\tilde{\psi} + 2)(1 + \Omega^2)\left(\frac{e^{\tilde{k} \tilde{L}} + e^{-\tilde{k} \tilde{L}}}{2}\right)\\
+&+ (\tilde{\psi} + 2)^2 \frac{\Omega^2}{\tilde{k}} \left(\frac{e^{\tilde{k} \tilde{L}} - e^{-\tilde{k} \tilde{L}}}{2}\right)\Bigg]
+\end{aligned}
+\end{eqnarray}
+which we plot in Fig.~\ref{fig-full-expr}.
 
 \subsection{Unbiased ensemble check}
 

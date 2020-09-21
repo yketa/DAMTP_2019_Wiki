@@ -4,7 +4,8 @@ from active_work.miscellaneous import RTPring
 r = RTPring()
 
 import matplotlib.pyplot as plt
-plt.style.use('paper')
+try: plt.style.use('paper')
+except: print('Matplotlib stylesheet \'paper\' does not exist.')
 
 import numpy as np
 
