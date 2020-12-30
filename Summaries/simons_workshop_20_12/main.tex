@@ -45,7 +45,7 @@
 
 \definetitlestyle{sampletitle}{
 width=780mm, roundedcorners=5pt, linewidth=10pt, innersep=5pt,
-titletotopverticalspace=-2.5mm, titletoblockverticalspace=-5mm
+titletotopverticalspace=-6mm, titletoblockverticalspace=-5mm
 }{
 \begin{scope}[line width=\titlelinewidth, rounded corners=\titleroundedcorners]
 % \draw[color=framecolor, fill=titlebgcolor]
@@ -174,7 +174,7 @@ UMR 7057 CNRS, F-75205 Paris, France}
 
 {
 \centering
-\includegraphics[width=0.85\linewidth]{Nemoto_2019_Fig1cd.png}
+\includegraphics[width=0.88\linewidth]{Nemoto_2019_Fig1cd.png}
 \captionof{figure}{Snapshots (Ref.~\cite{nemoto2019optimizing}, Fig.~1(c,d)) in the collective motion (CM) and phase separated arrested (PSA) phases. Arrows and colors encode the direction of self-propulsion.}
 }
 }
@@ -304,7 +304,7 @@ from $\mathcal{J}_1$ the rate function of polarisation $\nu$.
 \end{itemize}
 
 {\centering
-\includegraphics[width=0.75\linewidth]{boundRate40.eps}
+\includegraphics[width=0.70\linewidth]{boundRate40.eps}
 \captionof{figure}{Rate function $I(w)$ (orange) with upper bound from controlled dynamics (blue) and lower bound from the cloning of rotors (green). Inset shows the relative errors of these bounds to the rate function.}
 }
 
@@ -315,7 +315,8 @@ from $\mathcal{J}_1$ the rate function of polarisation $\nu$.
 
 Consider a \textbf{minimal top-down hydrodynamic description} of ABPs
 \begin{align*}
-\dot{\rho} = - \nabla \cdot \left(v_0 \rho \bm{P} - D(\rho)\nabla\rho + \sqrt{2 \sigma(\rho)} \bm{\eta}\right).
+&\dot{\rho} = - \nabla \cdot \left(v_0 \rho \bm{P} - D(\rho)\nabla\rho + \sqrt{2 \sigma(\rho)} \bm{\eta}\right),\\
+&\dot{\bm{P}} = - \gamma(\rho, \bm{P}) f(\bm{P}) + b(\rho, \bm{P}) \nabla \rho + \sqrt{2 \gamma(\rho, \bm{P})} \bm{\xi}.
 \end{align*}
 % biased with respect to
 % \begin{align*}
